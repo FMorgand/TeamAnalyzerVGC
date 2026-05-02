@@ -6401,5 +6401,1332 @@
         ]
       }
     }
+  },
+  "deoxys-attack": {
+    "types": [
+      "psychic"
+    ]
+  },
+  "deoxys-defense": {
+    "types": [
+      "psychic"
+    ]
+  },
+  "deoxys-speed": {
+    "types": [
+      "psychic"
+    ]
+  },
+  "wormadam-sandy": {
+    "types": [
+      "bug",
+      "ground"
+    ]
+  },
+  "wormadam-trash": {
+    "types": [
+      "bug",
+      "steel"
+    ]
+  },
+  "shaymin-sky": {
+    "types": [
+      "grass",
+      "flying"
+    ]
+  },
+  "giratina-origin": {
+    "types": [
+      "ghost",
+      "dragon"
+    ]
+  },
+  "rotom-heat": {
+    "types": [
+      "electric",
+      "fire"
+    ]
+  },
+  "rotom-wash": {
+    "types": [
+      "electric",
+      "water"
+    ]
+  },
+  "rotom-frost": {
+    "types": [
+      "electric",
+      "ice"
+    ]
+  },
+  "rotom-fan": {
+    "types": [
+      "electric",
+      "flying"
+    ]
+  },
+  "rotom-mow": {
+    "types": [
+      "electric",
+      "grass"
+    ]
+  },
+  "castform-sunny": {
+    "types": [
+      "fire"
+    ]
+  },
+  "castform-rainy": {
+    "types": [
+      "water"
+    ]
+  },
+  "castform-snowy": {
+    "types": [
+      "ice"
+    ]
+  },
+  "basculin-blue-striped": {
+    "types": [
+      "water"
+    ]
+  },
+  "darmanitan-zen": {
+    "types": [
+      "fire",
+      "psychic"
+    ]
+  },
+  "meloetta-pirouette": {
+    "types": [
+      "normal",
+      "fighting"
+    ]
+  },
+  "tornadus-therian": {
+    "types": [
+      "flying"
+    ]
+  },
+  "thundurus-therian": {
+    "types": [
+      "electric",
+      "flying"
+    ]
+  },
+  "landorus-therian": {
+    "types": [
+      "ground",
+      "flying"
+    ]
+  },
+  "kyurem-black": {
+    "types": [
+      "dragon",
+      "ice"
+    ]
+  },
+  "kyurem-white": {
+    "types": [
+      "dragon",
+      "ice"
+    ]
+  },
+  "keldeo-resolute": {
+    "types": [
+      "water",
+      "fighting"
+    ]
+  },
+  "aegislash-blade": {
+    "types": [
+      "steel",
+      "ghost"
+    ]
+  },
+  "pumpkaboo-small": {
+    "types": [
+      "ghost",
+      "grass"
+    ]
+  },
+  "pumpkaboo-large": {
+    "types": [
+      "ghost",
+      "grass"
+    ]
+  },
+  "pumpkaboo-super": {
+    "types": [
+      "ghost",
+      "grass"
+    ]
+  },
+  "gourgeist-small": {
+    "types": [
+      "ghost",
+      "grass"
+    ]
+  },
+  "gourgeist-large": {
+    "types": [
+      "ghost",
+      "grass"
+    ]
+  },
+  "gourgeist-super": {
+    "types": [
+      "ghost",
+      "grass"
+    ]
+  },
+  "floette-eternal": {
+    "types": [
+      "fairy"
+    ]
+  },
+  "kyogre-primal": {
+    "types": [
+      "water"
+    ]
+  },
+  "groudon-primal": {
+    "types": [
+      "ground",
+      "fire"
+    ]
+  },
+  "pikachu-rock-star": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-belle": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-pop-star": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-phd": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-libre": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-cosplay": {
+    "types": [
+      "electric"
+    ]
+  },
+  "hoopa-unbound": {
+    "types": [
+      "psychic",
+      "dark"
+    ]
+  },
+  "rattata-alola": {
+    "types": [
+      "dark",
+      "normal"
+    ]
+  },
+  "raticate-alola": {
+    "types": [
+      "dark",
+      "normal"
+    ]
+  },
+  "raticate-totem-alola": {
+    "types": [
+      "dark",
+      "normal"
+    ]
+  },
+  "pikachu-original-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-hoenn-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-sinnoh-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-unova-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-kalos-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "pikachu-alola-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "raichu-alola": {
+    "types": [
+      "electric",
+      "psychic"
+    ]
+  },
+  "sandshrew-alola": {
+    "types": [
+      "ice",
+      "steel"
+    ]
+  },
+  "sandslash-alola": {
+    "types": [
+      "ice",
+      "steel"
+    ]
+  },
+  "vulpix-alola": {
+    "types": [
+      "ice"
+    ]
+  },
+  "ninetales-alola": {
+    "types": [
+      "ice",
+      "fairy"
+    ]
+  },
+  "diglett-alola": {
+    "types": [
+      "ground",
+      "steel"
+    ]
+  },
+  "dugtrio-alola": {
+    "types": [
+      "ground",
+      "steel"
+    ]
+  },
+  "meowth-alola": {
+    "types": [
+      "dark"
+    ]
+  },
+  "persian-alola": {
+    "types": [
+      "dark"
+    ]
+  },
+  "geodude-alola": {
+    "types": [
+      "rock",
+      "electric"
+    ]
+  },
+  "graveler-alola": {
+    "types": [
+      "rock",
+      "electric"
+    ]
+  },
+  "golem-alola": {
+    "types": [
+      "rock",
+      "electric"
+    ]
+  },
+  "grimer-alola": {
+    "types": [
+      "poison",
+      "dark"
+    ]
+  },
+  "muk-alola": {
+    "types": [
+      "poison",
+      "dark"
+    ]
+  },
+  "exeggutor-alola": {
+    "types": [
+      "grass",
+      "dragon"
+    ]
+  },
+  "marowak-alola": {
+    "types": [
+      "fire",
+      "ghost"
+    ]
+  },
+  "greninja-battle-bond": {
+    "types": [
+      "water",
+      "dark"
+    ]
+  },
+  "greninja-ash": {
+    "types": [
+      "water",
+      "dark"
+    ]
+  },
+  "zygarde-10-power-construct": {
+    "types": [
+      "dragon",
+      "ground"
+    ]
+  },
+  "zygarde-50-power-construct": {
+    "types": [
+      "dragon",
+      "ground"
+    ]
+  },
+  "zygarde-complete": {
+    "types": [
+      "dragon",
+      "ground"
+    ]
+  },
+  "gumshoos-totem": {
+    "types": [
+      "normal"
+    ]
+  },
+  "vikavolt-totem": {
+    "types": [
+      "bug",
+      "electric"
+    ]
+  },
+  "oricorio-pom-pom": {
+    "types": [
+      "electric",
+      "flying"
+    ]
+  },
+  "oricorio-pau": {
+    "types": [
+      "psychic",
+      "flying"
+    ]
+  },
+  "oricorio-sensu": {
+    "types": [
+      "ghost",
+      "flying"
+    ]
+  },
+  "lycanroc-midnight": {
+    "types": [
+      "rock"
+    ]
+  },
+  "wishiwashi-school": {
+    "types": [
+      "water"
+    ]
+  },
+  "lurantis-totem": {
+    "types": [
+      "grass"
+    ]
+  },
+  "salazzle-totem": {
+    "types": [
+      "poison",
+      "fire"
+    ]
+  },
+  "minior-orange-meteor": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-yellow-meteor": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-green-meteor": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-blue-meteor": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-indigo-meteor": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-violet-meteor": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-red": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-orange": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-yellow": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-green": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-blue": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-indigo": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "minior-violet": {
+    "types": [
+      "rock",
+      "flying"
+    ]
+  },
+  "mimikyu-busted": {
+    "types": [
+      "ghost",
+      "fairy"
+    ]
+  },
+  "mimikyu-totem-disguised": {
+    "types": [
+      "ghost",
+      "fairy"
+    ]
+  },
+  "mimikyu-totem-busted": {
+    "types": [
+      "ghost",
+      "fairy"
+    ]
+  },
+  "kommo-o-totem": {
+    "types": [
+      "dragon",
+      "fighting"
+    ]
+  },
+  "pikachu-partner-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "marowak-totem": {
+    "types": [
+      "fire",
+      "ghost"
+    ]
+  },
+  "ribombee-totem": {
+    "types": [
+      "bug",
+      "fairy"
+    ]
+  },
+  "rockruff-own-tempo": {
+    "types": [
+      "rock"
+    ]
+  },
+  "lycanroc-dusk": {
+    "types": [
+      "rock"
+    ]
+  },
+  "araquanid-totem": {
+    "types": [
+      "water",
+      "bug"
+    ]
+  },
+  "togedemaru-totem": {
+    "types": [
+      "electric",
+      "steel"
+    ]
+  },
+  "necrozma-dusk": {
+    "types": [
+      "psychic",
+      "steel"
+    ]
+  },
+  "necrozma-dawn": {
+    "types": [
+      "psychic",
+      "ghost"
+    ]
+  },
+  "necrozma-ultra": {
+    "types": [
+      "psychic",
+      "dragon"
+    ]
+  },
+  "pikachu-starter": {
+    "types": [
+      "electric"
+    ]
+  },
+  "eevee-starter": {
+    "types": [
+      "normal"
+    ]
+  },
+  "pikachu-world-cap": {
+    "types": [
+      "electric"
+    ]
+  },
+  "meowth-galar": {
+    "types": [
+      "steel"
+    ]
+  },
+  "ponyta-galar": {
+    "types": [
+      "psychic"
+    ]
+  },
+  "rapidash-galar": {
+    "types": [
+      "psychic",
+      "fairy"
+    ]
+  },
+  "slowpoke-galar": {
+    "types": [
+      "psychic"
+    ]
+  },
+  "slowbro-galar": {
+    "types": [
+      "poison",
+      "psychic"
+    ]
+  },
+  "farfetchd-galar": {
+    "types": [
+      "fighting"
+    ]
+  },
+  "weezing-galar": {
+    "types": [
+      "poison",
+      "fairy"
+    ]
+  },
+  "mr-mime-galar": {
+    "types": [
+      "ice",
+      "psychic"
+    ]
+  },
+  "articuno-galar": {
+    "types": [
+      "psychic",
+      "flying"
+    ]
+  },
+  "zapdos-galar": {
+    "types": [
+      "fighting",
+      "flying"
+    ]
+  },
+  "moltres-galar": {
+    "types": [
+      "dark",
+      "flying"
+    ]
+  },
+  "slowking-galar": {
+    "types": [
+      "poison",
+      "psychic"
+    ]
+  },
+  "corsola-galar": {
+    "types": [
+      "ghost"
+    ]
+  },
+  "zigzagoon-galar": {
+    "types": [
+      "dark",
+      "normal"
+    ]
+  },
+  "linoone-galar": {
+    "types": [
+      "dark",
+      "normal"
+    ]
+  },
+  "darumaka-galar": {
+    "types": [
+      "ice"
+    ]
+  },
+  "darmanitan-galar-standard": {
+    "types": [
+      "ice"
+    ]
+  },
+  "darmanitan-galar-zen": {
+    "types": [
+      "ice",
+      "fire"
+    ]
+  },
+  "yamask-galar": {
+    "types": [
+      "ground",
+      "ghost"
+    ]
+  },
+  "stunfisk-galar": {
+    "types": [
+      "ground",
+      "steel"
+    ]
+  },
+  "zygarde-10": {
+    "types": [
+      "dragon",
+      "ground"
+    ]
+  },
+  "cramorant-gulping": {
+    "types": [
+      "flying",
+      "water"
+    ]
+  },
+  "cramorant-gorging": {
+    "types": [
+      "flying",
+      "water"
+    ]
+  },
+  "toxtricity-low-key": {
+    "types": [
+      "electric",
+      "poison"
+    ]
+  },
+  "eiscue-noice": {
+    "types": [
+      "ice"
+    ]
+  },
+  "indeedee-female": {
+    "types": [
+      "psychic",
+      "normal"
+    ]
+  },
+  "morpeko-hangry": {
+    "types": [
+      "electric",
+      "dark"
+    ]
+  },
+  "zacian-crowned": {
+    "types": [
+      "fairy",
+      "steel"
+    ]
+  },
+  "zamazenta-crowned": {
+    "types": [
+      "fighting",
+      "steel"
+    ]
+  },
+  "eternatus-eternamax": {
+    "types": [
+      "poison",
+      "dragon"
+    ]
+  },
+  "urshifu-rapid-strike": {
+    "types": [
+      "fighting",
+      "water"
+    ]
+  },
+  "zarude-dada": {
+    "types": [
+      "dark",
+      "grass"
+    ]
+  },
+  "calyrex-ice": {
+    "types": [
+      "psychic",
+      "ice"
+    ]
+  },
+  "calyrex-shadow": {
+    "types": [
+      "psychic",
+      "ghost"
+    ]
+  },
+  "venusaur-gmax": {
+    "types": [
+      "grass",
+      "poison"
+    ]
+  },
+  "charizard-gmax": {
+    "types": [
+      "fire",
+      "flying"
+    ]
+  },
+  "blastoise-gmax": {
+    "types": [
+      "water"
+    ]
+  },
+  "butterfree-gmax": {
+    "types": [
+      "bug",
+      "flying"
+    ]
+  },
+  "pikachu-gmax": {
+    "types": [
+      "electric"
+    ]
+  },
+  "meowth-gmax": {
+    "types": [
+      "normal"
+    ]
+  },
+  "machamp-gmax": {
+    "types": [
+      "fighting"
+    ]
+  },
+  "gengar-gmax": {
+    "types": [
+      "ghost",
+      "poison"
+    ]
+  },
+  "kingler-gmax": {
+    "types": [
+      "water"
+    ]
+  },
+  "lapras-gmax": {
+    "types": [
+      "water",
+      "ice"
+    ]
+  },
+  "eevee-gmax": {
+    "types": [
+      "normal"
+    ]
+  },
+  "snorlax-gmax": {
+    "types": [
+      "normal"
+    ]
+  },
+  "garbodor-gmax": {
+    "types": [
+      "poison"
+    ]
+  },
+  "melmetal-gmax": {
+    "types": [
+      "steel"
+    ]
+  },
+  "rillaboom-gmax": {
+    "types": [
+      "grass"
+    ]
+  },
+  "cinderace-gmax": {
+    "types": [
+      "fire"
+    ]
+  },
+  "inteleon-gmax": {
+    "types": [
+      "water"
+    ]
+  },
+  "corviknight-gmax": {
+    "types": [
+      "flying",
+      "steel"
+    ]
+  },
+  "orbeetle-gmax": {
+    "types": [
+      "bug",
+      "psychic"
+    ]
+  },
+  "drednaw-gmax": {
+    "types": [
+      "water",
+      "rock"
+    ]
+  },
+  "coalossal-gmax": {
+    "types": [
+      "rock",
+      "fire"
+    ]
+  },
+  "flapple-gmax": {
+    "types": [
+      "grass",
+      "dragon"
+    ]
+  },
+  "appletun-gmax": {
+    "types": [
+      "grass",
+      "dragon"
+    ]
+  },
+  "sandaconda-gmax": {
+    "types": [
+      "ground"
+    ]
+  },
+  "toxtricity-amped-gmax": {
+    "types": [
+      "electric",
+      "poison"
+    ]
+  },
+  "centiskorch-gmax": {
+    "types": [
+      "fire",
+      "bug"
+    ]
+  },
+  "hatterene-gmax": {
+    "types": [
+      "psychic",
+      "fairy"
+    ]
+  },
+  "grimmsnarl-gmax": {
+    "types": [
+      "dark",
+      "fairy"
+    ]
+  },
+  "alcremie-gmax": {
+    "types": [
+      "fairy"
+    ]
+  },
+  "copperajah-gmax": {
+    "types": [
+      "steel"
+    ]
+  },
+  "duraludon-gmax": {
+    "types": [
+      "steel",
+      "dragon"
+    ]
+  },
+  "urshifu-single-strike-gmax": {
+    "types": [
+      "fighting",
+      "dark"
+    ]
+  },
+  "urshifu-rapid-strike-gmax": {
+    "types": [
+      "fighting",
+      "water"
+    ]
+  },
+  "toxtricity-low-key-gmax": {
+    "types": [
+      "electric",
+      "poison"
+    ]
+  },
+  "growlithe-hisui": {
+    "types": [
+      "fire",
+      "rock"
+    ]
+  },
+  "arcanine-hisui": {
+    "types": [
+      "fire",
+      "rock"
+    ]
+  },
+  "voltorb-hisui": {
+    "types": [
+      "electric",
+      "grass"
+    ]
+  },
+  "electrode-hisui": {
+    "types": [
+      "electric",
+      "grass"
+    ]
+  },
+  "typhlosion-hisui": {
+    "types": [
+      "fire",
+      "ghost"
+    ]
+  },
+  "qwilfish-hisui": {
+    "types": [
+      "dark",
+      "poison"
+    ]
+  },
+  "sneasel-hisui": {
+    "types": [
+      "fighting",
+      "poison"
+    ]
+  },
+  "samurott-hisui": {
+    "types": [
+      "water",
+      "dark"
+    ]
+  },
+  "lilligant-hisui": {
+    "types": [
+      "grass",
+      "fighting"
+    ]
+  },
+  "zorua-hisui": {
+    "types": [
+      "normal",
+      "ghost"
+    ]
+  },
+  "zoroark-hisui": {
+    "types": [
+      "normal",
+      "ghost"
+    ]
+  },
+  "braviary-hisui": {
+    "types": [
+      "psychic",
+      "flying"
+    ]
+  },
+  "sliggoo-hisui": {
+    "types": [
+      "steel",
+      "dragon"
+    ]
+  },
+  "goodra-hisui": {
+    "types": [
+      "steel",
+      "dragon"
+    ]
+  },
+  "avalugg-hisui": {
+    "types": [
+      "ice",
+      "rock"
+    ]
+  },
+  "decidueye-hisui": {
+    "types": [
+      "grass",
+      "fighting"
+    ]
+  },
+  "dialga-origin": {
+    "types": [
+      "steel",
+      "dragon"
+    ]
+  },
+  "palkia-origin": {
+    "types": [
+      "water",
+      "dragon"
+    ]
+  },
+  "basculin-white-striped": {
+    "types": [
+      "water"
+    ]
+  },
+  "basculegion-female": {
+    "types": [
+      "water",
+      "ghost"
+    ]
+  },
+  "enamorus-therian": {
+    "types": [
+      "fairy",
+      "flying"
+    ]
+  },
+  "tauros-paldea-combat-breed": {
+    "types": [
+      "fighting"
+    ]
+  },
+  "tauros-paldea-blaze-breed": {
+    "types": [
+      "fighting",
+      "fire"
+    ]
+  },
+  "tauros-paldea-aqua-breed": {
+    "types": [
+      "fighting",
+      "water"
+    ]
+  },
+  "wooper-paldea": {
+    "types": [
+      "poison",
+      "ground"
+    ]
+  },
+  "oinkologne-female": {
+    "types": [
+      "normal"
+    ]
+  },
+  "dudunsparce-three-segment": {
+    "types": [
+      "normal"
+    ]
+  },
+  "palafin-hero": {
+    "types": [
+      "water"
+    ]
+  },
+  "maushold-family-of-three": {
+    "types": [
+      "normal"
+    ]
+  },
+  "squawkabilly-blue-plumage": {
+    "types": [
+      "normal",
+      "flying"
+    ]
+  },
+  "squawkabilly-yellow-plumage": {
+    "types": [
+      "normal",
+      "flying"
+    ]
+  },
+  "squawkabilly-white-plumage": {
+    "types": [
+      "normal",
+      "flying"
+    ]
+  },
+  "gimmighoul-roaming": {
+    "types": [
+      "ghost"
+    ]
+  },
+  "koraidon-limited-build": {
+    "types": [
+      "fighting",
+      "dragon"
+    ]
+  },
+  "koraidon-sprinting-build": {
+    "types": [
+      "fighting",
+      "dragon"
+    ]
+  },
+  "koraidon-swimming-build": {
+    "types": [
+      "fighting",
+      "dragon"
+    ]
+  },
+  "koraidon-gliding-build": {
+    "types": [
+      "fighting",
+      "dragon"
+    ]
+  },
+  "miraidon-low-power-mode": {
+    "types": [
+      "electric",
+      "dragon"
+    ]
+  },
+  "miraidon-drive-mode": {
+    "types": [
+      "electric",
+      "dragon"
+    ]
+  },
+  "miraidon-aquatic-mode": {
+    "types": [
+      "electric",
+      "dragon"
+    ]
+  },
+  "miraidon-glide-mode": {
+    "types": [
+      "electric",
+      "dragon"
+    ]
+  },
+  "ursaluna-bloodmoon": {
+    "types": [
+      "ground",
+      "normal"
+    ]
+  },
+  "ogerpon-wellspring-mask": {
+    "types": [
+      "grass",
+      "water"
+    ]
+  },
+  "ogerpon-hearthflame-mask": {
+    "types": [
+      "grass",
+      "fire"
+    ]
+  },
+  "ogerpon-cornerstone-mask": {
+    "types": [
+      "grass",
+      "rock"
+    ]
+  },
+  "terapagos-terastal": {
+    "types": [
+      "normal"
+    ]
+  },
+  "terapagos-stellar": {
+    "types": [
+      "normal"
+    ]
+  },
+  "aegislash": {
+    "types": [
+      "steel",
+      "ghost"
+    ]
+  },
+  "oricorio": {
+    "types": [
+      "fire",
+      "flying"
+    ]
+  },
+  "lycanroc": {
+    "types": [
+      "rock"
+    ]
+  },
+  "eiscue": {
+    "types": [
+      "ice"
+    ]
+  },
+  "indeedee": {
+    "types": [
+      "psychic",
+      "normal"
+    ]
+  },
+  "urshifu": {
+    "types": [
+      "fighting",
+      "dark"
+    ]
+  },
+  "basculin": {
+    "types": [
+      "water"
+    ]
+  },
+  "tauros-paldea": {
+    "types": [
+      "fighting"
+    ]
   }
 }
