@@ -21,6 +21,8 @@ export interface CoveringMove {
   moveName: string     // raw move name from paste
   pokemonName: string  // raw Pokemon name
   moveType: PokemonType
+  power: number
+  multiplier: number   // effectiveness against the defending type (1, 2, or 4)
 }
 
 export interface OffensiveCoverage {
@@ -78,12 +80,13 @@ export function getTeamDefensiveProfiles(team: ParsedPokemon[]): DefensiveProfil
  * against that type. A type is "covered" if at least one such move exists.
  */
 export function getOffensiveCoverage(team: ParsedPokemon[]): OffensiveCoverage {
-  // Collect all damaging moves across the team
-  const damagingMoves: CoveringMove[] = []
+  // Collect all damaging moves across the team (without defending-type context yet)
+  type RawMove = { moveName: string; pokemonName: string; moveType: PokemonType; power: number }
+  const damagingMoves: RawMove[] = []
   for (const pokemon of team) {
     for (const move of pokemon.moves) {
       if (move.type !== null && move.power !== null && move.power > 0) {
-        damagingMoves.push({ moveName: move.rawName, pokemonName: pokemon.rawName, moveType: move.type })
+        damagingMoves.push({ moveName: move.rawName, pokemonName: pokemon.rawName, moveType: move.type, power: move.power })
       }
     }
   }
@@ -92,14 +95,15 @@ export function getOffensiveCoverage(team: ParsedPokemon[]): OffensiveCoverage {
   const neutralByType: Partial<Record<PokemonType, CoveringMove[]>> = {}
 
   for (const defendingType of ALL_TYPES) {
-    const superEffective = damagingMoves.filter(m => typeChart[m.moveType][defendingType] >= 2)
-    if (superEffective.length > 0) {
-      byType[defendingType] = superEffective
-    }
-    const neutral = damagingMoves.filter(m => typeChart[m.moveType][defendingType] === 1)
-    if (neutral.length > 0) {
-      neutralByType[defendingType] = neutral
-    }
+    const superEffective: CoveringMove[] = damagingMoves
+      .filter(m => typeChart[m.moveType][defendingType] >= 2)
+      .map(m => ({ ...m, multiplier: typeChart[m.moveType][defendingType] }))
+    if (superEffective.length > 0) byType[defendingType] = superEffective
+
+    const neutral: CoveringMove[] = damagingMoves
+      .filter(m => typeChart[m.moveType][defendingType] === 1)
+      .map(m => ({ ...m, multiplier: 1 }))
+    if (neutral.length > 0) neutralByType[defendingType] = neutral
   }
 
   const covered = ALL_TYPES.filter(t => t in byType)

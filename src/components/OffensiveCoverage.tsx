@@ -1,10 +1,38 @@
-import type { OffensiveCoverage as OffensiveCoverageData } from '../lib/teamAnalysis'
+import type { OffensiveCoverage as OffensiveCoverageData, CoveringMove } from '../lib/teamAnalysis'
 import { ALL_TYPES } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
 
 interface Props {
   coverage: OffensiveCoverageData
+}
+
+function MoveItem({ m, color }: { m: CoveringMove; color: string }) {
+  return (
+    <li style={{ fontSize: 11, marginTop: 2 }}>
+      <span style={{ color }}>{m.moveName}</span>
+      <span style={{ color: '#555' }}> ({m.moveType})</span>
+      <span style={{ color: '#666' }}> — {m.pokemonName}</span>
+    </li>
+  )
+}
+
+function SuperEffectiveList({ moves }: { moves: CoveringMove[] }) {
+  const quad = [...moves].filter(m => m.multiplier >= 4).sort((a, b) => b.power - a.power)
+  const double = [...moves].filter(m => m.multiplier === 2).sort((a, b) => b.power - a.power)
+
+  return (
+    <ul style={{ margin: '4px 0 0', padding: 0, listStyle: 'none' }}>
+      {quad.length > 0 && (
+        <li style={{ fontSize: 10, color: '#f55', fontWeight: 700, marginTop: 4 }}>×4</li>
+      )}
+      {quad.map((m, i) => <MoveItem key={i} m={m} color="#faa" />)}
+      {double.length > 0 && (
+        <li style={{ fontSize: 10, color: '#f87', fontWeight: 700, marginTop: quad.length > 0 ? 6 : 4 }}>×2</li>
+      )}
+      {double.map((m, i) => <MoveItem key={i} m={m} color="#ddd" />)}
+    </ul>
+  )
 }
 
 export function OffensiveCoverage({ coverage }: Props) {
@@ -41,15 +69,7 @@ export function OffensiveCoverage({ coverage }: Props) {
               <TypeBadge type={type} size="sm" />
 
               {covered ? (
-                <ul style={{ margin: '4px 0 0', padding: 0, listStyle: 'none' }}>
-                  {superMoves!.map((m, i) => (
-                    <li key={i} style={{ fontSize: 11, color: '#aaa', marginTop: 2 }}>
-                      <span style={{ color: '#ddd' }}>{m.moveName}</span>
-                      <span style={{ color: '#555' }}> ({m.moveType})</span>
-                      <span style={{ color: '#666' }}> — {m.pokemonName}</span>
-                    </li>
-                  ))}
-                </ul>
+                <SuperEffectiveList moves={superMoves!} />
               ) : (
                 <>
                   <div style={{ fontSize: 11, color: '#c44', fontWeight: 600, marginTop: 4 }}>
@@ -61,12 +81,8 @@ export function OffensiveCoverage({ coverage }: Props) {
                         Attaques neutres (×1) :
                       </div>
                       <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-                        {neutralMoves.map((m, i) => (
-                          <li key={i} style={{ fontSize: 11, color: '#666', marginTop: 2 }}>
-                            <span style={{ color: '#888' }}>{m.moveName}</span>
-                            <span style={{ color: '#444' }}> ({m.moveType})</span>
-                            <span style={{ color: '#444' }}> — {m.pokemonName}</span>
-                          </li>
+                        {[...neutralMoves].sort((a, b) => b.power - a.power).slice(0, 6).map((m, i) => (
+                          <MoveItem key={i} m={m} color="#888" />
                         ))}
                       </ul>
                     </>
