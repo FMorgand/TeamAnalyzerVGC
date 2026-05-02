@@ -114,7 +114,10 @@ function parseBlock(lines: string[]): ParsedPokemon | null {
     rawName = firstLine.trim()
   }
 
-  const normalizedName = normalizeName(rawName)
+  // Strip "-mega", "-mega-x", "-mega-y" suffixes from the name if present.
+  // Showdown sometimes exports "Gengar-Mega @ Gengarite" — we resolve the Mega
+  // form through the item anyway, so the base name is what we need for lookup.
+  const normalizedName = normalizeName(rawName).replace(/-mega(-[xy])?$/, '')
   const normalizedItem = rawItem ? normalizeName(rawItem) : null
 
   let ability: string | null = null
