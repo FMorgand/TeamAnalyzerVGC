@@ -26,7 +26,8 @@ export interface CoveringMove {
 export interface OffensiveCoverage {
   covered: PokemonType[]
   uncovered: PokemonType[]
-  byType: Partial<Record<PokemonType, CoveringMove[]>>
+  byType: Partial<Record<PokemonType, CoveringMove[]>>       // ×2 or ×4 moves per defending type
+  neutralByType: Partial<Record<PokemonType, CoveringMove[]>> // ×1 moves per defending type
 }
 
 export interface SwitchInCandidate {
@@ -88,18 +89,23 @@ export function getOffensiveCoverage(team: ParsedPokemon[]): OffensiveCoverage {
   }
 
   const byType: Partial<Record<PokemonType, CoveringMove[]>> = {}
+  const neutralByType: Partial<Record<PokemonType, CoveringMove[]>> = {}
 
   for (const defendingType of ALL_TYPES) {
     const superEffective = damagingMoves.filter(m => typeChart[m.moveType][defendingType] >= 2)
     if (superEffective.length > 0) {
       byType[defendingType] = superEffective
     }
+    const neutral = damagingMoves.filter(m => typeChart[m.moveType][defendingType] === 1)
+    if (neutral.length > 0) {
+      neutralByType[defendingType] = neutral
+    }
   }
 
   const covered = ALL_TYPES.filter(t => t in byType)
   const uncovered = ALL_TYPES.filter(t => !(t in byType))
 
-  return { covered, uncovered, byType }
+  return { covered, uncovered, byType, neutralByType }
 }
 
 // ---------------------------------------------------------------------------

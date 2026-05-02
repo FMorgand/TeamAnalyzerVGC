@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function OffensiveCoverage({ coverage }: Props) {
-  const { byType } = coverage
+  const { byType, neutralByType } = coverage
 
   return (
     <section style={{ marginTop: '2rem' }}>
@@ -20,28 +20,29 @@ export function OffensiveCoverage({ coverage }: Props) {
       </h2>
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))',
         gap: '0.5rem',
       }}>
         {ALL_TYPES.map((type: PokemonType) => {
-          const moves = byType[type]
-          const covered = moves !== undefined
+          const superMoves = byType[type]
+          const covered = superMoves !== undefined
+          const neutralMoves = neutralByType[type]
 
           return (
             <div
               key={type}
               style={{
                 background: '#1e1e2e',
-                border: `1px solid ${covered ? '#333' : '#222'}`,
+                border: `1px solid ${covered ? '#333' : '#2a1a1a'}`,
                 borderRadius: 6,
                 padding: '0.5rem 0.75rem',
-                opacity: covered ? 1 : 0.4,
               }}
             >
               <TypeBadge type={type} size="sm" />
+
               {covered ? (
                 <ul style={{ margin: '4px 0 0', padding: 0, listStyle: 'none' }}>
-                  {moves!.map((m, i) => (
+                  {superMoves!.map((m, i) => (
                     <li key={i} style={{ fontSize: 11, color: '#aaa', marginTop: 2 }}>
                       <span style={{ color: '#ddd' }}>{m.moveName}</span>
                       <span style={{ color: '#555' }}> ({m.moveType})</span>
@@ -50,7 +51,32 @@ export function OffensiveCoverage({ coverage }: Props) {
                   ))}
                 </ul>
               ) : (
-                <div style={{ fontSize: 11, color: '#444', marginTop: 4 }}>Aucune attaque</div>
+                <>
+                  <div style={{ fontSize: 11, color: '#c44', fontWeight: 600, marginTop: 4 }}>
+                    Pas de super efficace
+                  </div>
+                  {neutralMoves && neutralMoves.length > 0 && (
+                    <>
+                      <div style={{ fontSize: 10, color: '#555', marginTop: 5, marginBottom: 2 }}>
+                        Attaques neutres (×1) :
+                      </div>
+                      <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                        {neutralMoves.map((m, i) => (
+                          <li key={i} style={{ fontSize: 11, color: '#666', marginTop: 2 }}>
+                            <span style={{ color: '#888' }}>{m.moveName}</span>
+                            <span style={{ color: '#444' }}> ({m.moveType})</span>
+                            <span style={{ color: '#444' }}> — {m.pokemonName}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {(!neutralMoves || neutralMoves.length === 0) && (
+                    <div style={{ fontSize: 11, color: '#555', marginTop: 2 }}>
+                      Aucune attaque efficace
+                    </div>
+                  )}
+                </>
               )}
             </div>
           )
