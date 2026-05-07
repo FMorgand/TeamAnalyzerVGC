@@ -7728,5 +7728,17 @@
     "types": [
       "fighting"
     ]
+  },
+  "basculegion": {
+    "types": [
+      "water",
+      "ghost"
+    ]
+  },
+  "basculegion-f": {
+    "types": [
+      "water",
+      "ghost"
+    ]
   }
 }
