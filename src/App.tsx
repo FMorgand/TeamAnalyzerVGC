@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useLang } from './contexts/LangContext'
+import type { Lang } from './lib/i18n'
 import { parseShowdownPaste } from './lib/parseShowdown'
 import { getTeamDefensiveProfiles, getOffensiveCoverage } from './lib/teamAnalysis'
 import { PasteInput } from './components/PasteInput'
@@ -60,6 +62,7 @@ Relaxed Nature
 
 function App() {
   const [paste, setPaste] = useState(TEST_PASTE)
+  const { lang, setLang } = useLang()
 
   const team = parseShowdownPaste(paste)
   const profiles = getTeamDefensiveProfiles(team)
@@ -73,9 +76,31 @@ function App() {
       color: '#e0e0e0',
       minHeight: '100vh',
     }}>
-      <h1 style={{ fontSize: 22, fontWeight: 800, marginBottom: '1.5rem', color: '#fff' }}>
-        Team Analyzer VGC
-      </h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+        <h1 style={{ fontSize: 22, fontWeight: 800, color: '#fff', margin: 0 }}>
+          Team Analyzer VGC
+        </h1>
+        <div style={{ display: 'flex', background: '#1a1a2e', border: '1px solid #2a2a3e', borderRadius: 6, overflow: 'hidden' }}>
+          {(['fr', 'en'] as Lang[]).map(l => (
+            <button
+              key={l}
+              onClick={() => setLang(l)}
+              style={{
+                background: lang === l ? '#3a3a6e' : 'transparent',
+                color: lang === l ? '#fff' : '#555',
+                border: 'none',
+                padding: '5px 14px',
+                fontSize: 12,
+                fontWeight: lang === l ? 700 : 400,
+                cursor: 'pointer',
+                letterSpacing: '0.05em',
+              }}
+            >
+              {l.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <PasteInput value={paste} onChange={setPaste} />
 

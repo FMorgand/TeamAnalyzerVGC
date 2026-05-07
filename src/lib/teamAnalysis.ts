@@ -19,7 +19,9 @@ export interface DefensiveProfile {
 
 export interface CoveringMove {
   moveName: string     // raw move name from paste
+  moveKey: string      // normalized PokeAPI key (e.g. "heat-wave")
   pokemonName: string  // raw Pokemon name
+  pokemonKey: string   // normalized PokeAPI key (e.g. "charizard")
   moveType: PokemonType
   power: number
   multiplier: number   // effectiveness against the defending type (1, 2, or 4)
@@ -81,12 +83,12 @@ export function getTeamDefensiveProfiles(team: ParsedPokemon[]): DefensiveProfil
  */
 export function getOffensiveCoverage(team: ParsedPokemon[]): OffensiveCoverage {
   // Collect all damaging moves across the team (without defending-type context yet)
-  type RawMove = { moveName: string; pokemonName: string; moveType: PokemonType; power: number }
+  type RawMove = { moveName: string; moveKey: string; pokemonName: string; pokemonKey: string; moveType: PokemonType; power: number }
   const damagingMoves: RawMove[] = []
   for (const pokemon of team) {
     for (const move of pokemon.moves) {
       if (move.type !== null && move.power !== null && move.power > 0) {
-        damagingMoves.push({ moveName: move.rawName, pokemonName: pokemon.rawName, moveType: move.type, power: move.power })
+        damagingMoves.push({ moveName: move.rawName, moveKey: move.normalizedName, pokemonName: pokemon.rawName, pokemonKey: pokemon.normalizedName, moveType: move.type, power: move.power })
       }
     }
   }
@@ -179,11 +181,13 @@ export function rankSwitchIns(
 
 export interface CompositionMoveHit {
   moveName: string
+  moveKey: string
   moveType: PokemonType
   isStab: boolean
   power: number
   multiplier: number  // 2 or 4 against the defending type
   pokemonName: string
+  pokemonKey: string
 }
 
 export interface PokemonCompositionData {
@@ -229,11 +233,13 @@ export function getPokemonCompositionData(pokemon: ParsedPokemon): PokemonCompos
       .filter(m => typeChart[m.type!][defendingType] >= 2)
       .map(m => ({
         moveName: m.rawName,
+        moveKey: m.normalizedName,
         moveType: m.type!,
         isStab: pokemon.types.includes(m.type!),
         power: m.power!,
         multiplier: typeChart[m.type!][defendingType],
         pokemonName: pokemon.rawName,
+        pokemonKey: pokemon.normalizedName,
       }))
 
     if (hits.length > 0) offensiveByType[defendingType] = sortHits(hits)
@@ -251,8 +257,8 @@ export function getGroupCompositionData(selected: ParsedPokemon[]): GroupComposi
 
     for (const pokemon of selected) {
       const mult = getDefensiveMultiplier(type, pokemon.types)
-      if (mult > 1) weakNames.push(pokemon.rawName)
-      else if (mult < 1) coveringNames.push(pokemon.rawName)
+      if (mult > 1) weakNames.push(pokemon.normalizedName)
+      else if (mult < 1) coveringNames.push(pokemon.normalizedName)
     }
 
     if (weakNames.length > 0) defensiveExposure.push({ type, weakNames, coveringNames })

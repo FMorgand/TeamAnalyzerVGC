@@ -2,17 +2,20 @@ import type { OffensiveCoverage as OffensiveCoverageData, CoveringMove } from '.
 import { ALL_TYPES } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { useLang } from '../contexts/LangContext'
+import { pokemonName, moveName } from '../lib/i18n'
 
 interface Props {
   coverage: OffensiveCoverageData
 }
 
 function MoveItem({ m, color }: { m: CoveringMove; color: string }) {
+  const { lang } = useLang()
   return (
     <li style={{ fontSize: 11, marginTop: 2 }}>
-      <span style={{ color }}>{m.moveName}</span>
+      <span style={{ color }}>{moveName(m.moveKey, lang)}</span>
       <span style={{ color: '#555' }}> ({m.moveType})</span>
-      <span style={{ color: '#666' }}> — {m.pokemonName}</span>
+      <span style={{ color: '#666' }}> — {pokemonName(m.pokemonKey, lang)}</span>
     </li>
   )
 }

@@ -4,6 +4,8 @@ import type { SwitchInCandidate } from '../lib/teamAnalysis'
 import { rankSwitchIns } from '../lib/teamAnalysis'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { useLang } from '../contexts/LangContext'
+import { pokemonName } from '../lib/i18n'
 
 interface Props {
   team: ParsedPokemon[]
@@ -16,6 +18,7 @@ function scoreColor(score: number): string {
 }
 
 function CandidateMini({ candidate, rank }: { candidate: SwitchInCandidate; rank: number }) {
+  const { lang } = useLang()
   const { pokemon, sharedWeaknesses, resistanceBonuses, score, bonus } = candidate
   const color = scoreColor(score)
 
@@ -30,7 +33,7 @@ function CandidateMini({ candidate, rank }: { candidate: SwitchInCandidate; rank
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontSize: 12, fontWeight: 600, color: '#ddd' }}>
-          {rank}. {pokemon.rawName}
+          {rank}. {pokemonName(pokemon.normalizedName, lang)}
           {pokemon.megaForm && <span style={{ color: '#f90', fontSize: 10, marginLeft: 4 }}>★</span>}
         </span>
         <span style={{ fontSize: 11, color, fontWeight: 700 }}>
@@ -60,6 +63,7 @@ function CandidateMini({ candidate, rank }: { candidate: SwitchInCandidate; rank
 }
 
 function PokemonColumn({ pokemon, team }: { pokemon: ParsedPokemon; team: ParsedPokemon[] }) {
+  const { lang } = useLang()
   const [useMega, setUseMega] = useState(false)
   const hasMega = pokemon.megaTypes !== null
   const types = useMega && hasMega ? pokemon.megaTypes! : pokemon.types
@@ -76,7 +80,7 @@ function PokemonColumn({ pokemon, team }: { pokemon: ParsedPokemon; team: Parsed
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 4 }}>
           <span style={{ fontSize: 12, fontWeight: 700, color: '#eee', lineHeight: 1.3 }}>
-            {pokemon.rawName}
+            {pokemonName(pokemon.normalizedName, lang)}
           </span>
           {hasMega && (
             <button

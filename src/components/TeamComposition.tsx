@@ -4,6 +4,8 @@ import type { PokemonCompositionData, GroupCompositionData, CompositionMoveHit }
 import { getPokemonCompositionData, getGroupCompositionData } from '../lib/teamAnalysis'
 import { ALL_TYPES } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { useLang } from '../contexts/LangContext'
+import { pokemonName, moveName } from '../lib/i18n'
 
 interface Props {
   team: ParsedPokemon[]
@@ -20,6 +22,7 @@ function PokemonSelector({
   selected: Set<number>
   onToggle: (i: number) => void
 }) {
+  const { lang } = useLang()
   return (
     <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
       {team.map((p, i) => {
@@ -41,7 +44,7 @@ function PokemonSelector({
               opacity: disabled ? 0.4 : 1,
             }}
           >
-            {p.rawName}
+            {pokemonName(p.normalizedName, lang)}
           </button>
         )
       })}
@@ -53,12 +56,13 @@ function PokemonSelector({
 // ─── Move display ─────────────────────────────────────────────────────────────
 
 function MoveTag({ hit }: { hit: CompositionMoveHit }) {
+  const { lang } = useLang()
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3, fontSize: 11 }}>
       {hit.isStab && (
         <span style={{ color: '#f90', fontWeight: 800, fontSize: 10 }}>★</span>
       )}
-      <span style={{ color: '#ccc' }}>{hit.moveName}</span>
+      <span style={{ color: '#ccc' }}>{moveName(hit.moveKey, lang)}</span>
       <span style={{ color: hit.multiplier >= 4 ? '#f55' : '#f87', fontWeight: 700, fontSize: 10 }}>
         ×{hit.multiplier}
       </span>
@@ -69,6 +73,7 @@ function MoveTag({ hit }: { hit: CompositionMoveHit }) {
 // ─── Individual card ──────────────────────────────────────────────────────────
 
 function PokemonCompositionCard({ data }: { data: PokemonCompositionData }) {
+  const { lang } = useLang()
   const { pokemon, quadWeaknesses, doubleWeaknesses, offensiveByType } = data
 
   const offensiveTypes = ALL_TYPES.filter(t => offensiveByType[t])
@@ -83,7 +88,7 @@ function PokemonCompositionCard({ data }: { data: PokemonCompositionData }) {
       padding: '0.75rem',
     }}>
       <div style={{ fontWeight: 700, fontSize: 13, color: '#eee', marginBottom: 3 }}>
-        {pokemon.rawName}
+        {pokemonName(pokemon.normalizedName, lang)}
       </div>
       <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginBottom: 8 }}>
         {pokemon.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
@@ -159,6 +164,7 @@ function ColHeader({ label }: { label: string }) {
 }
 
 function GroupPanel({ data, count }: { data: GroupCompositionData; count: number }) {
+  const { lang } = useLang()
   const coveredTypes = ALL_TYPES.filter(t => data.offensiveByType[t])
 
   return (
@@ -193,9 +199,9 @@ function GroupPanel({ data, count }: { data: GroupCompositionData; count: number
                 }}>
                   <TypeBadge type={type} size="sm" />
                   <div style={{ fontSize: 11, lineHeight: 1.5 }}>
-                    <span style={{ color: '#e88' }}>{weakNames.join(', ')}</span>
+                    <span style={{ color: '#e88' }}>{weakNames.map(k => pokemonName(k, lang)).join(', ')}</span>
                     {coveringNames.length > 0 ? (
-                      <span style={{ color: '#4caf50', marginLeft: 6 }}>✓ {coveringNames.join(', ')}</span>
+                      <span style={{ color: '#4caf50', marginLeft: 6 }}>✓ {coveringNames.map(k => pokemonName(k, lang)).join(', ')}</span>
                     ) : (
                       <span style={{ color: '#555', marginLeft: 6 }}>✗</span>
                     )}
@@ -229,7 +235,7 @@ function GroupPanel({ data, count }: { data: GroupCompositionData; count: number
                     <TypeBadge type={type} size="sm" />
                     {best ? (
                       <span style={{ fontSize: 11, color: '#777', display: 'flex', alignItems: 'center', gap: 4 }}>
-                        {best.pokemonName} — <MoveTag hit={best} />
+                        {pokemonName(best.pokemonKey, lang)} — <MoveTag hit={best} />
                       </span>
                     ) : (
                       <span style={{ fontSize: 11, color: '#555' }}>✗ non couvert</span>
@@ -254,7 +260,7 @@ function GroupPanel({ data, count }: { data: GroupCompositionData; count: number
                   return (
                     <div key={type} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                       <TypeBadge type={type} size="sm" />
-                      <span style={{ fontSize: 11, color: '#666' }}>{best.pokemonName}</span>
+                      <span style={{ fontSize: 11, color: '#666' }}>{pokemonName(best.pokemonKey, lang)}</span>
                       <MoveTag hit={best} />
                     </div>
                   )

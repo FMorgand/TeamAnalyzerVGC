@@ -2,6 +2,8 @@ import { useState } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { ALL_TYPES, typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
+import { useLang } from '../contexts/LangContext'
+import { pokemonName } from '../lib/i18n'
 
 interface Props {
   team: ParsedPokemon[]
@@ -61,6 +63,7 @@ function getHits(pokemon: ParsedPokemon): Hit[] {
 }
 
 export function CoverageGraph({ team }: Props) {
+  const { lang } = useLang()
   const [visible, setVisible] = useState<Set<number>>(new Set(team.map((_, i) => i)))
 
   if (team.length === 0) return null
@@ -105,7 +108,7 @@ export function CoverageGraph({ team }: Props) {
                 cursor: 'pointer',
               }}
             >
-              {p.rawName}
+              {pokemonName(p.normalizedName, lang)}
             </button>
           )
         })}
@@ -165,7 +168,8 @@ export function CoverageGraph({ team }: Props) {
             const x = pokeX(pi, team.length)
             const color = POKEMON_COLORS[pi]
             const on = visible.has(pi)
-            const label = p.rawName.length > 11 ? p.rawName.slice(0, 10) + '…' : p.rawName
+            const name = pokemonName(p.normalizedName, lang)
+            const label = name.length > 11 ? name.slice(0, 10) + '…' : name
             return (
               <g key={pi} style={{ cursor: 'pointer' }} onClick={() => toggle(pi)}>
                 <rect

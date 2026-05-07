@@ -3,6 +3,8 @@ import type { ParsedPokemon } from '../lib/parseShowdown'
 import { ALL_TYPES, typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { useLang } from '../contexts/LangContext'
+import { pokemonName } from '../lib/i18n'
 
 interface Props {
   team: ParsedPokemon[]
@@ -21,6 +23,7 @@ function bestMultiplier(pokemon: ParsedPokemon, defendingType: PokemonType): num
 }
 
 export function CoverageMatrix({ team }: Props) {
+  const { lang } = useLang()
   const [visible, setVisible] = useState<Set<number>>(new Set(team.map((_, i) => i)))
 
   if (team.length === 0) return null
@@ -73,7 +76,7 @@ export function CoverageMatrix({ team }: Props) {
                 cursor: 'pointer',
               }}
             >
-              {p.rawName}
+              {pokemonName(p.normalizedName, lang)}
             </button>
           )
         })}
@@ -126,7 +129,7 @@ export function CoverageMatrix({ team }: Props) {
                     verticalAlign: 'middle',
                   }}>
                     <div style={{ fontWeight: 700, fontSize: 12, color, marginBottom: 3 }}>
-                      {pokemon.rawName}
+                      {pokemonName(pokemon.normalizedName, lang)}
                     </div>
                     <div style={{ display: 'flex', gap: 3 }}>
                       {pokemon.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}

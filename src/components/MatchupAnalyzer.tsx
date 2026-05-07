@@ -1,42 +1,31 @@
 import { useState } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
-import pokemonData from '../data/pokemon.json'
 import { typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { useLang } from '../contexts/LangContext'
+import { pokemonName, moveName, searchPokemon, searchMove, POKEMON_TYPES_FLAT } from '../lib/i18n'
+import movesData from '../data/moves.json'
 
 interface Props {
   team: ParsedPokemon[]
 }
 
-const POKEMON_DB = pokemonData as Record<string, { types: string[] }>
-const ALL_KEYS = Object.keys(POKEMON_DB)
+type MatrixMode = 'offense' | 'defense'
+const MOVES_DB = movesData as Record<string, { type: string; power: number | null }>
 
-function formatName(key: string): string {
-  return key.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+interface EnemyMove {
+  key: string
+  type: PokemonType
 }
 
 interface EnemyPokemon {
   key: string
-  displayName: string
   types: PokemonType[]
+  moves: (EnemyMove | null)[]
 }
 
-function searchPokemon(query: string): string[] {
-  const q = query.toLowerCase().replace(/\s+/g, '-')
-  if (q.length < 2) return []
-  return ALL_KEYS
-    .filter(k => k.includes(q))
-    .sort((a, b) => {
-      const aPrefix = a.startsWith(q) ? 0 : 1
-      const bPrefix = b.startsWith(q) ? 0 : 1
-      if (aPrefix !== bPrefix) return aPrefix - bPrefix
-      return a.localeCompare(b)
-    })
-    .slice(0, 8)
-}
-
-function bestMultiplier(myPokemon: ParsedPokemon, enemyTypes: PokemonType[]): number {
+function offenseMultiplier(myPokemon: ParsedPokemon, enemyTypes: PokemonType[]): number {
   let best = 0
   for (const move of myPokemon.moves) {
     if (!move.type || !move.power || move.power <= 0) continue
@@ -46,28 +35,40 @@ function bestMultiplier(myPokemon: ParsedPokemon, enemyTypes: PokemonType[]): nu
   return best
 }
 
-// ─── Autocomplete slot ────────────────────────────────────────────────────────
+function defenseMultiplier(enemyMoves: (EnemyMove | null)[], myTypes: PokemonType[]): number {
+  let best = 0
+  for (const move of enemyMoves) {
+    if (!move) continue
+    const mult = myTypes.reduce((acc, t) => acc * typeChart[move.type][t], 1)
+    if (mult > best) best = mult
+  }
+  return best
+}
 
-function PokemonSearchInput({
-  slot,
+// ─── Move search input ────────────────────────────────────────────────────────
+
+function MoveSearchInput({
+  index,
   value,
   onSelect,
   onClear,
 }: {
-  slot: number
-  value: EnemyPokemon | null
-  onSelect: (p: EnemyPokemon) => void
+  index: number
+  value: EnemyMove | null
+  onSelect: (m: EnemyMove) => void
   onClear: () => void
 }) {
+  const { lang } = useLang()
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState<string | null>(null)
 
-  const results = searchPokemon(query)
+  const results = searchMove(query)
 
   const handleSelect = (key: string) => {
-    const entry = POKEMON_DB[key]
-    onSelect({ key, displayName: formatName(key), types: entry.types as PokemonType[] })
+    const entry = MOVES_DB[key]
+    if (!entry?.type) return
+    onSelect({ key, type: entry.type as PokemonType })
     setQuery('')
     setOpen(false)
   }
@@ -75,29 +76,21 @@ function PokemonSearchInput({
   if (value) {
     return (
       <div style={{
-        background: '#1e1e2e',
-        border: '1px solid #333',
-        borderRadius: 6,
-        padding: '5px 8px',
         display: 'flex',
         alignItems: 'center',
-        gap: 6,
-        minWidth: 130,
+        gap: 4,
+        background: '#181828',
+        border: '1px solid #2a2a3e',
+        borderRadius: 4,
+        padding: '3px 6px',
+        minHeight: 26,
       }}>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: '#eee', marginBottom: 3 }}>
-            {value.displayName}
-          </div>
-          <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-            {value.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
-          </div>
-        </div>
+        <TypeBadge type={value.type} size="sm" />
+        <span style={{ fontSize: 11, color: '#ccc', flex: 1 }}>{moveName(value.key, lang)}</span>
         <button
           onClick={onClear}
-          style={{ background: 'none', border: 'none', color: '#555', fontSize: 16, cursor: 'pointer', lineHeight: 1, padding: '0 2px' }}
-        >
-          ×
-        </button>
+          style={{ background: 'none', border: 'none', color: '#555', fontSize: 14, cursor: 'pointer', lineHeight: 1, padding: 0 }}
+        >×</button>
       </div>
     )
   }
@@ -109,15 +102,15 @@ function PokemonSearchInput({
         onChange={e => { setQuery(e.target.value); setOpen(true) }}
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
-        placeholder={`Pokémon ${slot + 1}…`}
+        placeholder={`Capacité ${index + 1}…`}
         style={{
-          background: '#1a1a2e',
-          border: '1px solid #333',
-          borderRadius: 6,
-          color: '#e0e0e0',
-          fontSize: 12,
-          padding: '5px 8px',
-          width: 130,
+          background: '#181828',
+          border: '1px solid #2a2a3e',
+          borderRadius: 4,
+          color: '#aaa',
+          fontSize: 11,
+          padding: '3px 7px',
+          width: '100%',
           boxSizing: 'border-box',
           outline: 'none',
         }}
@@ -127,16 +120,16 @@ function PokemonSearchInput({
           position: 'absolute',
           top: 'calc(100% + 2px)',
           left: 0,
-          zIndex: 200,
+          zIndex: 300,
           background: '#1e1e2e',
           border: '1px solid #444',
           borderRadius: 6,
-          minWidth: 200,
+          minWidth: 220,
           boxShadow: '0 4px 16px rgba(0,0,0,0.6)',
           overflow: 'hidden',
         }}>
           {results.map((key, i) => {
-            const entry = POKEMON_DB[key]
+            const entry = MOVES_DB[key]
             return (
               <div
                 key={key}
@@ -144,7 +137,7 @@ function PokemonSearchInput({
                 onMouseEnter={() => setHovered(key)}
                 onMouseLeave={() => setHovered(null)}
                 style={{
-                  padding: '5px 10px',
+                  padding: '4px 10px',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -153,10 +146,8 @@ function PokemonSearchInput({
                   borderBottom: i < results.length - 1 ? '1px solid #2a2a3e' : 'none',
                 }}
               >
-                <span style={{ fontSize: 12, color: '#ddd', flex: 1 }}>{formatName(key)}</span>
-                <div style={{ display: 'flex', gap: 2 }}>
-                  {(entry.types as PokemonType[]).map(t => <TypeBadge key={t} type={t} size="sm" />)}
-                </div>
+                <span style={{ fontSize: 11, color: '#ddd', flex: 1 }}>{moveName(key, lang)}</span>
+                {entry?.type && <TypeBadge type={entry.type as PokemonType} size="sm" />}
               </div>
             )
           })}
@@ -166,29 +157,179 @@ function PokemonSearchInput({
   )
 }
 
+// ─── Enemy slot card ──────────────────────────────────────────────────────────
+
+function EnemySlotCard({
+  slot,
+  value,
+  onSelectPokemon,
+  onClearPokemon,
+  onSelectMove,
+  onClearMove,
+}: {
+  slot: number
+  value: EnemyPokemon | null
+  onSelectPokemon: (p: EnemyPokemon) => void
+  onClearPokemon: () => void
+  onSelectMove: (mi: number, m: EnemyMove) => void
+  onClearMove: (mi: number) => void
+}) {
+  const { lang } = useLang()
+  const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(false)
+  const [hovered, setHovered] = useState<string | null>(null)
+
+  const results = searchPokemon(query)
+
+  const handleSelectPokemon = (key: string) => {
+    const types = POKEMON_TYPES_FLAT[key] ?? []
+    onSelectPokemon({ key, types, moves: [null, null, null, null] })
+    setQuery('')
+    setOpen(false)
+  }
+
+  if (!value) {
+    return (
+      <div style={{ position: 'relative', minWidth: 180 }}>
+        <input
+          value={query}
+          onChange={e => { setQuery(e.target.value); setOpen(true) }}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setTimeout(() => setOpen(false), 150)}
+          placeholder={`Pokémon ${slot + 1}…`}
+          style={{
+            background: '#1a1a2e',
+            border: '1px solid #333',
+            borderRadius: 6,
+            color: '#e0e0e0',
+            fontSize: 12,
+            padding: '5px 8px',
+            width: '100%',
+            boxSizing: 'border-box',
+            outline: 'none',
+          }}
+        />
+        {open && results.length > 0 && (
+          <div style={{
+            position: 'absolute',
+            top: 'calc(100% + 2px)',
+            left: 0,
+            zIndex: 200,
+            background: '#1e1e2e',
+            border: '1px solid #444',
+            borderRadius: 6,
+            minWidth: 220,
+            boxShadow: '0 4px 16px rgba(0,0,0,0.6)',
+            overflow: 'hidden',
+          }}>
+            {results.map((key, i) => {
+              const types = POKEMON_TYPES_FLAT[key] ?? []
+              return (
+                <div
+                  key={key}
+                  onMouseDown={() => handleSelectPokemon(key)}
+                  onMouseEnter={() => setHovered(key)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{
+                    padding: '5px 10px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    background: hovered === key ? '#2a2a3e' : 'transparent',
+                    borderBottom: i < results.length - 1 ? '1px solid #2a2a3e' : 'none',
+                  }}
+                >
+                  <span style={{ fontSize: 12, color: '#ddd', flex: 1 }}>{pokemonName(key, lang)}</span>
+                  <div style={{ display: 'flex', gap: 2 }}>
+                    {types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <div style={{
+      background: '#1e1e2e',
+      border: '1px solid #333',
+      borderRadius: 6,
+      padding: '6px 8px',
+      minWidth: 180,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 4,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#eee', marginBottom: 2 }}>
+            {pokemonName(value.key, lang)}
+          </div>
+          <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+            {value.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+          </div>
+        </div>
+        <button
+          onClick={onClearPokemon}
+          style={{ background: 'none', border: 'none', color: '#555', fontSize: 16, cursor: 'pointer', lineHeight: 1, padding: '0 2px' }}
+        >×</button>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 3, borderTop: '1px solid #2a2a3e', paddingTop: 4 }}>
+        {value.moves.map((move, mi) => (
+          <MoveSearchInput
+            key={mi}
+            index={mi}
+            value={move}
+            onSelect={m => onSelectMove(mi, m)}
+            onClear={() => onClearMove(mi)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ─── Matchup matrix ───────────────────────────────────────────────────────────
 
-function MultiplierCell({ mult }: { mult: number }) {
+function MultiplierCell({ mult, danger }: { mult: number; danger: boolean }) {
   if (mult >= 4) return (
-    <span style={{ fontSize: 12, fontWeight: 800, color: '#4caf50' }}>×4</span>
+    <span style={{ fontSize: 12, fontWeight: 800, color: danger ? '#f55' : '#4caf50' }}>×4</span>
   )
   if (mult === 2) return (
-    <span style={{ fontSize: 12, fontWeight: 700, color: '#8bc34a' }}>×2</span>
+    <span style={{ fontSize: 12, fontWeight: 700, color: danger ? '#f87' : '#8bc34a' }}>×2</span>
   )
   return null
 }
 
-function MatchupMatrix({ myTeam, enemy }: { myTeam: ParsedPokemon[]; enemy: EnemyPokemon[] }) {
-  // matrix[pi][ei] = best multiplier
-  const matrix = myTeam.map(p => enemy.map(e => bestMultiplier(p, e.types)))
+function MatchupMatrix({ myTeam, enemy, mode }: {
+  myTeam: ParsedPokemon[]
+  enemy: EnemyPokemon[]
+  mode: MatrixMode
+}) {
+  const { lang } = useLang()
 
-  // Summary: how many enemies each of my Pokemon can hit SE
+  const matrix = myTeam.map(p =>
+    enemy.map(e =>
+      mode === 'offense'
+        ? offenseMultiplier(p, e.types)
+        : defenseMultiplier(e.moves, p.types)
+    )
+  )
+
   const myScores = matrix.map(row => row.filter(m => m >= 2).length)
-  // How many of my Pokemon can hit each enemy SE
   const enemyScores = enemy.map((_, ei) => matrix.filter(row => row[ei] >= 2).length)
 
-  const cellStyle = (mult: number): React.CSSProperties => ({
-    background: mult >= 4 ? '#1a2e1a' : mult === 2 ? '#182018' : '#181828',
+  const cellStyle = (mult: number, danger: boolean): React.CSSProperties => ({
+    background: mult >= 4
+      ? (danger ? '#2e1a1a' : '#1a2e1a')
+      : mult === 2
+        ? (danger ? '#201818' : '#182018')
+        : '#181828',
     textAlign: 'center',
     verticalAlign: 'middle',
     padding: '6px 4px',
@@ -207,8 +348,28 @@ function MatchupMatrix({ myTeam, enemy }: { myTeam: ParsedPokemon[]; enemy: Enem
     verticalAlign: 'bottom',
   }
 
+  const colFooter = (ei: number) => {
+    const n = enemyScores[ei]
+    if (mode === 'offense') return n > 0
+      ? <span style={{ color: '#4caf50' }}>{n} counter{n > 1 ? 's' : ''}</span>
+      : <span style={{ color: '#f55' }}>non couvert</span>
+    return n > 0
+      ? <span style={{ color: '#f55' }}>menace {n}</span>
+      : <span style={{ color: '#4caf50' }}>inoffensif</span>
+  }
+
+  const rowScore = (pi: number) => {
+    const n = myScores[pi]
+    if (mode === 'offense') return n > 0
+      ? <span style={{ color: '#4caf50' }}>{n}/{enemy.length}</span>
+      : <span style={{ color: '#555' }}>0/{enemy.length}</span>
+    return n > 0
+      ? <span style={{ color: '#f55' }}>{n}/{enemy.length}</span>
+      : <span style={{ color: '#4caf50' }}>0/{enemy.length}</span>
+  }
+
   return (
-    <div style={{ overflowX: 'auto', marginTop: '1rem', borderRadius: 8, border: '1px solid #2a2a3e' }}>
+    <div style={{ overflowX: 'auto', borderRadius: 8, border: '1px solid #2a2a3e' }}>
       <table style={{ borderCollapse: 'collapse', minWidth: 'max-content', width: '100%' }}>
         <thead>
           <tr>
@@ -221,16 +382,13 @@ function MatchupMatrix({ myTeam, enemy }: { myTeam: ParsedPokemon[]; enemy: Enem
             {enemy.map((e, ei) => (
               <th key={ei} style={headerCellStyle}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: '#eee', marginBottom: 3 }}>
-                  {e.displayName}
+                  {pokemonName(e.key, lang)}
                 </div>
                 <div style={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
                   {e.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
                 </div>
                 <div style={{ fontSize: 10, color: '#666', marginTop: 4 }}>
-                  {enemyScores[ei] > 0
-                    ? <span style={{ color: '#4caf50' }}>{enemyScores[ei]} counter{enemyScores[ei] > 1 ? 's' : ''}</span>
-                    : <span style={{ color: '#f55' }}>non couvert</span>
-                  }
+                  {colFooter(ei)}
                 </div>
               </th>
             ))}
@@ -247,12 +405,9 @@ function MatchupMatrix({ myTeam, enemy }: { myTeam: ParsedPokemon[]; enemy: Enem
                 verticalAlign: 'middle',
               }}>
                 <div style={{ fontWeight: 700, fontSize: 12, color: '#eee', marginBottom: 3 }}>
-                  {p.rawName}
+                  {pokemonName(p.normalizedName, lang)}
                   <span style={{ fontSize: 10, color: '#666', fontWeight: 400, marginLeft: 6 }}>
-                    {myScores[pi] > 0
-                      ? <span style={{ color: '#4caf50' }}>{myScores[pi]}/{enemy.length}</span>
-                      : <span style={{ color: '#555' }}>0/{enemy.length}</span>
-                    }
+                    {rowScore(pi)}
                   </span>
                 </div>
                 <div style={{ display: 'flex', gap: 2 }}>
@@ -260,8 +415,8 @@ function MatchupMatrix({ myTeam, enemy }: { myTeam: ParsedPokemon[]; enemy: Enem
                 </div>
               </td>
               {matrix[pi].map((mult, ei) => (
-                <td key={ei} style={cellStyle(mult)}>
-                  <MultiplierCell mult={mult} />
+                <td key={ei} style={cellStyle(mult, mode === 'defense')}>
+                  <MultiplierCell mult={mult} danger={mode === 'defense'} />
                 </td>
               ))}
             </tr>
@@ -276,6 +431,7 @@ function MatchupMatrix({ myTeam, enemy }: { myTeam: ParsedPokemon[]; enemy: Enem
 
 export function MatchupAnalyzer({ team }: Props) {
   const [slots, setSlots] = useState<(EnemyPokemon | null)[]>(Array(6).fill(null))
+  const [mode, setMode] = useState<MatrixMode>('offense')
 
   if (team.length === 0) return null
 
@@ -283,31 +439,70 @@ export function MatchupAnalyzer({ team }: Props) {
     setSlots(prev => { const next = [...prev]; next[i] = p; return next })
   }
 
+  const setSlotMove = (slotIndex: number, moveIndex: number, move: EnemyMove | null) => {
+    setSlots(prev => {
+      const next = [...prev]
+      const slot = next[slotIndex]
+      if (!slot) return prev
+      const newMoves = [...slot.moves]
+      newMoves[moveIndex] = move
+      next[slotIndex] = { ...slot, moves: newMoves }
+      return next
+    })
+  }
+
   const filledEnemy = slots.filter((s): s is EnemyPokemon => s !== null)
 
   return (
     <section style={{ marginTop: '2rem' }}>
-      <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: '0.5rem', color: '#ccc' }}>
-        Matchup
-      </h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+        <h2 style={{ fontSize: 16, fontWeight: 700, color: '#ccc', margin: 0 }}>Matchup</h2>
+        {filledEnemy.length > 0 && (
+          <div style={{ display: 'flex', background: '#1a1a2e', border: '1px solid #2a2a3e', borderRadius: 6, overflow: 'hidden' }}>
+            {(['offense', 'defense'] as MatrixMode[]).map(m => (
+              <button
+                key={m}
+                onClick={() => setMode(m)}
+                style={{
+                  background: mode === m ? '#3a3a6e' : 'transparent',
+                  color: mode === m ? '#fff' : '#555',
+                  border: 'none',
+                  padding: '4px 14px',
+                  fontSize: 11,
+                  fontWeight: mode === m ? 700 : 400,
+                  cursor: 'pointer',
+                }}
+              >
+                {m === 'offense' ? "J'attaque" : 'Je défends'}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
       <div style={{ fontSize: 11, color: '#555', marginBottom: '0.75rem' }}>
-        Saisis les Pokémon adverses pour voir lesquels de tes Pokémon peuvent les frapper en ×2 ou ×4.
+        {mode === 'offense'
+          ? 'Lesquels de mes Pokémon peuvent frapper en ×2 ou ×4.'
+          : 'Lesquels de mes Pokémon sont mis en danger par les attaques ennemies.'}
       </div>
 
-      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'flex-start' }}>
         {slots.map((slot, i) => (
-          <PokemonSearchInput
+          <EnemySlotCard
             key={i}
             slot={i}
             value={slot}
-            onSelect={p => setSlot(i, p)}
-            onClear={() => setSlot(i, null)}
+            onSelectPokemon={p => setSlot(i, p)}
+            onClearPokemon={() => setSlot(i, null)}
+            onSelectMove={(mi, m) => setSlotMove(i, mi, m)}
+            onClearMove={mi => setSlotMove(i, mi, null)}
           />
         ))}
       </div>
 
       {filledEnemy.length > 0 && (
-        <MatchupMatrix myTeam={team} enemy={filledEnemy} />
+        <div style={{ marginTop: '1rem' }}>
+          <MatchupMatrix myTeam={team} enemy={filledEnemy} mode={mode} />
+        </div>
       )}
     </section>
   )

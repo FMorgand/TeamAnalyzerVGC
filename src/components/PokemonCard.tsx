@@ -3,6 +3,8 @@ import type { DefensiveProfile } from '../lib/teamAnalysis'
 import type { PokemonType } from '../data/typeChart'
 import { getDefensiveMultiplier } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { useLang } from '../contexts/LangContext'
+import { pokemonName } from '../lib/i18n'
 
 interface Props {
   profile: DefensiveProfile
@@ -21,6 +23,7 @@ function TypeRow({ label, types, color }: { label: string; types: PokemonType[];
 }
 
 export function PokemonCard({ profile }: Props) {
+  const { lang } = useLang()
   const hasMega = profile.megaWeaknesses !== null
   const [showMega, setShowMega] = useState(false)
   const useMega = hasMega && showMega
@@ -49,7 +52,7 @@ export function PokemonCard({ profile }: Props) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
           <div style={{ fontWeight: 700, fontSize: 15 }}>
-            {pokemon.rawName}
+            {pokemonName(pokemon.normalizedName, lang)}
             {useMega && <span style={{ color: '#f90', marginLeft: 6, fontSize: 12 }}>({pokemon.megaForm})</span>}
           </div>
           {pokemon.rawItem && (

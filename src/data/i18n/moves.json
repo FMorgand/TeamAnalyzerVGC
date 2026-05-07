@@ -1,0 +1,3678 @@
+{
+  "pound": {
+    "en": "Pound",
+    "fr": "Écras’Face"
+  },
+  "karate-chop": {
+    "en": "Karate Chop",
+    "fr": "Poing Karaté"
+  },
+  "double-slap": {
+    "en": "Double Slap",
+    "fr": "Torgnoles"
+  },
+  "comet-punch": {
+    "en": "Comet Punch",
+    "fr": "Poing Comète"
+  },
+  "mega-punch": {
+    "en": "Mega Punch",
+    "fr": "Ultimapoing"
+  },
+  "pay-day": {
+    "en": "Pay Day",
+    "fr": "Jackpot"
+  },
+  "fire-punch": {
+    "en": "Fire Punch",
+    "fr": "Poing Feu"
+  },
+  "ice-punch": {
+    "en": "Ice Punch",
+    "fr": "Poing Glace"
+  },
+  "thunder-punch": {
+    "en": "Thunder Punch",
+    "fr": "Poing Éclair"
+  },
+  "scratch": {
+    "en": "Scratch",
+    "fr": "Griffe"
+  },
+  "vice-grip": {
+    "en": "Vise Grip",
+    "fr": "Force Poigne"
+  },
+  "guillotine": {
+    "en": "Guillotine",
+    "fr": "Guillotine"
+  },
+  "razor-wind": {
+    "en": "Razor Wind",
+    "fr": "Coupe-Vent"
+  },
+  "swords-dance": {
+    "en": "Swords Dance",
+    "fr": "Danse Lames"
+  },
+  "cut": {
+    "en": "Cut",
+    "fr": "Coupe"
+  },
+  "gust": {
+    "en": "Gust",
+    "fr": "Tornade"
+  },
+  "wing-attack": {
+    "en": "Wing Attack",
+    "fr": "Cru-Ailes"
+  },
+  "whirlwind": {
+    "en": "Whirlwind",
+    "fr": "Cyclone"
+  },
+  "fly": {
+    "en": "Fly",
+    "fr": "Vol"
+  },
+  "bind": {
+    "en": "Bind",
+    "fr": "Étreinte"
+  },
+  "slam": {
+    "en": "Slam",
+    "fr": "Souplesse"
+  },
+  "vine-whip": {
+    "en": "Vine Whip",
+    "fr": "Fouet Lianes"
+  },
+  "stomp": {
+    "en": "Stomp",
+    "fr": "Écrasement"
+  },
+  "double-kick": {
+    "en": "Double Kick",
+    "fr": "Double Pied"
+  },
+  "mega-kick": {
+    "en": "Mega Kick",
+    "fr": "Ultimawashi"
+  },
+  "jump-kick": {
+    "en": "Jump Kick",
+    "fr": "Pied Sauté"
+  },
+  "rolling-kick": {
+    "en": "Rolling Kick",
+    "fr": "Mawashi Geri"
+  },
+  "sand-attack": {
+    "en": "Sand Attack",
+    "fr": "Jet de Sable"
+  },
+  "headbutt": {
+    "en": "Headbutt",
+    "fr": "Coup d’Boule"
+  },
+  "horn-attack": {
+    "en": "Horn Attack",
+    "fr": "Koud’Korne"
+  },
+  "fury-attack": {
+    "en": "Fury Attack",
+    "fr": "Furie"
+  },
+  "horn-drill": {
+    "en": "Horn Drill",
+    "fr": "Empal’Korne"
+  },
+  "tackle": {
+    "en": "Tackle",
+    "fr": "Charge"
+  },
+  "body-slam": {
+    "en": "Body Slam",
+    "fr": "Plaquage"
+  },
+  "wrap": {
+    "en": "Wrap",
+    "fr": "Ligotage"
+  },
+  "take-down": {
+    "en": "Take Down",
+    "fr": "Bélier"
+  },
+  "thrash": {
+    "en": "Thrash",
+    "fr": "Mania"
+  },
+  "double-edge": {
+    "en": "Double-Edge",
+    "fr": "Damoclès"
+  },
+  "tail-whip": {
+    "en": "Tail Whip",
+    "fr": "Mimi-Queue"
+  },
+  "poison-sting": {
+    "en": "Poison Sting",
+    "fr": "Dard-Venin"
+  },
+  "twineedle": {
+    "en": "Twineedle",
+    "fr": "Double Dard"
+  },
+  "pin-missile": {
+    "en": "Pin Missile",
+    "fr": "Dard-Nuée"
+  },
+  "leer": {
+    "en": "Leer",
+    "fr": "Groz’Yeux"
+  },
+  "bite": {
+    "en": "Bite",
+    "fr": "Morsure"
+  },
+  "growl": {
+    "en": "Growl",
+    "fr": "Rugissement"
+  },
+  "roar": {
+    "en": "Roar",
+    "fr": "Hurlement"
+  },
+  "sing": {
+    "en": "Sing",
+    "fr": "Berceuse"
+  },
+  "supersonic": {
+    "en": "Supersonic",
+    "fr": "Ultrason"
+  },
+  "sonic-boom": {
+    "en": "Sonic Boom",
+    "fr": "Sonic Boom"
+  },
+  "disable": {
+    "en": "Disable",
+    "fr": "Entrave"
+  },
+  "acid": {
+    "en": "Acid",
+    "fr": "Acide"
+  },
+  "ember": {
+    "en": "Ember",
+    "fr": "Flammèche"
+  },
+  "flamethrower": {
+    "en": "Flamethrower",
+    "fr": "Lance-Flammes"
+  },
+  "mist": {
+    "en": "Mist",
+    "fr": "Brume"
+  },
+  "water-gun": {
+    "en": "Water Gun",
+    "fr": "Pistolet à O"
+  },
+  "hydro-pump": {
+    "en": "Hydro Pump",
+    "fr": "Hydrocanon"
+  },
+  "surf": {
+    "en": "Surf",
+    "fr": "Surf"
+  },
+  "ice-beam": {
+    "en": "Ice Beam",
+    "fr": "Laser Glace"
+  },
+  "blizzard": {
+    "en": "Blizzard",
+    "fr": "Blizzard"
+  },
+  "psybeam": {
+    "en": "Psybeam",
+    "fr": "Rafale Psy"
+  },
+  "bubble-beam": {
+    "en": "Bubble Beam",
+    "fr": "Bulles d’O"
+  },
+  "aurora-beam": {
+    "en": "Aurora Beam",
+    "fr": "Onde Boréale"
+  },
+  "hyper-beam": {
+    "en": "Hyper Beam",
+    "fr": "Ultralaser"
+  },
+  "peck": {
+    "en": "Peck",
+    "fr": "Picpic"
+  },
+  "drill-peck": {
+    "en": "Drill Peck",
+    "fr": "Bec Vrille"
+  },
+  "submission": {
+    "en": "Submission",
+    "fr": "Sacrifice"
+  },
+  "low-kick": {
+    "en": "Low Kick",
+    "fr": "Balayage"
+  },
+  "counter": {
+    "en": "Counter",
+    "fr": "Riposte"
+  },
+  "seismic-toss": {
+    "en": "Seismic Toss",
+    "fr": "Frappe Atlas"
+  },
+  "strength": {
+    "en": "Strength",
+    "fr": "Force"
+  },
+  "absorb": {
+    "en": "Absorb",
+    "fr": "Vole-Vie"
+  },
+  "mega-drain": {
+    "en": "Mega Drain",
+    "fr": "Méga-Sangsue"
+  },
+  "leech-seed": {
+    "en": "Leech Seed",
+    "fr": "Vampigraine"
+  },
+  "growth": {
+    "en": "Growth",
+    "fr": "Croissance"
+  },
+  "razor-leaf": {
+    "en": "Razor Leaf",
+    "fr": "Tranch’Herbe"
+  },
+  "solar-beam": {
+    "en": "Solar Beam",
+    "fr": "Lance-Soleil"
+  },
+  "poison-powder": {
+    "en": "Poison Powder",
+    "fr": "Poudre Toxik"
+  },
+  "stun-spore": {
+    "en": "Stun Spore",
+    "fr": "Para-Spore"
+  },
+  "sleep-powder": {
+    "en": "Sleep Powder",
+    "fr": "Poudre Dodo"
+  },
+  "petal-dance": {
+    "en": "Petal Dance",
+    "fr": "Danse Fleurs"
+  },
+  "string-shot": {
+    "en": "String Shot",
+    "fr": "Sécrétion"
+  },
+  "dragon-rage": {
+    "en": "Dragon Rage",
+    "fr": "Draco-Rage"
+  },
+  "fire-spin": {
+    "en": "Fire Spin",
+    "fr": "Danse Flammes"
+  },
+  "thunder-shock": {
+    "en": "Thunder Shock",
+    "fr": "Éclair"
+  },
+  "thunderbolt": {
+    "en": "Thunderbolt",
+    "fr": "Tonnerre"
+  },
+  "thunder-wave": {
+    "en": "Thunder Wave",
+    "fr": "Cage Éclair"
+  },
+  "thunder": {
+    "en": "Thunder",
+    "fr": "Fatal-Foudre"
+  },
+  "rock-throw": {
+    "en": "Rock Throw",
+    "fr": "Jet-Pierres"
+  },
+  "earthquake": {
+    "en": "Earthquake",
+    "fr": "Séisme"
+  },
+  "fissure": {
+    "en": "Fissure",
+    "fr": "Abîme"
+  },
+  "dig": {
+    "en": "Dig",
+    "fr": "Tunnel"
+  },
+  "toxic": {
+    "en": "Toxic",
+    "fr": "Toxik"
+  },
+  "confusion": {
+    "en": "Confusion",
+    "fr": "Choc Mental"
+  },
+  "psychic": {
+    "en": "Psychic",
+    "fr": "Psyko"
+  },
+  "hypnosis": {
+    "en": "Hypnosis",
+    "fr": "Hypnose"
+  },
+  "meditate": {
+    "en": "Meditate",
+    "fr": "Yoga"
+  },
+  "agility": {
+    "en": "Agility",
+    "fr": "Hâte"
+  },
+  "quick-attack": {
+    "en": "Quick Attack",
+    "fr": "Vive-Attaque"
+  },
+  "rage": {
+    "en": "Rage",
+    "fr": "Frénésie"
+  },
+  "teleport": {
+    "en": "Teleport",
+    "fr": "Téléport"
+  },
+  "night-shade": {
+    "en": "Night Shade",
+    "fr": "Ombre Nocturne"
+  },
+  "mimic": {
+    "en": "Mimic",
+    "fr": "Copie"
+  },
+  "screech": {
+    "en": "Screech",
+    "fr": "Grincement"
+  },
+  "double-team": {
+    "en": "Double Team",
+    "fr": "Reflet"
+  },
+  "recover": {
+    "en": "Recover",
+    "fr": "Soin"
+  },
+  "harden": {
+    "en": "Harden",
+    "fr": "Armure"
+  },
+  "minimize": {
+    "en": "Minimize",
+    "fr": "Lilliput"
+  },
+  "smokescreen": {
+    "en": "Smokescreen",
+    "fr": "Brouillard"
+  },
+  "confuse-ray": {
+    "en": "Confuse Ray",
+    "fr": "Onde Folie"
+  },
+  "withdraw": {
+    "en": "Withdraw",
+    "fr": "Repli"
+  },
+  "defense-curl": {
+    "en": "Defense Curl",
+    "fr": "Boul’Armure"
+  },
+  "barrier": {
+    "en": "Barrier",
+    "fr": "Bouclier"
+  },
+  "light-screen": {
+    "en": "Light Screen",
+    "fr": "Mur Lumière"
+  },
+  "haze": {
+    "en": "Haze",
+    "fr": "Buée Noire"
+  },
+  "reflect": {
+    "en": "Reflect",
+    "fr": "Protection"
+  },
+  "focus-energy": {
+    "en": "Focus Energy",
+    "fr": "Puissance"
+  },
+  "bide": {
+    "en": "Bide",
+    "fr": "Patience"
+  },
+  "metronome": {
+    "en": "Metronome",
+    "fr": "Métronome"
+  },
+  "mirror-move": {
+    "en": "Mirror Move",
+    "fr": "Mimique"
+  },
+  "self-destruct": {
+    "en": "Self-Destruct",
+    "fr": "Destruction"
+  },
+  "egg-bomb": {
+    "en": "Egg Bomb",
+    "fr": "Bombe Œuf"
+  },
+  "lick": {
+    "en": "Lick",
+    "fr": "Léchouille"
+  },
+  "smog": {
+    "en": "Smog",
+    "fr": "Purédpois"
+  },
+  "sludge": {
+    "en": "Sludge",
+    "fr": "Détritus"
+  },
+  "bone-club": {
+    "en": "Bone Club",
+    "fr": "Massd’Os"
+  },
+  "fire-blast": {
+    "en": "Fire Blast",
+    "fr": "Déflagration"
+  },
+  "waterfall": {
+    "en": "Waterfall",
+    "fr": "Cascade"
+  },
+  "clamp": {
+    "en": "Clamp",
+    "fr": "Claquoir"
+  },
+  "swift": {
+    "en": "Swift",
+    "fr": "Météores"
+  },
+  "skull-bash": {
+    "en": "Skull Bash",
+    "fr": "Coud’Krâne"
+  },
+  "spike-cannon": {
+    "en": "Spike Cannon",
+    "fr": "Picanon"
+  },
+  "constrict": {
+    "en": "Constrict",
+    "fr": "Constriction"
+  },
+  "amnesia": {
+    "en": "Amnesia",
+    "fr": "Amnésie"
+  },
+  "kinesis": {
+    "en": "Kinesis",
+    "fr": "Télékinésie"
+  },
+  "soft-boiled": {
+    "en": "Soft-Boiled",
+    "fr": "E-Coque"
+  },
+  "high-jump-kick": {
+    "en": "High Jump Kick",
+    "fr": "Pied Voltige"
+  },
+  "glare": {
+    "en": "Glare",
+    "fr": "Regard Médusant"
+  },
+  "dream-eater": {
+    "en": "Dream Eater",
+    "fr": "Dévorêve"
+  },
+  "poison-gas": {
+    "en": "Poison Gas",
+    "fr": "Gaz Toxik"
+  },
+  "barrage": {
+    "en": "Barrage",
+    "fr": "Pilonnage"
+  },
+  "leech-life": {
+    "en": "Leech Life",
+    "fr": "Vampirisme"
+  },
+  "lovely-kiss": {
+    "en": "Lovely Kiss",
+    "fr": "Grobisou"
+  },
+  "sky-attack": {
+    "en": "Sky Attack",
+    "fr": "Piqué"
+  },
+  "transform": {
+    "en": "Transform",
+    "fr": "Morphing"
+  },
+  "bubble": {
+    "en": "Bubble",
+    "fr": "Écume"
+  },
+  "dizzy-punch": {
+    "en": "Dizzy Punch",
+    "fr": "Uppercut"
+  },
+  "spore": {
+    "en": "Spore",
+    "fr": "Spore"
+  },
+  "flash": {
+    "en": "Flash",
+    "fr": "Flash"
+  },
+  "psywave": {
+    "en": "Psywave",
+    "fr": "Vague Psy"
+  },
+  "splash": {
+    "en": "Splash",
+    "fr": "Trempette"
+  },
+  "acid-armor": {
+    "en": "Acid Armor",
+    "fr": "Acidarmure"
+  },
+  "crabhammer": {
+    "en": "Crabhammer",
+    "fr": "Pince-Masse"
+  },
+  "explosion": {
+    "en": "Explosion",
+    "fr": "Explosion"
+  },
+  "fury-swipes": {
+    "en": "Fury Swipes",
+    "fr": "Combo-Griffe"
+  },
+  "bonemerang": {
+    "en": "Bonemerang",
+    "fr": "Osmerang"
+  },
+  "rest": {
+    "en": "Rest",
+    "fr": "Repos"
+  },
+  "rock-slide": {
+    "en": "Rock Slide",
+    "fr": "Éboulement"
+  },
+  "hyper-fang": {
+    "en": "Hyper Fang",
+    "fr": "Croc de Mort"
+  },
+  "sharpen": {
+    "en": "Sharpen",
+    "fr": "Affûtage"
+  },
+  "conversion": {
+    "en": "Conversion",
+    "fr": "Conversion"
+  },
+  "tri-attack": {
+    "en": "Tri Attack",
+    "fr": "Triplattaque"
+  },
+  "super-fang": {
+    "en": "Super Fang",
+    "fr": "Croc Fatal"
+  },
+  "slash": {
+    "en": "Slash",
+    "fr": "Tranche"
+  },
+  "substitute": {
+    "en": "Substitute",
+    "fr": "Clonage"
+  },
+  "struggle": {
+    "en": "Struggle",
+    "fr": "Lutte"
+  },
+  "sketch": {
+    "en": "Sketch",
+    "fr": "Gribouille"
+  },
+  "triple-kick": {
+    "en": "Triple Kick",
+    "fr": "Triple Pied"
+  },
+  "thief": {
+    "en": "Thief",
+    "fr": "Larcin"
+  },
+  "spider-web": {
+    "en": "Spider Web",
+    "fr": "Toile"
+  },
+  "mind-reader": {
+    "en": "Mind Reader",
+    "fr": "Lire-Esprit"
+  },
+  "nightmare": {
+    "en": "Nightmare",
+    "fr": "Cauchemar"
+  },
+  "flame-wheel": {
+    "en": "Flame Wheel",
+    "fr": "Roue de Feu"
+  },
+  "snore": {
+    "en": "Snore",
+    "fr": "Ronflement"
+  },
+  "curse": {
+    "en": "Curse",
+    "fr": "Malédiction"
+  },
+  "flail": {
+    "en": "Flail",
+    "fr": "Gigotage"
+  },
+  "conversion-2": {
+    "en": "Conversion 2",
+    "fr": "Conversion 2"
+  },
+  "aeroblast": {
+    "en": "Aeroblast",
+    "fr": "Aéroblast"
+  },
+  "cotton-spore": {
+    "en": "Cotton Spore",
+    "fr": "Spore Coton"
+  },
+  "reversal": {
+    "en": "Reversal",
+    "fr": "Contre"
+  },
+  "spite": {
+    "en": "Spite",
+    "fr": "Dépit"
+  },
+  "powder-snow": {
+    "en": "Powder Snow",
+    "fr": "Poudreuse"
+  },
+  "protect": {
+    "en": "Protect",
+    "fr": "Abri"
+  },
+  "mach-punch": {
+    "en": "Mach Punch",
+    "fr": "Mach Punch"
+  },
+  "scary-face": {
+    "en": "Scary Face",
+    "fr": "Grimace"
+  },
+  "feint-attack": {
+    "en": "Feint Attack",
+    "fr": "Feinte"
+  },
+  "sweet-kiss": {
+    "en": "Sweet Kiss",
+    "fr": "Doux Baiser"
+  },
+  "belly-drum": {
+    "en": "Belly Drum",
+    "fr": "Cognobidon"
+  },
+  "sludge-bomb": {
+    "en": "Sludge Bomb",
+    "fr": "Bombe Beurk"
+  },
+  "mud-slap": {
+    "en": "Mud-Slap",
+    "fr": "Coud’Boue"
+  },
+  "octazooka": {
+    "en": "Octazooka",
+    "fr": "Octazooka"
+  },
+  "spikes": {
+    "en": "Spikes",
+    "fr": "Picots"
+  },
+  "zap-cannon": {
+    "en": "Zap Cannon",
+    "fr": "Élecanon"
+  },
+  "foresight": {
+    "en": "Foresight",
+    "fr": "Clairvoyance"
+  },
+  "destiny-bond": {
+    "en": "Destiny Bond",
+    "fr": "Lien du Destin"
+  },
+  "perish-song": {
+    "en": "Perish Song",
+    "fr": "Requiem"
+  },
+  "icy-wind": {
+    "en": "Icy Wind",
+    "fr": "Vent Glace"
+  },
+  "detect": {
+    "en": "Detect",
+    "fr": "Détection"
+  },
+  "bone-rush": {
+    "en": "Bone Rush",
+    "fr": "Charge Os"
+  },
+  "lock-on": {
+    "en": "Lock-On",
+    "fr": "Verrouillage"
+  },
+  "outrage": {
+    "en": "Outrage",
+    "fr": "Colère"
+  },
+  "sandstorm": {
+    "en": "Sandstorm",
+    "fr": "Tempête de Sable"
+  },
+  "giga-drain": {
+    "en": "Giga Drain",
+    "fr": "Giga-Sangsue"
+  },
+  "endure": {
+    "en": "Endure",
+    "fr": "Ténacité"
+  },
+  "charm": {
+    "en": "Charm",
+    "fr": "Charme"
+  },
+  "rollout": {
+    "en": "Rollout",
+    "fr": "Roulade"
+  },
+  "false-swipe": {
+    "en": "False Swipe",
+    "fr": "Faux-Chage"
+  },
+  "swagger": {
+    "en": "Swagger",
+    "fr": "Vantardise"
+  },
+  "milk-drink": {
+    "en": "Milk Drink",
+    "fr": "Lait à Boire"
+  },
+  "spark": {
+    "en": "Spark",
+    "fr": "Étincelle"
+  },
+  "fury-cutter": {
+    "en": "Fury Cutter",
+    "fr": "Taillade"
+  },
+  "steel-wing": {
+    "en": "Steel Wing",
+    "fr": "Ailes d’Acier"
+  },
+  "mean-look": {
+    "en": "Mean Look",
+    "fr": "Regard Noir"
+  },
+  "attract": {
+    "en": "Attract",
+    "fr": "Attraction"
+  },
+  "sleep-talk": {
+    "en": "Sleep Talk",
+    "fr": "Blabla Dodo"
+  },
+  "heal-bell": {
+    "en": "Heal Bell",
+    "fr": "Glas de Soin"
+  },
+  "return": {
+    "en": "Return",
+    "fr": "Retour"
+  },
+  "present": {
+    "en": "Present",
+    "fr": "Cadeau"
+  },
+  "frustration": {
+    "en": "Frustration",
+    "fr": "Frustration"
+  },
+  "safeguard": {
+    "en": "Safeguard",
+    "fr": "Rune Protect"
+  },
+  "pain-split": {
+    "en": "Pain Split",
+    "fr": "Balance"
+  },
+  "sacred-fire": {
+    "en": "Sacred Fire",
+    "fr": "Feu Sacré"
+  },
+  "magnitude": {
+    "en": "Magnitude",
+    "fr": "Ampleur"
+  },
+  "dynamic-punch": {
+    "en": "Dynamic Punch",
+    "fr": "Dynamo-Poing"
+  },
+  "megahorn": {
+    "en": "Megahorn",
+    "fr": "Mégacorne"
+  },
+  "dragon-breath": {
+    "en": "Dragon Breath",
+    "fr": "Draco-Souffle"
+  },
+  "baton-pass": {
+    "en": "Baton Pass",
+    "fr": "Relais"
+  },
+  "encore": {
+    "en": "Encore",
+    "fr": "Encore"
+  },
+  "pursuit": {
+    "en": "Pursuit",
+    "fr": "Poursuite"
+  },
+  "rapid-spin": {
+    "en": "Rapid Spin",
+    "fr": "Tour Rapide"
+  },
+  "sweet-scent": {
+    "en": "Sweet Scent",
+    "fr": "Doux Parfum"
+  },
+  "iron-tail": {
+    "en": "Iron Tail",
+    "fr": "Queue de Fer"
+  },
+  "metal-claw": {
+    "en": "Metal Claw",
+    "fr": "Griffe Acier"
+  },
+  "vital-throw": {
+    "en": "Vital Throw",
+    "fr": "Corps Perdu"
+  },
+  "morning-sun": {
+    "en": "Morning Sun",
+    "fr": "Aurore"
+  },
+  "synthesis": {
+    "en": "Synthesis",
+    "fr": "Synthèse"
+  },
+  "moonlight": {
+    "en": "Moonlight",
+    "fr": "Rayon Lune"
+  },
+  "hidden-power": {
+    "en": "Hidden Power",
+    "fr": "Puissance Cachée"
+  },
+  "cross-chop": {
+    "en": "Cross Chop",
+    "fr": "Coup Croix"
+  },
+  "twister": {
+    "en": "Twister",
+    "fr": "Ouragan"
+  },
+  "rain-dance": {
+    "en": "Rain Dance",
+    "fr": "Danse Pluie"
+  },
+  "sunny-day": {
+    "en": "Sunny Day",
+    "fr": "Zénith"
+  },
+  "crunch": {
+    "en": "Crunch",
+    "fr": "Mâchouille"
+  },
+  "mirror-coat": {
+    "en": "Mirror Coat",
+    "fr": "Voile Miroir"
+  },
+  "psych-up": {
+    "en": "Psych Up",
+    "fr": "Boost"
+  },
+  "extreme-speed": {
+    "en": "Extreme Speed",
+    "fr": "Vitesse Extrême"
+  },
+  "ancient-power": {
+    "en": "Ancient Power",
+    "fr": "Pouvoir Antique"
+  },
+  "shadow-ball": {
+    "en": "Shadow Ball",
+    "fr": "Ball’Ombre"
+  },
+  "future-sight": {
+    "en": "Future Sight",
+    "fr": "Prescience"
+  },
+  "rock-smash": {
+    "en": "Rock Smash",
+    "fr": "Éclate-Roc"
+  },
+  "whirlpool": {
+    "en": "Whirlpool",
+    "fr": "Siphon"
+  },
+  "beat-up": {
+    "en": "Beat Up",
+    "fr": "Baston"
+  },
+  "fake-out": {
+    "en": "Fake Out",
+    "fr": "Bluff"
+  },
+  "uproar": {
+    "en": "Uproar",
+    "fr": "Brouhaha"
+  },
+  "stockpile": {
+    "en": "Stockpile",
+    "fr": "Stockage"
+  },
+  "spit-up": {
+    "en": "Spit Up",
+    "fr": "Relâche"
+  },
+  "swallow": {
+    "en": "Swallow",
+    "fr": "Avale"
+  },
+  "heat-wave": {
+    "en": "Heat Wave",
+    "fr": "Canicule"
+  },
+  "hail": {
+    "en": "Hail",
+    "fr": "Grêle"
+  },
+  "torment": {
+    "en": "Torment",
+    "fr": "Tourmente"
+  },
+  "flatter": {
+    "en": "Flatter",
+    "fr": "Flatterie"
+  },
+  "will-o-wisp": {
+    "en": "Will-O-Wisp",
+    "fr": "Feu Follet"
+  },
+  "memento": {
+    "en": "Memento",
+    "fr": "Souvenir"
+  },
+  "facade": {
+    "en": "Facade",
+    "fr": "Façade"
+  },
+  "focus-punch": {
+    "en": "Focus Punch",
+    "fr": "Mitra-Poing"
+  },
+  "smelling-salts": {
+    "en": "Smelling Salts",
+    "fr": "Stimulant"
+  },
+  "follow-me": {
+    "en": "Follow Me",
+    "fr": "Par Ici"
+  },
+  "nature-power": {
+    "en": "Nature Power",
+    "fr": "Force Nature"
+  },
+  "charge": {
+    "en": "Charge",
+    "fr": "Chargeur"
+  },
+  "taunt": {
+    "en": "Taunt",
+    "fr": "Provoc"
+  },
+  "helping-hand": {
+    "en": "Helping Hand",
+    "fr": "Coup d’Main"
+  },
+  "trick": {
+    "en": "Trick",
+    "fr": "Tour de Magie"
+  },
+  "role-play": {
+    "en": "Role Play",
+    "fr": "Imitation"
+  },
+  "wish": {
+    "en": "Wish",
+    "fr": "Vœu"
+  },
+  "assist": {
+    "en": "Assist",
+    "fr": "Assistance"
+  },
+  "ingrain": {
+    "en": "Ingrain",
+    "fr": "Racines"
+  },
+  "superpower": {
+    "en": "Superpower",
+    "fr": "Surpuissance"
+  },
+  "magic-coat": {
+    "en": "Magic Coat",
+    "fr": "Reflet Magik"
+  },
+  "recycle": {
+    "en": "Recycle",
+    "fr": "Recyclage"
+  },
+  "revenge": {
+    "en": "Revenge",
+    "fr": "Vendetta"
+  },
+  "brick-break": {
+    "en": "Brick Break",
+    "fr": "Casse-Brique"
+  },
+  "yawn": {
+    "en": "Yawn",
+    "fr": "Bâillement"
+  },
+  "knock-off": {
+    "en": "Knock Off",
+    "fr": "Sabotage"
+  },
+  "endeavor": {
+    "en": "Endeavor",
+    "fr": "Effort"
+  },
+  "eruption": {
+    "en": "Eruption",
+    "fr": "Éruption"
+  },
+  "skill-swap": {
+    "en": "Skill Swap",
+    "fr": "Échange"
+  },
+  "imprison": {
+    "en": "Imprison",
+    "fr": "Possessif"
+  },
+  "refresh": {
+    "en": "Refresh",
+    "fr": "Régénération"
+  },
+  "grudge": {
+    "en": "Grudge",
+    "fr": "Rancune"
+  },
+  "snatch": {
+    "en": "Snatch",
+    "fr": "Saisie"
+  },
+  "secret-power": {
+    "en": "Secret Power",
+    "fr": "Force Cachée"
+  },
+  "dive": {
+    "en": "Dive",
+    "fr": "Plongée"
+  },
+  "arm-thrust": {
+    "en": "Arm Thrust",
+    "fr": "Cogne"
+  },
+  "camouflage": {
+    "en": "Camouflage",
+    "fr": "Camouflage"
+  },
+  "tail-glow": {
+    "en": "Tail Glow",
+    "fr": "Lumi-Queue"
+  },
+  "luster-purge": {
+    "en": "Luster Purge",
+    "fr": "Lumi-Éclat"
+  },
+  "mist-ball": {
+    "en": "Mist Ball",
+    "fr": "Ball’Brume"
+  },
+  "feather-dance": {
+    "en": "Feather Dance",
+    "fr": "Danse Plumes"
+  },
+  "teeter-dance": {
+    "en": "Teeter Dance",
+    "fr": "Danse Folle"
+  },
+  "blaze-kick": {
+    "en": "Blaze Kick",
+    "fr": "Pied Brûleur"
+  },
+  "mud-sport": {
+    "en": "Mud Sport",
+    "fr": "Lance-Boue"
+  },
+  "ice-ball": {
+    "en": "Ice Ball",
+    "fr": "Ball’Glace"
+  },
+  "needle-arm": {
+    "en": "Needle Arm",
+    "fr": "Poing Dard"
+  },
+  "slack-off": {
+    "en": "Slack Off",
+    "fr": "Paresse"
+  },
+  "hyper-voice": {
+    "en": "Hyper Voice",
+    "fr": "Mégaphone"
+  },
+  "poison-fang": {
+    "en": "Poison Fang",
+    "fr": "Crochet Venin"
+  },
+  "crush-claw": {
+    "en": "Crush Claw",
+    "fr": "Éclate Griffe"
+  },
+  "blast-burn": {
+    "en": "Blast Burn",
+    "fr": "Rafale Feu"
+  },
+  "hydro-cannon": {
+    "en": "Hydro Cannon",
+    "fr": "Hydroblast"
+  },
+  "meteor-mash": {
+    "en": "Meteor Mash",
+    "fr": "Poing Météore"
+  },
+  "astonish": {
+    "en": "Astonish",
+    "fr": "Étonnement"
+  },
+  "weather-ball": {
+    "en": "Weather Ball",
+    "fr": "Ball’Météo"
+  },
+  "aromatherapy": {
+    "en": "Aromatherapy",
+    "fr": "Aromathérapie"
+  },
+  "fake-tears": {
+    "en": "Fake Tears",
+    "fr": "Croco Larme"
+  },
+  "air-cutter": {
+    "en": "Air Cutter",
+    "fr": "Tranch’Air"
+  },
+  "overheat": {
+    "en": "Overheat",
+    "fr": "Surchauffe"
+  },
+  "odor-sleuth": {
+    "en": "Odor Sleuth",
+    "fr": "Flair"
+  },
+  "rock-tomb": {
+    "en": "Rock Tomb",
+    "fr": "Tomberoche"
+  },
+  "silver-wind": {
+    "en": "Silver Wind",
+    "fr": "Vent Argenté"
+  },
+  "metal-sound": {
+    "en": "Metal Sound",
+    "fr": "Strido-Son"
+  },
+  "grass-whistle": {
+    "en": "Grass Whistle",
+    "fr": "Siffl’Herbe"
+  },
+  "tickle": {
+    "en": "Tickle",
+    "fr": "Chatouille"
+  },
+  "cosmic-power": {
+    "en": "Cosmic Power",
+    "fr": "Force Cosmique"
+  },
+  "water-spout": {
+    "en": "Water Spout",
+    "fr": "Giclédo"
+  },
+  "signal-beam": {
+    "en": "Signal Beam",
+    "fr": "Rayon Signal"
+  },
+  "shadow-punch": {
+    "en": "Shadow Punch",
+    "fr": "Poing Ombre"
+  },
+  "extrasensory": {
+    "en": "Extrasensory",
+    "fr": "Extrasenseur"
+  },
+  "sky-uppercut": {
+    "en": "Sky Uppercut",
+    "fr": "Stratopercut"
+  },
+  "sand-tomb": {
+    "en": "Sand Tomb",
+    "fr": "Tourbi-Sable"
+  },
+  "sheer-cold": {
+    "en": "Sheer Cold",
+    "fr": "Glaciation"
+  },
+  "muddy-water": {
+    "en": "Muddy Water",
+    "fr": "Ocroupi"
+  },
+  "bullet-seed": {
+    "en": "Bullet Seed",
+    "fr": "Balle Graine"
+  },
+  "aerial-ace": {
+    "en": "Aerial Ace",
+    "fr": "Aéropique"
+  },
+  "icicle-spear": {
+    "en": "Icicle Spear",
+    "fr": "Stalactite"
+  },
+  "iron-defense": {
+    "en": "Iron Defense",
+    "fr": "Mur de Fer"
+  },
+  "block": {
+    "en": "Block",
+    "fr": "Barrage"
+  },
+  "howl": {
+    "en": "Howl",
+    "fr": "Grondement"
+  },
+  "dragon-claw": {
+    "en": "Dragon Claw",
+    "fr": "Draco-Griffe"
+  },
+  "frenzy-plant": {
+    "en": "Frenzy Plant",
+    "fr": "Végé-Attaque"
+  },
+  "bulk-up": {
+    "en": "Bulk Up",
+    "fr": "Gonflette"
+  },
+  "bounce": {
+    "en": "Bounce",
+    "fr": "Rebond"
+  },
+  "mud-shot": {
+    "en": "Mud Shot",
+    "fr": "Tir de Boue"
+  },
+  "poison-tail": {
+    "en": "Poison Tail",
+    "fr": "Queue-Poison"
+  },
+  "covet": {
+    "en": "Covet",
+    "fr": "Implore"
+  },
+  "volt-tackle": {
+    "en": "Volt Tackle",
+    "fr": "Électacle"
+  },
+  "magical-leaf": {
+    "en": "Magical Leaf",
+    "fr": "Feuille Magik"
+  },
+  "water-sport": {
+    "en": "Water Sport",
+    "fr": "Tourniquet"
+  },
+  "calm-mind": {
+    "en": "Calm Mind",
+    "fr": "Plénitude"
+  },
+  "leaf-blade": {
+    "en": "Leaf Blade",
+    "fr": "Lame Feuille"
+  },
+  "dragon-dance": {
+    "en": "Dragon Dance",
+    "fr": "Danse Draco"
+  },
+  "rock-blast": {
+    "en": "Rock Blast",
+    "fr": "Boule Roc"
+  },
+  "shock-wave": {
+    "en": "Shock Wave",
+    "fr": "Onde de Choc"
+  },
+  "water-pulse": {
+    "en": "Water Pulse",
+    "fr": "Vibraqua"
+  },
+  "doom-desire": {
+    "en": "Doom Desire",
+    "fr": "Vœu Destructeur"
+  },
+  "psycho-boost": {
+    "en": "Psycho Boost",
+    "fr": "Psycho-Boost"
+  },
+  "roost": {
+    "en": "Roost",
+    "fr": "Atterrissage"
+  },
+  "gravity": {
+    "en": "Gravity",
+    "fr": "Gravité"
+  },
+  "miracle-eye": {
+    "en": "Miracle Eye",
+    "fr": "Œil Miracle"
+  },
+  "wake-up-slap": {
+    "en": "Wake-Up Slap",
+    "fr": "Réveil Forcé"
+  },
+  "hammer-arm": {
+    "en": "Hammer Arm",
+    "fr": "Marto-Poing"
+  },
+  "gyro-ball": {
+    "en": "Gyro Ball",
+    "fr": "Gyroballe"
+  },
+  "healing-wish": {
+    "en": "Healing Wish",
+    "fr": "Vœu Soin"
+  },
+  "brine": {
+    "en": "Brine",
+    "fr": "Saumure"
+  },
+  "natural-gift": {
+    "en": "Natural Gift",
+    "fr": "Don Naturel"
+  },
+  "feint": {
+    "en": "Feint",
+    "fr": "Ruse"
+  },
+  "pluck": {
+    "en": "Pluck",
+    "fr": "Picore"
+  },
+  "tailwind": {
+    "en": "Tailwind",
+    "fr": "Vent Arrière"
+  },
+  "acupressure": {
+    "en": "Acupressure",
+    "fr": "Acupression"
+  },
+  "metal-burst": {
+    "en": "Metal Burst",
+    "fr": "Fulmifer"
+  },
+  "u-turn": {
+    "en": "U-turn",
+    "fr": "Demi-Tour"
+  },
+  "close-combat": {
+    "en": "Close Combat",
+    "fr": "Close Combat"
+  },
+  "payback": {
+    "en": "Payback",
+    "fr": "Représailles"
+  },
+  "assurance": {
+    "en": "Assurance",
+    "fr": "Assurance"
+  },
+  "embargo": {
+    "en": "Embargo",
+    "fr": "Embargo"
+  },
+  "fling": {
+    "en": "Fling",
+    "fr": "Dégommage"
+  },
+  "psycho-shift": {
+    "en": "Psycho Shift",
+    "fr": "Échange Psy"
+  },
+  "trump-card": {
+    "en": "Trump Card",
+    "fr": "Atout"
+  },
+  "heal-block": {
+    "en": "Heal Block",
+    "fr": "Anti-Soin"
+  },
+  "wring-out": {
+    "en": "Wring Out",
+    "fr": "Essorage"
+  },
+  "power-trick": {
+    "en": "Power Trick",
+    "fr": "Astuce Force"
+  },
+  "gastro-acid": {
+    "en": "Gastro Acid",
+    "fr": "Suc Digestif"
+  },
+  "lucky-chant": {
+    "en": "Lucky Chant",
+    "fr": "Air Veinard"
+  },
+  "me-first": {
+    "en": "Me First",
+    "fr": "Moi d’Abord"
+  },
+  "copycat": {
+    "en": "Copycat",
+    "fr": "Photocopie"
+  },
+  "power-swap": {
+    "en": "Power Swap",
+    "fr": "Permuforce"
+  },
+  "guard-swap": {
+    "en": "Guard Swap",
+    "fr": "Permugarde"
+  },
+  "punishment": {
+    "en": "Punishment",
+    "fr": "Punition"
+  },
+  "last-resort": {
+    "en": "Last Resort",
+    "fr": "Dernier Recours"
+  },
+  "worry-seed": {
+    "en": "Worry Seed",
+    "fr": "Soucigraine"
+  },
+  "sucker-punch": {
+    "en": "Sucker Punch",
+    "fr": "Coup Bas"
+  },
+  "toxic-spikes": {
+    "en": "Toxic Spikes",
+    "fr": "Pics Toxik"
+  },
+  "heart-swap": {
+    "en": "Heart Swap",
+    "fr": "Permucœur"
+  },
+  "aqua-ring": {
+    "en": "Aqua Ring",
+    "fr": "Anneau Hydro"
+  },
+  "magnet-rise": {
+    "en": "Magnet Rise",
+    "fr": "Vol Magnétik"
+  },
+  "flare-blitz": {
+    "en": "Flare Blitz",
+    "fr": "Boutefeu"
+  },
+  "force-palm": {
+    "en": "Force Palm",
+    "fr": "Forte-Paume"
+  },
+  "aura-sphere": {
+    "en": "Aura Sphere",
+    "fr": "Aurasphère"
+  },
+  "rock-polish": {
+    "en": "Rock Polish",
+    "fr": "Poliroche"
+  },
+  "poison-jab": {
+    "en": "Poison Jab",
+    "fr": "Direct Toxik"
+  },
+  "dark-pulse": {
+    "en": "Dark Pulse",
+    "fr": "Vibrobscur"
+  },
+  "night-slash": {
+    "en": "Night Slash",
+    "fr": "Tranche-Nuit"
+  },
+  "aqua-tail": {
+    "en": "Aqua Tail",
+    "fr": "Hydro-Queue"
+  },
+  "seed-bomb": {
+    "en": "Seed Bomb",
+    "fr": "Canon Graine"
+  },
+  "air-slash": {
+    "en": "Air Slash",
+    "fr": "Lame d’Air"
+  },
+  "x-scissor": {
+    "en": "X-Scissor",
+    "fr": "Plaie Croix"
+  },
+  "bug-buzz": {
+    "en": "Bug Buzz",
+    "fr": "Bourdon"
+  },
+  "dragon-pulse": {
+    "en": "Dragon Pulse",
+    "fr": "Draco-Choc"
+  },
+  "dragon-rush": {
+    "en": "Dragon Rush",
+    "fr": "Draco-Charge"
+  },
+  "power-gem": {
+    "en": "Power Gem",
+    "fr": "Rayon Gemme"
+  },
+  "drain-punch": {
+    "en": "Drain Punch",
+    "fr": "Vampi-Poing"
+  },
+  "vacuum-wave": {
+    "en": "Vacuum Wave",
+    "fr": "Onde Vide"
+  },
+  "focus-blast": {
+    "en": "Focus Blast",
+    "fr": "Exploforce"
+  },
+  "energy-ball": {
+    "en": "Energy Ball",
+    "fr": "Éco-Sphère"
+  },
+  "brave-bird": {
+    "en": "Brave Bird",
+    "fr": "Rapace"
+  },
+  "earth-power": {
+    "en": "Earth Power",
+    "fr": "Telluriforce"
+  },
+  "switcheroo": {
+    "en": "Switcheroo",
+    "fr": "Passe-Passe"
+  },
+  "giga-impact": {
+    "en": "Giga Impact",
+    "fr": "Giga Impact"
+  },
+  "nasty-plot": {
+    "en": "Nasty Plot",
+    "fr": "Machination"
+  },
+  "bullet-punch": {
+    "en": "Bullet Punch",
+    "fr": "Pisto-Poing"
+  },
+  "avalanche": {
+    "en": "Avalanche",
+    "fr": "Avalanche"
+  },
+  "ice-shard": {
+    "en": "Ice Shard",
+    "fr": "Éclats Glace"
+  },
+  "shadow-claw": {
+    "en": "Shadow Claw",
+    "fr": "Griffe Ombre"
+  },
+  "thunder-fang": {
+    "en": "Thunder Fang",
+    "fr": "Crocs Éclair"
+  },
+  "ice-fang": {
+    "en": "Ice Fang",
+    "fr": "Crocs Givre"
+  },
+  "fire-fang": {
+    "en": "Fire Fang",
+    "fr": "Crocs Feu"
+  },
+  "shadow-sneak": {
+    "en": "Shadow Sneak",
+    "fr": "Ombre Portée"
+  },
+  "mud-bomb": {
+    "en": "Mud Bomb",
+    "fr": "Boue-Bombe"
+  },
+  "psycho-cut": {
+    "en": "Psycho Cut",
+    "fr": "Coupe Psycho"
+  },
+  "zen-headbutt": {
+    "en": "Zen Headbutt",
+    "fr": "Psykoud’Boul"
+  },
+  "mirror-shot": {
+    "en": "Mirror Shot",
+    "fr": "Miroi-Tir"
+  },
+  "flash-cannon": {
+    "en": "Flash Cannon",
+    "fr": "Luminocanon"
+  },
+  "rock-climb": {
+    "en": "Rock Climb",
+    "fr": "Escalade"
+  },
+  "defog": {
+    "en": "Defog",
+    "fr": "Anti-Brume"
+  },
+  "trick-room": {
+    "en": "Trick Room",
+    "fr": "Distorsion"
+  },
+  "draco-meteor": {
+    "en": "Draco Meteor",
+    "fr": "Draco-Météore"
+  },
+  "discharge": {
+    "en": "Discharge",
+    "fr": "Coup d’Jus"
+  },
+  "lava-plume": {
+    "en": "Lava Plume",
+    "fr": "Ébullilave"
+  },
+  "leaf-storm": {
+    "en": "Leaf Storm",
+    "fr": "Tempête Verte"
+  },
+  "power-whip": {
+    "en": "Power Whip",
+    "fr": "Mégafouet"
+  },
+  "rock-wrecker": {
+    "en": "Rock Wrecker",
+    "fr": "Roc-Boulet"
+  },
+  "cross-poison": {
+    "en": "Cross Poison",
+    "fr": "Poison Croix"
+  },
+  "gunk-shot": {
+    "en": "Gunk Shot",
+    "fr": "Détricanon"
+  },
+  "iron-head": {
+    "en": "Iron Head",
+    "fr": "Tête de Fer"
+  },
+  "magnet-bomb": {
+    "en": "Magnet Bomb",
+    "fr": "Bombe Aimant"
+  },
+  "stone-edge": {
+    "en": "Stone Edge",
+    "fr": "Lame de Roc"
+  },
+  "captivate": {
+    "en": "Captivate",
+    "fr": "Séduction"
+  },
+  "stealth-rock": {
+    "en": "Stealth Rock",
+    "fr": "Piège de Roc"
+  },
+  "grass-knot": {
+    "en": "Grass Knot",
+    "fr": "Nœud Herbe"
+  },
+  "chatter": {
+    "en": "Chatter",
+    "fr": "Babil"
+  },
+  "judgment": {
+    "en": "Judgment",
+    "fr": "Jugement"
+  },
+  "bug-bite": {
+    "en": "Bug Bite",
+    "fr": "Piqûre"
+  },
+  "charge-beam": {
+    "en": "Charge Beam",
+    "fr": "Rayon Chargé"
+  },
+  "wood-hammer": {
+    "en": "Wood Hammer",
+    "fr": "Martobois"
+  },
+  "aqua-jet": {
+    "en": "Aqua Jet",
+    "fr": "Aqua-Jet"
+  },
+  "attack-order": {
+    "en": "Attack Order",
+    "fr": "Appel Attaque"
+  },
+  "defend-order": {
+    "en": "Defend Order",
+    "fr": "Appel Défense"
+  },
+  "heal-order": {
+    "en": "Heal Order",
+    "fr": "Appel Soins"
+  },
+  "head-smash": {
+    "en": "Head Smash",
+    "fr": "Fracass’Tête"
+  },
+  "double-hit": {
+    "en": "Double Hit",
+    "fr": "Coup Double"
+  },
+  "roar-of-time": {
+    "en": "Roar of Time",
+    "fr": "Hurle-Temps"
+  },
+  "spacial-rend": {
+    "en": "Spacial Rend",
+    "fr": "Spatio-Rift"
+  },
+  "lunar-dance": {
+    "en": "Lunar Dance",
+    "fr": "Danse Lune"
+  },
+  "crush-grip": {
+    "en": "Crush Grip",
+    "fr": "Presse"
+  },
+  "magma-storm": {
+    "en": "Magma Storm",
+    "fr": "Vortex Magma"
+  },
+  "dark-void": {
+    "en": "Dark Void",
+    "fr": "Trou Noir"
+  },
+  "seed-flare": {
+    "en": "Seed Flare",
+    "fr": "Fulmigraine"
+  },
+  "ominous-wind": {
+    "en": "Ominous Wind",
+    "fr": "Vent Mauvais"
+  },
+  "shadow-force": {
+    "en": "Shadow Force",
+    "fr": "Revenant"
+  },
+  "hone-claws": {
+    "en": "Hone Claws",
+    "fr": "Aiguisage"
+  },
+  "wide-guard": {
+    "en": "Wide Guard",
+    "fr": "Garde Large"
+  },
+  "guard-split": {
+    "en": "Guard Split",
+    "fr": "Partage Garde"
+  },
+  "power-split": {
+    "en": "Power Split",
+    "fr": "Partage Force"
+  },
+  "wonder-room": {
+    "en": "Wonder Room",
+    "fr": "Zone Étrange"
+  },
+  "psyshock": {
+    "en": "Psyshock",
+    "fr": "Choc Psy"
+  },
+  "venoshock": {
+    "en": "Venoshock",
+    "fr": "Choc Venin"
+  },
+  "autotomize": {
+    "en": "Autotomize",
+    "fr": "Allègement"
+  },
+  "rage-powder": {
+    "en": "Rage Powder",
+    "fr": "Poudre Fureur"
+  },
+  "telekinesis": {
+    "en": "Telekinesis",
+    "fr": "Lévikinésie"
+  },
+  "magic-room": {
+    "en": "Magic Room",
+    "fr": "Zone Magique"
+  },
+  "smack-down": {
+    "en": "Smack Down",
+    "fr": "Anti-Air"
+  },
+  "storm-throw": {
+    "en": "Storm Throw",
+    "fr": "Yama Arashi"
+  },
+  "flame-burst": {
+    "en": "Flame Burst",
+    "fr": "Rebondifeu"
+  },
+  "sludge-wave": {
+    "en": "Sludge Wave",
+    "fr": "Cradovague"
+  },
+  "quiver-dance": {
+    "en": "Quiver Dance",
+    "fr": "Papillodanse"
+  },
+  "heavy-slam": {
+    "en": "Heavy Slam",
+    "fr": "Tacle Lourd"
+  },
+  "synchronoise": {
+    "en": "Synchronoise",
+    "fr": "Synchropeine"
+  },
+  "electro-ball": {
+    "en": "Electro Ball",
+    "fr": "Boule Élek"
+  },
+  "soak": {
+    "en": "Soak",
+    "fr": "Détrempage"
+  },
+  "flame-charge": {
+    "en": "Flame Charge",
+    "fr": "Nitrocharge"
+  },
+  "coil": {
+    "en": "Coil",
+    "fr": "Enroulement"
+  },
+  "low-sweep": {
+    "en": "Low Sweep",
+    "fr": "Balayette"
+  },
+  "acid-spray": {
+    "en": "Acid Spray",
+    "fr": "Bombe Acide"
+  },
+  "foul-play": {
+    "en": "Foul Play",
+    "fr": "Tricherie"
+  },
+  "simple-beam": {
+    "en": "Simple Beam",
+    "fr": "Rayon Simple"
+  },
+  "entrainment": {
+    "en": "Entrainment",
+    "fr": "Ten-Danse"
+  },
+  "after-you": {
+    "en": "After You",
+    "fr": "Après Vous"
+  },
+  "round": {
+    "en": "Round",
+    "fr": "Chant Canon"
+  },
+  "echoed-voice": {
+    "en": "Echoed Voice",
+    "fr": "Écho"
+  },
+  "chip-away": {
+    "en": "Chip Away",
+    "fr": "Attrition"
+  },
+  "clear-smog": {
+    "en": "Clear Smog",
+    "fr": "Bain de Smog"
+  },
+  "stored-power": {
+    "en": "Stored Power",
+    "fr": "Force Ajoutée"
+  },
+  "quick-guard": {
+    "en": "Quick Guard",
+    "fr": "Prévention"
+  },
+  "ally-switch": {
+    "en": "Ally Switch",
+    "fr": "Interversion"
+  },
+  "scald": {
+    "en": "Scald",
+    "fr": "Ébullition"
+  },
+  "shell-smash": {
+    "en": "Shell Smash",
+    "fr": "Exuviation"
+  },
+  "heal-pulse": {
+    "en": "Heal Pulse",
+    "fr": "Vibra Soin"
+  },
+  "hex": {
+    "en": "Hex",
+    "fr": "Châtiment"
+  },
+  "sky-drop": {
+    "en": "Sky Drop",
+    "fr": "Chute Libre"
+  },
+  "shift-gear": {
+    "en": "Shift Gear",
+    "fr": "Chgt Vitesse"
+  },
+  "circle-throw": {
+    "en": "Circle Throw",
+    "fr": "Projection"
+  },
+  "incinerate": {
+    "en": "Incinerate",
+    "fr": "Calcination"
+  },
+  "quash": {
+    "en": "Quash",
+    "fr": "À la Queue"
+  },
+  "acrobatics": {
+    "en": "Acrobatics",
+    "fr": "Acrobatie"
+  },
+  "reflect-type": {
+    "en": "Reflect Type",
+    "fr": "Copie-Type"
+  },
+  "retaliate": {
+    "en": "Retaliate",
+    "fr": "Vengeance"
+  },
+  "final-gambit": {
+    "en": "Final Gambit",
+    "fr": "Tout ou Rien"
+  },
+  "bestow": {
+    "en": "Bestow",
+    "fr": "Passe-Cadeau"
+  },
+  "inferno": {
+    "en": "Inferno",
+    "fr": "Feu d’Enfer"
+  },
+  "water-pledge": {
+    "en": "Water Pledge",
+    "fr": "Aire d’Eau"
+  },
+  "fire-pledge": {
+    "en": "Fire Pledge",
+    "fr": "Aire de Feu"
+  },
+  "grass-pledge": {
+    "en": "Grass Pledge",
+    "fr": "Aire d’Herbe"
+  },
+  "volt-switch": {
+    "en": "Volt Switch",
+    "fr": "Change Éclair"
+  },
+  "struggle-bug": {
+    "en": "Struggle Bug",
+    "fr": "Survinsecte"
+  },
+  "bulldoze": {
+    "en": "Bulldoze",
+    "fr": "Piétisol"
+  },
+  "frost-breath": {
+    "en": "Frost Breath",
+    "fr": "Souffle Glacé"
+  },
+  "dragon-tail": {
+    "en": "Dragon Tail",
+    "fr": "Draco-Queue"
+  },
+  "work-up": {
+    "en": "Work Up",
+    "fr": "Rengorgement"
+  },
+  "electroweb": {
+    "en": "Electroweb",
+    "fr": "Toile Élek"
+  },
+  "wild-charge": {
+    "en": "Wild Charge",
+    "fr": "Éclair Fou"
+  },
+  "drill-run": {
+    "en": "Drill Run",
+    "fr": "Tunnelier"
+  },
+  "dual-chop": {
+    "en": "Dual Chop",
+    "fr": "Double Baffe"
+  },
+  "heart-stamp": {
+    "en": "Heart Stamp",
+    "fr": "Crève-Cœur"
+  },
+  "horn-leech": {
+    "en": "Horn Leech",
+    "fr": "Encornebois"
+  },
+  "sacred-sword": {
+    "en": "Sacred Sword",
+    "fr": "Lame Sainte"
+  },
+  "razor-shell": {
+    "en": "Razor Shell",
+    "fr": "Coqui-Lame"
+  },
+  "heat-crash": {
+    "en": "Heat Crash",
+    "fr": "Tacle Feu"
+  },
+  "leaf-tornado": {
+    "en": "Leaf Tornado",
+    "fr": "Phytomixeur"
+  },
+  "steamroller": {
+    "en": "Steamroller",
+    "fr": "Bulldoboule"
+  },
+  "cotton-guard": {
+    "en": "Cotton Guard",
+    "fr": "Cotogarde"
+  },
+  "night-daze": {
+    "en": "Night Daze",
+    "fr": "Explonuit"
+  },
+  "psystrike": {
+    "en": "Psystrike",
+    "fr": "Frappe Psy"
+  },
+  "tail-slap": {
+    "en": "Tail Slap",
+    "fr": "Plumo-Queue"
+  },
+  "hurricane": {
+    "en": "Hurricane",
+    "fr": "Vent Violent"
+  },
+  "head-charge": {
+    "en": "Head Charge",
+    "fr": "Peignée"
+  },
+  "gear-grind": {
+    "en": "Gear Grind",
+    "fr": "Lancécrou"
+  },
+  "searing-shot": {
+    "en": "Searing Shot",
+    "fr": "Incendie"
+  },
+  "techno-blast": {
+    "en": "Techno Blast",
+    "fr": "Techno-Buster"
+  },
+  "relic-song": {
+    "en": "Relic Song",
+    "fr": "Chant Antique"
+  },
+  "secret-sword": {
+    "en": "Secret Sword",
+    "fr": "Lame Ointe"
+  },
+  "glaciate": {
+    "en": "Glaciate",
+    "fr": "Ère Glaciaire"
+  },
+  "bolt-strike": {
+    "en": "Bolt Strike",
+    "fr": "Charge Foudre"
+  },
+  "blue-flare": {
+    "en": "Blue Flare",
+    "fr": "Flamme Bleue"
+  },
+  "fiery-dance": {
+    "en": "Fiery Dance",
+    "fr": "Danse du Feu"
+  },
+  "freeze-shock": {
+    "en": "Freeze Shock",
+    "fr": "Éclair Gelé"
+  },
+  "ice-burn": {
+    "en": "Ice Burn",
+    "fr": "Feu Glacé"
+  },
+  "snarl": {
+    "en": "Snarl",
+    "fr": "Aboiement"
+  },
+  "icicle-crash": {
+    "en": "Icicle Crash",
+    "fr": "Chute Glace"
+  },
+  "v-create": {
+    "en": "V-create",
+    "fr": "Coup Victoire"
+  },
+  "fusion-flare": {
+    "en": "Fusion Flare",
+    "fr": "Flamme Croix"
+  },
+  "fusion-bolt": {
+    "en": "Fusion Bolt",
+    "fr": "Éclair Croix"
+  },
+  "flying-press": {
+    "en": "Flying Press",
+    "fr": "Flying Press"
+  },
+  "mat-block": {
+    "en": "Mat Block",
+    "fr": "Tatamigaeshi"
+  },
+  "belch": {
+    "en": "Belch",
+    "fr": "Éructation"
+  },
+  "rototiller": {
+    "en": "Rototiller",
+    "fr": "Fertilisation"
+  },
+  "sticky-web": {
+    "en": "Sticky Web",
+    "fr": "Toile Gluante"
+  },
+  "fell-stinger": {
+    "en": "Fell Stinger",
+    "fr": "Dard Mortel"
+  },
+  "phantom-force": {
+    "en": "Phantom Force",
+    "fr": "Hantise"
+  },
+  "trick-or-treat": {
+    "en": "Trick-or-Treat",
+    "fr": "Halloween"
+  },
+  "noble-roar": {
+    "en": "Noble Roar",
+    "fr": "Râle Mâle"
+  },
+  "ion-deluge": {
+    "en": "Ion Deluge",
+    "fr": "Déluge Plasmique"
+  },
+  "parabolic-charge": {
+    "en": "Parabolic Charge",
+    "fr": "Parabocharge"
+  },
+  "forests-curse": {
+    "en": "Forest’s Curse",
+    "fr": "Maléfice Sylvain"
+  },
+  "petal-blizzard": {
+    "en": "Petal Blizzard",
+    "fr": "Tempête Florale"
+  },
+  "freeze-dry": {
+    "en": "Freeze-Dry",
+    "fr": "Lyophilisation"
+  },
+  "disarming-voice": {
+    "en": "Disarming Voice",
+    "fr": "Voix Enjôleuse"
+  },
+  "parting-shot": {
+    "en": "Parting Shot",
+    "fr": "Dernier Mot"
+  },
+  "topsy-turvy": {
+    "en": "Topsy-Turvy",
+    "fr": "Renversement"
+  },
+  "draining-kiss": {
+    "en": "Draining Kiss",
+    "fr": "Vampibaiser"
+  },
+  "crafty-shield": {
+    "en": "Crafty Shield",
+    "fr": "Vigilance"
+  },
+  "flower-shield": {
+    "en": "Flower Shield",
+    "fr": "Garde Florale"
+  },
+  "grassy-terrain": {
+    "en": "Grassy Terrain",
+    "fr": "Champ Herbu"
+  },
+  "misty-terrain": {
+    "en": "Misty Terrain",
+    "fr": "Champ Brumeux"
+  },
+  "electrify": {
+    "en": "Electrify",
+    "fr": "Électrisation"
+  },
+  "play-rough": {
+    "en": "Play Rough",
+    "fr": "Câlinerie"
+  },
+  "fairy-wind": {
+    "en": "Fairy Wind",
+    "fr": "Vent Féérique"
+  },
+  "moonblast": {
+    "en": "Moonblast",
+    "fr": "Pouvoir Lunaire"
+  },
+  "boomburst": {
+    "en": "Boomburst",
+    "fr": "Bang Sonique"
+  },
+  "fairy-lock": {
+    "en": "Fairy Lock",
+    "fr": "Verrou Enchanté"
+  },
+  "kings-shield": {
+    "en": "King’s Shield",
+    "fr": "Bouclier Royal"
+  },
+  "play-nice": {
+    "en": "Play Nice",
+    "fr": "Camaraderie"
+  },
+  "confide": {
+    "en": "Confide",
+    "fr": "Confidence"
+  },
+  "diamond-storm": {
+    "en": "Diamond Storm",
+    "fr": "Orage Adamantin"
+  },
+  "steam-eruption": {
+    "en": "Steam Eruption",
+    "fr": "Jet de Vapeur"
+  },
+  "hyperspace-hole": {
+    "en": "Hyperspace Hole",
+    "fr": "TrouDimensionnel"
+  },
+  "water-shuriken": {
+    "en": "Water Shuriken",
+    "fr": "Sheauriken"
+  },
+  "mystical-fire": {
+    "en": "Mystical Fire",
+    "fr": "Feu Ensorcelé"
+  },
+  "spiky-shield": {
+    "en": "Spiky Shield",
+    "fr": "Pico-Défense"
+  },
+  "aromatic-mist": {
+    "en": "Aromatic Mist",
+    "fr": "Brume Capiteuse"
+  },
+  "eerie-impulse": {
+    "en": "Eerie Impulse",
+    "fr": "Ondes Étranges"
+  },
+  "venom-drench": {
+    "en": "Venom Drench",
+    "fr": "Piège de Venin"
+  },
+  "powder": {
+    "en": "Powder",
+    "fr": "Nuée de Poudre"
+  },
+  "geomancy": {
+    "en": "Geomancy",
+    "fr": "Géo-Contrôle"
+  },
+  "magnetic-flux": {
+    "en": "Magnetic Flux",
+    "fr": "Magné-Contrôle"
+  },
+  "happy-hour": {
+    "en": "Happy Hour",
+    "fr": "Étrennes"
+  },
+  "electric-terrain": {
+    "en": "Electric Terrain",
+    "fr": "Champ Électrifié"
+  },
+  "dazzling-gleam": {
+    "en": "Dazzling Gleam",
+    "fr": "Éclat Magique"
+  },
+  "celebrate": {
+    "en": "Celebrate",
+    "fr": "Célébration"
+  },
+  "hold-hands": {
+    "en": "Hold Hands",
+    "fr": "Mains Jointes"
+  },
+  "baby-doll-eyes": {
+    "en": "Baby-Doll Eyes",
+    "fr": "Regard Touchant"
+  },
+  "nuzzle": {
+    "en": "Nuzzle",
+    "fr": "Frotte-Frimousse"
+  },
+  "hold-back": {
+    "en": "Hold Back",
+    "fr": "Retenue"
+  },
+  "infestation": {
+    "en": "Infestation",
+    "fr": "Harcèlement"
+  },
+  "power-up-punch": {
+    "en": "Power-Up Punch",
+    "fr": "Poing Boost"
+  },
+  "oblivion-wing": {
+    "en": "Oblivion Wing",
+    "fr": "Mort’Ailes"
+  },
+  "thousand-arrows": {
+    "en": "Thousand Arrows",
+    "fr": "Myria-Flèches"
+  },
+  "thousand-waves": {
+    "en": "Thousand Waves",
+    "fr": "Myria-Vagues"
+  },
+  "lands-wrath": {
+    "en": "Land’s Wrath",
+    "fr": "Force Chtonienne"
+  },
+  "light-of-ruin": {
+    "en": "Light of Ruin",
+    "fr": "Lumière du Néant"
+  },
+  "origin-pulse": {
+    "en": "Origin Pulse",
+    "fr": "Onde Originelle"
+  },
+  "precipice-blades": {
+    "en": "Precipice Blades",
+    "fr": "Lame Pangéenne"
+  },
+  "dragon-ascent": {
+    "en": "Dragon Ascent",
+    "fr": "Draco-Ascension"
+  },
+  "hyperspace-fury": {
+    "en": "Hyperspace Fury",
+    "fr": "Furie Dimension"
+  },
+  "breakneck-blitz--physical": {
+    "en": "Breakneck Blitz",
+    "fr": "Turbo-Charge Bulldozer"
+  },
+  "breakneck-blitz--special": {
+    "en": "Breakneck Blitz",
+    "fr": "Turbo-Charge Bulldozer"
+  },
+  "all-out-pummeling--physical": {
+    "en": "All-Out Pummeling",
+    "fr": "Combo Hyper-Furie"
+  },
+  "all-out-pummeling--special": {
+    "en": "All-Out Pummeling",
+    "fr": "Combo Hyper-Furie"
+  },
+  "supersonic-skystrike--physical": {
+    "en": "Supersonic Skystrike",
+    "fr": "Piqué Supersonique"
+  },
+  "supersonic-skystrike--special": {
+    "en": "Supersonic Skystrike",
+    "fr": "Piqué Supersonique"
+  },
+  "acid-downpour--physical": {
+    "en": "Acid Downpour",
+    "fr": "Déluge Causti-Toxique"
+  },
+  "acid-downpour--special": {
+    "en": "Acid Downpour",
+    "fr": "Déluge Causti-Toxique"
+  },
+  "tectonic-rage--physical": {
+    "en": "Tectonic Rage",
+    "fr": "Éruption Géo-Sismique"
+  },
+  "tectonic-rage--special": {
+    "en": "Tectonic Rage",
+    "fr": "Éruption Géo-Sismique"
+  },
+  "continental-crush--physical": {
+    "en": "Continental Crush",
+    "fr": "Apocalypse Gigalithique"
+  },
+  "continental-crush--special": {
+    "en": "Continental Crush",
+    "fr": "Apocalypse Gigalithique"
+  },
+  "savage-spin-out--physical": {
+    "en": "Savage Spin-Out",
+    "fr": "Cocon Fatal"
+  },
+  "savage-spin-out--special": {
+    "en": "Savage Spin-Out",
+    "fr": "Cocon Fatal"
+  },
+  "never-ending-nightmare--physical": {
+    "en": "Never-Ending Nightmare",
+    "fr": "Appel des Ombres Éternelles"
+  },
+  "never-ending-nightmare--special": {
+    "en": "Never-Ending Nightmare",
+    "fr": "Appel des Ombres Éternelles"
+  },
+  "corkscrew-crash--physical": {
+    "en": "Corkscrew Crash",
+    "fr": "Vrille Maximum"
+  },
+  "corkscrew-crash--special": {
+    "en": "Corkscrew Crash",
+    "fr": "Vrille Maximum"
+  },
+  "inferno-overdrive--physical": {
+    "en": "Inferno Overdrive",
+    "fr": "Pyro-Explosion Cataclysmique"
+  },
+  "inferno-overdrive--special": {
+    "en": "Inferno Overdrive",
+    "fr": "Pyro-Explosion Cataclysmique"
+  },
+  "hydro-vortex--physical": {
+    "en": "Hydro Vortex",
+    "fr": "Super Tourbillon Abyssal"
+  },
+  "hydro-vortex--special": {
+    "en": "Hydro Vortex",
+    "fr": "Super Tourbillon Abyssal"
+  },
+  "bloom-doom--physical": {
+    "en": "Bloom Doom",
+    "fr": "Pétalexplosion Éblouissante"
+  },
+  "bloom-doom--special": {
+    "en": "Bloom Doom",
+    "fr": "Pétalexplosion Éblouissante"
+  },
+  "gigavolt-havoc--physical": {
+    "en": "Gigavolt Havoc",
+    "fr": "Fulguro-Lance Gigavolt"
+  },
+  "gigavolt-havoc--special": {
+    "en": "Gigavolt Havoc",
+    "fr": "Fulguro-Lance Gigavolt"
+  },
+  "shattered-psyche--physical": {
+    "en": "Shattered Psyche",
+    "fr": "Psycho-Pulvérisation EX"
+  },
+  "shattered-psyche--special": {
+    "en": "Shattered Psyche",
+    "fr": "Psycho-Pulvérisation EX"
+  },
+  "subzero-slammer--physical": {
+    "en": "Subzero Slammer",
+    "fr": "Laser Cryogénique"
+  },
+  "subzero-slammer--special": {
+    "en": "Subzero Slammer",
+    "fr": "Laser Cryogénique"
+  },
+  "devastating-drake--physical": {
+    "en": "Devastating Drake",
+    "fr": "Chaos Draconique"
+  },
+  "devastating-drake--special": {
+    "en": "Devastating Drake",
+    "fr": "Chaos Draconique"
+  },
+  "black-hole-eclipse--physical": {
+    "en": "Black Hole Eclipse",
+    "fr": "Trou Noir des Ombres"
+  },
+  "black-hole-eclipse--special": {
+    "en": "Black Hole Eclipse",
+    "fr": "Trou Noir des Ombres"
+  },
+  "twinkle-tackle--physical": {
+    "en": "Twinkle Tackle",
+    "fr": "Impact Choupinova"
+  },
+  "twinkle-tackle--special": {
+    "en": "Twinkle Tackle",
+    "fr": "Impact Choupinova"
+  },
+  "catastropika": {
+    "en": "Catastropika",
+    "fr": "Pikachute Foudroyante"
+  },
+  "shore-up": {
+    "en": "Shore Up",
+    "fr": "Amass’Sable"
+  },
+  "first-impression": {
+    "en": "First Impression",
+    "fr": "Escarmouche"
+  },
+  "baneful-bunker": {
+    "en": "Baneful Bunker",
+    "fr": "Blockhaus"
+  },
+  "spirit-shackle": {
+    "en": "Spirit Shackle",
+    "fr": "Tisse Ombre"
+  },
+  "darkest-lariat": {
+    "en": "Darkest Lariat",
+    "fr": "Dark Lariat"
+  },
+  "sparkling-aria": {
+    "en": "Sparkling Aria",
+    "fr": "Aria de l’Écume"
+  },
+  "ice-hammer": {
+    "en": "Ice Hammer",
+    "fr": "Marteau de Glace"
+  },
+  "floral-healing": {
+    "en": "Floral Healing",
+    "fr": "Soin Floral"
+  },
+  "high-horsepower": {
+    "en": "High Horsepower",
+    "fr": "Cavalerie Lourde"
+  },
+  "strength-sap": {
+    "en": "Strength Sap",
+    "fr": "Vole-Force"
+  },
+  "solar-blade": {
+    "en": "Solar Blade",
+    "fr": "Lame Solaire"
+  },
+  "leafage": {
+    "en": "Leafage",
+    "fr": "Feuillage"
+  },
+  "spotlight": {
+    "en": "Spotlight",
+    "fr": "Projecteur"
+  },
+  "toxic-thread": {
+    "en": "Toxic Thread",
+    "fr": "Fil Toxique"
+  },
+  "laser-focus": {
+    "en": "Laser Focus",
+    "fr": "Affilage"
+  },
+  "gear-up": {
+    "en": "Gear Up",
+    "fr": "Engrenage"
+  },
+  "throat-chop": {
+    "en": "Throat Chop",
+    "fr": "Exécu-Son"
+  },
+  "pollen-puff": {
+    "en": "Pollen Puff",
+    "fr": "Boule Pollen"
+  },
+  "anchor-shot": {
+    "en": "Anchor Shot",
+    "fr": "Ancrage"
+  },
+  "psychic-terrain": {
+    "en": "Psychic Terrain",
+    "fr": "Champ Psychique"
+  },
+  "lunge": {
+    "en": "Lunge",
+    "fr": "Furie-Bond"
+  },
+  "fire-lash": {
+    "en": "Fire Lash",
+    "fr": "Fouet de Feu"
+  },
+  "power-trip": {
+    "en": "Power Trip",
+    "fr": "Arrogance"
+  },
+  "burn-up": {
+    "en": "Burn Up",
+    "fr": "Flamme Ultime"
+  },
+  "speed-swap": {
+    "en": "Speed Swap",
+    "fr": "Permuvitesse"
+  },
+  "smart-strike": {
+    "en": "Smart Strike",
+    "fr": "Estocorne"
+  },
+  "purify": {
+    "en": "Purify",
+    "fr": "Purification"
+  },
+  "revelation-dance": {
+    "en": "Revelation Dance",
+    "fr": "Danse Éveil"
+  },
+  "core-enforcer": {
+    "en": "Core Enforcer",
+    "fr": "Sanction Suprême"
+  },
+  "trop-kick": {
+    "en": "Trop Kick",
+    "fr": "Botte Sucrette"
+  },
+  "instruct": {
+    "en": "Instruct",
+    "fr": "Sommation"
+  },
+  "beak-blast": {
+    "en": "Beak Blast",
+    "fr": "Bec-Canon"
+  },
+  "clanging-scales": {
+    "en": "Clanging Scales",
+    "fr": "Vibrécaille"
+  },
+  "dragon-hammer": {
+    "en": "Dragon Hammer",
+    "fr": "Draco-Marteau"
+  },
+  "brutal-swing": {
+    "en": "Brutal Swing",
+    "fr": "Centrifugifle"
+  },
+  "aurora-veil": {
+    "en": "Aurora Veil",
+    "fr": "Voile Aurore"
+  },
+  "sinister-arrow-raid": {
+    "en": "Sinister Arrow Raid",
+    "fr": "Fureur des Plumes Spectrales"
+  },
+  "malicious-moonsault": {
+    "en": "Malicious Moonsault",
+    "fr": "Dark Body Press"
+  },
+  "oceanic-operetta": {
+    "en": "Oceanic Operetta",
+    "fr": "Symphonie des Ondines"
+  },
+  "guardian-of-alola": {
+    "en": "Guardian of Alola",
+    "fr": "Colère du Gardien d’Alola"
+  },
+  "soul-stealing-7-star-strike": {
+    "en": "Soul-Stealing 7-Star Strike",
+    "fr": "Fauche-Âme des Sept Étoiles"
+  },
+  "stoked-sparksurfer": {
+    "en": "Stoked Sparksurfer",
+    "fr": "Électro-Surf Survolté"
+  },
+  "pulverizing-pancake": {
+    "en": "Pulverizing Pancake",
+    "fr": "Gare au Ronflex"
+  },
+  "extreme-evoboost": {
+    "en": "Extreme Evoboost",
+    "fr": "Neuf pour Un"
+  },
+  "genesis-supernova": {
+    "en": "Genesis Supernova",
+    "fr": "Supernova Originelle"
+  },
+  "shell-trap": {
+    "en": "Shell Trap",
+    "fr": "Carapiège"
+  },
+  "fleur-cannon": {
+    "en": "Fleur Cannon",
+    "fr": "Canon Floral"
+  },
+  "psychic-fangs": {
+    "en": "Psychic Fangs",
+    "fr": "Psycho-Croc"
+  },
+  "stomping-tantrum": {
+    "en": "Stomping Tantrum",
+    "fr": "Trépignement"
+  },
+  "shadow-bone": {
+    "en": "Shadow Bone",
+    "fr": "Os Ombre"
+  },
+  "accelerock": {
+    "en": "Accelerock",
+    "fr": "Vif Roc"
+  },
+  "liquidation": {
+    "en": "Liquidation",
+    "fr": "Aqua-Brèche"
+  },
+  "prismatic-laser": {
+    "en": "Prismatic Laser",
+    "fr": "Laser Prisme"
+  },
+  "spectral-thief": {
+    "en": "Spectral Thief",
+    "fr": "Clepto-Mânes"
+  },
+  "sunsteel-strike": {
+    "en": "Sunsteel Strike",
+    "fr": "Choc Météore"
+  },
+  "moongeist-beam": {
+    "en": "Moongeist Beam",
+    "fr": "Rayon Spectral"
+  },
+  "tearful-look": {
+    "en": "Tearful Look",
+    "fr": "Larme à l’Œil"
+  },
+  "zing-zap": {
+    "en": "Zing Zap",
+    "fr": "Électrikipik"
+  },
+  "natures-madness": {
+    "en": "Nature’s Madness",
+    "fr": "Ire de la Nature"
+  },
+  "multi-attack": {
+    "en": "Multi-Attack",
+    "fr": "Coup Varia-Type"
+  },
+  "10-000-000-volt-thunderbolt": {
+    "en": "10,000,000 Volt Thunderbolt",
+    "fr": "Giga-Tonnerre"
+  },
+  "mind-blown": {
+    "en": "Mind Blown",
+    "fr": "Caboche-Kaboum"
+  },
+  "plasma-fists": {
+    "en": "Plasma Fists",
+    "fr": "Plasma Punch"
+  },
+  "photon-geyser": {
+    "en": "Photon Geyser",
+    "fr": "Photo-Geyser"
+  },
+  "light-that-burns-the-sky": {
+    "en": "Light That Burns the Sky",
+    "fr": "Apocalypsis Luminis"
+  },
+  "searing-sunraze-smash": {
+    "en": "Searing Sunraze Smash",
+    "fr": "Hélio-Choc Dévastateur"
+  },
+  "menacing-moonraze-maelstrom": {
+    "en": "Menacing Moonraze Maelstrom",
+    "fr": "Rayons Séléno-Explosifs"
+  },
+  "lets-snuggle-forever": {
+    "en": "Let’s Snuggle Forever",
+    "fr": "Patati-Patattrape"
+  },
+  "splintered-stormshards": {
+    "en": "Splintered Stormshards",
+    "fr": "Hurlement des Roches-Lames"
+  },
+  "clangorous-soulblaze": {
+    "en": "Clangorous Soulblaze",
+    "fr": "Dracacophonie Flamboyante"
+  },
+  "zippy-zap": {
+    "en": "Zippy Zap",
+    "fr": "Pika-Sprint"
+  },
+  "splishy-splash": {
+    "en": "Splishy Splash",
+    "fr": "Pika-Splash"
+  },
+  "floaty-fall": {
+    "en": "Floaty Fall",
+    "fr": "Pika-Piqué"
+  },
+  "pika-papow": {
+    "en": "Pika Papow",
+    "fr": "Pika-Fracas"
+  },
+  "bouncy-bubble": {
+    "en": "Bouncy Bubble",
+    "fr": "Évo-Thalasso"
+  },
+  "buzzy-buzz": {
+    "en": "Buzzy Buzz",
+    "fr": "Évo-Dynamo"
+  },
+  "sizzly-slide": {
+    "en": "Sizzly Slide",
+    "fr": "Évo-Flambo"
+  },
+  "glitzy-glow": {
+    "en": "Glitzy Glow",
+    "fr": "Évo-Psycho"
+  },
+  "baddy-bad": {
+    "en": "Baddy Bad",
+    "fr": "Évo-Ténébro"
+  },
+  "sappy-seed": {
+    "en": "Sappy Seed",
+    "fr": "Évo-Écolo"
+  },
+  "freezy-frost": {
+    "en": "Freezy Frost",
+    "fr": "Évo-Congélo"
+  },
+  "sparkly-swirl": {
+    "en": "Sparkly Swirl",
+    "fr": "Évo-Fabulo"
+  },
+  "veevee-volley": {
+    "en": "Veevee Volley",
+    "fr": "Évo-Chardasso"
+  },
+  "double-iron-bash": {
+    "en": "Double Iron Bash",
+    "fr": "Écrous d’Poing"
+  },
+  "max-guard": {
+    "en": "Max Guard",
+    "fr": "Gardomax"
+  },
+  "dynamax-cannon": {
+    "en": "Dynamax Cannon",
+    "fr": "Canon Dynamax"
+  },
+  "snipe-shot": {
+    "en": "Snipe Shot",
+    "fr": "Tir de Précision"
+  },
+  "jaw-lock": {
+    "en": "Jaw Lock",
+    "fr": "Croque Fort"
+  },
+  "stuff-cheeks": {
+    "en": "Stuff Cheeks",
+    "fr": "Garde-à-Joues"
+  },
+  "no-retreat": {
+    "en": "No Retreat",
+    "fr": "Ultime Bastion"
+  },
+  "tar-shot": {
+    "en": "Tar Shot",
+    "fr": "Goudronnage"
+  },
+  "magic-powder": {
+    "en": "Magic Powder",
+    "fr": "Poudre Magique"
+  },
+  "dragon-darts": {
+    "en": "Dragon Darts",
+    "fr": "Draco-Flèches"
+  },
+  "teatime": {
+    "en": "Teatime",
+    "fr": "Thérémonie"
+  },
+  "octolock": {
+    "en": "Octolock",
+    "fr": "Octoprise"
+  },
+  "bolt-beak": {
+    "en": "Bolt Beak",
+    "fr": "Prise de Bec"
+  },
+  "fishious-rend": {
+    "en": "Fishious Rend",
+    "fr": "Branchicrok"
+  },
+  "court-change": {
+    "en": "Court Change",
+    "fr": "Change-Côté"
+  },
+  "max-flare": {
+    "en": "Max Flare",
+    "fr": "Pyromax"
+  },
+  "max-flutterby": {
+    "en": "Max Flutterby",
+    "fr": "Insectomax"
+  },
+  "max-lightning": {
+    "en": "Max Lightning",
+    "fr": "Fulguromax"
+  },
+  "max-strike": {
+    "en": "Max Strike",
+    "fr": "Normalomax"
+  },
+  "max-knuckle": {
+    "en": "Max Knuckle",
+    "fr": "Pugilomax"
+  },
+  "max-phantasm": {
+    "en": "Max Phantasm",
+    "fr": "Spectromax"
+  },
+  "max-hailstorm": {
+    "en": "Max Hailstorm",
+    "fr": "Cryomax"
+  },
+  "max-ooze": {
+    "en": "Max Ooze",
+    "fr": "Toxinomax"
+  },
+  "max-geyser": {
+    "en": "Max Geyser",
+    "fr": "Hydromax"
+  },
+  "max-airstream": {
+    "en": "Max Airstream",
+    "fr": "Aéromax"
+  },
+  "max-starfall": {
+    "en": "Max Starfall",
+    "fr": "Enchantomax"
+  },
+  "max-wyrmwind": {
+    "en": "Max Wyrmwind",
+    "fr": "Dracomax"
+  },
+  "max-mindstorm": {
+    "en": "Max Mindstorm",
+    "fr": "Psychomax"
+  },
+  "max-rockfall": {
+    "en": "Max Rockfall",
+    "fr": "Lithomax"
+  },
+  "max-quake": {
+    "en": "Max Quake",
+    "fr": "Sismomax"
+  },
+  "max-darkness": {
+    "en": "Max Darkness",
+    "fr": "Sinistromax"
+  },
+  "max-overgrowth": {
+    "en": "Max Overgrowth",
+    "fr": "Phytomax"
+  },
+  "max-steelspike": {
+    "en": "Max Steelspike",
+    "fr": "Métallomax"
+  },
+  "clangorous-soul": {
+    "en": "Clangorous Soul",
+    "fr": "Dracacophonie"
+  },
+  "body-press": {
+    "en": "Body Press",
+    "fr": "Big Splash"
+  },
+  "decorate": {
+    "en": "Decorate",
+    "fr": "Nappage"
+  },
+  "drum-beating": {
+    "en": "Drum Beating",
+    "fr": "Tambour Battant"
+  },
+  "snap-trap": {
+    "en": "Snap Trap",
+    "fr": "Troquenard"
+  },
+  "pyro-ball": {
+    "en": "Pyro Ball",
+    "fr": "Ballon Brûlant"
+  },
+  "behemoth-blade": {
+    "en": "Behemoth Blade",
+    "fr": "Gladius Maximus"
+  },
+  "behemoth-bash": {
+    "en": "Behemoth Bash",
+    "fr": "Aegis Maxima"
+  },
+  "aura-wheel": {
+    "en": "Aura Wheel",
+    "fr": "Roue Libre"
+  },
+  "breaking-swipe": {
+    "en": "Breaking Swipe",
+    "fr": "Abattage"
+  },
+  "branch-poke": {
+    "en": "Branch Poke",
+    "fr": "Tapotige"
+  },
+  "overdrive": {
+    "en": "Overdrive",
+    "fr": "Overdrive"
+  },
+  "apple-acid": {
+    "en": "Apple Acid",
+    "fr": "Acide Malique"
+  },
+  "grav-apple": {
+    "en": "Grav Apple",
+    "fr": "Force G"
+  },
+  "spirit-break": {
+    "en": "Spirit Break",
+    "fr": "Choc Émotionnel"
+  },
+  "strange-steam": {
+    "en": "Strange Steam",
+    "fr": "Vapeur Féérique"
+  },
+  "life-dew": {
+    "en": "Life Dew",
+    "fr": "Fontaine de Vie"
+  },
+  "obstruct": {
+    "en": "Obstruct",
+    "fr": "Blocage"
+  },
+  "false-surrender": {
+    "en": "False Surrender",
+    "fr": "Fourbette"
+  },
+  "meteor-assault": {
+    "en": "Meteor Assault",
+    "fr": "Joute Astrale"
+  },
+  "eternabeam": {
+    "en": "Eternabeam",
+    "fr": "Laser Infinimax"
+  },
+  "steel-beam": {
+    "en": "Steel Beam",
+    "fr": "Métalaser"
+  },
+  "expanding-force": {
+    "en": "Expanding Force",
+    "fr": "Vaste Pouvoir"
+  },
+  "steel-roller": {
+    "en": "Steel Roller",
+    "fr": "Métalliroue"
+  },
+  "scale-shot": {
+    "en": "Scale Shot",
+    "fr": "Rafale Écailles"
+  },
+  "meteor-beam": {
+    "en": "Meteor Beam",
+    "fr": "Laser Météore"
+  },
+  "shell-side-arm": {
+    "en": "Shell Side Arm",
+    "fr": "Kokiyarme"
+  },
+  "misty-explosion": {
+    "en": "Misty Explosion",
+    "fr": "Explo-Brume"
+  },
+  "grassy-glide": {
+    "en": "Grassy Glide",
+    "fr": "Gliss’Herbe"
+  },
+  "rising-voltage": {
+    "en": "Rising Voltage",
+    "fr": "Monte-Tension"
+  },
+  "terrain-pulse": {
+    "en": "Terrain Pulse",
+    "fr": "Champlification"
+  },
+  "skitter-smack": {
+    "en": "Skitter Smack",
+    "fr": "Ravage Rampant"
+  },
+  "burning-jealousy": {
+    "en": "Burning Jealousy",
+    "fr": "Feu Envieux"
+  },
+  "lash-out": {
+    "en": "Lash Out",
+    "fr": "Cent Rancunes"
+  },
+  "poltergeist": {
+    "en": "Poltergeist",
+    "fr": "Esprit Frappeur"
+  },
+  "corrosive-gas": {
+    "en": "Corrosive Gas",
+    "fr": "Gaz Corrosif"
+  },
+  "coaching": {
+    "en": "Coaching",
+    "fr": "Coaching"
+  },
+  "flip-turn": {
+    "en": "Flip Turn",
+    "fr": "Eau Revoir"
+  },
+  "triple-axel": {
+    "en": "Triple Axel",
+    "fr": "Triple Axel"
+  },
+  "dual-wingbeat": {
+    "en": "Dual Wingbeat",
+    "fr": "Double Volée"
+  },
+  "scorching-sands": {
+    "en": "Scorching Sands",
+    "fr": "Sable Ardent"
+  },
+  "jungle-healing": {
+    "en": "Jungle Healing",
+    "fr": "Selve Salvatrice"
+  },
+  "wicked-blow": {
+    "en": "Wicked Blow",
+    "fr": "Poing Obscur"
+  },
+  "surging-strikes": {
+    "en": "Surging Strikes",
+    "fr": "Torrent de Coups"
+  },
+  "thunder-cage": {
+    "en": "Thunder Cage",
+    "fr": "Voltageôle"
+  },
+  "dragon-energy": {
+    "en": "Dragon Energy",
+    "fr": "Draco-Énergie"
+  },
+  "freezing-glare": {
+    "en": "Freezing Glare",
+    "fr": "Regard Glaçant"
+  },
+  "fiery-wrath": {
+    "en": "Fiery Wrath",
+    "fr": "Fureur Ardente"
+  },
+  "thunderous-kick": {
+    "en": "Thunderous Kick",
+    "fr": "Coup Fulgurant"
+  },
+  "glacial-lance": {
+    "en": "Glacial Lance",
+    "fr": "Lance de Glace"
+  },
+  "astral-barrage": {
+    "en": "Astral Barrage",
+    "fr": "Éclat Spectral"
+  },
+  "eerie-spell": {
+    "en": "Eerie Spell",
+    "fr": "Sort Sinistre"
+  },
+  "dire-claw": {
+    "en": "Dire Claw",
+    "fr": "Griffes Funestes"
+  },
+  "psyshield-bash": {
+    "en": "Psyshield Bash",
+    "fr": "Sprint Bouclier"
+  },
+  "power-shift": {
+    "en": "Power Shift",
+    "fr": "Échange Force"
+  },
+  "stone-axe": {
+    "en": "Stone Axe",
+    "fr": "Hache de Pierre"
+  },
+  "springtide-storm": {
+    "en": "Springtide Storm",
+    "fr": "Typhon Passionné"
+  },
+  "mystical-power": {
+    "en": "Mystical Power",
+    "fr": "Force Mystique"
+  },
+  "raging-fury": {
+    "en": "Raging Fury",
+    "fr": "Grand Courroux"
+  },
+  "wave-crash": {
+    "en": "Wave Crash",
+    "fr": "Aquatacle"
+  },
+  "chloroblast": {
+    "en": "Chloroblast",
+    "fr": "Herblast"
+  },
+  "mountain-gale": {
+    "en": "Mountain Gale",
+    "fr": "Bise Glaciaire"
+  },
+  "victory-dance": {
+    "en": "Victory Dance",
+    "fr": "Danse Victoire"
+  },
+  "headlong-rush": {
+    "en": "Headlong Rush",
+    "fr": "Assaut Frontal"
+  },
+  "barb-barrage": {
+    "en": "Barb Barrage",
+    "fr": "Multitoxik"
+  },
+  "esper-wing": {
+    "en": "Esper Wing",
+    "fr": "Ailes Psycho"
+  },
+  "bitter-malice": {
+    "en": "Bitter Malice",
+    "fr": "Cœur de Rancœur"
+  },
+  "shelter": {
+    "en": "Shelter",
+    "fr": "Mur Fumigène"
+  },
+  "triple-arrows": {
+    "en": "Triple Arrows",
+    "fr": "Triple Flèche"
+  },
+  "infernal-parade": {
+    "en": "Infernal Parade",
+    "fr": "Cortège Funèbre"
+  },
+  "ceaseless-edge": {
+    "en": "Ceaseless Edge",
+    "fr": "Vagues à Lames"
+  },
+  "bleakwind-storm": {
+    "en": "Bleakwind Storm",
+    "fr": "Typhon Hivernal"
+  },
+  "wildbolt-storm": {
+    "en": "Wildbolt Storm",
+    "fr": "Typhon Fulgurant"
+  },
+  "sandsear-storm": {
+    "en": "Sandsear Storm",
+    "fr": "Typhon Pyrosable"
+  },
+  "lunar-blessing": {
+    "en": "Lunar Blessing",
+    "fr": "Prière Lunaire"
+  },
+  "take-heart": {
+    "en": "Take Heart",
+    "fr": "Extravaillance"
+  },
+  "tera-blast": {
+    "en": "Tera Blast",
+    "fr": "Téra Explosion"
+  },
+  "silk-trap": {
+    "en": "Silk Trap",
+    "fr": "Piège de Fil"
+  },
+  "axe-kick": {
+    "en": "Axe Kick",
+    "fr": "Talon-Marteau"
+  },
+  "last-respects": {
+    "en": "Last Respects",
+    "fr": "Hommage Posthume"
+  },
+  "lumina-crash": {
+    "en": "Lumina Crash",
+    "fr": "Lumino-Impact"
+  },
+  "order-up": {
+    "en": "Order Up",
+    "fr": "Plat du Jour"
+  },
+  "jet-punch": {
+    "en": "Jet Punch",
+    "fr": "Poing Sonique"
+  },
+  "spicy-extract": {
+    "en": "Spicy Extract",
+    "fr": "Habanerage"
+  },
+  "spin-out": {
+    "en": "Spin Out",
+    "fr": "Dérapage"
+  },
+  "population-bomb": {
+    "en": "Population Bomb",
+    "fr": "Prolifération"
+  },
+  "ice-spinner": {
+    "en": "Ice Spinner",
+    "fr": "Cryo-Pirouette"
+  },
+  "glaive-rush": {
+    "en": "Glaive Rush",
+    "fr": "Charge Glaive"
+  },
+  "revival-blessing": {
+    "en": "Revival Blessing",
+    "fr": "Second Souffle"
+  },
+  "salt-cure": {
+    "en": "Salt Cure",
+    "fr": "Salaison"
+  },
+  "triple-dive": {
+    "en": "Triple Dive",
+    "fr": "Triple Plongeon"
+  },
+  "mortal-spin": {
+    "en": "Mortal Spin",
+    "fr": "Toupie Éclat"
+  },
+  "doodle": {
+    "en": "Doodle",
+    "fr": "Décalquage"
+  },
+  "fillet-away": {
+    "en": "Fillet Away",
+    "fr": "Décharnement"
+  },
+  "kowtow-cleave": {
+    "en": "Kowtow Cleave",
+    "fr": "Génusection"
+  },
+  "flower-trick": {
+    "en": "Flower Trick",
+    "fr": "Magie Florale"
+  },
+  "torch-song": {
+    "en": "Torch Song",
+    "fr": "Chant Flamboyant"
+  },
+  "aqua-step": {
+    "en": "Aqua Step",
+    "fr": "Danse Aquatique"
+  },
+  "raging-bull": {
+    "en": "Raging Bull",
+    "fr": "Taurogne"
+  },
+  "make-it-rain": {
+    "en": "Make It Rain",
+    "fr": "Ruée d'Or"
+  },
+  "psyblade": {
+    "en": "Psyblade",
+    "fr": "Lame Psychique"
+  },
+  "hydro-steam": {
+    "en": "Hydro Steam",
+    "fr": "Hydrovapeur"
+  },
+  "ruination": {
+    "en": "Ruination",
+    "fr": "Cataclysme"
+  },
+  "collision-course": {
+    "en": "Collision Course",
+    "fr": "Nitro Crash"
+  },
+  "electro-drift": {
+    "en": "Electro Drift",
+    "fr": "Turbo Volt"
+  },
+  "shed-tail": {
+    "en": "Shed Tail",
+    "fr": "Queulonage"
+  },
+  "chilly-reception": {
+    "en": "Chilly Reception",
+    "fr": "Neigeux de Mots"
+  },
+  "tidy-up": {
+    "en": "Tidy Up",
+    "fr": "Grand Nettoyage"
+  },
+  "snowscape": {
+    "en": "Snowscape",
+    "fr": "Chute de Neige"
+  },
+  "pounce": {
+    "en": "Pounce",
+    "fr": "Bond"
+  },
+  "trailblaze": {
+    "en": "Trailblaze",
+    "fr": "Désherbaffe"
+  },
+  "chilling-water": {
+    "en": "Chilling Water",
+    "fr": "Douche Froide"
+  },
+  "hyper-drill": {
+    "en": "Hyper Drill",
+    "fr": "Hyperceuse"
+  },
+  "twin-beam": {
+    "en": "Twin Beam",
+    "fr": "Double Laser"
+  },
+  "rage-fist": {
+    "en": "Rage Fist",
+    "fr": "Poing de Colère"
+  },
+  "armor-cannon": {
+    "en": "Armor Cannon",
+    "fr": "Canon Blindé"
+  },
+  "bitter-blade": {
+    "en": "Bitter Blade",
+    "fr": "Lame en Peine"
+  },
+  "double-shock": {
+    "en": "Double Shock",
+    "fr": "Double Décharge"
+  },
+  "gigaton-hammer": {
+    "en": "Gigaton Hammer",
+    "fr": "Marteau Mastoc"
+  },
+  "comeuppance": {
+    "en": "Comeuppance",
+    "fr": "Vindicte"
+  },
+  "aqua-cutter": {
+    "en": "Aqua Cutter",
+    "fr": "Tranch'Aqua"
+  },
+  "blazing-torque": {
+    "en": "Blazing Torque",
+    "fr": "Crash Brûlant"
+  },
+  "wicked-torque": {
+    "en": "Wicked Torque",
+    "fr": "Crash Obscur"
+  },
+  "noxious-torque": {
+    "en": "Noxious Torque",
+    "fr": "Crash Toxique"
+  },
+  "combat-torque": {
+    "en": "Combat Torque",
+    "fr": "Crash Musclé"
+  },
+  "magical-torque": {
+    "en": "Magical Torque",
+    "fr": "Crash Magique"
+  },
+  "blood-moon": {
+    "en": "Blood Moon",
+    "fr": "Lune Rouge"
+  },
+  "matcha-gotcha": {
+    "en": "Matcha Gotcha",
+    "fr": "Mortier Matcha"
+  },
+  "syrup-bomb": {
+    "en": "Syrup Bomb",
+    "fr": "Bombe au Sirop"
+  },
+  "ivy-cudgel": {
+    "en": "Ivy Cudgel",
+    "fr": "Massue Liane"
+  },
+  "electro-shot": {
+    "en": "Electro Shot",
+    "fr": "Fulgurayon"
+  },
+  "tera-starstorm": {
+    "en": "Tera Starstorm",
+    "fr": "Pluie Térastrale"
+  },
+  "fickle-beam": {
+    "en": "Fickle Beam",
+    "fr": "Laser Hasard"
+  },
+  "burning-bulwark": {
+    "en": "Burning Bulwark",
+    "fr": "Rempart Brûlant"
+  },
+  "thunderclap": {
+    "en": "Thunderclap",
+    "fr": "Vif Éclair"
+  },
+  "mighty-cleave": {
+    "en": "Mighty Cleave",
+    "fr": "Lame Puissante"
+  },
+  "tachyon-cutter": {
+    "en": "Tachyon Cutter",
+    "fr": "Lame Tachyonique"
+  },
+  "hard-press": {
+    "en": "Hard Press",
+    "fr": "Pression Extrême"
+  },
+  "dragon-cheer": {
+    "en": "Dragon Cheer",
+    "fr": "Cri Draconique"
+  },
+  "alluring-voice": {
+    "en": "Alluring Voice",
+    "fr": "Voix Envoûtante"
+  },
+  "temper-flare": {
+    "en": "Temper Flare",
+    "fr": "Indignition"
+  },
+  "supercell-slam": {
+    "en": "Supercell Slam",
+    "fr": "Volt Assaut"
+  },
+  "psychic-noise": {
+    "en": "Psychic Noise",
+    "fr": "Dissonance Psy"
+  },
+  "upper-hand": {
+    "en": "Upper Hand",
+    "fr": "Prio-Parade"
+  },
+  "malignant-chain": {
+    "en": "Malignant Chain",
+    "fr": "Chaîne Malsaine"
+  }
+}
