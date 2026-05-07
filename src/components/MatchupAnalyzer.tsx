@@ -6,6 +6,7 @@ import { TypeBadge } from './TypeBadge'
 import { useLang } from '../contexts/LangContext'
 import { pokemonName, moveName, searchPokemon, searchMove, POKEMON_TYPES_FLAT } from '../lib/i18n'
 import movesData from '../data/moves.json'
+import vgcStatsData from '../data/vgc-stats.json'
 
 interface Props {
   team: ParsedPokemon[]
@@ -13,6 +14,48 @@ interface Props {
 
 type MatrixMode = 'offense' | 'defense'
 const MOVES_DB = movesData as Record<string, { type: string; power: number | null }>
+
+// ─── VGC stats types ──────────────────────────────────────────────────────────
+
+interface VGCPokemonStats {
+  usage: number
+  spreads: { nature: string; evs: Record<string, number>; pct: number }[]
+  moves: { key: string; pct: number }[]
+  items: { key: string; pct: number }[]
+}
+
+const VGC_STATS = (vgcStatsData as unknown as { pokemon: Record<string, VGCPokemonStats> }).pokemon
+
+const EV_LABELS: Record<string, string> = {
+  hp: 'HP', atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe',
+}
+
+const ITEM_NAMES: Record<string, string> = {
+  sitrusberry: 'Sitrus Berry', chopleberry: 'Chople Berry', leftovers: 'Leftovers',
+  assaultvest: 'Assault Vest', choiceband: 'Choice Band', choicescarf: 'Choice Scarf',
+  choicespecs: 'Choice Specs', focussash: 'Focus Sash', lifeorb: 'Life Orb',
+  rockyhelmet: 'Rocky Helmet', boosterenergy: 'Booster Energy', clearamulet: 'Clear Amulet',
+  mentalherb: 'Mental Herb', powerherb: 'Power Herb', safetygoggles: 'Safety Goggles',
+  throatspray: 'Throat Spray', wiseglasses: 'Wise Glasses', muscleband: 'Muscle Band',
+  lumberry: 'Lum Berry', aguavberry: 'Aguav Berry', iapapberry: 'Iapapa Berry',
+  mirrorherb: 'Mirror Herb', covertcloak: 'Covert Cloak', eviolite: 'Eviolite',
+  heavydutyboots: 'Heavy-Duty Boots', redcard: 'Red Card', whiteherb: 'White Herb',
+  electricseed: 'Electric Seed', grassyseed: 'Grassy Seed', mistyseed: 'Misty Seed',
+  psychicseed: 'Psychic Seed', terrainextender: 'Terrain Extender',
+  roomservice: 'Room Service', laggingail: 'Lagging Tail', trickroom: 'Trick Room',
+}
+
+function formatItemName(key: string): string {
+  return ITEM_NAMES[key]
+    ?? key.replace(/berry$/, ' Berry').replace(/herb$/, ' Herb').replace(/seed$/, ' Seed')
+       .replace(/\b\w/g, c => c.toUpperCase())
+}
+
+function formatEVs(evs: Record<string, number>): string {
+  return Object.entries(evs)
+    .map(([k, v]) => `${v}${EV_LABELS[k] ?? k}`)
+    .join(' / ')
+}
 
 interface EnemyMove {
   key: string
@@ -253,6 +296,8 @@ function EnemySlotCard({
     )
   }
 
+  const stats = VGC_STATS[value.key] ?? null
+
   return (
     <div style={{
       background: '#1e1e2e',
@@ -260,14 +305,27 @@ function EnemySlotCard({
       borderRadius: 6,
       padding: '6px 8px',
       minWidth: 180,
+      maxWidth: 220,
       display: 'flex',
       flexDirection: 'column',
       gap: 4,
     }}>
+      {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: '#eee', marginBottom: 2 }}>
-            {pokemonName(value.key, lang)}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 2 }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: '#eee' }}>
+              {pokemonName(value.key, lang)}
+            </span>
+            {stats && (
+              <span style={{
+                fontSize: 9, fontWeight: 700, color: '#888',
+                background: '#252540', border: '1px solid #3a3a5e',
+                borderRadius: 3, padding: '1px 4px',
+              }}>
+                {stats.usage}%
+              </span>
+            )}
           </div>
           <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
             {value.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
@@ -279,6 +337,7 @@ function EnemySlotCard({
         >×</button>
       </div>
 
+      {/* Move inputs */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 3, borderTop: '1px solid #2a2a3e', paddingTop: 4 }}>
         {value.moves.map((move, mi) => (
           <MoveSearchInput
@@ -290,6 +349,81 @@ function EnemySlotCard({
           />
         ))}
       </div>
+
+      {/* Common moves chips */}
+      {stats && stats.moves.length > 0 && (
+        <div style={{ borderTop: '1px solid #2a2a3e', paddingTop: 4 }}>
+          <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 3 }}>
+            Fréquent
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+            {stats.moves.map(m => {
+              const alreadyIn = value.moves.some(mv => mv?.key === m.key)
+              return (
+                <button
+                  key={m.key}
+                  onClick={() => {
+                    if (alreadyIn) return
+                    const firstEmpty = value.moves.findIndex(mv => mv === null)
+                    if (firstEmpty === -1) return
+                    const entry = MOVES_DB[m.key]
+                    if (entry?.type) onSelectMove(firstEmpty, { key: m.key, type: entry.type as PokemonType })
+                  }}
+                  style={{
+                    background: alreadyIn ? '#181828' : '#1e1e3e',
+                    border: `1px solid ${alreadyIn ? '#252525' : '#3a3a5e'}`,
+                    borderRadius: 3,
+                    color: alreadyIn ? '#333' : '#9090c0',
+                    fontSize: 10,
+                    padding: '2px 6px',
+                    cursor: alreadyIn ? 'default' : 'pointer',
+                  }}
+                >
+                  {moveName(m.key, lang)}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Top spreads */}
+      {stats && stats.spreads.length > 0 && (
+        <div style={{ borderTop: '1px solid #2a2a3e', paddingTop: 4 }}>
+          <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 3 }}>
+            Spreads
+          </div>
+          {stats.spreads.slice(0, 3).map((s, i) => (
+            <div key={i} style={{ fontSize: 10, color: '#555', marginBottom: 2, lineHeight: 1.4 }}>
+              <span style={{ color: '#777', fontWeight: 600 }}>{s.nature}</span>
+              {Object.keys(s.evs).length > 0 && (
+                <span style={{ color: '#555' }}> · {formatEVs(s.evs)}</span>
+              )}
+              <span style={{ color: '#3a3a5e', marginLeft: 4 }}>{s.pct}%</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Top items */}
+      {stats && stats.items.length > 0 && (
+        <div style={{ borderTop: '1px solid #2a2a3e', paddingTop: 4 }}>
+          <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 3 }}>
+            Objets
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+            {stats.items.map((item, i) => (
+              <span key={i} style={{
+                fontSize: 10, color: '#555',
+                background: '#181828', border: '1px solid #252535',
+                borderRadius: 3, padding: '1px 5px',
+              }}>
+                {formatItemName(item.key)}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
