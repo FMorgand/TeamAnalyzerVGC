@@ -5,8 +5,9 @@ import { PasteInput } from './components/PasteInput'
 import { TeamOverview } from './components/TeamOverview'
 import { OffensiveCoverage } from './components/OffensiveCoverage'
 import { SwitchInAnalyzer } from './components/SwitchInAnalyzer'
+import { MatchupAnalyzer } from './components/MatchupAnalyzer'
 import { TeamComposition } from './components/TeamComposition'
-import { CoverageGraph } from './components/CoverageGraph'
+import { CoverageSection } from './components/CoverageSection'
 
 const TEST_PASTE = `Charizard @ Charizardite Y
 Ability: Blaze
@@ -81,8 +82,9 @@ function App() {
       <TeamOverview profiles={profiles} />
       <OffensiveCoverage coverage={coverage} />
       <TeamComposition team={team} />
-      <CoverageGraph team={team} />
+      <CoverageSection team={team} />
       <SwitchInAnalyzer team={team} />
+      <MatchupAnalyzer team={team} />
     </div>
   )
 }
