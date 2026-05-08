@@ -7,13 +7,18 @@ import { useLang } from '../contexts/LangContext'
 import { pokemonName, moveName, searchPokemon, searchMove, POKEMON_TYPES_FLAT } from '../lib/i18n'
 import movesData from '../data/moves.json'
 import vgcStatsData from '../data/vgc-stats.json'
+import baseStatsData from '../data/base-stats.json'
+import { calcHP, calcStat, calcDamage } from '../lib/damage'
 
 interface Props {
   team: ParsedPokemon[]
 }
 
 type MatrixMode = 'offense' | 'defense'
-const MOVES_DB = movesData as Record<string, { type: string; power: number | null }>
+type MoveEntry = { type: string; power: number | null; category?: string }
+const MOVES_DB = movesData as Record<string, MoveEntry>
+type BaseStatEntry = { hp: number; atk: number; def: number; spa: number; spd: number; spe: number }
+const BASE_STATS = baseStatsData as Record<string, BaseStatEntry>
 
 // ─── VGC stats types ──────────────────────────────────────────────────────────
 
@@ -66,6 +71,7 @@ interface EnemyPokemon {
   key: string
   types: PokemonType[]
   moves: (EnemyMove | null)[]
+  selectedSpreadIndex: number
 }
 
 function offenseMultiplier(myPokemon: ParsedPokemon, enemyTypes: PokemonType[]): number {
@@ -85,6 +91,57 @@ function defenseMultiplier(enemyMoves: (EnemyMove | null)[], myTypes: PokemonTyp
     const mult = myTypes.reduce((acc, t) => acc * typeChart[move.type][t], 1)
     if (mult > best) best = mult
   }
+  return best
+}
+
+type DamageResult = { move: EnemyMove; mult: number; minPct: number; maxPct: number }
+
+function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): DamageResult | null {
+  let maxMult = 0
+  for (const move of enemy.moves) {
+    if (!move) continue
+    const mult = myPokemon.types.reduce((acc, t) => acc * typeChart[move.type][t], 1)
+    if (mult > maxMult) maxMult = mult
+  }
+  if (maxMult < 2) return null
+
+  const enemyBase = BASE_STATS[enemy.key]
+  const defenderBase = BASE_STATS[myPokemon.megaForm ?? myPokemon.normalizedName]
+  const vgcStats = VGC_STATS[enemy.key]
+  const spread = vgcStats?.spreads[enemy.selectedSpreadIndex] ?? null
+  const attackerNature = spread?.nature?.toLowerCase() ?? null
+  const attackerEVs = (spread?.evs ?? {}) as Record<string, number | undefined>
+
+  let best: DamageResult | null = null
+
+  for (const move of enemy.moves) {
+    if (!move) continue
+    const mult = myPokemon.types.reduce((acc, t) => acc * typeChart[move.type][t], 1)
+    if (mult < maxMult) continue
+
+    const moveEntry = MOVES_DB[move.key]
+    if (!moveEntry?.power || moveEntry.power <= 0) {
+      if (!best) best = { move, mult, minPct: 0, maxPct: 0 }
+      continue
+    }
+
+    if (enemyBase && defenderBase) {
+      const isPhysical = moveEntry.category === 'physical'
+      const attackerStat = isPhysical
+        ? calcStat(enemyBase.atk, attackerEVs['atk'] ?? 0, attackerNature, 'atk')
+        : calcStat(enemyBase.spa, attackerEVs['spa'] ?? 0, attackerNature, 'spa')
+      const defenderHP = calcHP(defenderBase.hp, myPokemon.evs.hp)
+      const defenderStat = isPhysical
+        ? calcStat(defenderBase.def, myPokemon.evs.def, myPokemon.nature, 'def')
+        : calcStat(defenderBase.spd, myPokemon.evs.spd, myPokemon.nature, 'spd')
+      const stab = enemy.types.includes(move.type)
+      const { min, max } = calcDamage({ bp: moveEntry.power, attackerStat, defenderStat, defenderHP, stab, effectiveness: mult })
+      if (!best || max > best.maxPct) best = { move, mult, minPct: min, maxPct: max }
+    } else if (!best) {
+      best = { move, mult, minPct: 0, maxPct: 0 }
+    }
+  }
+
   return best
 }
 
@@ -209,6 +266,7 @@ function EnemySlotCard({
   onClearPokemon,
   onSelectMove,
   onClearMove,
+  onSelectSpread,
 }: {
   slot: number
   value: EnemyPokemon | null
@@ -216,6 +274,7 @@ function EnemySlotCard({
   onClearPokemon: () => void
   onSelectMove: (mi: number, m: EnemyMove) => void
   onClearMove: (mi: number) => void
+  onSelectSpread: (i: number) => void
 }) {
   const { lang } = useLang()
   const [query, setQuery] = useState('')
@@ -226,7 +285,7 @@ function EnemySlotCard({
 
   const handleSelectPokemon = (key: string) => {
     const types = POKEMON_TYPES_FLAT[key] ?? []
-    onSelectPokemon({ key, types, moves: [null, null, null, null] })
+    onSelectPokemon({ key, types, moves: [null, null, null, null], selectedSpreadIndex: 0 })
     setQuery('')
     setOpen(false)
   }
@@ -393,15 +452,31 @@ function EnemySlotCard({
           <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 3 }}>
             Spreads
           </div>
-          {stats.spreads.slice(0, 3).map((s, i) => (
-            <div key={i} style={{ fontSize: 10, color: '#555', marginBottom: 2, lineHeight: 1.4 }}>
-              <span style={{ color: '#777', fontWeight: 600 }}>{s.nature}</span>
-              {Object.keys(s.evs).length > 0 && (
-                <span style={{ color: '#555' }}> · {formatEVs(s.evs)}</span>
-              )}
-              <span style={{ color: '#3a3a5e', marginLeft: 4 }}>{s.pct}%</span>
-            </div>
-          ))}
+          {stats.spreads.slice(0, 3).map((s, i) => {
+            const selected = value.selectedSpreadIndex === i
+            return (
+              <div
+                key={i}
+                onClick={() => onSelectSpread(i)}
+                style={{
+                  fontSize: 10,
+                  marginBottom: 2,
+                  lineHeight: 1.4,
+                  cursor: 'pointer',
+                  background: selected ? '#22223a' : 'transparent',
+                  borderRadius: 3,
+                  padding: '1px 3px',
+                  border: selected ? '1px solid #3a3a6e' : '1px solid transparent',
+                }}
+              >
+                <span style={{ color: selected ? '#ddd' : '#777', fontWeight: 600 }}>{s.nature}</span>
+                {Object.keys(s.evs).length > 0 && (
+                  <span style={{ color: selected ? '#999' : '#555' }}> · {formatEVs(s.evs)}</span>
+                )}
+                <span style={{ color: selected ? '#6060aa' : '#3a3a5e', marginLeft: 4 }}>{s.pct}%</span>
+              </div>
+            )
+          })}
         </div>
       )}
 
@@ -438,6 +513,36 @@ function MultiplierCell({ mult, danger }: { mult: number; danger: boolean }) {
     <span style={{ fontSize: 12, fontWeight: 700, color: danger ? '#f87' : '#8bc34a' }}>×2</span>
   )
   return null
+}
+
+function DefenseDamageCell({ result }: { result: DamageResult | null }) {
+  const { lang } = useLang()
+  if (!result) return null
+
+  const isOHKO = result.maxPct >= 100
+  const barColor = isOHKO ? '#ff3333' : result.maxPct >= 50 ? '#ff6644' : '#ff9966'
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 3, maxWidth: 108 }}>
+        <TypeBadge type={result.move.type} size="sm" />
+        <span style={{ fontSize: 10, color: '#ccc', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 80 }}>
+          {moveName(result.move.key, lang)}
+        </span>
+      </div>
+      <MultiplierCell mult={result.mult} danger />
+      {result.maxPct > 0 && (
+        <>
+          <div style={{ width: 90, height: 5, background: '#1a1a1a', borderRadius: 3, overflow: 'hidden' }}>
+            <div style={{ width: `${Math.min(result.maxPct, 100)}%`, height: '100%', background: barColor, borderRadius: 3 }} />
+          </div>
+          <span style={{ fontSize: 9, color: isOHKO ? '#ff5555' : '#888' }}>
+            {result.minPct}–{result.maxPct}%{isOHKO ? ' KO' : ''}
+          </span>
+        </>
+      )}
+    </div>
+  )
 }
 
 function MatchupMatrix({ myTeam, enemy, mode }: {
@@ -548,11 +653,18 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
                   {p.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
                 </div>
               </td>
-              {matrix[pi].map((mult, ei) => (
-                <td key={ei} style={cellStyle(mult, mode === 'defense')}>
-                  <MultiplierCell mult={mult} danger={mode === 'defense'} />
-                </td>
-              ))}
+              {enemy.map((e, ei) => {
+                const mult = matrix[pi][ei]
+                const defResult = mode === 'defense' ? bestEnemyMoveAndDamage(e, p) : null
+                return (
+                  <td key={ei} style={cellStyle(mult, mode === 'defense')}>
+                    {mode === 'offense'
+                      ? <MultiplierCell mult={mult} danger={false} />
+                      : <DefenseDamageCell result={defResult} />
+                    }
+                  </td>
+                )
+              })}
             </tr>
           ))}
         </tbody>
@@ -581,6 +693,16 @@ export function MatchupAnalyzer({ team }: Props) {
       const newMoves = [...slot.moves]
       newMoves[moveIndex] = move
       next[slotIndex] = { ...slot, moves: newMoves }
+      return next
+    })
+  }
+
+  const setSlotSpread = (slotIndex: number, spreadIndex: number) => {
+    setSlots(prev => {
+      const next = [...prev]
+      const slot = next[slotIndex]
+      if (!slot) return prev
+      next[slotIndex] = { ...slot, selectedSpreadIndex: spreadIndex }
       return next
     })
   }
@@ -629,6 +751,7 @@ export function MatchupAnalyzer({ team }: Props) {
             onClearPokemon={() => setSlot(i, null)}
             onSelectMove={(mi, m) => setSlotMove(i, mi, m)}
             onClearMove={mi => setSlotMove(i, mi, null)}
+            onSelectSpread={si => setSlotSpread(i, si)}
           />
         ))}
       </div>

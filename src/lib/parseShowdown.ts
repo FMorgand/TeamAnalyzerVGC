@@ -14,6 +14,10 @@ export interface ParsedMove {
   power: number | null     // null = status/non-damaging move
 }
 
+export interface EVSpread {
+  hp: number; atk: number; def: number; spa: number; spd: number; spe: number
+}
+
 export interface ParsedPokemon {
   rawName: string
   normalizedName: string   // PokeAPI key (e.g. "charizard")
@@ -27,6 +31,9 @@ export interface ParsedPokemon {
   // Mega form, if item is a known mega stone
   megaForm: string | null
   megaTypes: PokemonType[] | null
+  // Competitive data
+  evs: EVSpread
+  nature: string | null  // lowercase, e.g. "timid"
 }
 
 // ---------------------------------------------------------------------------
@@ -123,6 +130,12 @@ function parseBlock(lines: string[]): ParsedPokemon | null {
   let ability: string | null = null
   let level = 50
   const moveNames: string[] = []
+  let nature: string | null = null
+  const evs: EVSpread = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
+
+  const EV_STAT: Record<string, keyof EVSpread> = {
+    HP: 'hp', Atk: 'atk', Def: 'def', SpA: 'spa', SpD: 'spd', Spe: 'spe',
+  }
 
   for (const line of nonEmpty.slice(1)) {
     const trimmed = line.trim()
@@ -133,8 +146,17 @@ function parseBlock(lines: string[]): ParsedPokemon | null {
       ability = trimmed.slice(8).trim()
     } else if (trimmed.startsWith('Level:')) {
       level = parseInt(trimmed.slice(6).trim(), 10) || 50
+    } else if (trimmed.startsWith('EVs:')) {
+      for (const part of trimmed.slice(4).split('/')) {
+        const m = part.trim().match(/^(\d+)\s+(\w+)$/)
+        if (m) {
+          const stat = EV_STAT[m[2]]
+          if (stat) evs[stat] = parseInt(m[1], 10)
+        }
+      }
+    } else if (trimmed.endsWith(' Nature')) {
+      nature = trimmed.slice(0, -7).trim().toLowerCase()
     }
-    // EVs, IVs, Nature lines are ignored — not needed for our analysis
   }
 
   const parsedMoves: ParsedMove[] = moveNames.map(rawMoveName => {
@@ -164,6 +186,8 @@ function parseBlock(lines: string[]): ParsedPokemon | null {
     types: types ?? [],
     megaForm: megaResolved?.megaForm ?? null,
     megaTypes: megaResolved?.megaTypes ?? null,
+    evs,
+    nature,
   }
 }
 
