@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { ALL_TYPES, typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
@@ -7,6 +6,8 @@ import { pokemonName } from '../lib/i18n'
 
 interface Props {
   team: ParsedPokemon[]
+  visible: Set<number>
+  onToggle: (i: number) => void
 }
 
 const POKEMON_COLORS = ['#4fc3f7', '#81c784', '#ffb74d', '#f06292', '#ba68c8', '#4db6ac']
@@ -62,33 +63,20 @@ function getHits(pokemon: ParsedPokemon): Hit[] {
   return [...seen.entries()].map(([typeIndex, multiplier]) => ({ typeIndex, multiplier }))
 }
 
-export function CoverageGraph({ team }: Props) {
+export function CoverageGraph({ team, visible, onToggle }: Props) {
   const { lang } = useLang()
-  const [visible, setVisible] = useState<Set<number>>(new Set(team.map((_, i) => i)))
 
   if (team.length === 0) return null
-
-  const toggle = (i: number) => {
-    setVisible(prev => {
-      const next = new Set(prev)
-      if (next.has(i)) next.delete(i)
-      else next.add(i)
-      return next
-    })
-  }
 
   const allHits = team.map(getHits)
 
   return (
-    <section style={{ marginTop: '2rem' }}>
-      <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: '0.5rem', color: '#ccc' }}>
-        Carte de couverture offensive
-      </h2>
+    <div>
       <div style={{ fontSize: 11, color: '#555', marginBottom: '0.75rem' }}>
-        Trait épais = ×4 · Trait fin = ×2 · Clique sur un Pokémon pour masquer ses flèches
+        Trait épais = ×4 · Trait fin = ×2 · Clique sur un nœud Pokémon pour masquer ses flèches
       </div>
 
-      {/* Toggle buttons */}
+      {/* Toggle buttons — kept for click-on-SVG-node convenience; shared state from parent */}
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: '0.75rem' }}>
         {team.map((p, i) => {
           const color = POKEMON_COLORS[i]
@@ -96,7 +84,7 @@ export function CoverageGraph({ team }: Props) {
           return (
             <button
               key={i}
-              onClick={() => toggle(i)}
+              onClick={() => onToggle(i)}
               style={{
                 background: on ? color + '22' : '#1e1e2e',
                 color: on ? color : '#444',
@@ -171,7 +159,7 @@ export function CoverageGraph({ team }: Props) {
             const name = pokemonName(p.normalizedName, lang)
             const label = name.length > 11 ? name.slice(0, 10) + '…' : name
             return (
-              <g key={pi} style={{ cursor: 'pointer' }} onClick={() => toggle(pi)}>
+              <g key={pi} style={{ cursor: 'pointer' }} onClick={() => onToggle(pi)}>
                 <rect
                   x={x - 44} y={POKE_Y - NODE_R}
                   width={88} height={NODE_R * 2}
@@ -194,6 +182,6 @@ export function CoverageGraph({ team }: Props) {
           })}
         </svg>
       </div>
-    </section>
+    </div>
   )
 }

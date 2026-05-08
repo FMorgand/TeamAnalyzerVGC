@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { useLang } from './contexts/LangContext'
 import type { Lang } from './lib/i18n'
 import { parseShowdownPaste } from './lib/parseShowdown'
-import { getTeamDefensiveProfiles, getOffensiveCoverage } from './lib/teamAnalysis'
+import { getTeamDefensiveProfiles } from './lib/teamAnalysis'
 import { PasteInput } from './components/PasteInput'
 import { TeamOverview } from './components/TeamOverview'
-import { OffensiveCoverage } from './components/OffensiveCoverage'
 import { SwitchInAnalyzer } from './components/SwitchInAnalyzer'
 import { MatchupAnalyzer } from './components/MatchupAnalyzer'
 import { TeamComposition } from './components/TeamComposition'
@@ -66,7 +65,6 @@ function App() {
 
   const team = parseShowdownPaste(paste)
   const profiles = getTeamDefensiveProfiles(team)
-  const coverage = getOffensiveCoverage(team)
 
   return (
     <div style={{
@@ -105,7 +103,6 @@ function App() {
       <PasteInput value={paste} onChange={setPaste} />
 
       <TeamOverview profiles={profiles} />
-      <OffensiveCoverage coverage={coverage} />
       <TeamComposition team={team} />
       <CoverageSection team={team} />
       <SwitchInAnalyzer team={team} />

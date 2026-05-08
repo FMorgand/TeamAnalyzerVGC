@@ -20,6 +20,10 @@ const MOVES_DB = movesData as Record<string, MoveEntry>
 type BaseStatEntry = { hp: number; atk: number; def: number; spa: number; spd: number; spe: number }
 const BASE_STATS = baseStatsData as Record<string, BaseStatEntry>
 
+function lookupBaseStats(key: string): BaseStatEntry | undefined {
+  return BASE_STATS[key] ?? BASE_STATS[`${key}-male`] ?? BASE_STATS[`${key}-m`]
+}
+
 // ─── VGC stats types ──────────────────────────────────────────────────────────
 
 interface VGCPokemonStats {
@@ -105,8 +109,8 @@ function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): 
   }
   if (maxMult < 2) return null
 
-  const enemyBase = BASE_STATS[enemy.key]
-  const defenderBase = BASE_STATS[myPokemon.megaForm ?? myPokemon.normalizedName]
+  const enemyBase = lookupBaseStats(enemy.key)
+  const defenderBase = lookupBaseStats(myPokemon.megaForm ?? myPokemon.normalizedName)
   const vgcStats = VGC_STATS[enemy.key]
   const spread = vgcStats?.spreads[enemy.selectedSpreadIndex] ?? null
   const attackerNature = spread?.nature?.toLowerCase() ?? null
@@ -139,6 +143,53 @@ function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): 
       if (!best || max > best.maxPct) best = { move, mult, minPct: min, maxPct: max }
     } else if (!best) {
       best = { move, mult, minPct: 0, maxPct: 0 }
+    }
+  }
+
+  return best
+}
+
+function bestMyMoveAndDamage(myPokemon: ParsedPokemon, enemy: EnemyPokemon): DamageResult | null {
+  let maxMult = 0
+  for (const move of myPokemon.moves) {
+    if (!move.type || !move.power || move.power <= 0) continue
+    const mult = enemy.types.reduce((acc, t) => acc * typeChart[move.type!][t], 1)
+    if (mult > maxMult) maxMult = mult
+  }
+  if (maxMult < 2) return null
+
+  const attackerBase = lookupBaseStats(myPokemon.megaForm ?? myPokemon.normalizedName)
+  const defenderBase = lookupBaseStats(enemy.key)
+  const vgcStats = VGC_STATS[enemy.key]
+  const spread = vgcStats?.spreads[enemy.selectedSpreadIndex] ?? null
+  const defenderNature = spread?.nature?.toLowerCase() ?? null
+  const defenderEVs = (spread?.evs ?? {}) as Record<string, number | undefined>
+  const attackerTypes = myPokemon.megaTypes ?? myPokemon.types
+
+  let best: DamageResult | null = null
+
+  for (const move of myPokemon.moves) {
+    if (!move.type || !move.power || move.power <= 0) continue
+    const mult = enemy.types.reduce((acc, t) => acc * typeChart[move.type!][t], 1)
+    if (mult < maxMult) continue
+
+    const moveEntry = MOVES_DB[move.normalizedName]
+    if (!moveEntry?.power || moveEntry.power <= 0) continue
+
+    if (attackerBase && defenderBase) {
+      const isPhysical = moveEntry.category === 'physical'
+      const attackerStat = isPhysical
+        ? calcStat(attackerBase.atk, myPokemon.evs.atk, myPokemon.nature, 'atk')
+        : calcStat(attackerBase.spa, myPokemon.evs.spa, myPokemon.nature, 'spa')
+      const defenderHP = calcHP(defenderBase.hp, defenderEVs['hp'] ?? 0)
+      const defenderStat = isPhysical
+        ? calcStat(defenderBase.def, defenderEVs['def'] ?? 0, defenderNature, 'def')
+        : calcStat(defenderBase.spd, defenderEVs['spd'] ?? 0, defenderNature, 'spd')
+      const stab = attackerTypes.includes(move.type!)
+      const { min, max } = calcDamage({ bp: moveEntry.power, attackerStat, defenderStat, defenderHP, stab, effectiveness: mult })
+      if (!best || max > best.maxPct) best = { move: { key: move.normalizedName, type: move.type! }, mult, minPct: min, maxPct: max }
+    } else if (!best) {
+      best = { move: { key: move.normalizedName, type: move.type! }, mult, minPct: 0, maxPct: 0 }
     }
   }
 
@@ -515,12 +566,14 @@ function MultiplierCell({ mult, danger }: { mult: number; danger: boolean }) {
   return null
 }
 
-function DefenseDamageCell({ result }: { result: DamageResult | null }) {
+function DefenseDamageCell({ result, danger = true }: { result: DamageResult | null; danger?: boolean }) {
   const { lang } = useLang()
   if (!result) return null
 
   const isOHKO = result.maxPct >= 100
-  const barColor = isOHKO ? '#ff3333' : result.maxPct >= 50 ? '#ff6644' : '#ff9966'
+  const barColor = danger
+    ? (isOHKO ? '#ff3333' : result.maxPct >= 50 ? '#ff6644' : '#ff9966')
+    : (isOHKO ? '#44dd44' : result.maxPct >= 50 ? '#8bc34a' : '#4caf50')
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
@@ -536,7 +589,7 @@ function DefenseDamageCell({ result }: { result: DamageResult | null }) {
           <div style={{ width: 90, height: 5, background: '#1a1a1a', borderRadius: 3, overflow: 'hidden' }}>
             <div style={{ width: `${Math.min(result.maxPct, 100)}%`, height: '100%', background: barColor, borderRadius: 3 }} />
           </div>
-          <span style={{ fontSize: 9, color: isOHKO ? '#ff5555' : '#888' }}>
+          <span style={{ fontSize: 9, color: isOHKO ? (danger ? '#ff5555' : '#44dd44') : '#888' }}>
             {result.minPct}–{result.maxPct}%{isOHKO ? ' KO' : ''}
           </span>
         </>
@@ -545,12 +598,215 @@ function DefenseDamageCell({ result }: { result: DamageResult | null }) {
   )
 }
 
+// ─── Matchup detail modal ─────────────────────────────────────────────────────
+
+function MoveRow({
+  moveKey, moveType, mult, minPct, maxPct, danger,
+}: {
+  moveKey: string
+  moveType: PokemonType | null
+  mult: number
+  minPct: number | null
+  maxPct: number | null
+  danger: boolean
+}) {
+  const { lang } = useLang()
+  const isStatus = minPct === null || maxPct === null
+  const isOHKO = (maxPct ?? 0) >= 100
+  const barColor = danger
+    ? (isOHKO ? '#ff3333' : (maxPct ?? 0) >= 50 ? '#ff6644' : '#ff9966')
+    : (isOHKO ? '#44dd44' : (maxPct ?? 0) >= 50 ? '#8bc34a' : '#4caf50')
+  const multLabel = mult === 0 ? 'Imm' : mult >= 4 ? '×4' : mult >= 2 ? '×2' : mult === 1 ? '×1' : `×${mult}`
+  const multColor = mult === 0 ? '#2a2a3e'
+    : mult >= 4 ? (danger ? '#f55' : '#4caf50')
+    : mult >= 2 ? (danger ? '#f87' : '#8bc34a')
+    : mult < 1  ? (danger ? '#4caf50' : '#555')
+    : '#555'
+
+  return (
+    <div style={{ marginBottom: 7 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+        {moveType
+          ? <TypeBadge type={moveType} size="sm" />
+          : <span style={{ width: 28, height: 14, background: '#1a1a2a', borderRadius: 3, display: 'inline-block' }} />
+        }
+        <span style={{ fontSize: 11, color: '#ccc', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {moveName(moveKey, lang)}
+        </span>
+        <span style={{ fontSize: 11, fontWeight: 600, color: multColor, minWidth: 26, textAlign: 'right' }}>
+          {multLabel}
+        </span>
+      </div>
+      {!isStatus && maxPct !== null && minPct !== null && mult > 0 && (
+        <>
+          <div style={{ height: 4, background: '#111', borderRadius: 2, overflow: 'hidden', margin: '3px 0 2px' }}>
+            <div style={{ width: `${Math.min(maxPct, 100)}%`, height: '100%', background: barColor, borderRadius: 2 }} />
+          </div>
+          <div style={{ fontSize: 10, color: isOHKO ? (danger ? '#ff5555' : '#44dd44') : '#555', textAlign: 'right' }}>
+            {minPct}–{maxPct}%{isOHKO ? ' KO' : ''}
+          </div>
+        </>
+      )}
+      {(isStatus || mult === 0) && (
+        <div style={{ fontSize: 10, color: '#2a2a3e', textAlign: 'right' }}>
+          {mult === 0 ? 'immunité' : 'statut'}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function MatchupDetailModal({
+  myPokemon,
+  enemy: initialEnemy,
+  onClose,
+}: {
+  myPokemon: ParsedPokemon
+  enemy: EnemyPokemon
+  onClose: () => void
+}) {
+  const { lang } = useLang()
+  const [spreadIndex, setSpreadIndex] = useState(initialEnemy.selectedSpreadIndex)
+
+  const vgcStats = VGC_STATS[initialEnemy.key]
+  const myBase = lookupBaseStats(myPokemon.megaForm ?? myPokemon.normalizedName)
+  const enemyBase = lookupBaseStats(initialEnemy.key)
+  const spread = vgcStats?.spreads[spreadIndex] ?? null
+  const enemyNature = spread?.nature?.toLowerCase() ?? null
+  const enemyEVs = (spread?.evs ?? {}) as Record<string, number | undefined>
+  const myTypes = myPokemon.megaTypes ?? myPokemon.types
+
+  const myMoveDamage = (move: ParsedMove) => {
+    if (!move.type) return { mult: 0, minPct: null as null, maxPct: null as null }
+    const mult = initialEnemy.types.reduce((acc, t) => acc * typeChart[move.type!][t], 1)
+    const entry = MOVES_DB[move.normalizedName]
+    if (!entry?.power || entry.power <= 0 || !myBase || !enemyBase) return { mult, minPct: null as null, maxPct: null as null }
+    const isPhys = entry.category === 'physical'
+    const atkStat = isPhys ? calcStat(myBase.atk, myPokemon.evs.atk, myPokemon.nature, 'atk') : calcStat(myBase.spa, myPokemon.evs.spa, myPokemon.nature, 'spa')
+    const defHP = calcHP(enemyBase.hp, enemyEVs['hp'] ?? 0)
+    const defStat = isPhys ? calcStat(enemyBase.def, enemyEVs['def'] ?? 0, enemyNature, 'def') : calcStat(enemyBase.spd, enemyEVs['spd'] ?? 0, enemyNature, 'spd')
+    const { min, max } = calcDamage({ bp: entry.power, attackerStat: atkStat, defenderStat: defStat, defenderHP: defHP, stab: myTypes.includes(move.type!), effectiveness: mult })
+    return { mult, minPct: min, maxPct: max }
+  }
+
+  const enemyMoveDamage = (move: EnemyMove) => {
+    const mult = myPokemon.types.reduce((acc, t) => acc * typeChart[move.type][t], 1)
+    const entry = MOVES_DB[move.key]
+    if (!entry?.power || entry.power <= 0 || !enemyBase || !myBase) return { mult, minPct: null as null, maxPct: null as null }
+    const isPhys = entry.category === 'physical'
+    const atkStat = isPhys ? calcStat(enemyBase.atk, enemyEVs['atk'] ?? 0, enemyNature, 'atk') : calcStat(enemyBase.spa, enemyEVs['spa'] ?? 0, enemyNature, 'spa')
+    const myHP = calcHP(myBase.hp, myPokemon.evs.hp)
+    const myStat = isPhys ? calcStat(myBase.def, myPokemon.evs.def, myPokemon.nature, 'def') : calcStat(myBase.spd, myPokemon.evs.spd, myPokemon.nature, 'spd')
+    const { min, max } = calcDamage({ bp: entry.power, attackerStat: atkStat, defenderStat: myStat, defenderHP: myHP, stab: initialEnemy.types.includes(move.type), effectiveness: mult })
+    return { mult, minPct: min, maxPct: max }
+  }
+
+  const setMoveKeys = new Set(initialEnemy.moves.filter(Boolean).map(m => m!.key))
+  const enemyMoves: EnemyMove[] = [
+    ...initialEnemy.moves.filter((m): m is EnemyMove => m !== null),
+    ...(vgcStats?.moves ?? [])
+      .filter(m => !setMoveKeys.has(m.key))
+      .slice(0, Math.max(0, 8 - setMoveKeys.size))
+      .flatMap(m => {
+        const entry = MOVES_DB[m.key]
+        if (!entry?.type) return []
+        return [{ key: m.key, type: entry.type as PokemonType }]
+      }),
+  ]
+
+  return (
+    <div
+      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}
+      onClick={onClose}
+    >
+      <div
+        style={{ background: '#16162a', border: '1px solid #2a2a4e', borderRadius: 10, padding: '1.25rem 1.5rem', width: 600, maxHeight: '85vh', overflowY: 'auto', boxShadow: '0 8px 40px rgba(0,0,0,0.8)' }}
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            <span style={{ fontWeight: 700, fontSize: 14, color: '#eee' }}>{pokemonName(myPokemon.normalizedName, lang)}</span>
+            <div style={{ display: 'flex', gap: 3 }}>{myTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}</div>
+            <span style={{ color: '#444', fontSize: 12 }}>vs</span>
+            <span style={{ fontWeight: 700, fontSize: 14, color: '#eee' }}>{pokemonName(initialEnemy.key, lang)}</span>
+            <div style={{ display: 'flex', gap: 3 }}>{initialEnemy.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}</div>
+          </div>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#555', fontSize: 20, cursor: 'pointer', lineHeight: 1, padding: '0 4px', marginLeft: 8 }}>×</button>
+        </div>
+
+        {/* Spread selector */}
+        {vgcStats?.spreads && vgcStats.spreads.length > 0 && (
+          <div style={{ marginBottom: '0.75rem', background: '#111122', borderRadius: 6, padding: '8px 10px' }}>
+            <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 5 }}>
+              Spread de {pokemonName(initialEnemy.key, lang)}
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+              {vgcStats.spreads.slice(0, 5).map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSpreadIndex(i)}
+                  style={{
+                    background: spreadIndex === i ? '#3a3a6e' : 'transparent',
+                    border: `1px solid ${spreadIndex === i ? '#5a5aae' : '#2a2a4e'}`,
+                    borderRadius: 5,
+                    color: spreadIndex === i ? '#ddd' : '#555',
+                    fontSize: 10,
+                    padding: '3px 8px',
+                    cursor: 'pointer',
+                    fontWeight: spreadIndex === i ? 600 : 400,
+                  }}
+                >
+                  <span style={{ color: spreadIndex === i ? '#fff' : '#777' }}>{s.nature}</span>
+                  {Object.keys(s.evs).length > 0 && <span> · {formatEVs(s.evs)}</span>}
+                  <span style={{ color: '#444', marginLeft: 4 }}>{s.pct}%</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Two columns */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+          <div>
+            <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8, paddingBottom: 4, borderBottom: '1px solid #2a2a3e' }}>
+              Mes attaques → {pokemonName(initialEnemy.key, lang)}
+            </div>
+            {myPokemon.moves.length === 0
+              ? <div style={{ fontSize: 11, color: '#333', fontStyle: 'italic' }}>Aucun move parsé</div>
+              : myPokemon.moves.map((move, mi) => {
+                  const { mult, minPct, maxPct } = myMoveDamage(move)
+                  return <MoveRow key={mi} moveKey={move.normalizedName} moveType={move.type} mult={mult} minPct={minPct} maxPct={maxPct} danger={false} />
+                })
+            }
+          </div>
+          <div>
+            <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8, paddingBottom: 4, borderBottom: '1px solid #2a2a3e' }}>
+              {pokemonName(initialEnemy.key, lang)} → moi
+            </div>
+            {enemyMoves.length === 0
+              ? <div style={{ fontSize: 11, color: '#333', fontStyle: 'italic' }}>Aucun move connu</div>
+              : enemyMoves.map((move, mi) => {
+                  const { mult, minPct, maxPct } = enemyMoveDamage(move)
+                  return <MoveRow key={mi} moveKey={move.key} moveType={move.type} mult={mult} minPct={minPct} maxPct={maxPct} danger={true} />
+                })
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Matchup matrix ───────────────────────────────────────────────────────────
+
 function MatchupMatrix({ myTeam, enemy, mode }: {
   myTeam: ParsedPokemon[]
   enemy: EnemyPokemon[]
   mode: MatrixMode
 }) {
   const { lang } = useLang()
+  const [modalCell, setModalCell] = useState<{ myPokemon: ParsedPokemon; enemy: EnemyPokemon } | null>(null)
 
   const matrix = myTeam.map(p =>
     enemy.map(e =>
@@ -608,6 +864,7 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
   }
 
   return (
+    <>
     <div style={{ overflowX: 'auto', borderRadius: 8, border: '1px solid #2a2a3e' }}>
       <table style={{ borderCollapse: 'collapse', minWidth: 'max-content', width: '100%' }}>
         <thead>
@@ -655,12 +912,17 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
               </td>
               {enemy.map((e, ei) => {
                 const mult = matrix[pi][ei]
+                const offResult = mode === 'offense' ? bestMyMoveAndDamage(p, e) : null
                 const defResult = mode === 'defense' ? bestEnemyMoveAndDamage(e, p) : null
                 return (
-                  <td key={ei} style={cellStyle(mult, mode === 'defense')}>
+                  <td
+                    key={ei}
+                    style={{ ...cellStyle(mult, mode === 'defense'), cursor: 'pointer' }}
+                    onClick={() => setModalCell({ myPokemon: p, enemy: e })}
+                  >
                     {mode === 'offense'
-                      ? <MultiplierCell mult={mult} danger={false} />
-                      : <DefenseDamageCell result={defResult} />
+                      ? <DefenseDamageCell result={offResult} danger={false} />
+                      : <DefenseDamageCell result={defResult} danger={true} />
                     }
                   </td>
                 )
@@ -670,6 +932,14 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
         </tbody>
       </table>
     </div>
+    {modalCell && (
+      <MatchupDetailModal
+        myPokemon={modalCell.myPokemon}
+        enemy={modalCell.enemy}
+        onClose={() => setModalCell(null)}
+      />
+    )}
+    </>
   )
 }
 

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { ALL_TYPES, typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
@@ -8,6 +7,7 @@ import { pokemonName } from '../lib/i18n'
 
 interface Props {
   team: ParsedPokemon[]
+  visible: Set<number>
 }
 
 const POKEMON_COLORS = ['#4fc3f7', '#81c784', '#ffb74d', '#f06292', '#ba68c8', '#4db6ac']
@@ -22,20 +22,10 @@ function bestMultiplier(pokemon: ParsedPokemon, defendingType: PokemonType): num
   return best
 }
 
-export function CoverageMatrix({ team }: Props) {
+export function CoverageMatrix({ team, visible }: Props) {
   const { lang } = useLang()
-  const [visible, setVisible] = useState<Set<number>>(new Set(team.map((_, i) => i)))
 
   if (team.length === 0) return null
-
-  const toggle = (i: number) => {
-    setVisible(prev => {
-      const next = new Set(prev)
-      if (next.has(i)) next.delete(i)
-      else next.add(i)
-      return next
-    })
-  }
 
   // matrix[pi][ti] = best multiplier for pokemon pi against type ti
   const matrix = team.map(p => ALL_TYPES.map(t => bestMultiplier(p, t)))
@@ -48,38 +38,9 @@ export function CoverageMatrix({ team }: Props) {
   const visibleIndices = team.map((_, i) => i).filter(i => visible.has(i))
 
   return (
-    <section style={{ marginTop: '2rem' }}>
-      <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: '0.5rem', color: '#ccc' }}>
-        Grille de couverture offensive
-      </h2>
+    <div>
       <div style={{ fontSize: 11, color: '#555', marginBottom: '0.75rem' }}>
         Les colonnes entièrement rouges ne sont couvertes par aucun Pokémon visible.
-      </div>
-
-      {/* Toggle buttons */}
-      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: '0.75rem' }}>
-        {team.map((p, i) => {
-          const color = POKEMON_COLORS[i]
-          const on = visible.has(i)
-          return (
-            <button
-              key={i}
-              onClick={() => toggle(i)}
-              style={{
-                background: on ? color + '22' : '#1e1e2e',
-                color: on ? color : '#444',
-                border: `2px solid ${on ? color : '#333'}`,
-                borderRadius: 6,
-                padding: '3px 12px',
-                fontSize: 12,
-                fontWeight: on ? 700 : 400,
-                cursor: 'pointer',
-              }}
-            >
-              {pokemonName(p.normalizedName, lang)}
-            </button>
-          )
-        })}
       </div>
 
       {/* Grid */}
@@ -170,6 +131,6 @@ export function CoverageMatrix({ team }: Props) {
           </tbody>
         </table>
       </div>
-    </section>
+    </div>
   )
 }
