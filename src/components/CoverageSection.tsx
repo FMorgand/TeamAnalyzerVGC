@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { getOffensiveCoverage } from '../lib/teamAnalysis'
 import { useLang } from '../contexts/LangContext'
@@ -9,6 +9,7 @@ import { OffensiveCoverage } from './OffensiveCoverage'
 
 interface Props {
   team: ParsedPokemon[]
+  activeTrigger?: { indices: number[] } | null
 }
 
 type Tab = 'liste' | 'graph' | 'matrix'
@@ -21,10 +22,14 @@ const TAB_LABELS: Record<Tab, string> = {
 
 const POKEMON_COLORS = ['#4fc3f7', '#81c784', '#ffb74d', '#f06292', '#ba68c8', '#4db6ac']
 
-export function CoverageSection({ team }: Props) {
+export function CoverageSection({ team, activeTrigger }: Props) {
   const { lang } = useLang()
   const [tab, setTab] = useState<Tab>('matrix')
   const [visible, setVisible] = useState<Set<number>>(new Set(team.map((_, i) => i)))
+
+  useEffect(() => {
+    if (activeTrigger) setVisible(new Set(activeTrigger.indices))
+  }, [activeTrigger])
 
   if (team.length === 0) return null
 

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { TeamOfFourSection } from './components/TeamOfFourSection'
 import { useLang } from './contexts/LangContext'
 import type { Lang } from './lib/i18n'
 import { parseShowdownPaste } from './lib/parseShowdown'
@@ -60,8 +61,21 @@ Relaxed Nature
 - Rage Powder`
 
 function App() {
-  const [paste, setPaste] = useState(TEST_PASTE)
+  const [paste, setPaste] = useState(() => localStorage.getItem('teamanalyzer-paste') ?? TEST_PASTE)
   const { lang, setLang } = useLang()
+
+  const [coverageTrigger, setCoverageTrigger] = useState<{ indices: number[] } | null>(null)
+  const [matchupIndices, setMatchupIndices] = useState<number[] | null>(null)
+
+  const handlePasteChange = (value: string) => {
+    setPaste(value)
+    localStorage.setItem('teamanalyzer-paste', value)
+  }
+
+  const handleActivatePreset = (indices: number[]) => {
+    setCoverageTrigger({ indices })
+    setMatchupIndices(indices)
+  }
 
   const team = parseShowdownPaste(paste)
   const profiles = getTeamDefensiveProfiles(team)
@@ -100,13 +114,14 @@ function App() {
         </div>
       </div>
 
-      <PasteInput value={paste} onChange={setPaste} />
+      <PasteInput value={paste} onChange={handlePasteChange} />
 
       <TeamOverview profiles={profiles} />
       <TeamComposition team={team} />
-      <CoverageSection team={team} />
+      <TeamOfFourSection team={team} onActivate={handleActivatePreset} />
+      <CoverageSection team={team} activeTrigger={coverageTrigger} />
       <SwitchInAnalyzer team={team} />
-      <MatchupAnalyzer team={team} />
+      <MatchupAnalyzer team={team} activeIndices={matchupIndices} />
     </div>
   )
 }

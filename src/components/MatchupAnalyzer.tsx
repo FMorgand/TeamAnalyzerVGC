@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
@@ -12,6 +12,7 @@ import { calcHP, calcStat, calcDamage } from '../lib/damage'
 
 interface Props {
   team: ParsedPokemon[]
+  activeIndices?: number[] | null
 }
 
 type MatrixMode = 'offense' | 'defense'
@@ -945,9 +946,21 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
 
 // ─── Main export ──────────────────────────────────────────────────────────────
 
-export function MatchupAnalyzer({ team }: Props) {
-  const [slots, setSlots] = useState<(EnemyPokemon | null)[]>(Array(6).fill(null))
+export function MatchupAnalyzer({ team, activeIndices }: Props) {
+  const displayTeam = activeIndices ? team.filter((_, i) => activeIndices.includes(i)) : team
+
+  const [slots, setSlots] = useState<(EnemyPokemon | null)[]>(() => {
+    try {
+      const stored = localStorage.getItem('teamanalyzer-enemy-slots')
+      if (stored) return JSON.parse(stored)
+    } catch {}
+    return Array(6).fill(null)
+  })
   const [mode, setMode] = useState<MatrixMode>('offense')
+
+  useEffect(() => {
+    localStorage.setItem('teamanalyzer-enemy-slots', JSON.stringify(slots))
+  }, [slots])
 
   if (team.length === 0) return null
 
@@ -984,6 +997,21 @@ export function MatchupAnalyzer({ team }: Props) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
         <h2 style={{ fontSize: 16, fontWeight: 700, color: '#ccc', margin: 0 }}>Matchup</h2>
         {filledEnemy.length > 0 && (
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <button
+            onClick={() => setSlots(Array(6).fill(null))}
+            style={{
+              background: 'transparent',
+              border: '1px solid #3a2a2a',
+              borderRadius: 6,
+              color: '#664444',
+              fontSize: 11,
+              padding: '4px 12px',
+              cursor: 'pointer',
+            }}
+          >
+            Réinitialiser
+          </button>
           <div style={{ display: 'flex', background: '#1a1a2e', border: '1px solid #2a2a3e', borderRadius: 6, overflow: 'hidden' }}>
             {(['offense', 'defense'] as MatrixMode[]).map(m => (
               <button
@@ -1002,6 +1030,7 @@ export function MatchupAnalyzer({ team }: Props) {
                 {m === 'offense' ? "J'attaque" : 'Je défends'}
               </button>
             ))}
+          </div>
           </div>
         )}
       </div>
@@ -1028,7 +1057,7 @@ export function MatchupAnalyzer({ team }: Props) {
 
       {filledEnemy.length > 0 && (
         <div style={{ marginTop: '1rem' }}>
-          <MatchupMatrix myTeam={team} enemy={filledEnemy} mode={mode} />
+          <MatchupMatrix myTeam={displayTeam} enemy={filledEnemy} mode={mode} />
         </div>
       )}
     </section>
