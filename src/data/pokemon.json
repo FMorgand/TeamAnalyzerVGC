@@ -13214,5 +13214,39 @@
     "types": [
       "fighting"
     ]
+  },
+  "frillish": {
+    "types": [
+      "water",
+      "ghost"
+    ]
+  },
+  "jellicent": {
+    "types": [
+      "water",
+      "ghost"
+    ]
+  },
+  "pyroar": {
+    "types": [
+      "fire",
+      "normal"
+    ]
+  },
+  "meowstic": {
+    "types": [
+      "psychic"
+    ]
+  },
+  "basculegion": {
+    "types": [
+      "water",
+      "ghost"
+    ]
+  },
+  "oinkologne": {
+    "types": [
+      "normal"
+    ]
   }
 }

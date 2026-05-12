@@ -12,8 +12,8 @@
     "en": "Venusaur"
   },
   "venusaur-mega": {
-    "fr": "Deoxys Vitesse",
-    "en": "Speed Deoxys"
+    "fr": "Méga-Florizarre",
+    "en": "Mega Venusaur"
   },
   "charmander": {
     "fr": "Salamèche",
@@ -28,12 +28,12 @@
     "en": "Charizard"
   },
   "charizard-mega-x": {
-    "fr": "Cheniti Sable",
-    "en": "Sandy Burmy"
+    "fr": "Méga-Dracaufeu X",
+    "en": "Mega Charizard X"
   },
   "charizard-mega-y": {
-    "fr": "Cheniti Déchet",
-    "en": "Trash Burmy"
+    "fr": "Méga-Dracaufeu Y",
+    "en": "Mega Charizard Y"
   },
   "squirtle": {
     "fr": "Carapuce",
@@ -48,8 +48,8 @@
     "en": "Blastoise"
   },
   "blastoise-mega": {
-    "fr": "Cheniselle Sable",
-    "en": "Sandy Wormadam"
+    "fr": "Méga-Tortank",
+    "en": "Mega Blastoise"
   },
   "caterpie": {
     "fr": "Chenipan",
@@ -76,8 +76,8 @@
     "en": "Beedrill"
   },
   "beedrill-mega": {
-    "fr": "Prismillon Verdure",
-    "en": "Garden Vivillon"
+    "fr": "Méga-Dardargnan",
+    "en": "Mega Beedrill"
   },
   "pidgey": {
     "fr": "Roucool",
@@ -92,8 +92,8 @@
     "en": "Pidgeot"
   },
   "pidgeot-mega": {
-    "fr": "Haydaim Hiver",
-    "en": "Winter Sawsbuck"
+    "fr": "Méga-Roucarnage",
+    "en": "Mega Pidgeot"
   },
   "rattata": {
     "fr": "Rattata",
@@ -296,8 +296,8 @@
     "en": "Alakazam"
   },
   "alakazam-mega": {
-    "fr": "Cheniselle Déchet",
-    "en": "Trash Wormadam"
+    "fr": "Méga-Alakazam",
+    "en": "Mega Alakazam"
   },
   "machop": {
     "fr": "Machoc",
@@ -364,8 +364,8 @@
     "en": "Slowbro"
   },
   "slowbro-mega": {
-    "fr": "Haydaim Été",
-    "en": "Summer Sawsbuck"
+    "fr": "Méga-Flagadoss",
+    "en": "Mega Slowbro"
   },
   "magnemite": {
     "fr": "Magnéti",
@@ -424,8 +424,8 @@
     "en": "Gengar"
   },
   "gengar-mega": {
-    "fr": "Ceriflor Ensoleillé",
-    "en": "Sunshine Cherrim"
+    "fr": "Méga-Ectoplasma",
+    "en": "Mega Gengar"
   },
   "onix": {
     "fr": "Onix",
@@ -512,8 +512,8 @@
     "en": "Kangaskhan"
   },
   "kangaskhan-mega": {
-    "fr": "Sancoki Orient",
-    "en": "East Shellos"
+    "fr": "Méga-Kangourex",
+    "en": "Mega Kangaskhan"
   },
   "horsea": {
     "fr": "Hypotrempe",
@@ -568,8 +568,8 @@
     "en": "Pinsir"
   },
   "pinsir-mega": {
-    "fr": "Tritosor Orient",
-    "en": "East Gastrodon"
+    "fr": "Méga-Scarabrute",
+    "en": "Mega Pinsir"
   },
   "tauros": {
     "fr": "Tauros",
@@ -584,8 +584,8 @@
     "en": "Gyarados"
   },
   "gyarados-mega": {
-    "fr": "Arceus Insecte",
-    "en": "Bug Arceus"
+    "fr": "Méga-Léviator",
+    "en": "Mega Gyarados"
   },
   "lapras": {
     "fr": "Lokhlass",
@@ -636,8 +636,8 @@
     "en": "Aerodactyl"
   },
   "aerodactyl-mega": {
-    "fr": "Arceus Ténèbres",
-    "en": "Dark Arceus"
+    "fr": "Méga-Ptéra",
+    "en": "Mega Aerodactyl"
   },
   "snorlax": {
     "fr": "Ronflex",
@@ -676,12 +676,12 @@
     "en": "Mewtwo"
   },
   "mewtwo-mega-x": {
-    "fr": "Arceus Dragon",
-    "en": "Dragon Arceus"
+    "fr": "Méga-Mewtwo X",
+    "en": "Mega Mewtwo X"
   },
   "mewtwo-mega-y": {
-    "fr": "Arceus Électrik",
-    "en": "Electric Arceus"
+    "fr": "Méga-Mewtwo Y",
+    "en": "Mega Mewtwo Y"
   },
   "mew": {
     "fr": "Mew",
@@ -816,8 +816,8 @@
     "en": "Ampharos"
   },
   "ampharos-mega": {
-    "fr": "Arceus Combat",
-    "en": "Fighting Arceus"
+    "fr": "Méga-Pharamp",
+    "en": "Mega Ampharos"
   },
   "bellossom": {
     "fr": "Joliflor",
@@ -928,8 +928,8 @@
     "en": "Steelix"
   },
   "steelix-mega": {
-    "fr": "Haydaim Automne",
-    "en": "Autumn Sawsbuck"
+    "fr": "Méga-Steelix",
+    "en": "Mega Steelix"
   },
   "snubbull": {
     "fr": "Snubbull",
@@ -948,8 +948,8 @@
     "en": "Scizor"
   },
   "scizor-mega": {
-    "fr": "Arceus Feu",
-    "en": "Fire Arceus"
+    "fr": "Méga-Cizayox",
+    "en": "Mega Scizor"
   },
   "shuckle": {
     "fr": "Caratroc",
@@ -960,8 +960,8 @@
     "en": "Heracross"
   },
   "heracross-mega": {
-    "fr": "Arceus Vol",
-    "en": "Flying Arceus"
+    "fr": "Méga-Scarhino",
+    "en": "Mega Heracross"
   },
   "sneasel": {
     "fr": "Farfuret",
@@ -1028,8 +1028,8 @@
     "en": "Houndoom"
   },
   "houndoom-mega": {
-    "fr": "Arceus Spectre",
-    "en": "Ghost Arceus"
+    "fr": "Méga-Démolosse",
+    "en": "Mega Houndoom"
   },
   "kingdra": {
     "fr": "Hyporoi",
@@ -1108,8 +1108,8 @@
     "en": "Tyranitar"
   },
   "tyranitar-mega": {
-    "fr": "Arceus Plante",
-    "en": "Grass Arceus"
+    "fr": "Méga-Tyranocif",
+    "en": "Mega Tyranitar"
   },
   "lugia": {
     "fr": "Lugia",
@@ -1136,8 +1136,8 @@
     "en": "Sceptile"
   },
   "sceptile-mega": {
-    "fr": "Pichu Troizépi",
-    "en": "Spiky-eared Pichu"
+    "fr": "Méga-Jungko",
+    "en": "Mega Sceptile"
   },
   "torchic": {
     "fr": "Poussifeu",
@@ -1152,8 +1152,8 @@
     "en": "Blaziken"
   },
   "blaziken-mega": {
-    "fr": "Arceus Sol",
-    "en": "Ground Arceus"
+    "fr": "Méga-Braségali",
+    "en": "Mega Blaziken"
   },
   "mudkip": {
     "fr": "Gobou",
@@ -1168,8 +1168,8 @@
     "en": "Swampert"
   },
   "swampert-mega": {
-    "fr": "Shaymin Céleste",
-    "en": "Sky Shaymin"
+    "fr": "Méga-Laggron",
+    "en": "Mega Swampert"
   },
   "poochyena": {
     "fr": "Medhyèna",
@@ -1260,8 +1260,8 @@
     "en": "Gardevoir"
   },
   "gardevoir-mega": {
-    "fr": "Arceus Glace",
-    "en": "Ice Arceus"
+    "fr": "Méga-Gardevoir",
+    "en": "Mega Gardevoir"
   },
   "surskit": {
     "fr": "Arakdo",
@@ -1344,16 +1344,16 @@
     "en": "Sableye"
   },
   "sableye-mega": {
-    "fr": "Bargantua Bleu",
-    "en": "Blue-Striped Basculin"
+    "fr": "Méga-Ténéfix",
+    "en": "Mega Sableye"
   },
   "mawile": {
     "fr": "Mysdibule",
     "en": "Mawile"
   },
   "mawile-mega": {
-    "fr": "Arceus Poison",
-    "en": "Poison Arceus"
+    "fr": "Méga-Mysdibule",
+    "en": "Mega Mawile"
   },
   "aron": {
     "fr": "Galekid",
@@ -1368,8 +1368,8 @@
     "en": "Aggron"
   },
   "aggron-mega": {
-    "fr": "Arceus Psy",
-    "en": "Psychic Arceus"
+    "fr": "Méga-Galeking",
+    "en": "Mega Aggron"
   },
   "meditite": {
     "fr": "Méditikka",
@@ -1380,8 +1380,8 @@
     "en": "Medicham"
   },
   "medicham-mega": {
-    "fr": "Arceus Roche",
-    "en": "Rock Arceus"
+    "fr": "Méga-Charmina",
+    "en": "Mega Medicham"
   },
   "electrike": {
     "fr": "Dynavolt",
@@ -1392,8 +1392,8 @@
     "en": "Manectric"
   },
   "manectric-mega": {
-    "fr": "Arceus Acier",
-    "en": "Steel Arceus"
+    "fr": "Méga-Élecsprint",
+    "en": "Mega Manectric"
   },
   "plusle": {
     "fr": "Posipi",
@@ -1432,8 +1432,8 @@
     "en": "Sharpedo"
   },
   "sharpedo-mega": {
-    "fr": "Vivaldaim Hiver",
-    "en": "Winter Deerling"
+    "fr": "Méga-Sharpedo",
+    "en": "Mega Sharpedo"
   },
   "wailmer": {
     "fr": "Wailmer",
@@ -1452,8 +1452,8 @@
     "en": "Camerupt"
   },
   "camerupt-mega": {
-    "fr": "Prismillon Banquise",
-    "en": "Polar Vivillon"
+    "fr": "Méga-Camérupt",
+    "en": "Mega Camerupt"
   },
   "torkoal": {
     "fr": "Chartor",
@@ -1500,8 +1500,8 @@
     "en": "Altaria"
   },
   "altaria-mega": {
-    "fr": "Darumacho Transe",
-    "en": "Zen Darmanitan"
+    "fr": "Méga-Altaria",
+    "en": "Mega Altaria"
   },
   "zangoose": {
     "fr": "Mangriff",
@@ -1584,8 +1584,8 @@
     "en": "Banette"
   },
   "banette-mega": {
-    "fr": "Arceus Eau",
-    "en": "Water Arceus"
+    "fr": "Méga-Branette",
+    "en": "Mega Banette"
   },
   "duskull": {
     "fr": "Skelénox",
@@ -1612,8 +1612,8 @@
     "en": "Absol"
   },
   "absol-mega": {
-    "fr": "Arceus ???",
-    "en": "??? Arceus"
+    "fr": "Méga-Absol",
+    "en": "Mega Absol"
   },
   "absol-mega-z": {
     "fr": "Méga-Absol",
@@ -1632,8 +1632,8 @@
     "en": "Glalie"
   },
   "glalie-mega": {
-    "fr": "Meloetta Danse",
-    "en": "Pirouette Meloetta"
+    "fr": "Méga-Oniglali",
+    "en": "Mega Glalie"
   },
   "spheal": {
     "fr": "Obalie",
@@ -1680,8 +1680,8 @@
     "en": "Salamence"
   },
   "salamence-mega": {
-    "fr": "Prismillon Continent",
-    "en": "Continental Vivillon"
+    "fr": "Méga-Drattak",
+    "en": "Mega Salamence"
   },
   "beldum": {
     "fr": "Terhal",
@@ -1696,8 +1696,8 @@
     "en": "Metagross"
   },
   "metagross-mega": {
-    "fr": "Genesect Choc",
-    "en": "Shock Genesect"
+    "fr": "Méga-Métalosse",
+    "en": "Mega Metagross"
   },
   "regirock": {
     "fr": "Regirock",
@@ -1716,16 +1716,16 @@
     "en": "Latias"
   },
   "latias-mega": {
-    "fr": "Motisma Tonte",
-    "en": "Mow Rotom"
+    "fr": "Méga-Latias",
+    "en": "Mega Latias"
   },
   "latios": {
     "fr": "Latios",
     "en": "Latios"
   },
   "latios-mega": {
-    "fr": "Giratina Originel",
-    "en": "Origin Giratina"
+    "fr": "Méga-Latios",
+    "en": "Mega Latios"
   },
   "kyogre": {
     "fr": "Kyogre",
@@ -1740,8 +1740,8 @@
     "en": "Rayquaza"
   },
   "rayquaza-mega": {
-    "fr": "Boréas Totémique",
-    "en": "Therian Tornadus"
+    "fr": "Méga-Rayquaza",
+    "en": "Mega Rayquaza"
   },
   "jirachi": {
     "fr": "Jirachi",
@@ -1924,8 +1924,8 @@
     "en": "Lopunny"
   },
   "lopunny-mega": {
-    "fr": "Prismillon Glace",
-    "en": "Tundra Vivillon"
+    "fr": "Méga-Lockpin",
+    "en": "Mega Lopunny"
   },
   "mismagius": {
     "fr": "Magirêve",
@@ -1996,8 +1996,8 @@
     "en": "Garchomp"
   },
   "garchomp-mega": {
-    "fr": "Motisma Chaleur",
-    "en": "Heat Rotom"
+    "fr": "Méga-Carchacrok",
+    "en": "Mega Garchomp"
   },
   "garchomp-mega-z": {
     "fr": "Méga-Carchacrok",
@@ -2016,8 +2016,8 @@
     "en": "Lucario"
   },
   "lucario-mega": {
-    "fr": "Motisma Lavage",
-    "en": "Wash Rotom"
+    "fr": "Méga-Lucario",
+    "en": "Mega Lucario"
   },
   "lucario-mega-z": {
     "fr": "Méga-Lucario",
@@ -2072,8 +2072,8 @@
     "en": "Abomasnow"
   },
   "abomasnow-mega": {
-    "fr": "Motisma Froid",
-    "en": "Frost Rotom"
+    "fr": "Méga-Blizzaroi",
+    "en": "Mega Abomasnow"
   },
   "weavile": {
     "fr": "Dimoret",
@@ -2136,8 +2136,8 @@
     "en": "Gallade"
   },
   "gallade-mega": {
-    "fr": "Vivaldaim Été",
-    "en": "Summer Deerling"
+    "fr": "Méga-Gallame",
+    "en": "Mega Gallade"
   },
   "probopass": {
     "fr": "Tarinorme",
@@ -2384,8 +2384,8 @@
     "en": "Audino"
   },
   "audino-mega": {
-    "fr": "Vivaldaim Automne",
-    "en": "Autumn Deerling"
+    "fr": "Méga-Nanméouïe",
+    "en": "Mega Audino"
   },
   "timburr": {
     "fr": "Charpenti",
@@ -3012,8 +3012,8 @@
     "en": "Meowstic"
   },
   "meowstic-mega": {
-    "fr": "Méga-Zarbi Z",
-    "en": "Mega Unown Z"
+    "fr": "Méga-Mistigrix Femelle",
+    "en": "Mega Female Meowstic"
   },
   "honedge": {
     "fr": "Monorpale",
@@ -3196,8 +3196,8 @@
     "en": "Diancie"
   },
   "diancie-mega": {
-    "fr": "Genesect Aqua",
-    "en": "Douse Genesect"
+    "fr": "Méga-Diancie",
+    "en": "Mega Diancie"
   },
   "hoopa": {
     "fr": "Hoopa",
@@ -3540,8 +3540,8 @@
     "en": "Magearna"
   },
   "magearna-mega": {
-    "fr": "Méga-Méga-Scarhino",
-    "en": "Mega Mega Heracross"
+    "fr": "Méga-Magearna Couleur du Passé",
+    "en": "Mega Original Magearna"
   },
   "marshadow": {
     "fr": "Marshadow",
@@ -4268,8 +4268,8 @@
     "en": "Tatsugiri"
   },
   "tatsugiri-mega": {
-    "fr": "Méga-Météno Noyeau Bleu",
-    "en": "Mega Blue Core Minior"
+    "fr": "Méga-Nigirigon Forme Raide",
+    "en": "Mega Stretchy Form Tatsugiri"
   },
   "annihilape": {
     "fr": "Courrousinge",
@@ -4464,884 +4464,884 @@
     "en": "Pecharunt"
   },
   "deoxys-attack": {
-    "fr": "Zarbi B",
-    "en": "Unown B"
-  },
-  "deoxys-defense": {
-    "fr": "Zarbi C",
-    "en": "Unown C"
-  },
-  "deoxys-speed": {
-    "fr": "Zarbi D",
-    "en": "Unown D"
-  },
-  "wormadam-sandy": {
-    "fr": "Zarbi E",
-    "en": "Unown E"
-  },
-  "wormadam-trash": {
-    "fr": "Zarbi F",
-    "en": "Unown F"
-  },
-  "shaymin-sky": {
-    "fr": "Zarbi G",
-    "en": "Unown G"
-  },
-  "giratina-origin": {
-    "fr": "Zarbi H",
-    "en": "Unown H"
-  },
-  "rotom-heat": {
-    "fr": "Zarbi I",
-    "en": "Unown I"
-  },
-  "rotom-wash": {
-    "fr": "Zarbi J",
-    "en": "Unown J"
-  },
-  "rotom-frost": {
-    "fr": "Zarbi K",
-    "en": "Unown K"
-  },
-  "rotom-fan": {
-    "fr": "Zarbi L",
-    "en": "Unown L"
-  },
-  "rotom-mow": {
-    "fr": "Zarbi M",
-    "en": "Unown M"
-  },
-  "castform-sunny": {
-    "fr": "Zarbi N",
-    "en": "Unown N"
-  },
-  "castform-rainy": {
-    "fr": "Zarbi O",
-    "en": "Unown O"
-  },
-  "castform-snowy": {
-    "fr": "Zarbi P",
-    "en": "Unown P"
-  },
-  "basculin-blue-striped": {
-    "fr": "Zarbi Q",
-    "en": "Unown Q"
-  },
-  "darmanitan-zen": {
-    "fr": "Zarbi R",
-    "en": "Unown R"
-  },
-  "meloetta-pirouette": {
-    "fr": "Zarbi S",
-    "en": "Unown S"
-  },
-  "tornadus-therian": {
-    "fr": "Zarbi T",
-    "en": "Unown T"
-  },
-  "thundurus-therian": {
-    "fr": "Zarbi U",
-    "en": "Unown U"
-  },
-  "landorus-therian": {
-    "fr": "Zarbi V",
-    "en": "Unown V"
-  },
-  "kyurem-black": {
-    "fr": "Zarbi W",
-    "en": "Unown W"
-  },
-  "kyurem-white": {
-    "fr": "Zarbi X",
-    "en": "Unown X"
-  },
-  "keldeo-resolute": {
-    "fr": "Zarbi Y",
-    "en": "Unown Y"
-  },
-  "meowstic-female": {
-    "fr": "Zarbi Z",
-    "en": "Unown Z"
-  },
-  "aegislash-blade": {
-    "fr": "Zarbi !",
-    "en": "Unown !"
-  },
-  "pumpkaboo-small": {
-    "fr": "Zarbi ?",
-    "en": "Unown ?"
-  },
-  "pumpkaboo-large": {
-    "fr": "Morphéo Solaire",
-    "en": "Sunny Castform"
-  },
-  "pumpkaboo-super": {
-    "fr": "Morphéo Eau de Pluie",
-    "en": "Rainy Castform"
-  },
-  "gourgeist-small": {
-    "fr": "Morphéo Blizzard",
-    "en": "Snowy Castform"
-  },
-  "gourgeist-large": {
     "fr": "Deoxys Attaque",
     "en": "Attack Deoxys"
   },
-  "gourgeist-super": {
+  "deoxys-defense": {
     "fr": "Deoxys Défense",
     "en": "Defense Deoxys"
   },
-  "floette-eternal": {
+  "deoxys-speed": {
+    "fr": "Deoxys Vitesse",
+    "en": "Speed Deoxys"
+  },
+  "wormadam-sandy": {
+    "fr": "Cheniselle Sable",
+    "en": "Sandy Wormadam"
+  },
+  "wormadam-trash": {
+    "fr": "Cheniselle Déchet",
+    "en": "Trash Wormadam"
+  },
+  "shaymin-sky": {
+    "fr": "Shaymin Céleste",
+    "en": "Sky Shaymin"
+  },
+  "giratina-origin": {
+    "fr": "Giratina Originel",
+    "en": "Origin Giratina"
+  },
+  "rotom-heat": {
+    "fr": "Motisma Chaleur",
+    "en": "Heat Rotom"
+  },
+  "rotom-wash": {
+    "fr": "Motisma Lavage",
+    "en": "Wash Rotom"
+  },
+  "rotom-frost": {
+    "fr": "Motisma Froid",
+    "en": "Frost Rotom"
+  },
+  "rotom-fan": {
     "fr": "Motisma Hélice",
     "en": "Fan Rotom"
   },
-  "kyogre-primal": {
-    "fr": "Genesect Pyro",
-    "en": "Burn Genesect"
+  "rotom-mow": {
+    "fr": "Motisma Tonte",
+    "en": "Mow Rotom"
   },
-  "groudon-primal": {
-    "fr": "Genesect Cryo",
-    "en": "Chill Genesect"
+  "castform-sunny": {
+    "fr": "Morphéo Solaire",
+    "en": "Sunny Castform"
   },
-  "pikachu-rock-star": {
+  "castform-rainy": {
+    "fr": "Morphéo Eau de Pluie",
+    "en": "Rainy Castform"
+  },
+  "castform-snowy": {
+    "fr": "Morphéo Blizzard",
+    "en": "Snowy Castform"
+  },
+  "basculin-blue-striped": {
+    "fr": "Bargantua Bleu",
+    "en": "Blue-Striped Basculin"
+  },
+  "darmanitan-zen": {
+    "fr": "Darumacho Transe",
+    "en": "Zen Darmanitan"
+  },
+  "meloetta-pirouette": {
+    "fr": "Meloetta Danse",
+    "en": "Pirouette Meloetta"
+  },
+  "tornadus-therian": {
+    "fr": "Boréas Totémique",
+    "en": "Therian Tornadus"
+  },
+  "thundurus-therian": {
     "fr": "Fulguris Totémique",
     "en": "Therian Thundurus"
   },
-  "pikachu-belle": {
+  "landorus-therian": {
     "fr": "Démétéros Totémique",
     "en": "Therian Landorus"
   },
-  "pikachu-pop-star": {
+  "kyurem-black": {
     "fr": "Kyurem Noir",
     "en": "Black Kyurem"
   },
-  "pikachu-phd": {
+  "kyurem-white": {
     "fr": "Kyurem Blanc",
     "en": "White Kyurem"
   },
-  "pikachu-libre": {
+  "keldeo-resolute": {
     "fr": "Keldeo Décidé",
     "en": "Resolute Keldeo"
   },
-  "pikachu-cosplay": {
-    "fr": "Arceus Fée",
-    "en": "Fairy Arceus"
-  },
-  "hoopa-unbound": {
-    "fr": "Prismillon Blizzard",
-    "en": "Icy Snow Vivillon"
-  },
-  "rattata-alola": {
-    "fr": "Prismillon Monarchie",
-    "en": "Elegant Vivillon"
-  },
-  "raticate-alola": {
-    "fr": "Prismillon Métropole",
-    "en": "Modern Vivillon"
-  },
-  "raticate-totem-alola": {
-    "fr": "Prismillon Rivage",
-    "en": "Marine Vivillon"
-  },
-  "pikachu-original-cap": {
-    "fr": "Prismillon Archipel",
-    "en": "Archipelago Vivillon"
-  },
-  "pikachu-hoenn-cap": {
-    "fr": "Prismillon Sécheresse",
-    "en": "High Plains Vivillon"
-  },
-  "pikachu-sinnoh-cap": {
-    "fr": "Prismillon Sable",
-    "en": "Sandstorm Vivillon"
-  },
-  "pikachu-unova-cap": {
-    "fr": "Prismillon Delta",
-    "en": "River Vivillon"
-  },
-  "pikachu-kalos-cap": {
-    "fr": "Prismillon Cyclone",
-    "en": "Monsoon Vivillon"
-  },
-  "pikachu-alola-cap": {
-    "fr": "Prismillon Mangrove",
-    "en": "Savanna Vivillon"
-  },
-  "raichu-alola": {
-    "fr": "Prismillon Zénith",
-    "en": "Sun Vivillon"
-  },
-  "sandshrew-alola": {
-    "fr": "Prismillon Soleil Levant",
-    "en": "Ocean Vivillon"
-  },
-  "sandslash-alola": {
-    "fr": "Prismillon Jungle",
-    "en": "Jungle Vivillon"
-  },
-  "vulpix-alola": {
-    "fr": "Flabébé Jaune",
-    "en": "Yellow Flabébé"
-  },
-  "ninetales-alola": {
-    "fr": "Flabébé Orange",
-    "en": "Orange Flabébé"
-  },
-  "diglett-alola": {
-    "fr": "Flabébé Bleu",
-    "en": "Blue Flabébé"
-  },
-  "dugtrio-alola": {
-    "fr": "Flabébé Blanc",
-    "en": "White Flabébé"
-  },
-  "meowth-alola": {
-    "fr": "Floette Jaune",
-    "en": "Yellow Floette"
-  },
-  "persian-alola": {
-    "fr": "Floette Orange",
-    "en": "Orange Floette"
-  },
-  "geodude-alola": {
-    "fr": "Floette Bleu",
-    "en": "Blue Floette"
-  },
-  "graveler-alola": {
-    "fr": "Floette Blanc",
-    "en": "White Floette"
-  },
-  "golem-alola": {
-    "fr": "Florges Jaune",
-    "en": "Yellow Florges"
-  },
-  "grimer-alola": {
-    "fr": "Florges Orange",
-    "en": "Orange Florges"
-  },
-  "muk-alola": {
-    "fr": "Florges Bleu",
-    "en": "Blue Florges"
-  },
-  "exeggutor-alola": {
-    "fr": "Florges Blanc",
-    "en": "White Florges"
-  },
-  "marowak-alola": {
-    "fr": "Couafarel Cœur",
-    "en": "Heart Furfrou"
-  },
-  "greninja-battle-bond": {
-    "fr": "Couafarel Étoile",
-    "en": "Star Furfrou"
-  },
-  "greninja-ash": {
-    "fr": "Couafarel Diamant",
-    "en": "Diamond Furfrou"
-  },
-  "zygarde-10-power-construct": {
-    "fr": "Couafarel Demoiselle",
-    "en": "Debutante Furfrou"
-  },
-  "zygarde-50-power-construct": {
-    "fr": "Couafarel Madame",
-    "en": "Matron Furfrou"
-  },
-  "zygarde-complete": {
-    "fr": "Couafarel Monsieur",
-    "en": "Dandy Furfrou"
-  },
-  "gumshoos-totem": {
-    "fr": "Couafarel Reine",
-    "en": "La Reine Furfrou"
-  },
-  "vikavolt-totem": {
-    "fr": "Couafarel Kabuki",
-    "en": "Kabuki Furfrou"
-  },
-  "oricorio-pom-pom": {
-    "fr": "Couafarel Pharaon",
-    "en": "Pharaoh Furfrou"
-  },
-  "oricorio-pau": {
+  "meowstic-female": {
     "fr": "Mistigrix Femelle",
     "en": "Female Meowstic"
   },
-  "oricorio-sensu": {
+  "aegislash-blade": {
     "fr": "Exagide Assaut",
     "en": "Blade Aegislash"
   },
-  "lycanroc-midnight": {
+  "pumpkaboo-small": {
     "fr": "Pitrouille Mini",
     "en": "Small Pumpkaboo"
   },
-  "wishiwashi-school": {
+  "pumpkaboo-large": {
     "fr": "Pitrouille Maxi",
     "en": "Large Pumpkaboo"
   },
-  "lurantis-totem": {
+  "pumpkaboo-super": {
     "fr": "Pitrouille Ultra",
     "en": "Super Pumpkaboo"
   },
-  "salazzle-totem": {
+  "gourgeist-small": {
     "fr": "Banshitrouye Mini",
     "en": "Small Gourgeist"
   },
-  "minior-orange-meteor": {
+  "gourgeist-large": {
     "fr": "Banshitrouye Maxi",
     "en": "Large Gourgeist"
   },
-  "minior-yellow-meteor": {
+  "gourgeist-super": {
     "fr": "Banshitrouye Ultra",
     "en": "Super Gourgeist"
   },
-  "minior-green-meteor": {
-    "fr": "Xerneas Paisible",
-    "en": "Neutral Xerneas"
-  },
-  "minior-blue-meteor": {
-    "fr": "Méga-Florizarre",
-    "en": "Mega Venusaur"
-  },
-  "minior-indigo-meteor": {
-    "fr": "Méga-Dracaufeu X",
-    "en": "Mega Charizard X"
-  },
-  "minior-violet-meteor": {
-    "fr": "Méga-Dracaufeu Y",
-    "en": "Mega Charizard Y"
-  },
-  "minior-red": {
-    "fr": "Méga-Tortank",
-    "en": "Mega Blastoise"
-  },
-  "minior-orange": {
-    "fr": "Méga-Alakazam",
-    "en": "Mega Alakazam"
-  },
-  "minior-yellow": {
-    "fr": "Méga-Ectoplasma",
-    "en": "Mega Gengar"
-  },
-  "minior-green": {
-    "fr": "Méga-Kangourex",
-    "en": "Mega Kangaskhan"
-  },
-  "minior-blue": {
-    "fr": "Méga-Scarabrute",
-    "en": "Mega Pinsir"
-  },
-  "minior-indigo": {
-    "fr": "Méga-Léviator",
-    "en": "Mega Gyarados"
-  },
-  "minior-violet": {
-    "fr": "Méga-Ptéra",
-    "en": "Mega Aerodactyl"
-  },
-  "mimikyu-busted": {
-    "fr": "Méga-Mewtwo X",
-    "en": "Mega Mewtwo X"
-  },
-  "mimikyu-totem-disguised": {
-    "fr": "Méga-Mewtwo Y",
-    "en": "Mega Mewtwo Y"
-  },
-  "mimikyu-totem-busted": {
-    "fr": "Méga-Pharamp",
-    "en": "Mega Ampharos"
-  },
-  "kommo-o-totem": {
-    "fr": "Méga-Cizayox",
-    "en": "Mega Scizor"
-  },
-  "magearna-original": {
-    "fr": "Méga-Scarhino",
-    "en": "Mega Heracross"
-  },
-  "pikachu-partner-cap": {
-    "fr": "Méga-Démolosse",
-    "en": "Mega Houndoom"
-  },
-  "marowak-totem": {
-    "fr": "Méga-Tyranocif",
-    "en": "Mega Tyranitar"
-  },
-  "ribombee-totem": {
-    "fr": "Méga-Braségali",
-    "en": "Mega Blaziken"
-  },
-  "rockruff-own-tempo": {
-    "fr": "Méga-Gardevoir",
-    "en": "Mega Gardevoir"
-  },
-  "lycanroc-dusk": {
-    "fr": "Méga-Mysdibule",
-    "en": "Mega Mawile"
-  },
-  "araquanid-totem": {
-    "fr": "Méga-Galeking",
-    "en": "Mega Aggron"
-  },
-  "togedemaru-totem": {
-    "fr": "Méga-Charmina",
-    "en": "Mega Medicham"
-  },
-  "necrozma-dusk": {
-    "fr": "Méga-Élecsprint",
-    "en": "Mega Manectric"
-  },
-  "necrozma-dawn": {
-    "fr": "Méga-Branette",
-    "en": "Mega Banette"
-  },
-  "necrozma-ultra": {
-    "fr": "Méga-Absol",
-    "en": "Mega Absol"
-  },
-  "pikachu-starter": {
-    "fr": "Méga-Carchacrok",
-    "en": "Mega Garchomp"
-  },
-  "eevee-starter": {
-    "fr": "Méga-Lucario",
-    "en": "Mega Lucario"
-  },
-  "pikachu-world-cap": {
-    "fr": "Méga-Blizzaroi",
-    "en": "Mega Abomasnow"
-  },
-  "meowth-galar": {
-    "fr": "Prismillon Fantaisie",
-    "en": "Fancy Vivillon"
-  },
-  "ponyta-galar": {
-    "fr": "Prismillon Poké Ball",
-    "en": "Poké Ball Vivillon"
-  },
-  "rapidash-galar": {
+  "floette-eternal": {
     "fr": "Floette Éternel",
     "en": "Eternal Floette"
   },
-  "slowpoke-galar": {
-    "fr": "Méga-Latias",
-    "en": "Mega Latias"
-  },
-  "slowbro-galar": {
-    "fr": "Méga-Latios",
-    "en": "Mega Latios"
-  },
-  "farfetchd-galar": {
-    "fr": "Méga-Laggron",
-    "en": "Mega Swampert"
-  },
-  "weezing-galar": {
-    "fr": "Méga-Jungko",
-    "en": "Mega Sceptile"
-  },
-  "mr-mime-galar": {
-    "fr": "Méga-Ténéfix",
-    "en": "Mega Sableye"
-  },
-  "articuno-galar": {
-    "fr": "Méga-Altaria",
-    "en": "Mega Altaria"
-  },
-  "zapdos-galar": {
-    "fr": "Méga-Gallame",
-    "en": "Mega Gallade"
-  },
-  "moltres-galar": {
-    "fr": "Méga-Nanméouïe",
-    "en": "Mega Audino"
-  },
-  "slowking-galar": {
-    "fr": "Méga-Sharpedo",
-    "en": "Mega Sharpedo"
-  },
-  "corsola-galar": {
-    "fr": "Méga-Flagadoss",
-    "en": "Mega Slowbro"
-  },
-  "zigzagoon-galar": {
-    "fr": "Méga-Steelix",
-    "en": "Mega Steelix"
-  },
-  "linoone-galar": {
-    "fr": "Méga-Roucarnage",
-    "en": "Mega Pidgeot"
-  },
-  "darumaka-galar": {
-    "fr": "Méga-Oniglali",
-    "en": "Mega Glalie"
-  },
-  "darmanitan-galar-standard": {
-    "fr": "Méga-Diancie",
-    "en": "Mega Diancie"
-  },
-  "darmanitan-galar-zen": {
-    "fr": "Méga-Métalosse",
-    "en": "Mega Metagross"
-  },
-  "yamask-galar": {
+  "kyogre-primal": {
     "fr": "Primo-Kyogre",
     "en": "Primal Kyogre"
   },
-  "stunfisk-galar": {
+  "groudon-primal": {
     "fr": "Primo-Groudon",
     "en": "Primal Groudon"
   },
-  "zygarde-10": {
-    "fr": "Méga-Rayquaza",
-    "en": "Mega Rayquaza"
-  },
-  "cramorant-gulping": {
+  "pikachu-rock-star": {
     "fr": "Pikachu Rockeur",
     "en": "Pikachu Rock Star"
   },
-  "cramorant-gorging": {
+  "pikachu-belle": {
     "fr": "Pikachu Lady",
     "en": "Pikachu Belle"
   },
-  "toxtricity-low-key": {
+  "pikachu-pop-star": {
     "fr": "Pikachu Star",
     "en": "Pikachu Pop Star"
   },
-  "eiscue-noice": {
+  "pikachu-phd": {
     "fr": "Pikachu Docteur",
     "en": "Pikachu Ph.D."
   },
-  "indeedee-female": {
+  "pikachu-libre": {
     "fr": "Pikachu Catcheur",
     "en": "Pikachu Libre"
   },
-  "morpeko-hangry": {
+  "pikachu-cosplay": {
     "fr": "Pikachu Cosplayeur",
     "en": "Cosplay Pikachu"
   },
-  "zacian-crowned": {
+  "hoopa-unbound": {
     "fr": "Hoopa Déchaîné",
     "en": "Hoopa Unbound"
   },
-  "zamazenta-crowned": {
-    "fr": "Méga-Camérupt",
-    "en": "Mega Camerupt"
-  },
-  "eternatus-eternamax": {
-    "fr": "Méga-Lockpin",
-    "en": "Mega Lopunny"
-  },
-  "urshifu-rapid-strike": {
-    "fr": "Méga-Drattak",
-    "en": "Mega Salamence"
-  },
-  "zarude-dada": {
-    "fr": "Méga-Dardargnan",
-    "en": "Mega Beedrill"
-  },
-  "calyrex-ice": {
+  "rattata-alola": {
     "fr": "Rattata d’Alola",
     "en": "Alolan Rattata"
   },
-  "calyrex-shadow": {
+  "raticate-alola": {
     "fr": "Rattatac d’Alola",
     "en": "Alolan Raticate"
   },
-  "venusaur-gmax": {
+  "raticate-totem-alola": {
     "fr": "Rattatac d’Alola Dominant",
     "en": "Totem Alolan Raticate"
   },
-  "charizard-gmax": {
+  "pikachu-original-cap": {
     "fr": "Pikachu Casquette Originale",
     "en": "Original Cap Pikachu"
   },
-  "blastoise-gmax": {
+  "pikachu-hoenn-cap": {
     "fr": "Pikachu Casquette de Hoenn",
     "en": "Hoenn Cap Pikachu"
   },
-  "butterfree-gmax": {
+  "pikachu-sinnoh-cap": {
     "fr": "Pikachu Casquette de Sinnoh",
     "en": "Sinnoh Cap Pikachu"
   },
-  "pikachu-gmax": {
+  "pikachu-unova-cap": {
     "fr": "Pikachu Casquette d’Unys",
     "en": "Unova Cap Pikachu"
   },
-  "meowth-gmax": {
+  "pikachu-kalos-cap": {
     "fr": "Pikachu Casquette de Kalos",
     "en": "Kalos Cap Pikachu"
   },
-  "machamp-gmax": {
+  "pikachu-alola-cap": {
     "fr": "Pikachu Casquette d’Alola",
     "en": "Alola Cap Pikachu"
   },
-  "gengar-gmax": {
+  "raichu-alola": {
     "fr": "Raichu d’Alola",
     "en": "Alolan Raichu"
   },
-  "kingler-gmax": {
+  "sandshrew-alola": {
     "fr": "Sabelette d’Alola",
     "en": "Alolan Sandshrew"
   },
-  "lapras-gmax": {
+  "sandslash-alola": {
     "fr": "Sablaireau d’Alola",
     "en": "Alolan Sandslash"
   },
-  "eevee-gmax": {
+  "vulpix-alola": {
     "fr": "Goupix d’Alola",
     "en": "Alolan Vulpix"
   },
-  "snorlax-gmax": {
+  "ninetales-alola": {
     "fr": "Feunard d’Alola",
     "en": "Alolan Ninetales"
   },
-  "garbodor-gmax": {
+  "diglett-alola": {
     "fr": "Taupiqueur d’Alola",
     "en": "Alolan Diglett"
   },
-  "melmetal-gmax": {
+  "dugtrio-alola": {
     "fr": "Triopikeur d’Alola",
     "en": "Alolan Dugtrio"
   },
-  "rillaboom-gmax": {
+  "meowth-alola": {
     "fr": "Miaouss d’Alola",
     "en": "Alolan Meowth"
   },
-  "cinderace-gmax": {
+  "persian-alola": {
     "fr": "Persian d’Alola",
     "en": "Alolan Persian"
   },
-  "inteleon-gmax": {
+  "geodude-alola": {
     "fr": "Racaillou d’Alola",
     "en": "Alolan Geodude"
   },
-  "corviknight-gmax": {
+  "graveler-alola": {
     "fr": "Gravalanch d’Alola",
     "en": "Alolan Graveler"
   },
-  "orbeetle-gmax": {
+  "golem-alola": {
     "fr": "Grolem d’Alola",
     "en": "Alolan Golem"
   },
-  "drednaw-gmax": {
+  "grimer-alola": {
     "fr": "Tadmorv d’Alola",
     "en": "Alolan Grimer"
   },
-  "coalossal-gmax": {
+  "muk-alola": {
     "fr": "Grotadmorv d’Alola",
     "en": "Alolan Muk"
   },
-  "flapple-gmax": {
+  "exeggutor-alola": {
     "fr": "Noadkoko d’Alola",
     "en": "Alolan Exeggutor"
   },
-  "appletun-gmax": {
+  "marowak-alola": {
     "fr": "Ossatueur d’Alola",
     "en": "Alolan Marowak"
   },
-  "sandaconda-gmax": {
+  "greninja-battle-bond": {
     "fr": "Amphinobi Synergie",
     "en": "Battle Bond Greninja"
   },
-  "toxtricity-amped-gmax": {
+  "greninja-ash": {
     "fr": "Amphinobi Forme Sacha",
     "en": "Ash’s Greninja"
   },
-  "centiskorch-gmax": {
+  "zygarde-10-power-construct": {
     "fr": "Zygarde Forme 10 %",
     "en": "10% Zygarde"
   },
-  "hatterene-gmax": {
+  "zygarde-50-power-construct": {
     "fr": "Zygarde Forme 50 %",
     "en": "50% Zygarde"
   },
-  "grimmsnarl-gmax": {
+  "zygarde-complete": {
     "fr": "Zygarde Forme Parfaite",
     "en": "Complete Zygarde"
   },
-  "alcremie-gmax": {
+  "gumshoos-totem": {
     "fr": "Argouste Dominant",
     "en": "Totem Gumshoos"
   },
-  "copperajah-gmax": {
+  "vikavolt-totem": {
     "fr": "Lucanon Dominant",
     "en": "Totem Vikavolt"
   },
-  "duraludon-gmax": {
+  "oricorio-pom-pom": {
     "fr": "Plumeline Style Pom-Pom",
     "en": "Pom-pom Oricorio"
   },
-  "urshifu-single-strike-gmax": {
+  "oricorio-pau": {
     "fr": "Plumeline Style Hula",
     "en": "Pa’u Oricorio"
   },
-  "urshifu-rapid-strike-gmax": {
+  "oricorio-sensu": {
     "fr": "Plumeline Style Buyō",
     "en": "Sensu Oricorio"
   },
-  "toxtricity-low-key-gmax": {
+  "lycanroc-midnight": {
     "fr": "Lougaroc Forme Nocturne",
     "en": "Midnight Lycanroc"
   },
-  "growlithe-hisui": {
+  "wishiwashi-school": {
     "fr": "Froussardine Forme Banc",
     "en": "School Wishiwashi"
   },
-  "arcanine-hisui": {
+  "lurantis-totem": {
     "fr": "Floramantis Dominant",
     "en": "Totem Lurantis"
   },
-  "voltorb-hisui": {
+  "salazzle-totem": {
     "fr": "Malamandre Dominant",
     "en": "Totem Salazzle"
   },
-  "electrode-hisui": {
-    "fr": "Électrode",
-    "en": "Electrode"
-  },
-  "typhlosion-hisui": {
-    "fr": "Typhlosion",
-    "en": "Typhlosion"
-  },
-  "qwilfish-hisui": {
-    "fr": "Qwilfish",
-    "en": "Qwilfish"
-  },
-  "sneasel-hisui": {
-    "fr": "Farfuret",
-    "en": "Sneasel"
-  },
-  "samurott-hisui": {
-    "fr": "Clamiral",
-    "en": "Samurott"
-  },
-  "lilligant-hisui": {
-    "fr": "Fragilady",
-    "en": "Lilligant"
-  },
-  "zorua-hisui": {
-    "fr": "Zorua",
-    "en": "Zorua"
-  },
-  "zoroark-hisui": {
-    "fr": "Zoroark",
-    "en": "Zoroark"
-  },
-  "braviary-hisui": {
-    "fr": "Gueriaigle",
-    "en": "Braviary"
-  },
-  "sliggoo-hisui": {
-    "fr": "Colimucus",
-    "en": "Sliggoo"
-  },
-  "goodra-hisui": {
-    "fr": "Muplodocus",
-    "en": "Goodra"
-  },
-  "avalugg-hisui": {
-    "fr": "Séracrawl",
-    "en": "Avalugg"
-  },
-  "decidueye-hisui": {
-    "fr": "Archéduc",
-    "en": "Decidueye"
-  },
-  "dialga-origin": {
-    "fr": "Dialga",
-    "en": "Dialga"
-  },
-  "palkia-origin": {
-    "fr": "Palkia",
-    "en": "Palkia"
-  },
-  "basculin-white-striped": {
-    "fr": "Bargantua",
-    "en": "Basculin"
-  },
-  "basculegion-female": {
-    "fr": "Paragruel",
-    "en": "Basculegion"
-  },
-  "enamorus-therian": {
+  "minior-orange-meteor": {
     "fr": "Météno Forme Météore Noyeau Orange",
     "en": "Orange Meteor Minior"
   },
-  "tauros-paldea-combat-breed": {
+  "minior-yellow-meteor": {
     "fr": "Météno Forme Météore Noyeau Jaune",
     "en": "Yellow Meteor Minior"
   },
-  "tauros-paldea-blaze-breed": {
+  "minior-green-meteor": {
     "fr": "Météno Forme Météore Noyeau Vert",
     "en": "Green Meteor Minior"
   },
-  "tauros-paldea-aqua-breed": {
+  "minior-blue-meteor": {
     "fr": "Météno Forme Météore Noyeau Bleu",
     "en": "Blue Meteor Minior"
   },
-  "wooper-paldea": {
+  "minior-indigo-meteor": {
     "fr": "Météno Forme Météore Noyeau Indigo",
     "en": "Indigo Meteor Minior"
   },
-  "oinkologne-female": {
+  "minior-violet-meteor": {
     "fr": "Météno Forme Météore Noyeau Violet",
     "en": "Violet Meteor Minior"
   },
-  "dudunsparce-three-segment": {
+  "minior-red": {
     "fr": "Météno Noyeau Rouge",
     "en": "Red Core Minior"
   },
-  "palafin-hero": {
+  "minior-orange": {
     "fr": "Météno Noyeau Orange",
     "en": "Orange Core Minior"
   },
-  "maushold-family-of-three": {
+  "minior-yellow": {
     "fr": "Météno Noyeau Jaune",
     "en": "Yellow Core Minior"
   },
-  "tatsugiri-droopy": {
+  "minior-green": {
     "fr": "Météno Noyeau Vert",
     "en": "Green Core Minior"
   },
-  "tatsugiri-stretchy": {
+  "minior-blue": {
     "fr": "Météno Noyeau Bleu",
     "en": "Blue Core Minior"
   },
-  "squawkabilly-blue-plumage": {
+  "minior-indigo": {
     "fr": "Météno Noyeau Indigo",
     "en": "Indigo Core Minior"
   },
-  "squawkabilly-yellow-plumage": {
+  "minior-violet": {
     "fr": "Météno Noyeau Violet",
     "en": "Violet Core Minior"
   },
-  "squawkabilly-white-plumage": {
+  "mimikyu-busted": {
     "fr": "Mimiqui Forme Démasquée",
     "en": "Busted Mimikyu"
   },
-  "gimmighoul-roaming": {
+  "mimikyu-totem-disguised": {
     "fr": "Mimiqui Dominant",
     "en": "Totem Disguised Mimikyu"
   },
-  "koraidon-limited-build": {
+  "mimikyu-totem-busted": {
     "fr": "Mimiqui Dominant Forme Démasquée",
     "en": "Totem Busted Mimikyu"
   },
-  "koraidon-sprinting-build": {
+  "kommo-o-totem": {
     "fr": "Ékaïser Dominant",
     "en": "Totem Kommo-o"
   },
-  "koraidon-swimming-build": {
+  "magearna-original": {
     "fr": "Magearna Couleur du Passé",
     "en": "Original Magearna"
   },
-  "koraidon-gliding-build": {
+  "pikachu-partner-cap": {
     "fr": "Pikachu Casquette Partenaire",
     "en": "Partner Cap Pikachu"
   },
-  "miraidon-low-power-mode": {
+  "marowak-totem": {
     "fr": "Ossatueur d’Alola Dominant",
     "en": "Totem Alolan Marowak"
+  },
+  "ribombee-totem": {
+    "fr": "Rubombelle Dominant",
+    "en": "Totem Ribombee"
+  },
+  "rockruff-own-tempo": {
+    "fr": "Rocabot Tempo Perso",
+    "en": "Own Tempo Rockruff"
+  },
+  "lycanroc-dusk": {
+    "fr": "Lougaroc Forme Crépusculaire",
+    "en": "Dusk Lycanroc"
+  },
+  "araquanid-totem": {
+    "fr": "Tarenbulle Dominant",
+    "en": "Totem Araquanid"
+  },
+  "togedemaru-totem": {
+    "fr": "Togedemaru Dominant",
+    "en": "Totem Togedemaru"
+  },
+  "necrozma-dusk": {
+    "fr": "Necrozma Crinière du Couchant",
+    "en": "Dusk Necrozma"
+  },
+  "necrozma-dawn": {
+    "fr": "Necrozma Ailes de l’Aurore",
+    "en": "Dawn Necrozma"
+  },
+  "necrozma-ultra": {
+    "fr": "Ultra-Necrozma",
+    "en": "Ultra Necrozma"
+  },
+  "pikachu-starter": {
+    "fr": "Pikachu Partenaire",
+    "en": "Partner Pikachu"
+  },
+  "eevee-starter": {
+    "fr": "Évoli Partenaire",
+    "en": "Partner Eevee"
+  },
+  "pikachu-world-cap": {
+    "fr": "Pikachu Casquette Monde",
+    "en": "World Cap Pikachu"
+  },
+  "meowth-galar": {
+    "fr": "Miaouss de Galar",
+    "en": "Galarian Meowth"
+  },
+  "ponyta-galar": {
+    "fr": "Ponyta de Galar",
+    "en": "Galarian Ponyta"
+  },
+  "rapidash-galar": {
+    "fr": "Galopa de Galar",
+    "en": "Galarian Rapidash"
+  },
+  "slowpoke-galar": {
+    "fr": "Ramoloss de Galar",
+    "en": "Galarian Slowpoke"
+  },
+  "slowbro-galar": {
+    "fr": "Flagadoss de Galar",
+    "en": "Galarian Slowbro"
+  },
+  "farfetchd-galar": {
+    "fr": "Canarticho de Galar",
+    "en": "Galarian Farfetch’d"
+  },
+  "weezing-galar": {
+    "fr": "Smogogo de Galar",
+    "en": "Galarian Weezing"
+  },
+  "mr-mime-galar": {
+    "fr": "M. Mime de Galar",
+    "en": "Galarian Mr. Mime"
+  },
+  "articuno-galar": {
+    "fr": "Artikodin de Galar",
+    "en": "Galarian Articuno"
+  },
+  "zapdos-galar": {
+    "fr": "Électhor de Galar",
+    "en": "Galarian Zapdos"
+  },
+  "moltres-galar": {
+    "fr": "Sulfura de Galar",
+    "en": "Galarian Moltres"
+  },
+  "slowking-galar": {
+    "fr": "Roigada de Galar",
+    "en": "Galarian Slowking"
+  },
+  "corsola-galar": {
+    "fr": "Corayon de Galar",
+    "en": "Galarian Corsola"
+  },
+  "zigzagoon-galar": {
+    "fr": "Zigzaton de Galar",
+    "en": "Galarian Zigzagoon"
+  },
+  "linoone-galar": {
+    "fr": "Linéon de Galar",
+    "en": "Galarian Linoone"
+  },
+  "darumaka-galar": {
+    "fr": "Darumarond de Galar",
+    "en": "Galarian Darumaka"
+  },
+  "darmanitan-galar-standard": {
+    "fr": "Darumacho de Galar Normal",
+    "en": "Standard Galarian Darmanitan"
+  },
+  "darmanitan-galar-zen": {
+    "fr": "Darumacho de Galar Transe",
+    "en": "Zen Galarian Darmanitan"
+  },
+  "yamask-galar": {
+    "fr": "Tutafeh de Galar",
+    "en": "Galarian Yamask"
+  },
+  "stunfisk-galar": {
+    "fr": "Limonde de Galar",
+    "en": "Galarian Stunfisk"
+  },
+  "zygarde-10": {
+    "fr": "Zygarde Forme 10 %",
+    "en": "10% Zygarde"
+  },
+  "cramorant-gulping": {
+    "fr": "Nigosier Forme Gobe-Tout",
+    "en": "Gulping Cramorant"
+  },
+  "cramorant-gorging": {
+    "fr": "Nigosier Forme Gobe-Chu",
+    "en": "Gorging Cramorant"
+  },
+  "toxtricity-low-key": {
+    "fr": "Salarsen Forme Grave",
+    "en": "Low Key Toxtricity"
+  },
+  "eiscue-noice": {
+    "fr": "Bekaglaçon Tête Dégel",
+    "en": "Noice Eiscue"
+  },
+  "indeedee-female": {
+    "fr": "Wimessir Femelle",
+    "en": "Female Indeedee"
+  },
+  "morpeko-hangry": {
+    "fr": "Morpeko Affamé",
+    "en": "Hangry Morpeko"
+  },
+  "zacian-crowned": {
+    "fr": "Zacian Épée Suprême",
+    "en": "Crowned Zacian"
+  },
+  "zamazenta-crowned": {
+    "fr": "Zamazenta Bouclier Suprême",
+    "en": "Crowned Zamazenta"
+  },
+  "eternatus-eternamax": {
+    "fr": "Éthernatos Infinimax",
+    "en": "Eternamax Eternatus"
+  },
+  "urshifu-rapid-strike": {
+    "fr": "Shifours Style Mille Poings",
+    "en": "Rapid Strike Urshifu"
+  },
+  "zarude-dada": {
+    "fr": "Zarude Papa",
+    "en": "Dada Zarude"
+  },
+  "calyrex-ice": {
+    "fr": "Calyrex Cavalier du Froid",
+    "en": "Ice Calyrex"
+  },
+  "calyrex-shadow": {
+    "fr": "Calyrex Cavalier d’Effroi",
+    "en": "Shadow Calyrex"
+  },
+  "venusaur-gmax": {
+    "fr": "Florizarre Gigamax",
+    "en": "Gigantamax Venusaur"
+  },
+  "charizard-gmax": {
+    "fr": "Dracaufeu Gigamax",
+    "en": "Gigantamax Charizard"
+  },
+  "blastoise-gmax": {
+    "fr": "Tortank Gigamax",
+    "en": "Gigantamax Blastoise"
+  },
+  "butterfree-gmax": {
+    "fr": "Papilusion Gigamax",
+    "en": "Gigantamax Butterfree"
+  },
+  "pikachu-gmax": {
+    "fr": "Pikachu Gigamax",
+    "en": "Gigantamax Pikachu"
+  },
+  "meowth-gmax": {
+    "fr": "Miaouss Gigamax",
+    "en": "Gigantamax Meowth"
+  },
+  "machamp-gmax": {
+    "fr": "Mackogneur Gigamax",
+    "en": "Gigantamax Machamp"
+  },
+  "gengar-gmax": {
+    "fr": "Ectoplasma Gigamax",
+    "en": "Gigantamax Gengar"
+  },
+  "kingler-gmax": {
+    "fr": "Krabboss Gigamax",
+    "en": "Gigantamax Kingler"
+  },
+  "lapras-gmax": {
+    "fr": "Lokhlass Gigamax",
+    "en": "Gigantamax Lapras"
+  },
+  "eevee-gmax": {
+    "fr": "Évoli Gigamax",
+    "en": "Gigantamax Eevee"
+  },
+  "snorlax-gmax": {
+    "fr": "Ronflex Gigamax",
+    "en": "Gigantamax Snorlax"
+  },
+  "garbodor-gmax": {
+    "fr": "Miasmax Gigamax",
+    "en": "Gigantamax Garbodor"
+  },
+  "melmetal-gmax": {
+    "fr": "Melmetal Gigamax",
+    "en": "Gigantamax Melmetal"
+  },
+  "rillaboom-gmax": {
+    "fr": "Gorythmic Gigamax",
+    "en": "Gigantamax Rillaboom"
+  },
+  "cinderace-gmax": {
+    "fr": "Pyrobut Gigamax",
+    "en": "Gigantamax Cinderace"
+  },
+  "inteleon-gmax": {
+    "fr": "Lézargus Gigamax",
+    "en": "Gigantamax Inteleon"
+  },
+  "corviknight-gmax": {
+    "fr": "Corvaillus Gigamax",
+    "en": "Gigantamax Corviknight"
+  },
+  "orbeetle-gmax": {
+    "fr": "Astronelle Gigamax",
+    "en": "Gigantamax Orbeetle"
+  },
+  "drednaw-gmax": {
+    "fr": "Torgamord Gigamax",
+    "en": "Gigantamax Drednaw"
+  },
+  "coalossal-gmax": {
+    "fr": "Monthracite Gigamax",
+    "en": "Gigantamax Coalossal"
+  },
+  "flapple-gmax": {
+    "fr": "Pomdrapi Gigamax",
+    "en": "Gigantamax Flapple"
+  },
+  "appletun-gmax": {
+    "fr": "Dratatin Gigamax",
+    "en": "Gigantamax Appletun"
+  },
+  "sandaconda-gmax": {
+    "fr": "Dunaconda Gigamax",
+    "en": "Gigantamax Sandaconda"
+  },
+  "toxtricity-amped-gmax": {
+    "fr": "Salarsen Forme Aigüe Gigamax",
+    "en": "Gigantamax Amped Toxtricity"
+  },
+  "centiskorch-gmax": {
+    "fr": "Scolocendre Gigamax",
+    "en": "Gigantamax Centiskorch"
+  },
+  "hatterene-gmax": {
+    "fr": "Sorcilence Gigamax",
+    "en": "Gigantamax Hatterene"
+  },
+  "grimmsnarl-gmax": {
+    "fr": "Angoliath Gigamax",
+    "en": "Gigantamax Grimmsnarl"
+  },
+  "alcremie-gmax": {
+    "fr": "Charmilly Gigamax",
+    "en": "Gigantamax Alcremie"
+  },
+  "copperajah-gmax": {
+    "fr": "Pachyradjah Gigamax",
+    "en": "Gigantamax Copperajah"
+  },
+  "duraludon-gmax": {
+    "fr": "Duralugon Gigamax",
+    "en": "Gigantamax Duraludon"
+  },
+  "urshifu-single-strike-gmax": {
+    "fr": "Shifours Style Poing Final Gigamax",
+    "en": "Gigantamax Single Strike Urshifu"
+  },
+  "urshifu-rapid-strike-gmax": {
+    "fr": "Shifours Style Mille Poings Gigamax",
+    "en": "Gigantamax Rapid Strike Urshifu"
+  },
+  "toxtricity-low-key-gmax": {
+    "fr": "Salarsen Forme Grave Gigamax",
+    "en": "Gigantamax Low Key Toxtricity"
+  },
+  "growlithe-hisui": {
+    "fr": "Caninos de Hisui",
+    "en": "Hisuian Growlithe"
+  },
+  "arcanine-hisui": {
+    "fr": "Arcanin de Hisui",
+    "en": "Hisuian Arcanine"
+  },
+  "voltorb-hisui": {
+    "fr": "Voltorbe de Hisui",
+    "en": "Hisuian Voltorb"
+  },
+  "electrode-hisui": {
+    "fr": "Électrode de Hisui",
+    "en": "Hisuian Electrode"
+  },
+  "typhlosion-hisui": {
+    "fr": "Typhlosion de Hisui",
+    "en": "Hisuian Typhlosion"
+  },
+  "qwilfish-hisui": {
+    "fr": "Qwilfish de Hisui",
+    "en": "Hisuian Qwilfish"
+  },
+  "sneasel-hisui": {
+    "fr": "Farfuret de Hisui",
+    "en": "Hisuian Sneasel"
+  },
+  "samurott-hisui": {
+    "fr": "Clamiral de Hisui",
+    "en": "Hisuian Samurott"
+  },
+  "lilligant-hisui": {
+    "fr": "Fragilady de Hisui",
+    "en": "Hisuian Lilligant"
+  },
+  "zorua-hisui": {
+    "fr": "Zorua de Hisui",
+    "en": "Hisuian Zorua"
+  },
+  "zoroark-hisui": {
+    "fr": "Zoroark de Hisui",
+    "en": "Hisuian Zoroark"
+  },
+  "braviary-hisui": {
+    "fr": "Gueriaigle de Hisui",
+    "en": "Hisuian Braviary"
+  },
+  "sliggoo-hisui": {
+    "fr": "Colimucus de Hisui",
+    "en": "Hisuian Sliggoo"
+  },
+  "goodra-hisui": {
+    "fr": "Muplodocus de Hisui",
+    "en": "Hisuian Goodra"
+  },
+  "avalugg-hisui": {
+    "fr": "Séracrawl de Hisui",
+    "en": "Hisuian Avalugg"
+  },
+  "decidueye-hisui": {
+    "fr": "Archéduc de Hisui",
+    "en": "Hisuian Decidueye"
+  },
+  "dialga-origin": {
+    "fr": "Diagla Originel",
+    "en": "Origin Dialga"
+  },
+  "palkia-origin": {
+    "fr": "Palkia Originel",
+    "en": "Origin Palkia"
+  },
+  "basculin-white-striped": {
+    "fr": "Bargantua Blanc",
+    "en": "White-Striped Basculin"
+  },
+  "basculegion-female": {
+    "fr": "Paragruel Femelle",
+    "en": "Female Basculegion"
+  },
+  "enamorus-therian": {
+    "fr": "Amovénus Totémique",
+    "en": "Therian Enamorus"
+  },
+  "tauros-paldea-combat-breed": {
+    "fr": "Tauros de Paldéa Race Combative",
+    "en": "Paldean Tauros (Combat Breed)"
+  },
+  "tauros-paldea-blaze-breed": {
+    "fr": "Tauros de Paldéa Race Flamboyante",
+    "en": "Paldean Tauros (Blaze Breed)"
+  },
+  "tauros-paldea-aqua-breed": {
+    "fr": "Tauros de Paldéa Race Aquatique",
+    "en": "Paldean Tauros (Aqua Breed)"
+  },
+  "wooper-paldea": {
+    "fr": "Axoloto de Paldéa",
+    "en": "Paldean Wooper"
+  },
+  "oinkologne-female": {
+    "fr": "Fragroin Femelle",
+    "en": "Female Oinkologne"
+  },
+  "dudunsparce-three-segment": {
+    "fr": "Deusolourdo Forme Triple",
+    "en": "Three-Segment Form Dudunsparce"
+  },
+  "palafin-hero": {
+    "fr": "Superdofin Forme Super",
+    "en": "Hero Form Palafin"
+  },
+  "maushold-family-of-three": {
+    "fr": "Famignol Famille de Trois",
+    "en": "Maushold (Family of Three)"
+  },
+  "tatsugiri-droopy": {
+    "fr": "Nigirigon Forme Affalée",
+    "en": "Droopy Form Tatsugiri"
+  },
+  "tatsugiri-stretchy": {
+    "fr": "Nigirigon Forme Raide",
+    "en": "Stretchy Form Tatsugiri"
+  },
+  "squawkabilly-blue-plumage": {
+    "fr": "Tapatoès Plumage Bleu",
+    "en": "Blue Plumage Squawkabilly"
+  },
+  "squawkabilly-yellow-plumage": {
+    "fr": "Tapatoès Plumage Jaune",
+    "en": "Yellow Plumage Squawkabilly"
+  },
+  "squawkabilly-white-plumage": {
+    "fr": "Tapatoès Plumage Blanc",
+    "en": "White Plumage Squawkabilly"
+  },
+  "gimmighoul-roaming": {
+    "fr": "Mordudor Forme Marche",
+    "en": "Roaming Form Gimmighoul"
+  },
+  "koraidon-limited-build": {
+    "fr": "Koraidon",
+    "en": "Koraidon"
+  },
+  "koraidon-sprinting-build": {
+    "fr": "Koraidon",
+    "en": "Koraidon"
+  },
+  "koraidon-swimming-build": {
+    "fr": "Koraidon",
+    "en": "Koraidon"
+  },
+  "koraidon-gliding-build": {
+    "fr": "Koraidon",
+    "en": "Koraidon"
+  },
+  "miraidon-low-power-mode": {
+    "fr": "Miraidon",
+    "en": "Miraidon"
   },
   "miraidon-drive-mode": {
     "fr": "Miraidon",
@@ -5356,59 +5356,83 @@
     "en": "Miraidon"
   },
   "ursaluna-bloodmoon": {
-    "fr": "Ursaking",
-    "en": "Ursaluna"
+    "fr": "Ursaking Lune Vermeille",
+    "en": "Bloodmoon Ursaluna"
   },
   "ogerpon-wellspring-mask": {
-    "fr": "Ogerpon",
-    "en": "Ogerpon"
+    "fr": "Ogerpon du Puits",
+    "en": "Wellspring Mask Ogerpon"
   },
   "ogerpon-hearthflame-mask": {
-    "fr": "Ogerpon",
-    "en": "Ogerpon"
+    "fr": "Ogerpon du Fourneau",
+    "en": "Hearthflame Mask Ogerpon"
   },
   "ogerpon-cornerstone-mask": {
-    "fr": "Ogerpon",
-    "en": "Ogerpon"
+    "fr": "Ogerpon de la Pierre",
+    "en": "Cornerstone Mask Ogerpon"
   },
   "terapagos-terastal": {
-    "fr": "Terapagos",
-    "en": "Terapagos"
+    "fr": "Terapagos Téracristal",
+    "en": "Terastal Form Terapagos"
   },
   "terapagos-stellar": {
-    "fr": "Terapagos",
-    "en": "Terapagos"
+    "fr": "Terapagos Stellaire",
+    "en": "Stellar Form Terapagos"
   },
   "aegislash": {
-    "fr": "Aegislash",
+    "fr": "Exagide",
     "en": "Aegislash"
   },
   "oricorio": {
-    "fr": "Oricorio",
+    "fr": "Plumeline",
     "en": "Oricorio"
   },
   "lycanroc": {
-    "fr": "Lycanroc",
+    "fr": "Lougaroc",
     "en": "Lycanroc"
   },
   "eiscue": {
-    "fr": "Eiscue",
+    "fr": "Bekaglaçon",
     "en": "Eiscue"
   },
   "indeedee": {
-    "fr": "Indeedee",
+    "fr": "Wimessir",
     "en": "Indeedee"
   },
   "urshifu": {
-    "fr": "Urshifu",
+    "fr": "Shifours",
     "en": "Urshifu"
   },
   "basculin": {
-    "fr": "Basculin",
+    "fr": "Bargantua",
     "en": "Basculin"
   },
   "tauros-paldea": {
-    "fr": "Tauros Paldea",
-    "en": "Tauros Paldea"
+    "fr": "Tauros",
+    "en": "Tauros"
+  },
+  "frillish": {
+    "fr": "Viskuse",
+    "en": "Frillish"
+  },
+  "jellicent": {
+    "fr": "Moyade",
+    "en": "Jellicent"
+  },
+  "pyroar": {
+    "fr": "Némélios",
+    "en": "Pyroar"
+  },
+  "meowstic": {
+    "fr": "Mistigrix",
+    "en": "Meowstic"
+  },
+  "basculegion": {
+    "fr": "Paragruel",
+    "en": "Basculegion"
+  },
+  "oinkologne": {
+    "fr": "Fragroin",
+    "en": "Oinkologne"
   }
 }

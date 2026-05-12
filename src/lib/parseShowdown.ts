@@ -61,6 +61,14 @@ const pokemon = pokemonData as Record<string, PokemonEntry>
 const moves = movesData as Record<string, { type: string; power: number | null }>
 const megaStones = megaStonesData as Record<string, string>
 
+// Showdown exports gendered forms as "-M" / "-F" (e.g. "Basculegion-F").
+// Translate to PokeAPI convention ("-male" / "-female") if the target key exists.
+function resolveShowdownGender(name: string): string {
+  if (name.endsWith('-f') && pokemon[name.slice(0, -2) + '-female']) return name.slice(0, -2) + '-female'
+  if (name.endsWith('-m') && pokemon[name.slice(0, -2) + '-male'])   return name.slice(0, -2) + '-male'
+  return name
+}
+
 function lookupPokemonTypes(normalizedName: string): PokemonType[] | null {
   const entry = pokemon[normalizedName]
   if (!entry) return null
@@ -124,7 +132,9 @@ function parseBlock(lines: string[]): ParsedPokemon | null {
   // Strip "-mega", "-mega-x", "-mega-y" suffixes from the name if present.
   // Showdown sometimes exports "Gengar-Mega @ Gengarite" — we resolve the Mega
   // form through the item anyway, so the base name is what we need for lookup.
-  const normalizedName = normalizeName(rawName).replace(/-mega(-[xy])?$/, '')
+  const normalizedName = resolveShowdownGender(
+    normalizeName(rawName).replace(/-mega(-[xy])?$/, '')
+  )
   const normalizedItem = rawItem ? normalizeName(rawItem) : null
 
   let ability: string | null = null

@@ -4821,5 +4821,27 @@
   ],
   "tauros-paldea": [
     "fighting"
+  ],
+  "frillish": [
+    "water",
+    "ghost"
+  ],
+  "jellicent": [
+    "water",
+    "ghost"
+  ],
+  "pyroar": [
+    "fire",
+    "normal"
+  ],
+  "meowstic": [
+    "psychic"
+  ],
+  "basculegion": [
+    "water",
+    "ghost"
+  ],
+  "oinkologne": [
+    "normal"
   ]
 }

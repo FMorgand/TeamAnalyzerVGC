@@ -136,6 +136,13 @@ const ALIASES = {
   'urshifu':       'urshifu-single-strike',
   'basculin':      'basculin-red-striped',
   'tauros-paldea': 'tauros-paldea-combat-breed',
+  // Gendered Pokémon whose canonical PokeAPI name is the male form
+  'frillish':      'frillish-male',
+  'jellicent':     'jellicent-male',
+  'pyroar':        'pyroar-male',
+  'meowstic':      'meowstic-male',
+  'basculegion':   'basculegion-male',
+  'oinkologne':    'oinkologne-male',
 }
 
 // ─── Phase 1: Fetch all Pokémon (base + all forms) ────────────────────────────
@@ -170,13 +177,17 @@ async function fetchAllPokemon() {
     const abilities  = (entry.abilities ?? []).sort((a, b) => a.slot - b.slot).map(a => a.ability.name)
     const sprite     = entry.sprites?.front_default ?? null
     const speciesId  = entry.species ? parseInt(entry.species.url.split('/').filter(Boolean).pop()) : null
+    // Use the pokemon-form endpoint ID (distinct from the pokemon ID)
+    const formId = entry.forms?.[0]
+      ? parseInt(entry.forms[0].url.split('/').filter(Boolean).pop())
+      : entry.id
 
     if (name.includes('-mega')) {
-      megaForms[name] = { types, stats, baseSpecies: name.replace(/-mega.*$/, ''), id: entry.id }
+      megaForms[name] = { types, stats, baseSpecies: name.replace(/-mega.*$/, ''), id: formId }
     } else if (entry.id <= 1025) {
       basePokemon[name] = { types, stats, abilities, sprite, speciesId }
     } else {
-      altForms[name] = { types, stats, speciesId, id: entry.id }
+      altForms[name] = { types, stats, speciesId, id: formId }
     }
   }
 
@@ -345,7 +356,10 @@ async function main() {
   for (const [name, d] of Object.entries(pokemonOut)) {
     const baseD     = basePokemon[name]
     const altD      = altForms[name]
-    const speciesId = baseD?.speciesId ?? altD?.speciesId ?? null
+    const targetKey = ALIASES[name]
+    const speciesId = baseD?.speciesId ?? altD?.speciesId
+      ?? (targetKey ? (basePokemon[targetKey]?.speciesId ?? altForms[targetKey]?.speciesId) : null)
+      ?? null
 
     pokemonI18n[name]      = resolveI18n(name, speciesId)
     pokemonTypesFlat[name] = d.types
