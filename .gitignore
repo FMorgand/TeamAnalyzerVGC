@@ -18,7 +18,7 @@ scripts/cache/
 # OS
 .DS_Store
 Thumbs.db
-
+ 
 # Editor
 .vscode/
 .idea/
