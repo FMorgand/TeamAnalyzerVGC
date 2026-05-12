@@ -3946,21 +3946,6 @@
     "poison",
     "ghost"
   ],
-  "tatsugiri-droopy": [
-    "dragon",
-    "water"
-  ],
-  "tatsugiri-stretchy": [
-    "dragon",
-    "water"
-  ],
-  "meowstic-female": [
-    "psychic"
-  ],
-  "magearna-original": [
-    "steel",
-    "fairy"
-  ],
   "deoxys-attack": [
     "psychic"
   ],
@@ -4048,6 +4033,9 @@
   "keldeo-resolute": [
     "water",
     "fighting"
+  ],
+  "meowstic-female": [
+    "psychic"
   ],
   "aegislash-blade": [
     "steel",
@@ -4319,6 +4307,10 @@
   "kommo-o-totem": [
     "dragon",
     "fighting"
+  ],
+  "magearna-original": [
+    "steel",
+    "fairy"
   ],
   "pikachu-partner-cap": [
     "electric"
@@ -4725,6 +4717,14 @@
   "maushold-family-of-three": [
     "normal"
   ],
+  "tatsugiri-droopy": [
+    "dragon",
+    "water"
+  ],
+  "tatsugiri-stretchy": [
+    "dragon",
+    "water"
+  ],
   "squawkabilly-blue-plumage": [
     "normal",
     "flying"
@@ -4821,13 +4821,5 @@
   ],
   "tauros-paldea": [
     "fighting"
-  ],
-  "basculegion": [
-    "water",
-    "ghost"
-  ],
-  "basculegion-f": [
-    "water",
-    "ghost"
   ]
 }

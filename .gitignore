@@ -12,6 +12,9 @@ dist/
 .env.local
 .env.*.local
 
+# Data pipeline cache (raw PokeAPI responses — regenerate with npm run fetch-data)
+scripts/cache/
+
 # OS
 .DS_Store
 Thumbs.db
