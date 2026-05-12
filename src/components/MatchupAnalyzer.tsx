@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { ParsedPokemon } from '../lib/parseShowdown'
+import type { ParsedPokemon, ParsedMove } from '../lib/parseShowdown'
 import { typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
