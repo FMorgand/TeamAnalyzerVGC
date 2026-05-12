@@ -4,7 +4,7 @@ import { TypeBadge } from './TypeBadge'
 import { PokemonSprite } from './PokemonSprite'
 import { useLang } from '../contexts/LangContext'
 import { pokemonName } from '../lib/i18n'
-import { getSpriteUrl, getMegaSpriteUrl } from '../lib/sprites'
+import { getSpriteUrl, getMegaSpriteUrl, getItemSpriteUrl } from '../lib/sprites'
 
 interface TeamPreset {
   name: string
@@ -162,7 +162,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
       alignItems: 'center',
       gap: 8,
       padding: '0 1.5rem',
-      height: 78,
+      height: 96,
       borderTop: '1px solid #1e1e2e',
     }}>
       {/* Pokémon chips */}
@@ -238,100 +238,113 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
                   userSelect: 'none',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
-                {/* Sprite */}
-                <PokemonSprite src={spriteUrl} name={pokemonName(p.normalizedName, lang)} size={44} />
+                <div style={{ display: 'flex', alignItems: 'stretch', gap: 6, minWidth: 0, flex: 1 }}>
+                  {/* Pokémon sprite — full height */}
+                  <PokemonSprite src={spriteUrl} name={pokemonName(p.normalizedName, lang)} size={52} />
 
-                {/* Text content */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0, flex: 1 }}>
-                {/* Mega button — top-right of card */}
-                {hasMega && !addingMode && (
-                  <button
-                    draggable={false}
-                    onClick={e => { e.stopPropagation(); onMegaToggle(teamIdx) }}
-                    onDragStart={e => e.stopPropagation()}
-                    title={isMega ? 'Forme Méga active — cliquer pour désactiver' : 'Activer forme Méga'}
-                    style={{
-                      position: 'absolute',
-                      top: 3,
-                      right: 3,
-                      background: isMega ? '#1a3a1a' : '#1e1e2e',
-                      border: `1px solid ${isMega ? '#3a7040' : '#333'}`,
-                      borderRadius: 3,
-                      color: isMega ? '#7dc87e' : '#555',
-                      fontSize: 9,
-                      fontWeight: 700,
-                      padding: '1px 5px',
-                      cursor: 'pointer',
-                      lineHeight: 1.4,
-                      userSelect: 'none',
-                    }}
-                  >
-                    Méga
-                  </button>
-                )}
+                  {/* Left info: role + name / types / ability */}
+                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 3, flex: 1, minWidth: 0 }}>
+                    {/* Role + name */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
+                      {rolePos >= 0 && (
+                        <span style={{
+                          fontSize: 10,
+                          fontWeight: 800,
+                          color: isDraftSelected ? '#5caf60' : isDirty ? '#999' : '#8888cc',
+                          flexShrink: 0,
+                        }}>
+                          {ROLES[rolePos]}
+                        </span>
+                      )}
+                      <span style={{
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: dimmed ? '#555' : '#ccc',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        maxWidth: 100,
+                        flexShrink: 1,
+                      }}>
+                        {pokemonName(p.normalizedName, lang)}
+                      </span>
+                    </div>
+                    {/* Types */}
+                    <div style={{ display: 'flex', gap: 2 }}>
+                      {displayTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                    </div>
+                    {/* Ability */}
+                    {p.ability && (
+                      <div style={{
+                        fontSize: 11,
+                        color: dimmed ? '#444' : '#555',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        maxWidth: 110,
+                      }}>
+                        {p.ability}
+                      </div>
+                    )}
+                  </div>
 
-                {/* Top row: role + name */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-                  {rolePos >= 0 && (
-                    <span style={{
-                      fontSize: 9,
-                      fontWeight: 800,
-                      color: isDraftSelected ? '#5caf60' : isDirty ? '#999' : '#8888cc',
+                  {/* Right column: méga top / item bottom */}
+                  {(p.item || (hasMega && !addingMode)) && (
+                    <div style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-end',
+                      justifyContent: p.item && (hasMega && !addingMode) ? 'space-between' : p.item ? 'flex-end' : 'flex-start',
                       flexShrink: 0,
+                      alignSelf: 'stretch',
                     }}>
-                      {ROLES[rolePos]}
-                    </span>
+                      {/* Méga button — top */}
+                      {hasMega && !addingMode && (
+                        <button
+                          draggable={false}
+                          onClick={e => { e.stopPropagation(); onMegaToggle(teamIdx) }}
+                          onDragStart={e => e.stopPropagation()}
+                          title={isMega ? 'Forme Méga active — cliquer pour désactiver' : 'Activer forme Méga'}
+                          style={{
+                            background: isMega ? '#1a3a1a' : '#1e1e2e',
+                            border: `1px solid ${isMega ? '#3a7040' : '#333'}`,
+                            borderRadius: 3,
+                            color: isMega ? '#7dc87e' : '#555',
+                            fontSize: 9,
+                            fontWeight: 700,
+                            padding: '1px 5px',
+                            cursor: 'pointer',
+                            lineHeight: 1.4,
+                            userSelect: 'none',
+                          }}
+                        >
+                          Méga
+                        </button>
+                      )}
+                      {/* Item sprite + name — bottom */}
+                      {p.item && (
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 1 }}>
+                          <PokemonSprite
+                            src={getItemSpriteUrl(p.item)}
+                            name={p.rawItem ?? ''}
+                            size={24}
+                          />
+                          <span style={{
+                            fontSize: 10,
+                            color: isMega ? '#a08020' : dimmed ? '#444' : '#555',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            maxWidth: 80,
+                            textAlign: 'right',
+                          }}>
+                            {p.rawItem}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   )}
-                  <span style={{
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: dimmed ? '#555' : '#ccc',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    maxWidth: 90,
-                    flexShrink: 1,
-                  }}>
-                    {pokemonName(p.normalizedName, lang)}
-                  </span>
-                </div>
-
-                {/* Bottom row: item + types */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-                  {p.rawItem && (
-                    <span style={{
-                      fontSize: 10,
-                      color: isMega ? '#a08020' : '#555',
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      maxWidth: 80,
-                      flexShrink: 1,
-                    }}>
-                      {p.rawItem}
-                    </span>
-                  )}
-                  <div style={{ display: 'flex', gap: 2, flexShrink: 0 }}>
-                    {displayTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}
-                  </div>
-                </div>
-
-                {/* Ability row */}
-                {p.ability && (
-                  <div style={{
-                    fontSize: 10,
-                    color: dimmed ? '#444' : '#555',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    maxWidth: 110,
-                  }}>
-                    {p.ability}
-                  </div>
-                )}
-                </div>{/* end text content */}
-                </div>{/* end sprite+text row */}
+                </div>{/* end content row */}
               </div>
             </Fragment>
           )

@@ -7,7 +7,9 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "fetch-data": "node scripts/fetch-all.mjs",
-    "fetch-data:force": "node scripts/fetch-all.mjs --force"
+    "fetch-data:force": "node scripts/fetch-all.mjs --force",
+    "fetch-item-sprites": "node scripts/fetch-item-sprites.mjs",
+    "fetch-item-sprites:force": "node scripts/fetch-item-sprites.mjs --force"
   },
   "dependencies": {
     "react": "^19.0.0",

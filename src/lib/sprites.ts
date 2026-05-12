@@ -1,4 +1,17 @@
 import pokemonData from '../data/pokemon.json'
+import itemSpritesData from '../data/item-sprites.json'
+
+const itemSprites = itemSpritesData as Record<string, string>
+
+// Build a normalized lookup (strips hyphens) so keys like 'assault-vest' match 'assaultvest'
+const normalizedItemSprites: Record<string, string> = {}
+for (const [key, url] of Object.entries(itemSprites)) {
+  normalizedItemSprites[key.replace(/-/g, '')] = url
+}
+
+export function getItemSpriteUrl(normalizedItemKey: string): string | null {
+  return normalizedItemSprites[normalizedItemKey.replace(/-/g, '')] ?? null
+}
 
 type PokemonEntry = {
   sprite?: string | null

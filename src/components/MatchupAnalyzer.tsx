@@ -6,7 +6,7 @@ import { TypeBadge } from './TypeBadge'
 import { PokemonSprite } from './PokemonSprite'
 import { useLang } from '../contexts/LangContext'
 import { pokemonName, moveName, searchPokemon, searchMove, POKEMON_TYPES_FLAT } from '../lib/i18n'
-import { getSpriteUrl } from '../lib/sprites'
+import { getSpriteUrl, getItemSpriteUrl } from '../lib/sprites'
 import movesData from '../data/moves.json'
 import vgcStatsData from '../data/vgc-stats.json'
 import baseStatsData from '../data/base-stats.json'
@@ -256,6 +256,7 @@ function MoveSearchInput({
         onChange={e => { setQuery(e.target.value); setOpen(true) }}
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
+        onKeyDown={e => { if (e.key === 'Enter' && results.length > 0) handleSelect(results[0]) }}
         placeholder={`Capacité ${index + 1}…`}
         style={{
           background: '#181828',
@@ -334,6 +335,11 @@ function EnemySlotCard({
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState<string | null>(null)
+  const [selectedItemKey, setSelectedItemKey] = useState<string | null>(null)
+
+  useEffect(() => {
+    setSelectedItemKey(value ? (VGC_STATS[value.key]?.items[0]?.key ?? null) : null)
+  }, [value?.key])
 
   const results = searchPokemon(query)
 
@@ -352,6 +358,7 @@ function EnemySlotCard({
           onChange={e => { setQuery(e.target.value); setOpen(true) }}
           onFocus={() => setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}
+          onKeyDown={e => { if (e.key === 'Enter' && results.length > 0) handleSelectPokemon(results[0]) }}
           placeholder={`Pokémon ${slot + 1}…`}
           style={{
             background: '#1a1a2e',
@@ -410,6 +417,7 @@ function EnemySlotCard({
   }
 
   const stats = VGC_STATS[value.key] ?? null
+  const toggleItem = (key: string) => setSelectedItemKey(prev => prev === key ? null : key)
 
   return (
     <div style={{
@@ -426,7 +434,7 @@ function EnemySlotCard({
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
         <PokemonSprite src={getSpriteUrl(value.key)} name={pokemonName(value.key, lang)} size={48} />
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 2 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: '#eee' }}>
               {pokemonName(value.key, lang)}
@@ -441,9 +449,25 @@ function EnemySlotCard({
               </span>
             )}
           </div>
-          <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+          {/* Types */}
+          <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap', marginBottom: 3 }}>
             {value.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
           </div>
+          {/* Ability placeholder */}
+          <div style={{ fontSize: 10, color: '#555', marginBottom: 3 }}>—</div>
+          {/* Selected item */}
+          {selectedItemKey && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <PokemonSprite
+                src={getItemSpriteUrl(selectedItemKey)}
+                name={formatItemName(selectedItemKey)}
+                size={18}
+              />
+              <span style={{ fontSize: 10, color: '#888' }}>
+                {formatItemName(selectedItemKey)}
+              </span>
+            </div>
+          )}
         </div>
         <button
           onClick={onClearPokemon}
@@ -535,22 +559,44 @@ function EnemySlotCard({
         </div>
       )}
 
-      {/* Top items */}
+      {/* Top items — clickable */}
       {stats && stats.items.length > 0 && (
         <div style={{ borderTop: '1px solid #2a2a3e', paddingTop: 4 }}>
           <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 3 }}>
             Objets
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
-            {stats.items.map((item, i) => (
-              <span key={i} style={{
-                fontSize: 10, color: '#555',
-                background: '#181828', border: '1px solid #252535',
-                borderRadius: 3, padding: '1px 5px',
-              }}>
-                {formatItemName(item.key)}
-              </span>
-            ))}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            {stats.items.map((item) => {
+              const selected = selectedItemKey === item.key
+              return (
+                <button
+                  key={item.key}
+                  onClick={() => toggleItem(item.key)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 5,
+                    background: selected ? '#1e2e3e' : 'transparent',
+                    border: `1px solid ${selected ? '#3a5a7e' : 'transparent'}`,
+                    borderRadius: 4,
+                    padding: '2px 4px',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    width: '100%',
+                  }}
+                >
+                  <PokemonSprite
+                    src={getItemSpriteUrl(item.key)}
+                    name={formatItemName(item.key)}
+                    size={16}
+                  />
+                  <span style={{ fontSize: 10, color: selected ? '#9ab' : '#555', flex: 1 }}>
+                    {formatItemName(item.key)}
+                  </span>
+                  <span style={{ fontSize: 9, color: '#3a3a5e' }}>{item.pct}%</span>
+                </button>
+              )
+            })}
           </div>
         </div>
       )}

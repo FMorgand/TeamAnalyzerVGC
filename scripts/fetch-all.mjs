@@ -36,6 +36,8 @@ try {
   await run('fetch-pokeapi.mjs')
   console.log()
   await run('fetch-vgc-stats.mjs')
+  console.log()
+  await run('fetch-item-sprites.mjs')
   console.log('\n✓ All data files up to date.')
 } catch (err) {
   console.error(`\n✗ ${err.message}`)
