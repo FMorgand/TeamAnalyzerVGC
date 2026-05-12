@@ -76,32 +76,6 @@ export function CoverageGraph({ team, visible, onToggle }: Props) {
         Trait épais = ×4 · Trait fin = ×2 · Clique sur un nœud Pokémon pour masquer ses flèches
       </div>
 
-      {/* Toggle buttons — kept for click-on-SVG-node convenience; shared state from parent */}
-      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: '0.75rem' }}>
-        {team.map((p, i) => {
-          const color = POKEMON_COLORS[i]
-          const on = visible.has(i)
-          return (
-            <button
-              key={i}
-              onClick={() => onToggle(i)}
-              style={{
-                background: on ? color + '22' : '#1e1e2e',
-                color: on ? color : '#444',
-                border: `2px solid ${on ? color : '#333'}`,
-                borderRadius: 6,
-                padding: '3px 12px',
-                fontSize: 12,
-                fontWeight: on ? 700 : 400,
-                cursor: 'pointer',
-              }}
-            >
-              {pokemonName(p.normalizedName, lang)}
-            </button>
-          )
-        })}
-      </div>
-
       {/* SVG graph */}
       <div style={{ background: '#1a1a2e', borderRadius: 8, border: '1px solid #2a2a3e', padding: '8px 0' }}>
         <svg

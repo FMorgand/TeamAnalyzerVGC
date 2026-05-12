@@ -9,6 +9,7 @@ import { pokemonName } from '../lib/i18n'
 
 interface Props {
   team: ParsedPokemon[]
+  activeIndices: number[] | null
 }
 
 function scoreColor(score: number): string {
@@ -116,11 +117,13 @@ function PokemonColumn({ pokemon, team }: { pokemon: ParsedPokemon; team: Parsed
   )
 }
 
-export function SwitchInAnalyzer({ team }: Props) {
-  if (team.length === 0) return null
+export function SwitchInAnalyzer({ team, activeIndices }: Props) {
+  const displayTeam = activeIndices ? activeIndices.map(i => team[i]) : team
+
+  if (displayTeam.length === 0) return null
 
   return (
-    <section style={{ marginTop: '2rem' }}>
+    <section id="switch-in" style={{ marginTop: '2rem' }}>
       <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: '0.5rem', color: '#ccc' }}>
         Switch-in analyzer
       </h2>
@@ -129,11 +132,11 @@ export function SwitchInAnalyzer({ team }: Props) {
       </div>
       <div style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${team.length}, 1fr)`,
+        gridTemplateColumns: `repeat(${displayTeam.length}, 1fr)`,
         gap: '0.5rem',
       }}>
-        {team.map((p, i) => (
-          <PokemonColumn key={i} pokemon={p} team={team} />
+        {displayTeam.map((p, i) => (
+          <PokemonColumn key={i} pokemon={p} team={displayTeam} />
         ))}
       </div>
     </section>

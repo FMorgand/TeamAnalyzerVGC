@@ -28,8 +28,12 @@ export function CoverageSection({ team, activeTrigger }: Props) {
   const [visible, setVisible] = useState<Set<number>>(new Set(team.map((_, i) => i)))
 
   useEffect(() => {
-    if (activeTrigger) setVisible(new Set(activeTrigger.indices))
-  }, [activeTrigger])
+    if (activeTrigger != null) {
+      setVisible(new Set(activeTrigger.indices))
+    } else {
+      setVisible(new Set(team.map((_, i) => i)))
+    }
+  }, [activeTrigger, team])
 
   if (team.length === 0) return null
 
