@@ -34,33 +34,41 @@ function CandidateMini({ candidate, rank }: { candidate: SwitchInCandidate; rank
       padding: '5px 8px',
       marginTop: 4,
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: 12, fontWeight: 600, color: '#ddd' }}>
-          {rank}. {pokemonName(pokemon.normalizedName, lang)}
-          {pokemon.megaForm && <span style={{ color: '#f90', fontSize: 10, marginLeft: 4 }}>★</span>}
-        </span>
-        <span style={{ fontSize: 11, color, fontWeight: 700 }}>
-          {score}
-          {bonus > 0 && <span style={{ color: '#4caf50', marginLeft: 3 }}>+{bonus}</span>}
-        </span>
-      </div>
-      {sharedWeaknesses.length > 0 && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 2, marginTop: 3 }}>
-          {sharedWeaknesses.map((t: PokemonType) => <TypeBadge key={t} type={t} size="sm" />)}
-        </div>
-      )}
-      {resistanceBonuses.length > 0 && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 2, marginTop: 2 }}>
-          {resistanceBonuses.map((t: PokemonType) => (
-            <span key={t} style={{
-              fontSize: 10, background: '#1a2e1a', border: '1px solid #2a4a2a',
-              borderRadius: 3, padding: '1px 4px', color: '#4caf50',
-            }}>
-              {t}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <PokemonSprite src={getSpriteUrl(pokemon.normalizedName)} name={pokemonName(pokemon.normalizedName, lang)} size={32} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 12, fontWeight: 600, color: '#ddd' }}>
+              {rank}. {pokemonName(pokemon.normalizedName, lang)}
+              {pokemon.megaForm && <span style={{ color: '#f90', fontSize: 10, marginLeft: 4 }}>★</span>}
             </span>
-          ))}
+            <span style={{ fontSize: 11, color, fontWeight: 700 }}>
+              {score}
+              {bonus > 0 && <span style={{ color: '#4caf50', marginLeft: 3 }}>+{bonus}</span>}
+            </span>
+          </div>
+          {sharedWeaknesses.length > 0 && (
+            <div style={{ marginTop: 4 }}>
+              <div style={{ fontSize: 9, color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 2 }}>
+                Faiblesses communes
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                {sharedWeaknesses.map((t: PokemonType) => <TypeBadge key={t} type={t} size="sm" />)}
+              </div>
+            </div>
+          )}
+          {resistanceBonuses.length > 0 && (
+            <div style={{ marginTop: 4 }}>
+              <div style={{ fontSize: 9, color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 2 }}>
+                Résistances complémentaires
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                {resistanceBonuses.map((t: PokemonType) => <TypeBadge key={t} type={t} size="sm" />)}
+              </div>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   )
 }

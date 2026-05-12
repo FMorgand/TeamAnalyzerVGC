@@ -38,8 +38,7 @@ export function searchMove(query: string): string[] {
 
   return Object.keys(MOVE_NAMES)
     .filter(k => {
-      const meta = MOVES_META[k]
-      if (!meta || !meta.power || meta.power <= 0) return false
+      if (!MOVES_META[k]) return false
       const names = MOVE_NAMES[k]
       return k.includes(normalized)
         || names?.en?.toLowerCase().includes(q)

@@ -7,7 +7,10 @@ const SECTIONS = [
 
 export function Sidebar({ topOffset }: { topOffset: number }) {
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const el = document.getElementById(id)
+    if (!el) return
+    const top = el.getBoundingClientRect().top + window.scrollY - topOffset
+    window.scrollTo({ top, behavior: 'smooth' })
   }
 
   return (

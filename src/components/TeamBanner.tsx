@@ -210,6 +210,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
                 onDragEnd={handleDragEnd}
                 onDrop={e => handleDrop(e, pos)}
                 style={{
+                  position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
@@ -243,7 +244,34 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
 
                 {/* Text content */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0, flex: 1 }}>
-                {/* Top row: role + name + mega btn */}
+                {/* Mega button — top-right of card */}
+                {hasMega && !addingMode && (
+                  <button
+                    draggable={false}
+                    onClick={e => { e.stopPropagation(); onMegaToggle(teamIdx) }}
+                    onDragStart={e => e.stopPropagation()}
+                    title={isMega ? 'Forme Méga active — cliquer pour désactiver' : 'Activer forme Méga'}
+                    style={{
+                      position: 'absolute',
+                      top: 3,
+                      right: 3,
+                      background: isMega ? '#1a3a1a' : '#1e1e2e',
+                      border: `1px solid ${isMega ? '#3a7040' : '#333'}`,
+                      borderRadius: 3,
+                      color: isMega ? '#7dc87e' : '#555',
+                      fontSize: 9,
+                      fontWeight: 700,
+                      padding: '1px 5px',
+                      cursor: 'pointer',
+                      lineHeight: 1.4,
+                      userSelect: 'none',
+                    }}
+                  >
+                    Méga
+                  </button>
+                )}
+
+                {/* Top row: role + name */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
                   {rolePos >= 0 && (
                     <span style={{
@@ -267,26 +295,6 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
                   }}>
                     {pokemonName(p.normalizedName, lang)}
                   </span>
-                  {hasMega && !addingMode && (
-                    <button
-                      draggable={false}
-                      onClick={e => { e.stopPropagation(); onMegaToggle(teamIdx) }}
-                      onDragStart={e => e.stopPropagation()}
-                      title={isMega ? 'Forme Méga active — cliquer pour désactiver' : 'Activer forme Méga'}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        padding: '0 2px',
-                        cursor: 'pointer',
-                        fontSize: 11,
-                        color: isMega ? '#f4c430' : '#444',
-                        flexShrink: 0,
-                        lineHeight: 1,
-                      }}
-                    >
-                      △
-                    </button>
-                  )}
                 </div>
 
                 {/* Bottom row: item + types */}
@@ -308,6 +316,20 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
                     {displayTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}
                   </div>
                 </div>
+
+                {/* Ability row */}
+                {p.ability && (
+                  <div style={{
+                    fontSize: 10,
+                    color: dimmed ? '#444' : '#555',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    maxWidth: 110,
+                  }}>
+                    {p.ability}
+                  </div>
+                )}
                 </div>{/* end text content */}
                 </div>{/* end sprite+text row */}
               </div>

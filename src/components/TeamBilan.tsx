@@ -54,11 +54,47 @@ export function TeamBilan({ team, megaActive, activeIndices }: Props) {
   })
   const data = getGroupCompositionData(resolvedTeam)
 
+  const commonWeaknesses = data.defensiveExposure.filter(e => e.weakNames.length >= 2)
+
   return (
     <section id="bilan" style={{ marginTop: '2rem' }}>
       <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: '0.75rem', color: '#ccc' }}>
         Bilan d'équipe
       </h2>
+
+      {/* Faiblesses communes */}
+      <div style={{
+        background: '#1a1a2e',
+        border: '1px solid #2a2a3e',
+        borderRadius: 8,
+        padding: '0.6rem 1rem',
+        marginBottom: '0.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 10,
+        flexWrap: 'wrap',
+      }}>
+        <span style={{ fontSize: 10, color: '#555', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', flexShrink: 0 }}>
+          Faiblesses communes
+        </span>
+        {commonWeaknesses.length === 0 ? (
+          <span style={{ fontSize: 11, color: '#4caf50', fontStyle: 'italic' }}>Aucune</span>
+        ) : (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+            {commonWeaknesses.map(({ type, weakNames }) => {
+              const count = weakNames.length
+              const color = count >= 4 ? '#f44' : count === 3 ? '#f87' : '#f4a'
+              return (
+                <div key={type} style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                  <TypeBadge type={type} size="sm" />
+                  <span style={{ fontSize: 10, fontWeight: 700, color }}>×{count}</span>
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </div>
+
       <div style={{
         background: '#1a1a2e',
         border: '1px solid #2a2a3e',
