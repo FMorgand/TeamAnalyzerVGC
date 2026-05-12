@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, Fragment } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { TypeBadge } from './TypeBadge'
 import { useLang } from '../contexts/LangContext'
@@ -32,9 +32,18 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
   const [draftIndices, setDraftIndices] = useState<number[]>([])
   const [draftName, setDraftName] = useState('')
 
-  const activePreset = presets.find(p => p.name === activePresetName) ?? null
+  // Drag state
+  const [dragOrder, setDragOrder] = useState<number[] | null>(null)
+  const [draggedPos, setDraggedPos] = useState<number | null>(null)
+  const [dragOverPos, setDragOverPos] = useState<number | null>(null)
 
-  // Reorder: preset members first (L1→L2→B1→B2), then remaining in original order
+  const activePreset = presets.find(p => p.name === activePresetName) ?? null
+  const isDirty = dragOrder !== null
+
+  // Reset drag order when the active preset changes
+  useEffect(() => { setDragOrder(null) }, [activePresetName])
+
+  // Chip display order: preset members first, then the rest
   const displayOrder = useMemo(() => {
     if (!activePreset || addingMode) return team.map((_, i) => i)
     const inPreset = activePreset.indices
@@ -42,13 +51,18 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
     return [...inPreset, ...rest]
   }, [activePreset, addingMode, team])
 
+  const workingOrder = dragOrder ?? displayOrder
+
   const savePresets = (updated: TeamPreset[]) => {
     setPresets(updated)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
   }
 
+  // ── Preset management ────────────────────────────────────────────────────
+
   const handleSelectPreset = (name: string) => {
     setActivePresetName(name)
+    setDragOrder(null)
     if (name === '') {
       onActivate(null)
     } else {
@@ -57,7 +71,25 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
     }
   }
 
-  const handleSavePreset = () => {
+  const handleSaveToCurrent = () => {
+    if (!activePreset || !dragOrder) return
+    const newIndices = dragOrder.slice(0, 4)
+    const updated = presets.map(p =>
+      p.name === activePresetName ? { ...p, indices: newIndices } : p
+    )
+    savePresets(updated)
+    onActivate(newIndices)
+    setDragOrder(null)
+  }
+
+  const handleOpenAddingMode = () => {
+    // Pre-fill from drag order if available, otherwise start fresh
+    setDraftIndices(dragOrder ? dragOrder.slice(0, 4) : [])
+    setDraftName('')
+    setAddingMode(true)
+  }
+
+  const handleSaveNewPreset = () => {
     if (!draftName.trim() || draftIndices.length < 2) return
     const newPreset: TeamPreset = { name: draftName.trim(), indices: draftIndices }
     const updated = [...presets.filter(p => p.name !== newPreset.name), newPreset]
@@ -65,6 +97,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
     setActivePresetName(newPreset.name)
     onActivate(newPreset.indices)
     setAddingMode(false)
+    setDragOrder(null)
     setDraftIndices([])
     setDraftName('')
   }
@@ -75,14 +108,51 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
     setDraftName('')
   }
 
-  const handleChipClick = (i: number) => {
+  const handleChipClick = (teamIdx: number) => {
     if (!addingMode) return
     setDraftIndices(prev => {
-      if (prev.includes(i)) return prev.filter(x => x !== i)
+      if (prev.includes(teamIdx)) return prev.filter(x => x !== teamIdx)
       if (prev.length >= 4) return prev
-      return [...prev, i]
+      return [...prev, teamIdx]
     })
   }
+
+  // ── Drag & drop ──────────────────────────────────────────────────────────
+
+  const handleDragStart = (e: React.DragEvent, pos: number) => {
+    setDraggedPos(pos)
+    e.dataTransfer.effectAllowed = 'move'
+  }
+
+  const handleDragOver = (e: React.DragEvent, pos: number) => {
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'move'
+    if (dragOverPos !== pos) setDragOverPos(pos)
+  }
+
+  const handleDragEnd = () => {
+    setDraggedPos(null)
+    setDragOverPos(null)
+  }
+
+  const handleDrop = (e: React.DragEvent, targetPos: number) => {
+    e.preventDefault()
+    if (draggedPos === null || draggedPos === targetPos) {
+      setDraggedPos(null)
+      setDragOverPos(null)
+      return
+    }
+    const newOrder = [...workingOrder]
+    const [moved] = newOrder.splice(draggedPos, 1)
+    newOrder.splice(targetPos, 0, moved)
+    setDragOrder(newOrder)
+    setDraggedPos(null)
+    setDragOverPos(null)
+  }
+
+  // ── Render ───────────────────────────────────────────────────────────────
+
+  const hasPresetContext = activePreset !== null || isDirty
 
   return (
     <div style={{
@@ -94,112 +164,141 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
       borderTop: '1px solid #1e1e2e',
     }}>
       {/* Pokémon chips */}
-      <div style={{ display: 'flex', gap: 5, flex: 1, minWidth: 0, overflow: 'hidden' }}>
-        {displayOrder.map(i => {
-          const p = team[i]
-          const inActivePreset = activePreset ? activePreset.indices.includes(i) : true
-          const draftPos = draftIndices.indexOf(i)
-          const isDraftSelected = draftPos >= 0
-          const rolePos = activePreset?.indices.indexOf(i) ?? -1
-          const isMega = megaActive.has(i)
+      <div style={{ display: 'flex', gap: 5, flex: 1, minWidth: 0, overflow: 'hidden', alignItems: 'center' }}>
+        {workingOrder.map((teamIdx, pos) => {
+          const p = team[teamIdx]
+          const isMega = megaActive.has(teamIdx)
           const hasMega = p.megaForm !== null
           const displayTypes = isMega && p.megaTypes ? p.megaTypes : p.types
 
-          return (
-            <div
-              key={i}
-              onClick={() => handleChipClick(i)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                gap: 3,
-                padding: '5px 8px',
-                borderRadius: 6,
-                border: `1px solid ${
-                  isDraftSelected ? '#3a6a3e'
-                  : isMega ? '#8a6a10'
-                  : inActivePreset ? '#2a2a5e'
-                  : '#1a1a26'
-                }`,
-                background: isDraftSelected ? '#1a2e1a'
-                  : isMega ? '#1e1a08'
-                  : inActivePreset ? '#18183a'
-                  : '#111120',
-                opacity: !inActivePreset && !addingMode ? 0.3 : 1,
-                cursor: addingMode ? 'pointer' : 'default',
-                transition: 'opacity 0.15s, border-color 0.15s, background 0.15s',
-                flexShrink: 1,
-                minWidth: 0,
-              }}
-            >
-              {/* Top row: role + name + mega btn */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-                {/* Role label */}
-                {addingMode && isDraftSelected && (
-                  <span style={{ fontSize: 9, fontWeight: 800, color: '#5caf60', flexShrink: 0 }}>
-                    {ROLES[draftPos]}
-                  </span>
-                )}
-                {!addingMode && activePreset && rolePos >= 0 && (
-                  <span style={{ fontSize: 9, fontWeight: 800, color: '#8888cc', flexShrink: 0 }}>
-                    {ROLES[rolePos]}
-                  </span>
-                )}
-                {/* Name */}
-                <span style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  color: inActivePreset || addingMode ? '#ccc' : '#555',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  maxWidth: 90,
-                  flexShrink: 1,
-                }}>
-                  {pokemonName(p.normalizedName, lang)}
-                </span>
-                {/* Mega toggle */}
-                {hasMega && !addingMode && (
-                  <button
-                    onClick={e => { e.stopPropagation(); onMegaToggle(i) }}
-                    title={isMega ? 'Forme Méga active — cliquer pour désactiver' : 'Activer forme Méga'}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      padding: '0 2px',
-                      cursor: 'pointer',
-                      fontSize: 11,
-                      color: isMega ? '#f4c430' : '#444',
-                      flexShrink: 0,
-                      lineHeight: 1,
-                    }}
-                  >
-                    △
-                  </button>
-                )}
-              </div>
+          // Role label
+          const draftPos = draftIndices.indexOf(teamIdx)
+          const rolePos = addingMode
+            ? draftPos
+            : isDirty ? (pos < 4 ? pos : -1)
+            : (activePreset?.indices.indexOf(teamIdx) ?? -1)
 
-              {/* Bottom row: item + types */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-                {p.rawItem && (
+          // Visual state
+          const isInPresetSlot = !addingMode && hasPresetContext && pos < 4
+          const isDraftSelected = addingMode && draftPos >= 0
+          const isDragging = draggedPos === pos
+          const isDragOver = dragOverPos === pos && draggedPos !== pos
+          const dimmed = !addingMode && hasPresetContext && pos >= 4 && !isDragging
+
+          return (
+            <Fragment key={teamIdx}>
+              {/* Separator between Team of 4 and bench */}
+              {pos === 4 && team.length >= 5 && hasPresetContext && (
+                <div style={{
+                  width: 1,
+                  alignSelf: 'stretch',
+                  background: '#2a2a4e',
+                  margin: '10px 2px',
+                  flexShrink: 0,
+                }} />
+              )}
+              <div
+                draggable={!addingMode}
+                onClick={() => handleChipClick(teamIdx)}
+                onDragStart={e => handleDragStart(e, pos)}
+                onDragOver={e => handleDragOver(e, pos)}
+                onDragEnd={handleDragEnd}
+                onDrop={e => handleDrop(e, pos)}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  gap: 3,
+                  padding: '5px 8px',
+                  borderRadius: 6,
+                  border: `1px solid ${
+                    isDragOver    ? '#5a5aae'
+                    : isDraftSelected ? '#3a6a3e'
+                    : isMega      ? '#8a6a10'
+                    : isInPresetSlot ? '#2a2a5e'
+                    : '#1a1a26'
+                  }`,
+                  background:
+                    isDragOver    ? '#20204e'
+                    : isDraftSelected ? '#1a2e1a'
+                    : isMega      ? '#1e1a08'
+                    : isInPresetSlot ? '#18183a'
+                    : '#111120',
+                  opacity: isDragging ? 0.3 : dimmed ? 0.3 : 1,
+                  cursor: addingMode ? 'pointer' : 'grab',
+                  transition: 'opacity 0.15s, border-color 0.15s, background 0.15s',
+                  flexShrink: 1,
+                  minWidth: 0,
+                  userSelect: 'none',
+                }}
+              >
+                {/* Top row: role + name + mega btn */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
+                  {rolePos >= 0 && (
+                    <span style={{
+                      fontSize: 9,
+                      fontWeight: 800,
+                      color: isDraftSelected ? '#5caf60' : isDirty ? '#999' : '#8888cc',
+                      flexShrink: 0,
+                    }}>
+                      {ROLES[rolePos]}
+                    </span>
+                  )}
                   <span style={{
-                    fontSize: 10,
-                    color: isMega ? '#a08020' : '#555',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: dimmed ? '#555' : '#ccc',
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    maxWidth: 80,
+                    maxWidth: 90,
                     flexShrink: 1,
                   }}>
-                    {p.rawItem}
+                    {pokemonName(p.normalizedName, lang)}
                   </span>
-                )}
-                <div style={{ display: 'flex', gap: 2, flexShrink: 0 }}>
-                  {displayTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                  {hasMega && !addingMode && (
+                    <button
+                      draggable={false}
+                      onClick={e => { e.stopPropagation(); onMegaToggle(teamIdx) }}
+                      onDragStart={e => e.stopPropagation()}
+                      title={isMega ? 'Forme Méga active — cliquer pour désactiver' : 'Activer forme Méga'}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        padding: '0 2px',
+                        cursor: 'pointer',
+                        fontSize: 11,
+                        color: isMega ? '#f4c430' : '#444',
+                        flexShrink: 0,
+                        lineHeight: 1,
+                      }}
+                    >
+                      △
+                    </button>
+                  )}
+                </div>
+
+                {/* Bottom row: item + types */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
+                  {p.rawItem && (
+                    <span style={{
+                      fontSize: 10,
+                      color: isMega ? '#a08020' : '#555',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      maxWidth: 80,
+                      flexShrink: 1,
+                    }}>
+                      {p.rawItem}
+                    </span>
+                  )}
+                  <div style={{ display: 'flex', gap: 2, flexShrink: 0 }}>
+                    {displayTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Fragment>
           )
         })}
       </div>
@@ -224,6 +323,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
             <option value=''>Tous (6)</option>
             {presets.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
           </select>
+
           {activePreset && (
             <button
               onClick={() => handleSelectPreset('')}
@@ -242,9 +342,46 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
               ×
             </button>
           )}
+
+          {isDirty && activePreset && (
+            <>
+              <button
+                onClick={handleSaveToCurrent}
+                title={`Sauvegarder dans "${activePreset.name}"`}
+                style={{
+                  background: '#1e3e22',
+                  border: '1px solid #3a7040',
+                  borderRadius: 5,
+                  color: '#7dc87e',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  padding: '4px 10px',
+                  cursor: 'pointer',
+                }}
+              >
+                Sauver
+              </button>
+              <button
+                onClick={() => setDragOrder(null)}
+                title={`Revenir à l'ordre de "${activePreset.name}"`}
+                style={{
+                  background: 'none',
+                  border: '1px solid #2a2a4e',
+                  borderRadius: 5,
+                  color: '#666',
+                  fontSize: 12,
+                  padding: '4px 10px',
+                  cursor: 'pointer',
+                }}
+              >
+                Reset
+              </button>
+            </>
+          )}
+
           <button
-            onClick={() => setAddingMode(true)}
-            title="Créer un preset Team of 4"
+            onClick={handleOpenAddingMode}
+            title="Créer un nouveau preset"
             style={{
               background: '#1a1a2e',
               border: '1px solid #2a2a4e',
@@ -267,7 +404,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
           <input
             value={draftName}
             onChange={e => setDraftName(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter') handleSavePreset() }}
+            onKeyDown={e => { if (e.key === 'Enter') handleSaveNewPreset() }}
             placeholder="Nom du preset…"
             autoFocus
             style={{
@@ -281,7 +418,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
             }}
           />
           <button
-            onClick={handleSavePreset}
+            onClick={handleSaveNewPreset}
             disabled={!draftName.trim() || draftIndices.length < 2}
             style={{
               background: draftName.trim() && draftIndices.length >= 2 ? '#1e3e22' : '#141420',
