@@ -1,8 +1,10 @@
 import { useState, useMemo, useEffect, Fragment } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { TypeBadge } from './TypeBadge'
+import { PokemonSprite } from './PokemonSprite'
 import { useLang } from '../contexts/LangContext'
 import { pokemonName } from '../lib/i18n'
+import { getSpriteUrl, getMegaSpriteUrl } from '../lib/sprites'
 
 interface TeamPreset {
   name: string
@@ -160,7 +162,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
       alignItems: 'center',
       gap: 8,
       padding: '0 1.5rem',
-      height: 68,
+      height: 78,
       borderTop: '1px solid #1e1e2e',
     }}>
       {/* Pokémon chips */}
@@ -170,6 +172,9 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
           const isMega = megaActive.has(teamIdx)
           const hasMega = p.megaForm !== null
           const displayTypes = isMega && p.megaTypes ? p.megaTypes : p.types
+          const spriteUrl = isMega && p.megaForm
+            ? getMegaSpriteUrl(p.normalizedName, p.megaForm)
+            : getSpriteUrl(p.normalizedName)
 
           // Role label
           const draftPos = draftIndices.indexOf(teamIdx)
@@ -232,6 +237,12 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
                   userSelect: 'none',
                 }}
               >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+                {/* Sprite */}
+                <PokemonSprite src={spriteUrl} name={pokemonName(p.normalizedName, lang)} size={44} />
+
+                {/* Text content */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0, flex: 1 }}>
                 {/* Top row: role + name + mega btn */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
                   {rolePos >= 0 && (
@@ -297,6 +308,8 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
                     {displayTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}
                   </div>
                 </div>
+                </div>{/* end text content */}
+                </div>{/* end sprite+text row */}
               </div>
             </Fragment>
           )

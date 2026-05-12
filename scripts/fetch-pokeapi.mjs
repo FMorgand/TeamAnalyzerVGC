@@ -183,11 +183,11 @@ async function fetchAllPokemon() {
       : entry.id
 
     if (name.includes('-mega')) {
-      megaForms[name] = { types, stats, baseSpecies: name.replace(/-mega.*$/, ''), id: formId }
+      megaForms[name] = { types, stats, baseSpecies: name.replace(/-mega.*$/, ''), id: formId, sprite }
     } else if (entry.id <= 1025) {
       basePokemon[name] = { types, stats, abilities, sprite, speciesId }
     } else {
-      altForms[name] = { types, stats, speciesId, id: formId }
+      altForms[name] = { types, stats, speciesId, id: formId, sprite }
     }
   }
 
@@ -301,10 +301,10 @@ async function main() {
     const base = pokemonOut[d.baseSpecies]
     if (!base) continue
     if (!base.megaForms) base.megaForms = {}
-    base.megaForms[megaName] = { types: d.types }
+    base.megaForms[megaName] = { types: d.types, sprite: d.sprite ?? null }
   }
   for (const [name, d] of Object.entries(altForms)) {
-    if (!pokemonOut[name]) pokemonOut[name] = { types: d.types }
+    if (!pokemonOut[name]) pokemonOut[name] = { types: d.types, sprite: d.sprite ?? null }
   }
   // ZA megas (not in PokeAPI yet)
   for (const [baseName, forms] of Object.entries(ZA_MEGA_FORMS)) {

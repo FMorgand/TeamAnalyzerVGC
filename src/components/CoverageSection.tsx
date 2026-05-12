@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { getOffensiveCoverage } from '../lib/teamAnalysis'
-import { useLang } from '../contexts/LangContext'
-import { pokemonName } from '../lib/i18n'
 import { CoverageGraph } from './CoverageGraph'
 import { CoverageMatrix } from './CoverageMatrix'
 import { OffensiveCoverage } from './OffensiveCoverage'
@@ -20,10 +18,7 @@ const TAB_LABELS: Record<Tab, string> = {
   matrix: 'Grille',
 }
 
-const POKEMON_COLORS = ['#4fc3f7', '#81c784', '#ffb74d', '#f06292', '#ba68c8', '#4db6ac']
-
 export function CoverageSection({ team, activeTrigger }: Props) {
-  const { lang } = useLang()
   const [tab, setTab] = useState<Tab>('matrix')
   const [visible, setVisible] = useState<Set<number>>(new Set(team.map((_, i) => i)))
 
@@ -74,32 +69,6 @@ export function CoverageSection({ team, activeTrigger }: Props) {
             </button>
           ))}
         </div>
-      </div>
-
-      {/* Shared Pokémon selector — persists across tabs */}
-      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: '0.75rem' }}>
-        {team.map((p, i) => {
-          const color = POKEMON_COLORS[i]
-          const on = visible.has(i)
-          return (
-            <button
-              key={i}
-              onClick={() => toggle(i)}
-              style={{
-                background: on ? color + '22' : '#1e1e2e',
-                color: on ? color : '#444',
-                border: `2px solid ${on ? color : '#333'}`,
-                borderRadius: 6,
-                padding: '3px 12px',
-                fontSize: 12,
-                fontWeight: on ? 700 : 400,
-                cursor: 'pointer',
-              }}
-            >
-              {pokemonName(p.normalizedName, lang)}
-            </button>
-          )
-        })}
       </div>
 
       {tab === 'liste'  && <OffensiveCoverage coverage={coverage} />}

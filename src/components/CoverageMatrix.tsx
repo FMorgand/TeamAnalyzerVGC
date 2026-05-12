@@ -2,8 +2,10 @@ import type { ParsedPokemon } from '../lib/parseShowdown'
 import { ALL_TYPES, typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { PokemonSprite } from './PokemonSprite'
 import { useLang } from '../contexts/LangContext'
 import { pokemonName } from '../lib/i18n'
+import { getSpriteUrl } from '../lib/sprites'
 
 interface Props {
   team: ParsedPokemon[]
@@ -89,11 +91,16 @@ export function CoverageMatrix({ team, visible }: Props) {
                     borderRight: '1px solid #2a2a3e',
                     verticalAlign: 'middle',
                   }}>
-                    <div style={{ fontWeight: 700, fontSize: 12, color, marginBottom: 3 }}>
-                      {pokemonName(pokemon.normalizedName, lang)}
-                    </div>
-                    <div style={{ display: 'flex', gap: 3 }}>
-                      {pokemon.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <PokemonSprite src={getSpriteUrl(pokemon.normalizedName)} name={pokemonName(pokemon.normalizedName, lang)} size={36} />
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: 12, color, marginBottom: 3 }}>
+                          {pokemonName(pokemon.normalizedName, lang)}
+                        </div>
+                        <div style={{ display: 'flex', gap: 3 }}>
+                          {pokemon.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                        </div>
+                      </div>
                     </div>
                   </td>
 

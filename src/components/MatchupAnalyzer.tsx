@@ -3,8 +3,10 @@ import type { ParsedPokemon, ParsedMove } from '../lib/parseShowdown'
 import { typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
+import { PokemonSprite } from './PokemonSprite'
 import { useLang } from '../contexts/LangContext'
 import { pokemonName, moveName, searchPokemon, searchMove, POKEMON_TYPES_FLAT } from '../lib/i18n'
+import { getSpriteUrl } from '../lib/sprites'
 import movesData from '../data/moves.json'
 import vgcStatsData from '../data/vgc-stats.json'
 import baseStatsData from '../data/base-stats.json'
@@ -423,6 +425,7 @@ function EnemySlotCard({
     }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+        <PokemonSprite src={getSpriteUrl(value.key)} name={pokemonName(value.key, lang)} size={48} />
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 2 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: '#eee' }}>
@@ -878,6 +881,9 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
             }} />
             {enemy.map((e, ei) => (
               <th key={ei} style={headerCellStyle}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
+                  <PokemonSprite src={getSpriteUrl(e.key)} name={pokemonName(e.key, lang)} size={40} />
+                </div>
                 <div style={{ fontSize: 11, fontWeight: 700, color: '#eee', marginBottom: 3 }}>
                   {pokemonName(e.key, lang)}
                 </div>
@@ -901,14 +907,19 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
                 borderRight: '1px solid #2a2a3e',
                 verticalAlign: 'middle',
               }}>
-                <div style={{ fontWeight: 700, fontSize: 12, color: '#eee', marginBottom: 3 }}>
-                  {pokemonName(p.normalizedName, lang)}
-                  <span style={{ fontSize: 10, color: '#666', fontWeight: 400, marginLeft: 6 }}>
-                    {rowScore(pi)}
-                  </span>
-                </div>
-                <div style={{ display: 'flex', gap: 2 }}>
-                  {p.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <PokemonSprite src={getSpriteUrl(p.normalizedName)} name={pokemonName(p.normalizedName, lang)} size={36} />
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: 12, color: '#eee', marginBottom: 3 }}>
+                      {pokemonName(p.normalizedName, lang)}
+                      <span style={{ fontSize: 10, color: '#666', fontWeight: 400, marginLeft: 6 }}>
+                        {rowScore(pi)}
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', gap: 2 }}>
+                      {p.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                    </div>
+                  </div>
                 </div>
               </td>
               {enemy.map((e, ei) => {

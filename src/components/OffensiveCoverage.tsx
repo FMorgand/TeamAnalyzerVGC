@@ -42,13 +42,10 @@ export function OffensiveCoverage({ coverage }: Props) {
   const { byType, neutralByType } = coverage
 
   return (
-    <section style={{ marginTop: '2rem' }}>
-      <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: '1rem', color: '#ccc' }}>
-        Couverture offensive
-        <span style={{ fontWeight: 400, fontSize: 13, color: '#666', marginLeft: 8 }}>
-          {coverage.covered.length}/18 types couverts
-        </span>
-      </h2>
+    <section style={{ marginTop: '0.75rem' }}>
+      <div style={{ fontSize: 12, color: '#666', marginBottom: '0.75rem' }}>
+        {coverage.covered.length}/18 types couverts
+      </div>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))',

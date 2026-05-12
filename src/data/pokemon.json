@@ -36,7 +36,8 @@
         "types": [
           "grass",
           "poison"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10033.png"
       }
     }
   },
@@ -75,13 +76,15 @@
         "types": [
           "fire",
           "dragon"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10034.png"
       },
       "charizard-mega-y": {
         "types": [
           "fire",
           "flying"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png"
       }
     }
   },
@@ -118,7 +121,8 @@
       "blastoise-mega": {
         "types": [
           "water"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10036.png"
       }
     }
   },
@@ -188,7 +192,8 @@
         "types": [
           "bug",
           "poison"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10090.png"
       }
     }
   },
@@ -232,7 +237,8 @@
         "types": [
           "normal",
           "flying"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10073.png"
       }
     }
   },
@@ -448,7 +454,8 @@
         "types": [
           "fairy",
           "flying"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -779,7 +786,8 @@
       "alakazam-mega": {
         "types": [
           "psychic"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10037.png"
       }
     }
   },
@@ -853,7 +861,8 @@
         "types": [
           "grass",
           "poison"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10279.png"
       }
     }
   },
@@ -967,7 +976,8 @@
         "types": [
           "water",
           "psychic"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10071.png"
       }
     }
   },
@@ -1133,7 +1143,8 @@
         "types": [
           "ghost",
           "poison"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10038.png"
       }
     }
   },
@@ -1374,7 +1385,8 @@
       "kangaskhan-mega": {
         "types": [
           "normal"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10039.png"
       }
     }
   },
@@ -1449,7 +1461,8 @@
         "types": [
           "water",
           "psychic"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -1524,7 +1537,8 @@
         "types": [
           "bug",
           "flying"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10040.png"
       }
     }
   },
@@ -1564,7 +1578,8 @@
         "types": [
           "water",
           "dark"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10041.png"
       }
     }
   },
@@ -1706,7 +1721,8 @@
         "types": [
           "rock",
           "flying"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10042.png"
       }
     }
   },
@@ -1789,7 +1805,8 @@
         "types": [
           "dragon",
           "flying"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10281.png"
       }
     }
   },
@@ -1807,12 +1824,14 @@
         "types": [
           "psychic",
           "fighting"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10043.png"
       },
       "mewtwo-mega-y": {
         "types": [
           "psychic"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10044.png"
       }
     }
   },
@@ -1859,7 +1878,8 @@
         "types": [
           "grass",
           "fairy"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -1927,7 +1947,8 @@
         "types": [
           "water",
           "dragon"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -2174,7 +2195,8 @@
         "types": [
           "electric",
           "dragon"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10045.png"
       }
     }
   },
@@ -2483,7 +2505,8 @@
         "types": [
           "steel",
           "ground"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10072.png"
       }
     }
   },
@@ -2537,7 +2560,8 @@
         "types": [
           "bug",
           "steel"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10046.png"
       }
     }
   },
@@ -2569,7 +2593,8 @@
         "types": [
           "bug",
           "fighting"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10047.png"
       }
     }
   },
@@ -2728,7 +2753,8 @@
         "types": [
           "steel",
           "flying"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -2760,7 +2786,8 @@
         "types": [
           "dark",
           "fire"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10048.png"
       }
     }
   },
@@ -2971,7 +2998,8 @@
         "types": [
           "rock",
           "dark"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10049.png"
       }
     }
   },
@@ -3041,7 +3069,8 @@
         "types": [
           "grass",
           "dragon"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10065.png"
       }
     }
   },
@@ -3081,7 +3110,8 @@
         "types": [
           "fire",
           "fighting"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10050.png"
       }
     }
   },
@@ -3121,7 +3151,8 @@
         "types": [
           "water",
           "ground"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10064.png"
       }
     }
   },
@@ -3376,7 +3407,8 @@
         "types": [
           "psychic",
           "fairy"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10051.png"
       }
     }
   },
@@ -3597,7 +3629,8 @@
         "types": [
           "dark",
           "ghost"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10066.png"
       }
     }
   },
@@ -3617,7 +3650,8 @@
         "types": [
           "steel",
           "fairy"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10052.png"
       }
     }
   },
@@ -3660,7 +3694,8 @@
       "aggron-mega": {
         "types": [
           "steel"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10053.png"
       }
     }
   },
@@ -3690,7 +3725,8 @@
         "types": [
           "fighting",
           "psychic"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10054.png"
       }
     }
   },
@@ -3719,7 +3755,8 @@
       "manectric-mega": {
         "types": [
           "electric"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10055.png"
       }
     }
   },
@@ -3825,7 +3862,8 @@
         "types": [
           "water",
           "dark"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10070.png"
       }
     }
   },
@@ -3879,7 +3917,8 @@
         "types": [
           "fire",
           "ground"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10087.png"
       }
     }
   },
@@ -4005,7 +4044,8 @@
         "types": [
           "dragon",
           "fairy"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10067.png"
       }
     }
   },
@@ -4226,7 +4266,8 @@
       "banette-mega": {
         "types": [
           "ghost"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10056.png"
       }
     }
   },
@@ -4293,7 +4334,8 @@
       "absol-mega": {
         "types": [
           "dark"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10057.png"
       },
       "absol-mega-z": {
         "types": [
@@ -4338,7 +4380,8 @@
       "glalie-mega": {
         "types": [
           "ice"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10074.png"
       }
     }
   },
@@ -4465,7 +4508,8 @@
         "types": [
           "dragon",
           "flying"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10089.png"
       }
     }
   },
@@ -4506,7 +4550,8 @@
         "types": [
           "steel",
           "psychic"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10076.png"
       }
     }
   },
@@ -4554,7 +4599,8 @@
         "types": [
           "dragon",
           "psychic"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10062.png"
       }
     }
   },
@@ -4572,7 +4618,8 @@
         "types": [
           "dragon",
           "psychic"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10063.png"
       }
     }
   },
@@ -4608,7 +4655,8 @@
         "types": [
           "dragon",
           "flying"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10079.png"
       }
     }
   },
@@ -5095,7 +5143,8 @@
         "types": [
           "normal",
           "fighting"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10088.png"
       }
     }
   },
@@ -5293,7 +5342,8 @@
         "types": [
           "dragon",
           "ground"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10058.png"
       },
       "garchomp-mega-z": {
         "types": [
@@ -5340,7 +5390,8 @@
         "types": [
           "fighting",
           "steel"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10059.png"
       },
       "lucario-mega-z": {
         "types": [
@@ -5487,7 +5538,8 @@
         "types": [
           "grass",
           "ice"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10060.png"
       }
     }
   },
@@ -5663,7 +5715,8 @@
         "types": [
           "psychic",
           "fighting"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10068.png"
       }
     }
   },
@@ -5704,7 +5757,8 @@
         "types": [
           "ice",
           "ghost"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -5943,7 +5997,8 @@
         "types": [
           "fire",
           "fighting"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -6278,7 +6333,8 @@
         "types": [
           "ground",
           "steel"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -6297,7 +6353,8 @@
         "types": [
           "normal",
           "fairy"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10069.png"
       }
     }
   },
@@ -6467,7 +6524,8 @@
         "types": [
           "bug",
           "poison"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -6647,7 +6705,8 @@
         "types": [
           "dark",
           "fighting"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -7133,7 +7192,8 @@
       "eelektross-mega": {
         "types": [
           "electric"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -7199,7 +7259,8 @@
         "types": [
           "ghost",
           "fire"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -7681,7 +7742,8 @@
         "types": [
           "grass",
           "fighting"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -7720,7 +7782,8 @@
         "types": [
           "fire",
           "psychic"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -7759,7 +7822,8 @@
         "types": [
           "water",
           "dark"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -7899,7 +7963,8 @@
       "floette-mega": {
         "types": [
           "fairy"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -8092,7 +8157,8 @@
         "types": [
           "dark",
           "psychic"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -8124,7 +8190,8 @@
         "types": [
           "rock",
           "fighting"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -8156,7 +8223,8 @@
         "types": [
           "poison",
           "dragon"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -8272,7 +8340,8 @@
         "types": [
           "fighting",
           "flying"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -8480,7 +8549,8 @@
         "types": [
           "rock",
           "fairy"
-        ]
+        ],
+        "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10075.png"
       }
     }
   },
@@ -9163,7 +9233,8 @@
         "types": [
           "normal",
           "dragon"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -10140,7 +10211,8 @@
       "falinks-mega": {
         "types": [
           "fighting"
-        ]
+        ],
+        "sprite": null
       }
     }
   },
@@ -11837,143 +11909,168 @@
   "deoxys-attack": {
     "types": [
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10001.png"
   },
   "deoxys-defense": {
     "types": [
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10002.png"
   },
   "deoxys-speed": {
     "types": [
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10003.png"
   },
   "wormadam-sandy": {
     "types": [
       "bug",
       "ground"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10004.png"
   },
   "wormadam-trash": {
     "types": [
       "bug",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10005.png"
   },
   "shaymin-sky": {
     "types": [
       "grass",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10006.png"
   },
   "giratina-origin": {
     "types": [
       "ghost",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10007.png"
   },
   "rotom-heat": {
     "types": [
       "electric",
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10008.png"
   },
   "rotom-wash": {
     "types": [
       "electric",
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10009.png"
   },
   "rotom-frost": {
     "types": [
       "electric",
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10010.png"
   },
   "rotom-fan": {
     "types": [
       "electric",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10011.png"
   },
   "rotom-mow": {
     "types": [
       "electric",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10012.png"
   },
   "castform-sunny": {
     "types": [
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10013.png"
   },
   "castform-rainy": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10014.png"
   },
   "castform-snowy": {
     "types": [
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10015.png"
   },
   "basculin-blue-striped": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10016.png"
   },
   "darmanitan-zen": {
     "types": [
       "fire",
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10017.png"
   },
   "meloetta-pirouette": {
     "types": [
       "normal",
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10018.png"
   },
   "tornadus-therian": {
     "types": [
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10019.png"
   },
   "thundurus-therian": {
     "types": [
       "electric",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10020.png"
   },
   "landorus-therian": {
     "types": [
       "ground",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10021.png"
   },
   "kyurem-black": {
     "types": [
       "dragon",
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10022.png"
   },
   "kyurem-white": {
     "types": [
       "dragon",
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10023.png"
   },
   "keldeo-resolute": {
     "types": [
       "water",
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10024.png"
   },
   "meowstic-female": {
     "types": [
       "psychic"
     ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10025.png",
     "megaForms": {
       "meowstic-mega": {
         "types": [
@@ -11986,424 +12083,498 @@
     "types": [
       "steel",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10026.png"
   },
   "pumpkaboo-small": {
     "types": [
       "ghost",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10027.png"
   },
   "pumpkaboo-large": {
     "types": [
       "ghost",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10028.png"
   },
   "pumpkaboo-super": {
     "types": [
       "ghost",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10029.png"
   },
   "gourgeist-small": {
     "types": [
       "ghost",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10030.png"
   },
   "gourgeist-large": {
     "types": [
       "ghost",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10031.png"
   },
   "gourgeist-super": {
     "types": [
       "ghost",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10032.png"
   },
   "floette-eternal": {
     "types": [
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10061.png"
   },
   "kyogre-primal": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10077.png"
   },
   "groudon-primal": {
     "types": [
       "ground",
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10078.png"
   },
   "pikachu-rock-star": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10080.png"
   },
   "pikachu-belle": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10081.png"
   },
   "pikachu-pop-star": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10082.png"
   },
   "pikachu-phd": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10083.png"
   },
   "pikachu-libre": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10084.png"
   },
   "pikachu-cosplay": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10085.png"
   },
   "hoopa-unbound": {
     "types": [
       "psychic",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10086.png"
   },
   "rattata-alola": {
     "types": [
       "dark",
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10091.png"
   },
   "raticate-alola": {
     "types": [
       "dark",
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10092.png"
   },
   "raticate-totem-alola": {
     "types": [
       "dark",
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10093.png"
   },
   "pikachu-original-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10094.png"
   },
   "pikachu-hoenn-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10095.png"
   },
   "pikachu-sinnoh-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10096.png"
   },
   "pikachu-unova-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10097.png"
   },
   "pikachu-kalos-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10098.png"
   },
   "pikachu-alola-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10099.png"
   },
   "raichu-alola": {
     "types": [
       "electric",
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10100.png"
   },
   "sandshrew-alola": {
     "types": [
       "ice",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10101.png"
   },
   "sandslash-alola": {
     "types": [
       "ice",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10102.png"
   },
   "vulpix-alola": {
     "types": [
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10103.png"
   },
   "ninetales-alola": {
     "types": [
       "ice",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10104.png"
   },
   "diglett-alola": {
     "types": [
       "ground",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10105.png"
   },
   "dugtrio-alola": {
     "types": [
       "ground",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10106.png"
   },
   "meowth-alola": {
     "types": [
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10107.png"
   },
   "persian-alola": {
     "types": [
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10108.png"
   },
   "geodude-alola": {
     "types": [
       "rock",
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10109.png"
   },
   "graveler-alola": {
     "types": [
       "rock",
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10110.png"
   },
   "golem-alola": {
     "types": [
       "rock",
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10111.png"
   },
   "grimer-alola": {
     "types": [
       "poison",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10112.png"
   },
   "muk-alola": {
     "types": [
       "poison",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10113.png"
   },
   "exeggutor-alola": {
     "types": [
       "grass",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10114.png"
   },
   "marowak-alola": {
     "types": [
       "fire",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10115.png"
   },
   "greninja-battle-bond": {
     "types": [
       "water",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10116.png"
   },
   "greninja-ash": {
     "types": [
       "water",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10117.png"
   },
   "zygarde-10-power-construct": {
     "types": [
       "dragon",
       "ground"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10118.png"
   },
   "zygarde-50-power-construct": {
     "types": [
       "dragon",
       "ground"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10119.png"
   },
   "zygarde-complete": {
     "types": [
       "dragon",
       "ground"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10120.png"
   },
   "gumshoos-totem": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10121.png"
   },
   "vikavolt-totem": {
     "types": [
       "bug",
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10122.png"
   },
   "oricorio-pom-pom": {
     "types": [
       "electric",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10123.png"
   },
   "oricorio-pau": {
     "types": [
       "psychic",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10124.png"
   },
   "oricorio-sensu": {
     "types": [
       "ghost",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10125.png"
   },
   "lycanroc-midnight": {
     "types": [
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10126.png"
   },
   "wishiwashi-school": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10127.png"
   },
   "lurantis-totem": {
     "types": [
       "grass"
-    ]
+    ],
+    "sprite": null
   },
   "salazzle-totem": {
     "types": [
       "poison",
       "fire"
-    ]
+    ],
+    "sprite": null
   },
   "minior-orange-meteor": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10130.png"
   },
   "minior-yellow-meteor": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10131.png"
   },
   "minior-green-meteor": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10132.png"
   },
   "minior-blue-meteor": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10133.png"
   },
   "minior-indigo-meteor": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10134.png"
   },
   "minior-violet-meteor": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10135.png"
   },
   "minior-red": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10136.png"
   },
   "minior-orange": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10137.png"
   },
   "minior-yellow": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10138.png"
   },
   "minior-green": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10139.png"
   },
   "minior-blue": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10140.png"
   },
   "minior-indigo": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10141.png"
   },
   "minior-violet": {
     "types": [
       "rock",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10142.png"
   },
   "mimikyu-busted": {
     "types": [
       "ghost",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10143.png"
   },
   "mimikyu-totem-disguised": {
     "types": [
       "ghost",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10144.png"
   },
   "mimikyu-totem-busted": {
     "types": [
       "ghost",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10145.png"
   },
   "kommo-o-totem": {
     "types": [
       "dragon",
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10146.png"
   },
   "magearna-original": {
     "types": [
       "steel",
       "fairy"
     ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10147.png",
     "megaForms": {
       "magearna-mega": {
         "types": [
@@ -12416,633 +12587,744 @@
   "pikachu-partner-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10148.png"
   },
   "marowak-totem": {
     "types": [
       "fire",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10149.png"
   },
   "ribombee-totem": {
     "types": [
       "bug",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10150.png"
   },
   "rockruff-own-tempo": {
     "types": [
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10151.png"
   },
   "lycanroc-dusk": {
     "types": [
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10152.png"
   },
   "araquanid-totem": {
     "types": [
       "water",
       "bug"
-    ]
+    ],
+    "sprite": null
   },
   "togedemaru-totem": {
     "types": [
       "electric",
       "steel"
-    ]
+    ],
+    "sprite": null
   },
   "necrozma-dusk": {
     "types": [
       "psychic",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10155.png"
   },
   "necrozma-dawn": {
     "types": [
       "psychic",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10156.png"
   },
   "necrozma-ultra": {
     "types": [
       "psychic",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10157.png"
   },
   "pikachu-starter": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": null
   },
   "eevee-starter": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": null
   },
   "pikachu-world-cap": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10160.png"
   },
   "meowth-galar": {
     "types": [
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10161.png"
   },
   "ponyta-galar": {
     "types": [
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10162.png"
   },
   "rapidash-galar": {
     "types": [
       "psychic",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10163.png"
   },
   "slowpoke-galar": {
     "types": [
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10164.png"
   },
   "slowbro-galar": {
     "types": [
       "poison",
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10165.png"
   },
   "farfetchd-galar": {
     "types": [
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10166.png"
   },
   "weezing-galar": {
     "types": [
       "poison",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10167.png"
   },
   "mr-mime-galar": {
     "types": [
       "ice",
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10168.png"
   },
   "articuno-galar": {
     "types": [
       "psychic",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10169.png"
   },
   "zapdos-galar": {
     "types": [
       "fighting",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10170.png"
   },
   "moltres-galar": {
     "types": [
       "dark",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10171.png"
   },
   "slowking-galar": {
     "types": [
       "poison",
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10172.png"
   },
   "corsola-galar": {
     "types": [
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10173.png"
   },
   "zigzagoon-galar": {
     "types": [
       "dark",
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10174.png"
   },
   "linoone-galar": {
     "types": [
       "dark",
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10175.png"
   },
   "darumaka-galar": {
     "types": [
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10176.png"
   },
   "darmanitan-galar-standard": {
     "types": [
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10177.png"
   },
   "darmanitan-galar-zen": {
     "types": [
       "ice",
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10178.png"
   },
   "yamask-galar": {
     "types": [
       "ground",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10179.png"
   },
   "stunfisk-galar": {
     "types": [
       "ground",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10180.png"
   },
   "zygarde-10": {
     "types": [
       "dragon",
       "ground"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10181.png"
   },
   "cramorant-gulping": {
     "types": [
       "flying",
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10182.png"
   },
   "cramorant-gorging": {
     "types": [
       "flying",
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10183.png"
   },
   "toxtricity-low-key": {
     "types": [
       "electric",
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10184.png"
   },
   "eiscue-noice": {
     "types": [
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10185.png"
   },
   "indeedee-female": {
     "types": [
       "psychic",
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10186.png"
   },
   "morpeko-hangry": {
     "types": [
       "electric",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10187.png"
   },
   "zacian-crowned": {
     "types": [
       "fairy",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10188.png"
   },
   "zamazenta-crowned": {
     "types": [
       "fighting",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10189.png"
   },
   "eternatus-eternamax": {
     "types": [
       "poison",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10190.png"
   },
   "urshifu-rapid-strike": {
     "types": [
       "fighting",
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10191.png"
   },
   "zarude-dada": {
     "types": [
       "dark",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10192.png"
   },
   "calyrex-ice": {
     "types": [
       "psychic",
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10193.png"
   },
   "calyrex-shadow": {
     "types": [
       "psychic",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10194.png"
   },
   "venusaur-gmax": {
     "types": [
       "grass",
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10195.png"
   },
   "charizard-gmax": {
     "types": [
       "fire",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10196.png"
   },
   "blastoise-gmax": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10197.png"
   },
   "butterfree-gmax": {
     "types": [
       "bug",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10198.png"
   },
   "pikachu-gmax": {
     "types": [
       "electric"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10199.png"
   },
   "meowth-gmax": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10200.png"
   },
   "machamp-gmax": {
     "types": [
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10201.png"
   },
   "gengar-gmax": {
     "types": [
       "ghost",
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10202.png"
   },
   "kingler-gmax": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10203.png"
   },
   "lapras-gmax": {
     "types": [
       "water",
       "ice"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10204.png"
   },
   "eevee-gmax": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10205.png"
   },
   "snorlax-gmax": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10206.png"
   },
   "garbodor-gmax": {
     "types": [
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10207.png"
   },
   "melmetal-gmax": {
     "types": [
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10208.png"
   },
   "rillaboom-gmax": {
     "types": [
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10209.png"
   },
   "cinderace-gmax": {
     "types": [
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10210.png"
   },
   "inteleon-gmax": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10211.png"
   },
   "corviknight-gmax": {
     "types": [
       "flying",
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10212.png"
   },
   "orbeetle-gmax": {
     "types": [
       "bug",
       "psychic"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10213.png"
   },
   "drednaw-gmax": {
     "types": [
       "water",
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10214.png"
   },
   "coalossal-gmax": {
     "types": [
       "rock",
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10215.png"
   },
   "flapple-gmax": {
     "types": [
       "grass",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10216.png"
   },
   "appletun-gmax": {
     "types": [
       "grass",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10217.png"
   },
   "sandaconda-gmax": {
     "types": [
       "ground"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10218.png"
   },
   "toxtricity-amped-gmax": {
     "types": [
       "electric",
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10219.png"
   },
   "centiskorch-gmax": {
     "types": [
       "fire",
       "bug"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10220.png"
   },
   "hatterene-gmax": {
     "types": [
       "psychic",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10221.png"
   },
   "grimmsnarl-gmax": {
     "types": [
       "dark",
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10222.png"
   },
   "alcremie-gmax": {
     "types": [
       "fairy"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10223.png"
   },
   "copperajah-gmax": {
     "types": [
       "steel"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10224.png"
   },
   "duraludon-gmax": {
     "types": [
       "steel",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10225.png"
   },
   "urshifu-single-strike-gmax": {
     "types": [
       "fighting",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10226.png"
   },
   "urshifu-rapid-strike-gmax": {
     "types": [
       "fighting",
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10227.png"
   },
   "toxtricity-low-key-gmax": {
     "types": [
       "electric",
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10228.png"
   },
   "growlithe-hisui": {
     "types": [
       "fire",
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10229.png"
   },
   "arcanine-hisui": {
     "types": [
       "fire",
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10230.png"
   },
   "voltorb-hisui": {
     "types": [
       "electric",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10231.png"
   },
   "electrode-hisui": {
     "types": [
       "electric",
       "grass"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10232.png"
   },
   "typhlosion-hisui": {
     "types": [
       "fire",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10233.png"
   },
   "qwilfish-hisui": {
     "types": [
       "dark",
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10234.png"
   },
   "sneasel-hisui": {
     "types": [
       "fighting",
       "poison"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10235.png"
   },
   "samurott-hisui": {
     "types": [
       "water",
       "dark"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10236.png"
   },
   "lilligant-hisui": {
     "types": [
       "grass",
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10237.png"
   },
   "zorua-hisui": {
     "types": [
       "normal",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10238.png"
   },
   "zoroark-hisui": {
     "types": [
       "normal",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10239.png"
   },
   "braviary-hisui": {
     "types": [
       "psychic",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10240.png"
   },
   "sliggoo-hisui": {
     "types": [
       "steel",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10241.png"
   },
   "goodra-hisui": {
     "types": [
       "steel",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10242.png"
   },
   "avalugg-hisui": {
     "types": [
       "ice",
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10243.png"
   },
   "decidueye-hisui": {
     "types": [
       "grass",
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10244.png"
   },
   "dialga-origin": {
     "types": [
       "steel",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10245.png"
   },
   "palkia-origin": {
     "types": [
       "water",
       "dragon"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10246.png"
   },
   "basculin-white-striped": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10247.png"
   },
   "basculegion-female": {
     "types": [
       "water",
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10248.png"
   },
   "enamorus-therian": {
     "types": [
       "fairy",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10249.png"
   },
   "tauros-paldea-combat-breed": {
     "types": [
       "fighting"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10250.png"
   },
   "tauros-paldea-blaze-breed": {
     "types": [
       "fighting",
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10251.png"
   },
   "tauros-paldea-aqua-breed": {
     "types": [
       "fighting",
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10252.png"
   },
   "wooper-paldea": {
     "types": [
       "poison",
       "ground"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10253.png"
   },
   "oinkologne-female": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10254.png"
   },
   "dudunsparce-three-segment": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10255.png"
   },
   "palafin-hero": {
     "types": [
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10256.png"
   },
   "maushold-family-of-three": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10257.png"
   },
   "tatsugiri-droopy": {
     "types": [
       "dragon",
       "water"
     ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10258.png",
     "megaForms": {
       "tatsugiri-mega": {
         "types": [
@@ -13057,6 +13339,7 @@
       "dragon",
       "water"
     ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10259.png",
     "megaForms": {
       "tatsugiri-mega": {
         "types": [
@@ -13070,106 +13353,124 @@
     "types": [
       "normal",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10260.png"
   },
   "squawkabilly-yellow-plumage": {
     "types": [
       "normal",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10261.png"
   },
   "squawkabilly-white-plumage": {
     "types": [
       "normal",
       "flying"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10262.png"
   },
   "gimmighoul-roaming": {
     "types": [
       "ghost"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10263.png"
   },
   "koraidon-limited-build": {
     "types": [
       "fighting",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "koraidon-sprinting-build": {
     "types": [
       "fighting",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "koraidon-swimming-build": {
     "types": [
       "fighting",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "koraidon-gliding-build": {
     "types": [
       "fighting",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "miraidon-low-power-mode": {
     "types": [
       "electric",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "miraidon-drive-mode": {
     "types": [
       "electric",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "miraidon-aquatic-mode": {
     "types": [
       "electric",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "miraidon-glide-mode": {
     "types": [
       "electric",
       "dragon"
-    ]
+    ],
+    "sprite": null
   },
   "ursaluna-bloodmoon": {
     "types": [
       "ground",
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10272.png"
   },
   "ogerpon-wellspring-mask": {
     "types": [
       "grass",
       "water"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10273.png"
   },
   "ogerpon-hearthflame-mask": {
     "types": [
       "grass",
       "fire"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10274.png"
   },
   "ogerpon-cornerstone-mask": {
     "types": [
       "grass",
       "rock"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10275.png"
   },
   "terapagos-terastal": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10276.png"
   },
   "terapagos-stellar": {
     "types": [
       "normal"
-    ]
+    ],
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10277.png"
   },
   "aegislash": {
     "types": [

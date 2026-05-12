@@ -451,6 +451,96 @@
         }
       ]
     },
+    "basculegion": {
+      "usage": 21.95,
+      "spreads": [
+        {
+          "nature": "Jolly",
+          "evs": {
+            "hp": 16,
+            "atk": 252,
+            "spe": 252
+          },
+          "pct": 22
+        },
+        {
+          "nature": "Adamant",
+          "evs": {
+            "hp": 16,
+            "atk": 252,
+            "spe": 252
+          },
+          "pct": 21.2
+        },
+        {
+          "nature": "Jolly",
+          "evs": {
+            "atk": 252,
+            "def": 16,
+            "spe": 252
+          },
+          "pct": 9.6
+        },
+        {
+          "nature": "Adamant",
+          "evs": {
+            "atk": 252,
+            "def": 16,
+            "spe": 252
+          },
+          "pct": 4.9
+        },
+        {
+          "nature": "Jolly",
+          "evs": {
+            "atk": 252,
+            "spd": 16,
+            "spe": 252
+          },
+          "pct": 2.9
+        }
+      ],
+      "moves": [
+        {
+          "key": "last-respects",
+          "pct": 98
+        },
+        {
+          "key": "wave-crash",
+          "pct": 88.2
+        },
+        {
+          "key": "aqua-jet",
+          "pct": 83
+        },
+        {
+          "key": "flip-turn",
+          "pct": 69.6
+        },
+        {
+          "key": "protect",
+          "pct": 30.3
+        },
+        {
+          "key": "liquidation",
+          "pct": 11.5
+        }
+      ],
+      "items": [
+        {
+          "key": "choicescarf",
+          "pct": 61.5
+        },
+        {
+          "key": "mysticwater",
+          "pct": 18.4
+        },
+        {
+          "key": "focussash",
+          "pct": 8.6
+        }
+      ]
+    },
     "pelipper": {
       "usage": 16.1,
       "spreads": [
@@ -5333,6 +5423,96 @@
         {
           "key": "drampanite",
           "pct": 100
+        }
+      ]
+    },
+    "meowstic": {
+      "usage": 1.83,
+      "spreads": [
+        {
+          "nature": "Timid",
+          "evs": {
+            "hp": 16,
+            "spa": 252,
+            "spe": 252
+          },
+          "pct": 8.1
+        },
+        {
+          "nature": "Bold",
+          "evs": {
+            "hp": 252,
+            "def": 252,
+            "spd": 16
+          },
+          "pct": 5.6
+        },
+        {
+          "nature": "Modest",
+          "evs": {
+            "hp": 16,
+            "spa": 252,
+            "spe": 252
+          },
+          "pct": 3.1
+        },
+        {
+          "nature": "Calm",
+          "evs": {
+            "hp": 252,
+            "def": 16,
+            "spd": 252
+          },
+          "pct": 2.9
+        },
+        {
+          "nature": "Timid",
+          "evs": {
+            "hp": 252,
+            "spa": 16,
+            "spe": 252
+          },
+          "pct": 2.9
+        }
+      ],
+      "moves": [
+        {
+          "key": "psychic-terrain",
+          "pct": 62.8
+        },
+        {
+          "key": "fake-out",
+          "pct": 53.7
+        },
+        {
+          "key": "expanding-force",
+          "pct": 41.9
+        },
+        {
+          "key": "gravity",
+          "pct": 24.7
+        },
+        {
+          "key": "reflect",
+          "pct": 23.4
+        },
+        {
+          "key": "protect",
+          "pct": 22.7
+        }
+      ],
+      "items": [
+        {
+          "key": "focussash",
+          "pct": 36.8
+        },
+        {
+          "key": "mentalherb",
+          "pct": 31.8
+        },
+        {
+          "key": "colburberry",
+          "pct": 11.8
         }
       ]
     },

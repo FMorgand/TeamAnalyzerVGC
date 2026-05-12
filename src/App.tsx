@@ -11,7 +11,7 @@ import { MatchupAnalyzer } from './components/MatchupAnalyzer'
 import { CoverageSection } from './components/CoverageSection'
 
 const TITLE_HEIGHT = 52
-const BANNER_HEIGHT = 68
+const BANNER_HEIGHT = 78
 const HEADER_HEIGHT = TITLE_HEIGHT + BANNER_HEIGHT
 
 const TEST_PASTE = `Charizard @ Charizardite Y
