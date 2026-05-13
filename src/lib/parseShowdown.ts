@@ -133,7 +133,7 @@ function parseBlock(lines: string[]): ParsedPokemon | null {
   // Showdown sometimes exports "Gengar-Mega @ Gengarite" — we resolve the Mega
   // form through the item anyway, so the base name is what we need for lookup.
   const normalizedName = resolveShowdownGender(
-    normalizeName(rawName).replace(/-mega(-[xy])?$/, '')
+    normalizeName(rawName.replace(/\s*\(([MF])\)/i, '-$1')).replace(/-mega(-[xy])?$/, '')
   )
   const normalizedItem = rawItem ? normalizeName(rawItem) : null
 

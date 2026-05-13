@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import type { ParsedPokemon, ParsedMove } from '../lib/parseShowdown'
+import { parseShowdownPaste } from '../lib/parseShowdown'
+import enemyPresetsData from '../data/enemy-presets.json'
 import { typeChart } from '../data/typeChart'
 import type { PokemonType } from '../data/typeChart'
 import { TypeBadge } from './TypeBadge'
@@ -8,6 +10,7 @@ import { useLang } from '../contexts/LangContext'
 import { pokemonName, moveName, searchPokemon, searchMove, POKEMON_TYPES_FLAT } from '../lib/i18n'
 import { getSpriteUrl, getItemSpriteUrl } from '../lib/sprites'
 import movesData from '../data/moves.json'
+import pokemonJsonData from '../data/pokemon.json'
 import vgcStatsData from '../data/vgc-stats.json'
 import baseStatsData from '../data/base-stats.json'
 import { calcHP, calcStat, calcDamage } from '../lib/damage'
@@ -37,6 +40,44 @@ interface VGCPokemonStats {
 }
 
 const VGC_STATS = (vgcStatsData as unknown as { pokemon: Record<string, VGCPokemonStats> }).pokemon
+
+interface EnemyPreset { name: string; paste: string }
+const ENEMY_PRESETS = enemyPresetsData as EnemyPreset[]
+
+type PokemonDataEntry = {
+  types: string[]
+  megaForms?: Record<string, { types: string[]; sprite?: string | null }>
+  sprite?: string | null
+}
+const POKEMON_DATA = pokemonJsonData as Record<string, PokemonDataEntry>
+
+function toOfficialArtwork(url: string): string {
+  return url.replace('/sprites/pokemon/', '/sprites/pokemon/other/official-artwork/')
+}
+
+function getFirstMegaForm(key: string): { types: PokemonType[]; sprite: string | null } | null {
+  const entry = POKEMON_DATA[key]
+  if (!entry?.megaForms) return null
+  const formData = Object.values(entry.megaForms)[0]
+  if (!formData) return null
+  return {
+    types: formData.types as PokemonType[],
+    sprite: formData.sprite ? toOfficialArtwork(formData.sprite) : null,
+  }
+}
+
+function getEffectiveEnemyTypes(enemy: EnemyPokemon): PokemonType[] {
+  if (!enemy.megaActive) return enemy.types
+  return getFirstMegaForm(enemy.key)?.types ?? enemy.types
+}
+
+function parsedToEnemy(p: ParsedPokemon): EnemyPokemon {
+  const moves: (EnemyMove | null)[] = [null, null, null, null]
+  p.moves.slice(0, 4).forEach((m, i) => {
+    if (m.type) moves[i] = { key: m.normalizedName, type: m.type }
+  })
+  return { key: p.normalizedName, types: p.types, moves, selectedSpreadIndex: 0 }
+}
 
 const EV_LABELS: Record<string, string> = {
   hp: 'HP', atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe',
@@ -79,6 +120,11 @@ interface EnemyPokemon {
   types: PokemonType[]
   moves: (EnemyMove | null)[]
   selectedSpreadIndex: number
+  megaActive?: boolean
+}
+
+function offenseMultiplierVsEnemy(myPokemon: ParsedPokemon, enemy: EnemyPokemon): number {
+  return offenseMultiplier(myPokemon, getEffectiveEnemyTypes(enemy))
 }
 
 function offenseMultiplier(myPokemon: ParsedPokemon, enemyTypes: PokemonType[]): number {
@@ -141,7 +187,7 @@ function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): 
       const defenderStat = isPhysical
         ? calcStat(defenderBase.def, myPokemon.evs.def, myPokemon.nature, 'def')
         : calcStat(defenderBase.spd, myPokemon.evs.spd, myPokemon.nature, 'spd')
-      const stab = enemy.types.includes(move.type)
+      const stab = getEffectiveEnemyTypes(enemy).includes(move.type)
       const { min, max } = calcDamage({ bp: moveEntry.power, attackerStat, defenderStat, defenderHP, stab, effectiveness: mult })
       if (!best || max > best.maxPct) best = { move, mult, minPct: min, maxPct: max }
     } else if (!best) {
@@ -154,9 +200,10 @@ function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): 
 
 function bestMyMoveAndDamage(myPokemon: ParsedPokemon, enemy: EnemyPokemon): DamageResult | null {
   let maxMult = 0
+  const effectiveEnemyTypes = getEffectiveEnemyTypes(enemy)
   for (const move of myPokemon.moves) {
     if (!move.type || !move.power || move.power <= 0) continue
-    const mult = enemy.types.reduce((acc, t) => acc * typeChart[move.type!][t], 1)
+    const mult = effectiveEnemyTypes.reduce((acc, t) => acc * typeChart[move.type!][t], 1)
     if (mult > maxMult) maxMult = mult
   }
   if (maxMult < 2) return null
@@ -173,7 +220,7 @@ function bestMyMoveAndDamage(myPokemon: ParsedPokemon, enemy: EnemyPokemon): Dam
 
   for (const move of myPokemon.moves) {
     if (!move.type || !move.power || move.power <= 0) continue
-    const mult = enemy.types.reduce((acc, t) => acc * typeChart[move.type!][t], 1)
+    const mult = effectiveEnemyTypes.reduce((acc, t) => acc * typeChart[move.type!][t], 1)
     if (mult < maxMult) continue
 
     const moveEntry = MOVES_DB[move.normalizedName]
@@ -197,6 +244,86 @@ function bestMyMoveAndDamage(myPokemon: ParsedPokemon, enemy: EnemyPokemon): Dam
   }
 
   return best
+}
+
+// ─── Preset selector ─────────────────────────────────────────────────────────
+
+function PresetSelector({ onSelect }: { onSelect: (slots: (EnemyPokemon | null)[]) => void }) {
+  const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(false)
+  const [hovered, setHovered] = useState<number | null>(null)
+
+  const results = ENEMY_PRESETS.filter(p =>
+    p.name.toLowerCase().includes(query.toLowerCase())
+  )
+
+  const handleSelect = (preset: EnemyPreset) => {
+    const parsed = parseShowdownPaste(preset.paste)
+    const slots: (EnemyPokemon | null)[] = Array(6).fill(null)
+    parsed.slice(0, 6).forEach((p, i) => { slots[i] = parsedToEnemy(p) })
+    onSelect(slots)
+    setQuery('')
+    setOpen(false)
+  }
+
+  return (
+    <div style={{ position: 'relative', flex: 1, minWidth: 0 }}>
+      <input
+        value={query}
+        onChange={e => { setQuery(e.target.value); setOpen(true) }}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setTimeout(() => setOpen(false), 150)}
+        placeholder={ENEMY_PRESETS.length > 0 ? 'Preset d\'équipe…' : 'Aucun preset disponible'}
+        disabled={ENEMY_PRESETS.length === 0}
+        style={{
+          background: '#1a1a2e',
+          border: '1px solid #2a2a3e',
+          borderRadius: 6,
+          color: '#e0e0e0',
+          fontSize: 12,
+          padding: '5px 10px',
+          width: '100%',
+          boxSizing: 'border-box',
+          outline: 'none',
+          opacity: ENEMY_PRESETS.length === 0 ? 0.4 : 1,
+        }}
+      />
+      {open && results.length > 0 && (
+        <div style={{
+          position: 'absolute',
+          top: 'calc(100% + 2px)',
+          left: 0,
+          zIndex: 300,
+          background: '#1e1e2e',
+          border: '1px solid #444',
+          borderRadius: 6,
+          minWidth: '100%',
+          maxHeight: 260,
+          overflowY: 'auto',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.6)',
+        }}>
+          {results.map((preset, i) => (
+            <div
+              key={i}
+              onMouseDown={() => handleSelect(preset)}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                padding: '6px 12px',
+                cursor: 'pointer',
+                fontSize: 12,
+                color: '#ddd',
+                background: hovered === i ? '#2a2a3e' : 'transparent',
+                borderBottom: i < results.length - 1 ? '1px solid #2a2a3e' : 'none',
+              }}
+            >
+              {preset.name}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
 
 // ─── Move search input ────────────────────────────────────────────────────────
@@ -322,6 +449,7 @@ function EnemySlotCard({
   onSelectMove,
   onClearMove,
   onSelectSpread,
+  onToggleMega,
 }: {
   slot: number
   value: EnemyPokemon | null
@@ -330,6 +458,7 @@ function EnemySlotCard({
   onSelectMove: (mi: number, m: EnemyMove) => void
   onClearMove: (mi: number) => void
   onSelectSpread: (i: number) => void
+  onToggleMega: () => void
 }) {
   const { lang } = useLang()
   const [query, setQuery] = useState('')
@@ -418,6 +547,9 @@ function EnemySlotCard({
 
   const stats = VGC_STATS[value.key] ?? null
   const toggleItem = (key: string) => setSelectedItemKey(prev => prev === key ? null : key)
+  const megaInfo = getFirstMegaForm(value.key)
+  const effectiveTypes = value.megaActive && megaInfo ? megaInfo.types : value.types
+  const displaySprite = value.megaActive && megaInfo?.sprite ? megaInfo.sprite : getSpriteUrl(value.key)
 
   return (
     <div style={{
@@ -433,7 +565,7 @@ function EnemySlotCard({
     }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
-        <PokemonSprite src={getSpriteUrl(value.key)} name={pokemonName(value.key, lang)} size={48} />
+        <PokemonSprite src={displaySprite} name={pokemonName(value.key, lang)} size={48} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 2 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: '#eee' }}>
@@ -448,10 +580,27 @@ function EnemySlotCard({
                 {stats.usage}%
               </span>
             )}
+            {megaInfo && (
+              <button
+                onClick={onToggleMega}
+                style={{
+                  fontSize: 9, fontWeight: 700,
+                  background: value.megaActive ? '#1a3a1a' : '#1e1e2e',
+                  border: `1px solid ${value.megaActive ? '#3a7a3a' : '#3a3a5e'}`,
+                  borderRadius: 3,
+                  color: value.megaActive ? '#6dba6d' : '#555',
+                  padding: '1px 5px',
+                  cursor: 'pointer',
+                  lineHeight: 1.4,
+                }}
+              >
+                Méga
+              </button>
+            )}
           </div>
           {/* Types */}
           <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap', marginBottom: 3 }}>
-            {value.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+            {effectiveTypes.map(t => <TypeBadge key={t} type={t} size="sm" />)}
           </div>
           {/* Ability placeholder */}
           <div style={{ fontSize: 10, color: '#555', marginBottom: 3 }}>—</div>
@@ -861,7 +1010,7 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
   const matrix = myTeam.map(p =>
     enemy.map(e =>
       mode === 'offense'
-        ? offenseMultiplier(p, e.types)
+        ? offenseMultiplierVsEnemy(p, e)
         : defenseMultiplier(e.moves, p.types)
     )
   )
@@ -934,7 +1083,7 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
                   {pokemonName(e.key, lang)}
                 </div>
                 <div style={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-                  {e.types.map(t => <TypeBadge key={t} type={t} size="sm" />)}
+                  {getEffectiveEnemyTypes(e).map(t => <TypeBadge key={t} type={t} size="sm" />)}
                 </div>
                 <div style={{ fontSize: 10, color: '#666', marginTop: 4 }}>
                   {colFooter(ei)}
@@ -1014,6 +1163,18 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
     return Array(6).fill(null)
   })
   const [mode, setMode] = useState<MatrixMode>('offense')
+  const [pasteOpen, setPasteOpen] = useState(false)
+  const [pasteText, setPasteText] = useState('')
+
+  const handlePasteImport = () => {
+    const parsed = parseShowdownPaste(pasteText)
+    if (parsed.length === 0) return
+    const next: (EnemyPokemon | null)[] = Array(6).fill(null)
+    parsed.slice(0, 6).forEach((p, i) => { next[i] = parsedToEnemy(p) })
+    setSlots(next)
+    setPasteText('')
+    setPasteOpen(false)
+  }
 
   useEffect(() => {
     localStorage.setItem('teamanalyzer-enemy-slots', JSON.stringify(slots))
@@ -1043,6 +1204,16 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
       const slot = next[slotIndex]
       if (!slot) return prev
       next[slotIndex] = { ...slot, selectedSpreadIndex: spreadIndex }
+      return next
+    })
+  }
+
+  const toggleSlotMega = (slotIndex: number) => {
+    setSlots(prev => {
+      const next = [...prev]
+      const slot = next[slotIndex]
+      if (!slot) return prev
+      next[slotIndex] = { ...slot, megaActive: !slot.megaActive }
       return next
     })
   }
@@ -1097,6 +1268,83 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
           : 'Lesquels de mes Pokémon sont mis en danger par les attaques ennemies.'}
       </div>
 
+      {/* Preset selector + paste import */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: '0.75rem', alignItems: 'flex-start' }}>
+        <PresetSelector onSelect={setSlots} />
+        <button
+          onClick={() => setPasteOpen(v => !v)}
+          style={{
+            background: pasteOpen ? '#2a2a4e' : '#1a1a2e',
+            border: `1px solid ${pasteOpen ? '#5a5aae' : '#2a2a3e'}`,
+            borderRadius: 6,
+            color: pasteOpen ? '#aab' : '#666',
+            fontSize: 12,
+            padding: '5px 14px',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
+          }}
+        >
+          Importer un paste
+        </button>
+      </div>
+
+      {pasteOpen && (
+        <div style={{ marginBottom: '0.75rem', background: '#1a1a2e', border: '1px solid #2a2a3e', borderRadius: 8, padding: '10px 12px' }}>
+          <textarea
+            value={pasteText}
+            onChange={e => setPasteText(e.target.value)}
+            placeholder="Colle ici le paste Showdown de l'équipe adverse…"
+            rows={8}
+            style={{
+              width: '100%',
+              boxSizing: 'border-box',
+              background: '#12121e',
+              border: '1px solid #333',
+              borderRadius: 6,
+              color: '#e0e0e0',
+              fontSize: 11,
+              fontFamily: 'monospace',
+              padding: '8px 10px',
+              resize: 'vertical',
+              outline: 'none',
+            }}
+          />
+          <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+            <button
+              onClick={handlePasteImport}
+              disabled={pasteText.trim() === ''}
+              style={{
+                background: pasteText.trim() ? '#3a3a6e' : '#1e1e2e',
+                border: '1px solid #5a5aae',
+                borderRadius: 6,
+                color: pasteText.trim() ? '#fff' : '#444',
+                fontSize: 12,
+                fontWeight: 600,
+                padding: '5px 18px',
+                cursor: pasteText.trim() ? 'pointer' : 'default',
+              }}
+            >
+              Valider
+            </button>
+            <button
+              onClick={() => { setPasteOpen(false); setPasteText('') }}
+              style={{
+                background: 'transparent',
+                border: '1px solid #2a2a3e',
+                borderRadius: 6,
+                color: '#555',
+                fontSize: 12,
+                padding: '5px 14px',
+                cursor: 'pointer',
+              }}
+            >
+              Annuler
+            </button>
+          </div>
+        </div>
+      )}
+
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'flex-start' }}>
         {slots.map((slot, i) => (
           <EnemySlotCard
@@ -1108,6 +1356,7 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
             onSelectMove={(mi, m) => setSlotMove(i, mi, m)}
             onClearMove={mi => setSlotMove(i, mi, null)}
             onSelectSpread={si => setSlotSpread(i, si)}
+            onToggleMega={() => toggleSlotMega(i)}
           />
         ))}
       </div>
