@@ -1,10 +1,228 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import type { TeamPreset } from './TeamBanner'
 import { PokemonSprite } from './PokemonSprite'
 import { useLang } from '../contexts/LangContext'
-import { pokemonName } from '../lib/i18n'
+import { pokemonName, moveName } from '../lib/i18n'
 import { getSpriteUrl } from '../lib/sprites'
+import { TypeBadge } from './TypeBadge'
+import { typeChart } from '../data/typeChart'
+import type { PokemonType } from '../data/typeChart'
+import movesData from '../data/moves.json'
+import vgcStatsData from '../data/vgc-stats.json'
+
+// ─── Threat analysis ─────────────────────────────────────────────────────────
+
+type MoveEntry = { type: string; power: number | null; category?: string }
+const MOVES_DB = movesData as Record<string, MoveEntry>
+
+interface VGCPokemonStats { usage: number; moves: { key: string; pct: number }[] }
+const VGC_STATS = (vgcStatsData as unknown as { pokemon: Record<string, VGCPokemonStats> }).pokemon
+
+interface ThreatMove {
+  moveKey: string
+  moveType: PokemonType
+  hitIndices: number[]
+}
+
+interface GroupedThreat {
+  pokemonKey: string
+  moves: ThreatMove[]
+  hasCritical: boolean
+  uniqueHitCount: number
+  totalHitCount: number
+}
+
+const META_POOL_SIZE = 35
+
+function analyzePresetThreats(preset: TeamPreset, team: ParsedPokemon[]): GroupedThreat[] {
+  const members = preset.indices.map(i => team[i])
+
+  const metaPool = Object.entries(VGC_STATS)
+    .sort((a, b) => b[1].usage - a[1].usage)
+    .slice(0, META_POOL_SIZE)
+
+  const result: GroupedThreat[] = []
+
+  for (const [pokemonKey, stats] of metaPool) {
+    const offensiveMoves = stats.moves
+      .slice(0, 8)
+      .filter(m => {
+        const e = MOVES_DB[m.key]
+        return e?.power && e.power > 0 && e.category !== 'status'
+      })
+
+    const qualifyingMoves: ThreatMove[] = []
+
+    for (const moveData of offensiveMoves) {
+      const entry = MOVES_DB[moveData.key]
+      if (!entry?.type) continue
+
+      const hitIndices = members
+        .map((p, mi) => {
+          if (!p) return null
+          const mult = p.types.reduce(
+            (acc, t) => acc * (typeChart[entry.type as PokemonType]?.[t as PokemonType] ?? 1),
+            1,
+          )
+          return mult >= 2 ? mi : null
+        })
+        .filter((x): x is number => x !== null)
+
+      if (hitIndices.length >= 2)
+        qualifyingMoves.push({ moveKey: moveData.key, moveType: entry.type as PokemonType, hitIndices })
+    }
+
+    if (qualifyingMoves.length === 0) continue
+
+    const uniqueHitCount = new Set(qualifyingMoves.flatMap(m => m.hitIndices)).size
+    const totalHitCount = qualifyingMoves.reduce((acc, m) => acc + m.hitIndices.length, 0)
+    const hasCritical = qualifyingMoves.some(m => m.hitIndices.includes(0) && m.hitIndices.includes(1))
+
+    result.push({ pokemonKey, moves: qualifyingMoves, hasCritical, uniqueHitCount, totalHitCount })
+  }
+
+  return result.sort((a, b) => {
+    if (a.hasCritical !== b.hasCritical) return a.hasCritical ? -1 : 1
+    if (a.uniqueHitCount !== b.uniqueHitCount) return b.uniqueHitCount - a.uniqueHitCount
+    return b.totalHitCount - a.totalHitCount
+  })
+}
+
+function GroupedThreatRow({ threat, members, lang }: { threat: GroupedThreat; members: (ParsedPokemon | undefined)[]; lang: string }) {
+  return (
+    <div style={{ display: 'flex', gap: 10, background: '#111120', borderRadius: 6, padding: '8px 10px', alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, width: 44, flexShrink: 0 }}>
+        <PokemonSprite src={getSpriteUrl(threat.pokemonKey)} name={pokemonName(threat.pokemonKey, lang)} size={36} />
+        <span style={{ fontSize: 9, color: '#888', whiteSpace: 'nowrap', textAlign: 'center', maxWidth: 60, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {pokemonName(threat.pokemonKey, lang)}
+        </span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 5, flex: 1, minWidth: 0 }}>
+        {threat.moves.map((move, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <TypeBadge type={move.moveType} size="sm" />
+            <span style={{ fontSize: 11, color: '#aaa', flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {moveName(move.moveKey, lang)}
+            </span>
+            <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end' }}>
+              {move.hitIndices.map(idx => {
+                const p = members[idx]
+                if (!p) return null
+                const mult = p.types.reduce((acc, t) => acc * (typeChart[move.moveType]?.[t as PokemonType] ?? 1), 1)
+                return (
+                  <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+                    <PokemonSprite src={getSpriteUrl(p.normalizedName)} name={pokemonName(p.normalizedName, lang)} size={24} />
+                    <span style={{ fontSize: 9, fontWeight: 700, color: mult >= 4 ? '#f55' : '#c8a040' }}>×{mult}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function ThreatSection({ title, subtitle, color, threats, members, lang }: {
+  title: string; subtitle: string; color: string
+  threats: GroupedThreat[]; members: (ParsedPokemon | undefined)[]; lang: string
+}) {
+  return (
+    <div style={{ marginBottom: '1.25rem' }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+        {title}
+      </div>
+      <div style={{ fontSize: 10, color: '#555', marginBottom: 8 }}>{subtitle}</div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+        {threats.map((t, i) => <GroupedThreatRow key={i} threat={t} members={members} lang={lang} />)}
+      </div>
+    </div>
+  )
+}
+
+function ThreatAnalysisModal({ preset, team, onClose }: {
+  preset: TeamPreset; team: ParsedPokemon[]; onClose: () => void
+}) {
+  const { lang } = useLang()
+  const threats = useMemo(() => analyzePresetThreats(preset, team), [preset, team])
+  const members = preset.indices.map(i => team[i])
+  const critical = threats.filter(t => t.hasCritical)
+  const notable = threats.filter(t => !t.hasCritical)
+
+  return (
+    <div
+      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}
+      onClick={onClose}
+    >
+      <div
+        style={{ background: '#16162a', border: '1px solid #2a2a4e', borderRadius: 10, padding: '1.25rem 1.5rem', width: 660, maxHeight: '85vh', overflowY: 'auto', boxShadow: '0 8px 40px rgba(0,0,0,0.8)' }}
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700, color: '#eee' }}>
+            Analyse — {preset.name || 'Team de 4'}
+          </h3>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#555', fontSize: 20, cursor: 'pointer', lineHeight: 1 }}>×</button>
+        </div>
+
+        {/* Team of 4 */}
+        <div style={{ display: 'flex', gap: 24, marginBottom: '1.5rem', background: '#111120', borderRadius: 8, padding: '10px 16px' }}>
+          {[{ label: 'Leads', slice: [0, 2] as [number, number] }, { label: 'Back', slice: [2, 4] as [number, number] }].map(({ label, slice }, si) => (
+            <div key={label} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+              {si > 0 && <div style={{ width: 1, background: '#2a2a3e', alignSelf: 'stretch' }} />}
+              <div>
+                <div style={{ fontSize: 9, color: '#555', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>{label}</div>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  {members.slice(slice[0], slice[1]).map((p, i) => p ? (
+                    <div key={i} style={{ textAlign: 'center' }}>
+                      <PokemonSprite src={getSpriteUrl(p.normalizedName)} name={pokemonName(p.normalizedName, lang)} size={44} />
+                      <div style={{ fontSize: 9, color: '#666', marginTop: 3 }}>{pokemonName(p.normalizedName, lang)}</div>
+                    </div>
+                  ) : null)}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Results */}
+        {threats.length === 0 ? (
+          <div style={{ textAlign: 'center', color: '#4caf50', fontSize: 13, padding: '2rem 0' }}>
+            Aucune menace significative détectée dans le top méta.
+          </div>
+        ) : (
+          <>
+            {critical.length > 0 && (
+              <ThreatSection
+                title="Menaces critiques"
+                subtitle={`Une attaque touche les 2 leads en ×2 ou plus (top ${META_POOL_SIZE} méta)`}
+                color="#c06060"
+                threats={critical}
+                members={members}
+                lang={lang}
+              />
+            )}
+            {notable.length > 0 && (
+              <ThreatSection
+                title="Menaces notables"
+                subtitle={`Une attaque touche 2+ membres en ×2 ou plus (top ${META_POOL_SIZE} méta)`}
+                color="#c09040"
+                threats={notable}
+                members={members}
+                lang={lang}
+              />
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ─── Section components ───────────────────────────────────────────────────────
 
 interface Props {
   team: ParsedPokemon[]
@@ -42,6 +260,7 @@ function StrategyRow({
   onSave,
   onActivate,
   onDelete,
+  onAnalyze,
 }: {
   preset: TeamPreset
   index: number
@@ -50,6 +269,7 @@ function StrategyRow({
   onSave: (updated: TeamPreset) => void
   onActivate: () => void
   onDelete: () => void
+  onAnalyze: () => void
 }) {
   const [editing, setEditing] = useState(false)
   const [confirming, setConfirming] = useState(false)
@@ -298,6 +518,22 @@ function StrategyRow({
                 ✎
               </button>
               <button
+                onClick={onAnalyze}
+                title="Analyser les menaces"
+                style={{
+                  background: 'transparent',
+                  border: '1px solid #2a2a3e',
+                  borderRadius: 4,
+                  color: '#555',
+                  fontSize: 12,
+                  padding: '4px 8px',
+                  cursor: 'pointer',
+                  lineHeight: 1,
+                }}
+              >
+                ⚑
+              </button>
+              <button
                 onClick={() => setConfirming(true)}
                 title="Supprimer ce preset"
                 style={{
@@ -321,6 +557,8 @@ function StrategyRow({
 }
 
 export function TeamStrategySection({ team, presets, onSavePresets, activeIndices, onActivate }: Props) {
+  const [analyzingIndex, setAnalyzingIndex] = useState<number | null>(null)
+
   if (presets.length === 0) return null
 
   const handleSaveRow = (index: number, updated: TeamPreset) => {
@@ -395,9 +633,18 @@ export function TeamStrategySection({ team, presets, onSavePresets, activeIndice
             onSave={updated => handleSaveRow(i, updated)}
             onActivate={() => handleActivateRow(preset)}
             onDelete={() => handleDeleteRow(i)}
+            onAnalyze={() => setAnalyzingIndex(i)}
           />
         ))}
       </div>
+
+      {analyzingIndex !== null && presets[analyzingIndex] && (
+        <ThreatAnalysisModal
+          preset={presets[analyzingIndex]}
+          team={team}
+          onClose={() => setAnalyzingIndex(null)}
+        />
+      )}
     </section>
   )
 }
