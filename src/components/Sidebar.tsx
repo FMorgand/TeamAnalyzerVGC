@@ -4,6 +4,7 @@ const SECTIONS = [
   { id: 'switch-in', label: 'Switch-in' },
   { id: 'matchup', label: 'Matchup' },
   { id: 'strategies', label: 'Stratégies' },
+  { id: 'historique', label: 'Historique' },
 ]
 
 export function Sidebar({ topOffset }: { topOffset: number }) {

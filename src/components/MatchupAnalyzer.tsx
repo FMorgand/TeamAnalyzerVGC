@@ -14,11 +14,14 @@ import pokemonJsonData from '../data/pokemon.json'
 import vgcStatsData from '../data/vgc-stats.json'
 import baseStatsData from '../data/base-stats.json'
 import { calcHP, calcStat, calcDamage } from '../lib/damage'
+import type { EnemyPokemon as EnemyPokemonType, EnemyMove as EnemyMoveType } from '../lib/matchHistory'
 
 interface Props {
   team: ParsedPokemon[]
   activeIndices?: number[] | null
   megaActive?: Set<number>
+  onSaveMatch?: (slots: (EnemyPokemonType | null)[]) => void
+  reloadTrigger?: { slots: (EnemyPokemonType | null)[]; id: string } | null
 }
 
 type MatrixMode = 'offense' | 'defense'
@@ -130,19 +133,8 @@ function formatEVs(evs: Record<string, number>): string {
     .join(' / ')
 }
 
-interface EnemyMove {
-  key: string
-  type: PokemonType
-}
-
-interface EnemyPokemon {
-  key: string
-  types: PokemonType[]
-  moves: (EnemyMove | null)[]
-  selectedSpreadIndex: number
-  megaActive?: boolean
-  item?: string | null
-}
+type EnemyMove = EnemyMoveType
+type EnemyPokemon = EnemyPokemonType
 
 function offenseMultiplierVsEnemy(myPokemon: ParsedPokemon, enemy: EnemyPokemon): number {
   return offenseMultiplier(myPokemon, getEffectiveEnemyTypes(enemy))
@@ -1186,7 +1178,7 @@ function MatchupMatrix({ myTeam, enemy, mode, myMegaKeys }: {
 
 // ─── Main export ──────────────────────────────────────────────────────────────
 
-export function MatchupAnalyzer({ team, activeIndices, megaActive }: Props) {
+export function MatchupAnalyzer({ team, activeIndices, megaActive, onSaveMatch, reloadTrigger }: Props) {
   const displayTeam = activeIndices ? team.filter((_, i) => activeIndices.includes(i)) : team
 
   // Effective base-stats key per display-team member (mega when toggled or paste has mega stone)
@@ -1221,6 +1213,10 @@ export function MatchupAnalyzer({ team, activeIndices, megaActive }: Props) {
   useEffect(() => {
     localStorage.setItem('teamanalyzer-enemy-slots', JSON.stringify(slots))
   }, [slots])
+
+  useEffect(() => {
+    if (reloadTrigger) setSlots(reloadTrigger.slots)
+  }, [reloadTrigger])
 
   if (team.length === 0) return null
 
@@ -1277,20 +1273,38 @@ export function MatchupAnalyzer({ team, activeIndices, megaActive }: Props) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
         <h2 style={{ fontSize: 16, fontWeight: 700, color: '#ccc', margin: 0 }}>Matchup</h2>
         {filledEnemy.length > 0 && (
-          <button
-            onClick={() => setSlots(Array(6).fill(null))}
-            style={{
-              background: 'transparent',
-              border: '1px solid #3a2a2a',
-              borderRadius: 6,
-              color: '#664444',
-              fontSize: 11,
-              padding: '4px 12px',
-              cursor: 'pointer',
-            }}
-          >
-            Réinitialiser
-          </button>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {onSaveMatch && (
+              <button
+                onClick={() => onSaveMatch(slots)}
+                style={{
+                  background: '#1a2e1a',
+                  border: '1px solid #3a6040',
+                  borderRadius: 6,
+                  color: '#5caf60',
+                  fontSize: 11,
+                  padding: '4px 12px',
+                  cursor: 'pointer',
+                }}
+              >
+                Sauvegarder la partie
+              </button>
+            )}
+            <button
+              onClick={() => setSlots(Array(6).fill(null))}
+              style={{
+                background: 'transparent',
+                border: '1px solid #3a2a2a',
+                borderRadius: 6,
+                color: '#664444',
+                fontSize: 11,
+                padding: '4px 12px',
+                cursor: 'pointer',
+              }}
+            >
+              Réinitialiser
+            </button>
+          </div>
         )}
       </div>
       <div style={{ fontSize: 11, color: '#555', marginBottom: '0.75rem' }}>

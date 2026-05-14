@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import { useLang } from './contexts/LangContext'
 import type { Lang } from './lib/i18n'
 import { parseShowdownPaste } from './lib/parseShowdown'
@@ -11,6 +11,8 @@ import { TeamBilan } from './components/TeamBilan'
 import { SwitchInAnalyzer } from './components/SwitchInAnalyzer'
 import { MatchupAnalyzer } from './components/MatchupAnalyzer'
 import { CoverageSection } from './components/CoverageSection'
+import { MatchHistory } from './components/MatchHistory'
+import type { MatchEntry, EnemyPokemon } from './lib/matchHistory'
 
 const TITLE_HEIGHT = 52
 const BANNER_HEIGHT = 96
@@ -84,6 +86,51 @@ function App() {
   const [matchupIndices, setMatchupIndices] = useState<number[] | null>(null)
   const [megaActive, setMegaActive] = useState<Set<number>>(new Set())
 
+  const [matchHistory, setMatchHistory] = useState<MatchEntry[]>(() => {
+    try { return JSON.parse(localStorage.getItem('teamanalyzer-match-history') ?? '[]') }
+    catch { return [] }
+  })
+  const [enemyReloadTrigger, setEnemyReloadTrigger] = useState<{ slots: (EnemyPokemon | null)[]; id: string } | null>(null)
+
+  const saveMatchHistory = (updated: MatchEntry[]) => {
+    setMatchHistory(updated)
+    localStorage.setItem('teamanalyzer-match-history', JSON.stringify(updated))
+  }
+
+  const handleSaveMatch = (slots: (EnemyPokemon | null)[]) => {
+    const myIndices = matchupIndices ?? team.map((_, i) => i)
+    const myPreset = matchupIndices
+      ? presets.find(p => p.indices.length === matchupIndices.length && p.indices.every((v, j) => v === matchupIndices[j]))
+      : undefined
+    const newEntry: MatchEntry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      date: new Date().toISOString(),
+      myIndices,
+      myPresetName: myPreset?.name,
+      enemySlots: slots,
+      result: null,
+      notes: '',
+    }
+    saveMatchHistory([...matchHistory, newEntry])
+  }
+
+  const handleUpdateEntry = (id: string, updates: Partial<Pick<MatchEntry, 'result' | 'notes'>>) => {
+    saveMatchHistory(matchHistory.map(e => e.id === id ? { ...e, ...updates } : e))
+  }
+
+  const handleDeleteEntry = (id: string) => {
+    saveMatchHistory(matchHistory.filter(e => e.id !== id))
+  }
+
+  const handleReloadEnemy = (entry: MatchEntry) => {
+    setEnemyReloadTrigger({ slots: entry.enemySlots, id: entry.id + '-' + Date.now() })
+    const el = document.getElementById('matchup')
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - headerHeight
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
+  }
+
   const toggleMega = (i: number) => setMegaActive(prev => {
     const next = new Set(prev)
     if (next.has(i)) next.delete(i); else next.add(i)
@@ -104,6 +151,16 @@ function App() {
   const team = useMemo(() => parseShowdownPaste(paste), [paste])
   const hasTeam = team.length > 0
 
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [headerHeight, setHeaderHeight] = useState(HEADER_HEIGHT)
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el) return
+    const observer = new ResizeObserver(() => setHeaderHeight(el.offsetHeight))
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div style={{
       fontFamily: 'system-ui, sans-serif',
@@ -112,7 +169,7 @@ function App() {
       minHeight: '100vh',
     }}>
       {/* ── Fixed top bar ─────────────────────────────────────────────────── */}
-      <div style={{
+      <div ref={headerRef} style={{
         position: 'fixed',
         top: 0,
         left: 0,
@@ -193,10 +250,10 @@ function App() {
       {/* ── Scrollable body ────────────────────────────────────────────────── */}
       <div style={{
         display: 'flex',
-        paddingTop: hasTeam ? HEADER_HEIGHT : TITLE_HEIGHT,
+        paddingTop: hasTeam ? headerHeight : TITLE_HEIGHT,
         minHeight: '100vh',
       }}>
-        {hasTeam && <Sidebar topOffset={HEADER_HEIGHT} />}
+        {hasTeam && <Sidebar topOffset={headerHeight} />}
 
         <main style={{ flex: 1, padding: '2rem', minWidth: 0 }}>
 
@@ -236,7 +293,13 @@ function App() {
               </div>
               <SwitchInAnalyzer team={team} activeIndices={matchupIndices} />
               <div id="matchup">
-                <MatchupAnalyzer team={team} activeIndices={matchupIndices} megaActive={megaActive} />
+                <MatchupAnalyzer
+                  team={team}
+                  activeIndices={matchupIndices}
+                  megaActive={megaActive}
+                  onSaveMatch={handleSaveMatch}
+                  reloadTrigger={enemyReloadTrigger}
+                />
               </div>
               <div id="strategies">
                 <TeamStrategySection
@@ -247,6 +310,13 @@ function App() {
                   onActivate={handleActivateIndices}
                 />
               </div>
+              <MatchHistory
+                entries={matchHistory}
+                team={team}
+                onUpdateEntry={handleUpdateEntry}
+                onDeleteEntry={handleDeleteEntry}
+                onReloadEnemy={handleReloadEnemy}
+              />
             </>
           )}
         </main>

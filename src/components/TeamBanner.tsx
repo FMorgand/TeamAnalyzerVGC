@@ -1,10 +1,15 @@
-import { useState, useMemo, useEffect, Fragment } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import type { ParsedPokemon } from '../lib/parseShowdown'
 import { TypeBadge } from './TypeBadge'
 import { PokemonSprite } from './PokemonSprite'
 import { useLang } from '../contexts/LangContext'
-import { pokemonName } from '../lib/i18n'
+import { pokemonName, moveName } from '../lib/i18n'
 import { getSpriteUrl, getMegaSpriteUrl, getItemSpriteUrl } from '../lib/sprites'
+import { typeChart } from '../data/typeChart'
+import type { PokemonType } from '../data/typeChart'
+import baseStatsData from '../data/base-stats.json'
+import movesData from '../data/moves.json'
+import { calcStat, calcHP } from '../lib/damage'
 
 export interface TeamPreset {
   name: string
@@ -21,10 +26,136 @@ interface Props {
   onSavePresets: (presets: TeamPreset[]) => void
 }
 
+// ─── Pokemon detail card ──────────────────────────────────────────────────────
+
+type BaseStatEntry = { hp: number; atk: number; def: number; spa: number; spd: number; spe: number }
+const BASE_STATS = baseStatsData as Record<string, BaseStatEntry>
+type MoveEntry = { type: string; power: number | null; category?: string }
+const MOVES_DB = movesData as Record<string, MoveEntry>
+const ALL_TYPES = Object.keys(typeChart) as PokemonType[]
+const STAT_LABELS = { hp: 'HP', atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe' } as const
+const STAT_COLORS = { hp: '#5a9e5a', atk: '#c07050', def: '#8888cc', spa: '#c060c0', spd: '#6080b0', spe: '#c0a030' } as const
+type StatKey = keyof typeof STAT_LABELS
+
+function lookupBase(key: string): BaseStatEntry | undefined {
+  return BASE_STATS[key] ?? BASE_STATS[`${key}-male`] ?? BASE_STATS[`${key}-m`]
+}
+
+function PokemonDetailCard({ pokemon, isActive, megaIsOn }: {
+  pokemon: ParsedPokemon; isActive: boolean; megaIsOn: boolean
+}) {
+  const { lang } = useLang()
+  const effectiveTypes = (megaIsOn && pokemon.megaTypes ? pokemon.megaTypes : pokemon.types) as PokemonType[]
+  const statsKey = megaIsOn && pokemon.megaForm ? pokemon.megaForm : pokemon.normalizedName
+  const base = lookupBase(statsKey)
+
+  const typeRows = ALL_TYPES.map(atk => ({
+    type: atk,
+    mult: effectiveTypes.reduce((acc, def) => acc * (typeChart[atk][def] ?? 1), 1),
+  }))
+  const x4   = typeRows.filter(t => t.mult >= 4)
+  const x2   = typeRows.filter(t => t.mult === 2)
+  const half = typeRows.filter(t => t.mult > 0 && t.mult < 1)
+  const zero = typeRows.filter(t => t.mult === 0)
+
+  const statKeys: StatKey[] = ['hp', 'atk', 'def', 'spa', 'spd', 'spe']
+  const calcedStats = base ? statKeys.map(k => ({
+    key: k,
+    value: k === 'hp'
+      ? calcHP(base.hp, pokemon.evs.hp ?? 0)
+      : calcStat(base[k], pokemon.evs[k] ?? 0, pokemon.nature, k),
+  })) : null
+
+  return (
+    <div style={{
+      background: '#111120',
+      border: '1px solid #2a2a3e',
+      borderRadius: 8,
+      padding: '8px 10px',
+      opacity: isActive ? 1 : 0.35,
+      transition: 'opacity 0.15s',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 8,
+      minWidth: 0,
+    }}>
+      <div>
+        <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 5 }}>Capacités</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          {pokemon.moves.map((move, i) => {
+            const entry = MOVES_DB[move.normalizedName]
+            return (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                {move.type && <TypeBadge type={move.type} size="sm" />}
+                <span style={{ fontSize: 10, color: '#ccc', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {moveName(move.normalizedName, lang)}
+                </span>
+                <span style={{ fontSize: 9, color: '#555', minWidth: 18, textAlign: 'right' }}>
+                  {entry?.power && entry.power > 0 ? entry.power : '—'}
+                </span>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {calcedStats && (
+        <div>
+          <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 5 }}>Stats · niv. 50</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+            {calcedStats.map(({ key, value }) => (
+              <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ fontSize: 9, color: '#555', width: 24, textAlign: 'right', flexShrink: 0 }}>{STAT_LABELS[key]}</span>
+                <div style={{ flex: 1, height: 4, background: '#0e0e1a', borderRadius: 2, overflow: 'hidden' }}>
+                  <div style={{ width: `${Math.min(value / (key === 'hp' ? 250 : 200) * 100, 100)}%`, height: '100%', background: STAT_COLORS[key], borderRadius: 2 }} />
+                </div>
+                <span style={{ fontSize: 10, color: '#aaa', width: 26, textAlign: 'right', flexShrink: 0 }}>{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div>
+        <div style={{ fontSize: 9, color: '#444', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 5 }}>Efficacité</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          {x4.length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
+              <span style={{ fontSize: 9, fontWeight: 700, color: '#f44', width: 16 }}>×4</span>
+              {x4.map(t => <TypeBadge key={t.type} type={t.type} size="sm" />)}
+            </div>
+          )}
+          {x2.length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
+              <span style={{ fontSize: 9, fontWeight: 700, color: '#f87', width: 16 }}>×2</span>
+              {x2.map(t => <TypeBadge key={t.type} type={t.type} size="sm" />)}
+            </div>
+          )}
+          {half.length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
+              <span style={{ fontSize: 9, color: '#5a9e5a', width: 16 }}>½</span>
+              {half.map(t => <TypeBadge key={t.type} type={t.type} size="sm" />)}
+            </div>
+          )}
+          {zero.length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
+              <span style={{ fontSize: 9, color: '#555', width: 16 }}>×0</span>
+              {zero.map(t => <TypeBadge key={t.type} type={t.type} size="sm" />)}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Banner ───────────────────────────────────────────────────────────────────
+
 const ROLES = ['L1', 'L2', 'B1', 'B2']
 
 export function TeamBanner({ team, megaActive, onMegaToggle, onActivate, presets, onSavePresets }: Props) {
   const { lang } = useLang()
+  const [showDetails, setShowDetails] = useState(false)
   const [activePresetName, setActivePresetName] = useState<string>('')
   const [addingMode, setAddingMode] = useState(false)
   const [draftIndices, setDraftIndices] = useState<number[]>([])
@@ -149,17 +280,19 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate, presets
 
   const hasPresetContext = activePreset !== null || isDirty
 
+  const isActive = (i: number) => activePreset === null || activePreset.indices.includes(i)
+
   return (
+    <div style={{ borderTop: '1px solid #1e1e2e' }}>
+    {/* Outer grid: col 1 = chips+cards (1fr), col 2 = controls (auto) — same column ensures pixel-perfect width match */}
     <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8,
+      display: 'grid',
+      gridTemplateColumns: '1fr auto',
+      columnGap: 8,
       padding: '0 1.5rem',
-      height: 96,
-      borderTop: '1px solid #1e1e2e',
     }}>
-      {/* Pokémon chips */}
-      <div style={{ display: 'flex', gap: 5, flex: 1, minWidth: 0, overflow: 'hidden', alignItems: 'center' }}>
+      {/* Row 1, Col 1 — Pokémon chips */}
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${team.length}, 1fr)`, gap: 5, alignItems: 'center', minHeight: 96, alignContent: 'center' }}>
         {workingOrder.map((teamIdx, pos) => {
           const p = team[teamIdx]
           const isMega = megaActive.has(teamIdx)
@@ -184,18 +317,8 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate, presets
           const dimmed = !addingMode && hasPresetContext && pos >= 4 && !isDragging
 
           return (
-            <Fragment key={teamIdx}>
-              {/* Separator between Team of 4 and bench */}
-              {pos === 4 && team.length >= 5 && hasPresetContext && (
-                <div style={{
-                  width: 1,
-                  alignSelf: 'stretch',
-                  background: '#2a2a4e',
-                  margin: '10px 2px',
-                  flexShrink: 0,
-                }} />
-              )}
               <div
+                key={teamIdx}
                 draggable={!addingMode}
                 onClick={() => handleChipClick(teamIdx)}
                 onDragStart={e => handleDragStart(e, pos)}
@@ -339,14 +462,13 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate, presets
                   )}
                 </div>{/* end content row */}
               </div>
-            </Fragment>
           )
         })}
       </div>
 
-      {/* Controls */}
+      {/* Row 1, Col 2 — Controls */}
       {!addingMode ? (
-        <div style={{ display: 'flex', gap: 5, alignItems: 'center', flexShrink: 0 }}>
+        <div style={{ display: 'flex', gap: 5, alignItems: 'center', alignSelf: 'center' }}>
           <select
             value={activePresetName}
             onChange={e => handleSelectPreset(e.target.value)}
@@ -438,7 +560,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate, presets
           </button>
         </div>
       ) : (
-        <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center', alignSelf: 'center' }}>
           <span style={{ fontSize: 11, color: '#666', whiteSpace: 'nowrap' }}>
             {draftIndices.length}/4
           </span>
@@ -489,6 +611,44 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate, presets
           </button>
         </div>
       )}
+
+      {/* Row 2, Col 1+2 — Toggle button */}
+      <div style={{ gridColumn: '1 / -1', display: 'flex', justifyContent: 'center', padding: '2px 0 6px' }}>
+        <button
+          onClick={() => setShowDetails(v => !v)}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            color: '#444',
+            fontSize: 10,
+            cursor: 'pointer',
+            letterSpacing: '0.05em',
+            padding: '2px 16px',
+          }}
+        >
+          {showDetails ? 'MASQUER LES FICHES ▴' : 'VOIR LES FICHES ▾'}
+        </button>
+      </div>
+
+      {/* Row 3, Col 1 — Detail cards (same column as chips → identical width) */}
+      {showDetails && (
+        <div style={{ gridColumn: '1', borderTop: '1px solid #1e1e2e', padding: '0.5rem 0 1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${team.length}, 1fr)`, gap: 5 }}>
+            {workingOrder.map(teamIdx => {
+              const pokemon = team[teamIdx]
+              return (
+                <PokemonDetailCard
+                  key={teamIdx}
+                  pokemon={pokemon}
+                  isActive={isActive(teamIdx)}
+                  megaIsOn={megaActive.has(teamIdx)}
+                />
+              )
+            })}
+          </div>
+        </div>
+      )}
+    </div>{/* end outer grid */}
     </div>
   )
 }
