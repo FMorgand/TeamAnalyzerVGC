@@ -12132,7 +12132,15 @@
     "types": [
       "fairy"
     ],
-    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10061.png"
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10061.png",
+    "megaForms": {
+      "floette-mega": {
+        "types": [
+          "fairy"
+        ],
+        "sprite": null
+      }
+    }
   },
   "kyogre-primal": {
     "types": [

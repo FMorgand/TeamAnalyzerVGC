@@ -5,6 +5,8 @@ import { parseShowdownPaste } from './lib/parseShowdown'
 import { Sidebar } from './components/Sidebar'
 import { PasteModal } from './components/PasteModal'
 import { TeamBanner } from './components/TeamBanner'
+import type { TeamPreset } from './components/TeamBanner'
+import { TeamStrategySection } from './components/TeamStrategySection'
 import { TeamBilan } from './components/TeamBilan'
 import { SwitchInAnalyzer } from './components/SwitchInAnalyzer'
 import { MatchupAnalyzer } from './components/MatchupAnalyzer'
@@ -67,6 +69,16 @@ function App() {
   const [paste, setPaste] = useState(() => localStorage.getItem('teamanalyzer-paste') ?? TEST_PASTE)
   const [pasteModalOpen, setPasteModalOpen] = useState(() => localStorage.getItem('teamanalyzer-paste') === null)
   const { lang, setLang } = useLang()
+
+  const [presets, setPresets] = useState<TeamPreset[]>(() => {
+    try { return JSON.parse(localStorage.getItem('teamanalyzer-team-of-four') ?? '[]') }
+    catch { return [] }
+  })
+
+  const savePresets = (updated: TeamPreset[]) => {
+    setPresets(updated)
+    localStorage.setItem('teamanalyzer-team-of-four', JSON.stringify(updated))
+  }
 
   const [coverageTrigger, setCoverageTrigger] = useState<{ indices: number[] } | null>(null)
   const [matchupIndices, setMatchupIndices] = useState<number[] | null>(null)
@@ -172,6 +184,8 @@ function App() {
             megaActive={megaActive}
             onMegaToggle={toggleMega}
             onActivate={handleActivateIndices}
+            presets={presets}
+            onSavePresets={savePresets}
           />
         )}
       </div>
@@ -222,7 +236,16 @@ function App() {
               </div>
               <SwitchInAnalyzer team={team} activeIndices={matchupIndices} />
               <div id="matchup">
-                <MatchupAnalyzer team={team} activeIndices={matchupIndices} />
+                <MatchupAnalyzer team={team} activeIndices={matchupIndices} megaActive={megaActive} />
+              </div>
+              <div id="strategies">
+                <TeamStrategySection
+                  team={team}
+                  presets={presets}
+                  onSavePresets={savePresets}
+                  activeIndices={matchupIndices}
+                  onActivate={handleActivateIndices}
+                />
               </div>
             </>
           )}

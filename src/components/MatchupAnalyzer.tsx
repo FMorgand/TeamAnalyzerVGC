@@ -18,6 +18,7 @@ import { calcHP, calcStat, calcDamage } from '../lib/damage'
 interface Props {
   team: ParsedPokemon[]
   activeIndices?: number[] | null
+  megaActive?: Set<number>
 }
 
 type MatrixMode = 'offense' | 'defense'
@@ -55,20 +56,39 @@ function toOfficialArtwork(url: string): string {
   return url.replace('/sprites/pokemon/', '/sprites/pokemon/other/official-artwork/')
 }
 
-function getFirstMegaForm(key: string): { types: PokemonType[]; sprite: string | null } | null {
-  const entry = POKEMON_DATA[key]
-  if (!entry?.megaForms) return null
-  const formData = Object.values(entry.megaForms)[0]
-  if (!formData) return null
-  return {
-    types: formData.types as PokemonType[],
-    sprite: formData.sprite ? toOfficialArtwork(formData.sprite) : null,
+function getMegaTypes(megaFormKey: string): PokemonType[] | null {
+  for (const entry of Object.values(POKEMON_DATA)) {
+    if (entry.megaForms?.[megaFormKey]) {
+      return entry.megaForms[megaFormKey].types as PokemonType[]
+    }
   }
+  return null
+}
+
+function getMegaFormForItem(
+  pokemonKey: string,
+  itemKey: string | null | undefined,
+): { formKey: string; types: PokemonType[]; sprite: string | null } | null {
+  const entry = POKEMON_DATA[pokemonKey]
+  if (!entry?.megaForms) return null
+  const megaForms = Object.entries(entry.megaForms)
+  if (megaForms.length === 0) return null
+
+  if (itemKey) {
+    const suffix = itemKey.match(/-(x|y)$/)?.[1]
+    if (suffix) {
+      const match = megaForms.find(([name]) => name.endsWith(`-mega-${suffix}`))
+      if (match) return { formKey: match[0], types: match[1].types as PokemonType[], sprite: match[1].sprite ? toOfficialArtwork(match[1].sprite) : null }
+    }
+  }
+
+  const [formKey, formData] = megaForms[0]
+  return { formKey, types: formData.types as PokemonType[], sprite: formData.sprite ? toOfficialArtwork(formData.sprite) : null }
 }
 
 function getEffectiveEnemyTypes(enemy: EnemyPokemon): PokemonType[] {
   if (!enemy.megaActive) return enemy.types
-  return getFirstMegaForm(enemy.key)?.types ?? enemy.types
+  return getMegaFormForItem(enemy.key, enemy.item)?.types ?? enemy.types
 }
 
 function parsedToEnemy(p: ParsedPokemon): EnemyPokemon {
@@ -76,7 +96,7 @@ function parsedToEnemy(p: ParsedPokemon): EnemyPokemon {
   p.moves.slice(0, 4).forEach((m, i) => {
     if (m.type) moves[i] = { key: m.normalizedName, type: m.type }
   })
-  return { key: p.normalizedName, types: p.types, moves, selectedSpreadIndex: 0 }
+  return { key: p.normalizedName, types: p.types, moves, selectedSpreadIndex: 0, item: p.item }
 }
 
 const EV_LABELS: Record<string, string> = {
@@ -121,6 +141,7 @@ interface EnemyPokemon {
   moves: (EnemyMove | null)[]
   selectedSpreadIndex: number
   megaActive?: boolean
+  item?: string | null
 }
 
 function offenseMultiplierVsEnemy(myPokemon: ParsedPokemon, enemy: EnemyPokemon): number {
@@ -149,7 +170,7 @@ function defenseMultiplier(enemyMoves: (EnemyMove | null)[], myTypes: PokemonTyp
 
 type DamageResult = { move: EnemyMove; mult: number; minPct: number; maxPct: number }
 
-function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): DamageResult | null {
+function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon, myMegaKey?: string | null): DamageResult | null {
   let maxMult = 0
   for (const move of enemy.moves) {
     if (!move) continue
@@ -158,8 +179,9 @@ function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): 
   }
   if (maxMult < 2) return null
 
-  const enemyBase = lookupBaseStats(enemy.key)
-  const defenderBase = lookupBaseStats(myPokemon.megaForm ?? myPokemon.normalizedName)
+  const enemyMegaKey = enemy.megaActive ? getMegaFormForItem(enemy.key, enemy.item)?.formKey : null
+  const enemyBase = lookupBaseStats(enemyMegaKey ?? enemy.key)
+  const defenderBase = lookupBaseStats(myMegaKey ?? myPokemon.normalizedName)
   const vgcStats = VGC_STATS[enemy.key]
   const spread = vgcStats?.spreads[enemy.selectedSpreadIndex] ?? null
   const attackerNature = spread?.nature?.toLowerCase() ?? null
@@ -198,7 +220,7 @@ function bestEnemyMoveAndDamage(enemy: EnemyPokemon, myPokemon: ParsedPokemon): 
   return best
 }
 
-function bestMyMoveAndDamage(myPokemon: ParsedPokemon, enemy: EnemyPokemon): DamageResult | null {
+function bestMyMoveAndDamage(myPokemon: ParsedPokemon, enemy: EnemyPokemon, myMegaKey?: string | null): DamageResult | null {
   let maxMult = 0
   const effectiveEnemyTypes = getEffectiveEnemyTypes(enemy)
   for (const move of myPokemon.moves) {
@@ -208,13 +230,14 @@ function bestMyMoveAndDamage(myPokemon: ParsedPokemon, enemy: EnemyPokemon): Dam
   }
   if (maxMult < 2) return null
 
-  const attackerBase = lookupBaseStats(myPokemon.megaForm ?? myPokemon.normalizedName)
-  const defenderBase = lookupBaseStats(enemy.key)
+  const enemyMegaKey = enemy.megaActive ? getMegaFormForItem(enemy.key, enemy.item)?.formKey : null
+  const attackerBase = lookupBaseStats(myMegaKey ?? myPokemon.normalizedName)
+  const defenderBase = lookupBaseStats(enemyMegaKey ?? enemy.key)
   const vgcStats = VGC_STATS[enemy.key]
   const spread = vgcStats?.spreads[enemy.selectedSpreadIndex] ?? null
   const defenderNature = spread?.nature?.toLowerCase() ?? null
   const defenderEVs = (spread?.evs ?? {}) as Record<string, number | undefined>
-  const attackerTypes = myPokemon.megaTypes ?? myPokemon.types
+  const attackerTypes = myMegaKey ? (getMegaTypes(myMegaKey) ?? myPokemon.types) : myPokemon.types
 
   let best: DamageResult | null = null
 
@@ -450,6 +473,7 @@ function EnemySlotCard({
   onClearMove,
   onSelectSpread,
   onToggleMega,
+  onItemChange,
 }: {
   slot: number
   value: EnemyPokemon | null
@@ -459,6 +483,7 @@ function EnemySlotCard({
   onClearMove: (mi: number) => void
   onSelectSpread: (i: number) => void
   onToggleMega: () => void
+  onItemChange: (key: string | null) => void
 }) {
   const { lang } = useLang()
   const [query, setQuery] = useState('')
@@ -467,7 +492,9 @@ function EnemySlotCard({
   const [selectedItemKey, setSelectedItemKey] = useState<string | null>(null)
 
   useEffect(() => {
-    setSelectedItemKey(value ? (VGC_STATS[value.key]?.items[0]?.key ?? null) : null)
+    const initial = value ? (value.item ?? VGC_STATS[value.key]?.items[0]?.key ?? null) : null
+    setSelectedItemKey(initial)
+    onItemChange(initial)
   }, [value?.key])
 
   const results = searchPokemon(query)
@@ -546,8 +573,12 @@ function EnemySlotCard({
   }
 
   const stats = VGC_STATS[value.key] ?? null
-  const toggleItem = (key: string) => setSelectedItemKey(prev => prev === key ? null : key)
-  const megaInfo = getFirstMegaForm(value.key)
+  const toggleItem = (key: string) => {
+    const next = selectedItemKey === key ? null : key
+    setSelectedItemKey(next)
+    onItemChange(next)
+  }
+  const megaInfo = getMegaFormForItem(value.key, selectedItemKey)
   const effectiveTypes = value.megaActive && megaInfo ? megaInfo.types : value.types
   const displaySprite = value.megaActive && megaInfo?.sprite ? megaInfo.sprite : getSpriteUrl(value.key)
 
@@ -868,8 +899,9 @@ function MatchupDetailModal({
   const [spreadIndex, setSpreadIndex] = useState(initialEnemy.selectedSpreadIndex)
 
   const vgcStats = VGC_STATS[initialEnemy.key]
+  const enemyMegaKey = initialEnemy.megaActive ? getMegaFormForItem(initialEnemy.key, initialEnemy.item)?.formKey : null
   const myBase = lookupBaseStats(myPokemon.megaForm ?? myPokemon.normalizedName)
-  const enemyBase = lookupBaseStats(initialEnemy.key)
+  const enemyBase = lookupBaseStats(enemyMegaKey ?? initialEnemy.key)
   const spread = vgcStats?.spreads[spreadIndex] ?? null
   const enemyNature = spread?.nature?.toLowerCase() ?? null
   const enemyEVs = (spread?.evs ?? {}) as Record<string, number | undefined>
@@ -999,10 +1031,11 @@ function MatchupDetailModal({
 
 // ─── Matchup matrix ───────────────────────────────────────────────────────────
 
-function MatchupMatrix({ myTeam, enemy, mode }: {
+function MatchupMatrix({ myTeam, enemy, mode, myMegaKeys }: {
   myTeam: ParsedPokemon[]
   enemy: EnemyPokemon[]
   mode: MatrixMode
+  myMegaKeys?: (string | null)[]
 }) {
   const { lang } = useLang()
   const [modalCell, setModalCell] = useState<{ myPokemon: ParsedPokemon; enemy: EnemyPokemon } | null>(null)
@@ -1119,8 +1152,9 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
               </td>
               {enemy.map((e, ei) => {
                 const mult = matrix[pi][ei]
-                const offResult = mode === 'offense' ? bestMyMoveAndDamage(p, e) : null
-                const defResult = mode === 'defense' ? bestEnemyMoveAndDamage(e, p) : null
+                const megaKey = myMegaKeys?.[pi]
+                const offResult = mode === 'offense' ? bestMyMoveAndDamage(p, e, megaKey) : null
+                const defResult = mode === 'defense' ? bestEnemyMoveAndDamage(e, p, megaKey) : null
                 return (
                   <td
                     key={ei}
@@ -1152,8 +1186,16 @@ function MatchupMatrix({ myTeam, enemy, mode }: {
 
 // ─── Main export ──────────────────────────────────────────────────────────────
 
-export function MatchupAnalyzer({ team, activeIndices }: Props) {
+export function MatchupAnalyzer({ team, activeIndices, megaActive }: Props) {
   const displayTeam = activeIndices ? team.filter((_, i) => activeIndices.includes(i)) : team
+
+  // Effective base-stats key per display-team member (mega when toggled or paste has mega stone)
+  const myMegaKeys: (string | null)[] = displayTeam.map((p, pi) => {
+    const originalIdx = activeIndices ? activeIndices[pi] : pi
+    const isMegaOn = megaActive?.has(originalIdx) ?? false
+    if (!isMegaOn) return null
+    return p.megaForm ?? getMegaFormForItem(p.normalizedName, p.item)?.formKey ?? null
+  })
 
   const [slots, setSlots] = useState<(EnemyPokemon | null)[]>(() => {
     try {
@@ -1208,6 +1250,16 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
     })
   }
 
+  const setSlotItem = (slotIndex: number, itemKey: string | null) => {
+    setSlots(prev => {
+      const next = [...prev]
+      const slot = next[slotIndex]
+      if (!slot) return prev
+      next[slotIndex] = { ...slot, item: itemKey }
+      return next
+    })
+  }
+
   const toggleSlotMega = (slotIndex: number) => {
     setSlots(prev => {
       const next = [...prev]
@@ -1225,7 +1277,6 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
         <h2 style={{ fontSize: 16, fontWeight: 700, color: '#ccc', margin: 0 }}>Matchup</h2>
         {filledEnemy.length > 0 && (
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <button
             onClick={() => setSlots(Array(6).fill(null))}
             style={{
@@ -1240,32 +1291,10 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
           >
             Réinitialiser
           </button>
-          <div style={{ display: 'flex', background: '#1a1a2e', border: '1px solid #2a2a3e', borderRadius: 6, overflow: 'hidden' }}>
-            {(['offense', 'defense'] as MatrixMode[]).map(m => (
-              <button
-                key={m}
-                onClick={() => setMode(m)}
-                style={{
-                  background: mode === m ? '#3a3a6e' : 'transparent',
-                  color: mode === m ? '#fff' : '#555',
-                  border: 'none',
-                  padding: '4px 14px',
-                  fontSize: 11,
-                  fontWeight: mode === m ? 700 : 400,
-                  cursor: 'pointer',
-                }}
-              >
-                {m === 'offense' ? "J'attaque" : 'Je défends'}
-              </button>
-            ))}
-          </div>
-          </div>
         )}
       </div>
       <div style={{ fontSize: 11, color: '#555', marginBottom: '0.75rem' }}>
-        {mode === 'offense'
-          ? 'Lesquels de mes Pokémon peuvent frapper en ×2 ou ×4.'
-          : 'Lesquels de mes Pokémon sont mis en danger par les attaques ennemies.'}
+        Définis l'équipe adverse pour voir les matchups.
       </div>
 
       {/* Preset selector + paste import */}
@@ -1357,13 +1386,40 @@ export function MatchupAnalyzer({ team, activeIndices }: Props) {
             onClearMove={mi => setSlotMove(i, mi, null)}
             onSelectSpread={si => setSlotSpread(i, si)}
             onToggleMega={() => toggleSlotMega(i)}
+            onItemChange={key => setSlotItem(i, key)}
           />
         ))}
       </div>
 
       {filledEnemy.length > 0 && (
         <div style={{ marginTop: '1rem' }}>
-          <MatchupMatrix myTeam={displayTeam} enemy={filledEnemy} mode={mode} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', background: '#1a1a2e', border: '1px solid #2a2a3e', borderRadius: 6, overflow: 'hidden' }}>
+              {(['offense', 'defense'] as MatrixMode[]).map(m => (
+                <button
+                  key={m}
+                  onClick={() => setMode(m)}
+                  style={{
+                    background: mode === m ? '#3a3a6e' : 'transparent',
+                    color: mode === m ? '#fff' : '#555',
+                    border: 'none',
+                    padding: '4px 14px',
+                    fontSize: 11,
+                    fontWeight: mode === m ? 700 : 400,
+                    cursor: 'pointer',
+                  }}
+                >
+                  {m === 'offense' ? "J'attaque" : 'Je défends'}
+                </button>
+              ))}
+            </div>
+            <span style={{ fontSize: 11, color: '#555' }}>
+              {mode === 'offense'
+                ? 'Lesquels de mes Pokémon peuvent frapper en ×2 ou ×4.'
+                : 'Lesquels de mes Pokémon sont mis en danger par les attaques ennemies.'}
+            </span>
+          </div>
+          <MatchupMatrix myTeam={displayTeam} enemy={filledEnemy} mode={mode} myMegaKeys={myMegaKeys} />
         </div>
       )}
     </section>

@@ -6,9 +6,10 @@ import { useLang } from '../contexts/LangContext'
 import { pokemonName } from '../lib/i18n'
 import { getSpriteUrl, getMegaSpriteUrl, getItemSpriteUrl } from '../lib/sprites'
 
-interface TeamPreset {
+export interface TeamPreset {
   name: string
   indices: number[] // order = L1, L2, B1, B2
+  note?: string
 }
 
 interface Props {
@@ -16,19 +17,14 @@ interface Props {
   megaActive: Set<number>
   onMegaToggle: (i: number) => void
   onActivate: (indices: number[] | null) => void
+  presets: TeamPreset[]
+  onSavePresets: (presets: TeamPreset[]) => void
 }
 
-const STORAGE_KEY = 'teamanalyzer-team-of-four'
 const ROLES = ['L1', 'L2', 'B1', 'B2']
 
-function loadPresets(): TeamPreset[] {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]') }
-  catch { return [] }
-}
-
-export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props) {
+export function TeamBanner({ team, megaActive, onMegaToggle, onActivate, presets, onSavePresets }: Props) {
   const { lang } = useLang()
-  const [presets, setPresets] = useState<TeamPreset[]>(loadPresets)
   const [activePresetName, setActivePresetName] = useState<string>('')
   const [addingMode, setAddingMode] = useState(false)
   const [draftIndices, setDraftIndices] = useState<number[]>([])
@@ -55,10 +51,7 @@ export function TeamBanner({ team, megaActive, onMegaToggle, onActivate }: Props
 
   const workingOrder = dragOrder ?? displayOrder
 
-  const savePresets = (updated: TeamPreset[]) => {
-    setPresets(updated)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
-  }
+  const savePresets = onSavePresets
 
   // ── Preset management ────────────────────────────────────────────────────
 
